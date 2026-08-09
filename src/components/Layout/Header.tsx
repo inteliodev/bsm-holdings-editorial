@@ -35,7 +35,10 @@ const Header = () => {
         { name: 'Technology', href: '/technology' },
         { name: 'Multifamily', href: '/asset-types/multifamily' },
         { name: 'Senior Housing', href: '/asset-types/senior-housing' },
-        { name: 'Affordable Housing', href: '/asset-types/hud-affordable' }
+        { name: 'Affordable Housing', href: '/asset-types/hud-affordable' },
+        // The index page is the only route linking office, retail and industrial,
+        // so without this entry those three are unreachable.
+        { name: 'All Asset Types', href: '/asset-types' }
       ]
     },
     { name: 'Properties', href: '/portfolio' }

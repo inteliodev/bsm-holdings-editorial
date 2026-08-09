@@ -1,4 +1,42 @@
 {
+  "redirects": [
+    { "source": "/asset-management", "destination": "/services", "permanent": true },
+    { "source": "/asset-management/multifamily", "destination": "/asset-types/multifamily", "permanent": true },
+    { "source": "/asset-management/hud", "destination": "/asset-types/hud-affordable", "permanent": true },
+    { "source": "/asset-management/senior", "destination": "/asset-types/senior-housing", "permanent": true },
+    { "source": "/asset-management/office", "destination": "/asset-types/office", "permanent": true },
+    { "source": "/asset-management/retail", "destination": "/asset-types/retail", "permanent": true },
+    { "source": "/asset-management/industrial", "destination": "/asset-types/industrial", "permanent": true },
+
+    { "source": "/management", "destination": "/services", "permanent": true },
+    { "source": "/management/multifamily", "destination": "/asset-types/multifamily", "permanent": true },
+    { "source": "/management/hud", "destination": "/asset-types/hud-affordable", "permanent": true },
+    { "source": "/management/senior", "destination": "/asset-types/senior-housing", "permanent": true },
+    { "source": "/management/office", "destination": "/asset-types/office", "permanent": true },
+    { "source": "/management/retail", "destination": "/asset-types/retail", "permanent": true },
+    { "source": "/management/industrial", "destination": "/asset-types/industrial", "permanent": true },
+
+    { "source": "/brokerage/tenant-rep", "destination": "/services/leasing-representation", "permanent": true },
+    { "source": "/brokerage/landlord-rep", "destination": "/services/leasing-representation", "permanent": true },
+    { "source": "/brokerage/investment-sales", "destination": "/services/investment-capital-markets", "permanent": true },
+    { "source": "/brokerage/site-selection", "destination": "/services/advisory-site-selection", "permanent": true },
+
+    { "source": "/services/investment-sales", "destination": "/services/investment-capital-markets", "permanent": true },
+    { "source": "/services/acquisitions", "destination": "/services/investment-capital-markets", "permanent": true },
+    { "source": "/services/landlord-representation", "destination": "/services/leasing-representation", "permanent": true },
+    { "source": "/services/tenant-representation", "destination": "/services/leasing-representation", "permanent": true },
+    { "source": "/services/development", "destination": "/services/development-advisory", "permanent": true },
+    { "source": "/services/consulting", "destination": "/services/broker-consulting", "permanent": true },
+
+    { "source": "/services/multifamily", "destination": "/asset-types/multifamily", "permanent": true },
+    { "source": "/services/hud-housing", "destination": "/asset-types/hud-affordable", "permanent": true },
+    { "source": "/services/residential", "destination": "/asset-types/multifamily", "permanent": true },
+    { "source": "/services/commercial", "destination": "/asset-types/office", "permanent": true },
+
+    { "source": "/services/facilities-management", "destination": "/services/facility-services", "permanent": true },
+    { "source": "/technology/ai-platforms", "destination": "/technology/platforms", "permanent": true },
+    { "source": "/owner-login", "destination": "/investor-portal", "permanent": true }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
@@ -6,4 +44,3 @@
     }
   ]
 }
-

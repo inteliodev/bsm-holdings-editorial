@@ -11,17 +11,7 @@ import { usePageTracking, useScrollTracking, useTimeOnPageTracking } from "./hoo
 // Lazy-loaded page components
 const Home = lazy(() => import("./pages/Home"));
 const Brokerage = lazy(() => import("./pages/Brokerage"));
-const BrokerageTenantRep = lazy(() => import("./pages/BrokerageTenantRep"));
-const BrokerageLandlordRep = lazy(() => import("./pages/BrokerageLandlordRep"));
-const BrokerageInvestmentSales = lazy(() => import("./pages/BrokerageInvestmentSales"));
-const BrokerageSiteSelection = lazy(() => import("./pages/BrokerageSiteSelection"));
 const Services = lazy(() => import("./pages/Services"));
-const ManagementMultifamily = lazy(() => import("./pages/ManagementMultifamily"));
-const ManagementHUD = lazy(() => import("./pages/ManagementHUD"));
-const ManagementCommercial = lazy(() => import("./pages/ManagementCommercial"));
-const ManagementRetail = lazy(() => import("./pages/ManagementRetail"));
-const ManagementIndustrial = lazy(() => import("./pages/ManagementIndustrial"));
-const ManagementSenior = lazy(() => import("./pages/ManagementSenior"));
 const Technology = lazy(() => import("./pages/Technology"));
 const About = lazy(() => import("./pages/About"));
 const Insights = lazy(() => import("./pages/Insights"));
@@ -43,12 +33,6 @@ const BrokerConsulting = lazy(() => import("./pages/services/BrokerConsulting"))
 const FinancialServices = lazy(() => import("./pages/services/FinancialServices"));
 const FacilityServices = lazy(() => import("./pages/FacilityServices"));
 // Legacy service pages (for backward compatibility)
-const InvestmentSales = lazy(() => import("./pages/services/InvestmentSales"));
-const LandlordRepresentation = lazy(() => import("./pages/services/LandlordRepresentation"));
-const TenantRepresentation = lazy(() => import("./pages/services/TenantRepresentation"));
-const Acquisitions = lazy(() => import("./pages/services/Acquisitions"));
-const Development = lazy(() => import("./pages/services/Development"));
-const Consulting = lazy(() => import("./pages/services/Consulting"));
 
 // Asset Types Overview Page
 const AssetTypes = lazy(() => import("./pages/AssetTypes"));
@@ -99,15 +83,8 @@ const App = () => (
               <Route path="/services/financial-services" element={<FinancialServices />} />
               <Route path="/services/facility-services" element={<FacilityServices />} />
               {/* Legacy: previous Facilities Management path */}
-              <Route path="/services/facilities-management" element={<FacilityServices />} />
 
               {/* Legacy service routes (for backward compatibility) */}
-              <Route path="/services/investment-sales" element={<InvestmentSales />} />
-              <Route path="/services/landlord-representation" element={<LandlordRepresentation />} />
-              <Route path="/services/tenant-representation" element={<TenantRepresentation />} />
-              <Route path="/services/acquisitions" element={<Acquisitions />} />
-              <Route path="/services/development" element={<Development />} />
-              <Route path="/services/consulting" element={<Consulting />} />
 
               {/* Asset Types Routes */}
               <Route path="/asset-types" element={<AssetTypes />} />
@@ -121,25 +98,13 @@ const App = () => (
               {/* Technology Routes */}
               <Route path="/technology/platforms" element={<Platforms />} />
               {/* Legacy: old AI-branded path */}
-              <Route path="/technology/ai-platforms" element={<Platforms />} />
               <Route path="/technology/advisory-analytics" element={<AdvisoryAnalytics />} />
               <Route path="/technology/custom-solutions" element={<CustomSolutions />} />
 
               {/* Asset Management Routes */}
-              <Route path="/asset-management" element={<Services />} />
-              <Route path="/asset-management/multifamily" element={<ManagementMultifamily />} />
-              <Route path="/asset-management/hud" element={<ManagementHUD />} />
-              <Route path="/asset-management/senior" element={<ManagementSenior />} />
-              <Route path="/asset-management/office" element={<ManagementCommercial />} />
-              <Route path="/asset-management/retail" element={<ManagementRetail />} />
-              <Route path="/asset-management/industrial" element={<ManagementIndustrial />} />
 
               {/* Brokerage Routes */}
               <Route path="/brokerage" element={<Brokerage />} />
-              <Route path="/brokerage/tenant-rep" element={<BrokerageTenantRep />} />
-              <Route path="/brokerage/landlord-rep" element={<BrokerageLandlordRep />} />
-              <Route path="/brokerage/investment-sales" element={<BrokerageInvestmentSales />} />
-              <Route path="/brokerage/site-selection" element={<BrokerageSiteSelection />} />
 
               {/* Other Routes */}
               <Route path="/technology" element={<Technology />} />
@@ -153,18 +118,7 @@ const App = () => (
               <Route path="/portfolio" element={<Portfolio />} />
 
               {/* Legacy routes for backward compatibility */}
-              <Route path="/management" element={<Services />} />
-              <Route path="/management/multifamily" element={<ManagementMultifamily />} />
-              <Route path="/management/hud" element={<ManagementHUD />} />
-              <Route path="/management/office" element={<ManagementCommercial />} />
-              <Route path="/management/retail" element={<ManagementRetail />} />
-              <Route path="/management/industrial" element={<ManagementIndustrial />} />
-              <Route path="/management/senior" element={<ManagementSenior />} />
               <Route path="/services" element={<Services />} />
-              <Route path="/services/multifamily" element={<Services />} />
-              <Route path="/services/hud-housing" element={<Services />} />
-              <Route path="/services/residential" element={<Services />} />
-              <Route path="/services/commercial" element={<Services />} />
 
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
