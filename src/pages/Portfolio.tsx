@@ -6,6 +6,12 @@ import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN || '';
 
+// All current properties sit on one campus, so the map uses a single cluster marker.
+// Keep this as the one source of truth for the shared centre rather than repeating
+// the literal at every call site.
+const CAMPUS_CENTER: [number, number] = [-95.3078362685698, 36.29323680677572];
+const CAMPUS_ADDRESS = '901 SE 9th Street, Pryor, OK 74361';
+
 const properties = [
   {
     id: 'mwm',
@@ -17,7 +23,7 @@ const properties = [
     built: '1991',
     beds: '1 BD',
     baths: '1 BA',
-    coords: [-95.3078362685698, 36.29323680677572],
+    coords: CAMPUS_CENTER,
     phone: '(918) 825-1250',
     email: 'mwm@hhpasset.com',
     description: 'A 31-unit HUD Section 202 senior housing community providing affordable, supportive housing for elderly residents in Pryor, Oklahoma.',
@@ -32,7 +38,7 @@ const properties = [
     built: '1985',
     beds: '1 BD',
     baths: '1 BA',
-    coords: [-95.3078362685698, 36.29323680677572],
+    coords: CAMPUS_CENTER,
     phone: '(918) 825-1250',
     email: 'mwm@hhpasset.com',
     description: 'A 24-unit HUD Section 202 senior housing community located on the Pryor campus, serving elderly residents through the PRAC program.',
@@ -47,12 +53,14 @@ const properties = [
     built: '1995',
     beds: '1 BD',
     baths: '1 BA',
-    coords: [-95.3078362685698, 36.29323680677572],
+    coords: CAMPUS_CENTER,
     phone: '(918) 825-1250',
     email: 'mwm@hhpasset.com',
     description: 'A 30-unit HUD Section 202 senior housing community, the newest addition to the Pryor campus with modern amenities for senior residents.',
   },
 ];
+
+const TOTAL_UNITS = properties.reduce((sum, p) => sum + p.units, 0);
 
 const Portfolio = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -72,17 +80,24 @@ const Portfolio = () => {
     popupsRef.current.forEach((p) => p.remove());
     const mapboxgl = (window as any).mapboxgl;
     if (mapboxgl) {
-      const popup = new mapboxgl.Popup({ offset: 25, closeButton: true, maxWidth: '280px' })
+      // Shares the .hhp-popup treatment with the campus popup below — this is the
+      // one users actually reach, since selecting a property card opens it.
+      const popup = new mapboxgl.Popup({
+        offset: 30,
+        closeButton: true,
+        maxWidth: '320px',
+        className: 'hhp-popup',
+      })
         .setLngLat(property.coords)
         .setHTML(
-          `<div style="font-family:sans-serif;padding:8px 4px;">
-            <div style="font-size:15px;font-weight:700;color:#0A2342;margin-bottom:6px;">${property.name}</div>
-            <div style="font-size:12px;color:#666;margin-bottom:8px;">${property.address}</div>
-            <div style="display:flex;gap:16px;margin-bottom:8px;">
-              <div><span style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:0.5px;">Type</span><div style="font-size:13px;font-weight:600;color:#0A2342;">${property.type}</div></div>
-              <div><span style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:0.5px;">Units</span><div style="font-size:13px;font-weight:600;color:#0A2342;">${property.units}</div></div>
+          `<div class="hhp-popup-body">
+            <span class="hhp-popup-eyebrow">${property.type}</span>
+            <h3 class="hhp-popup-title">${property.name}</h3>
+            <p class="hhp-popup-address">${property.address}</p>
+            <div class="hhp-popup-stats">
+              <div><span class="hhp-popup-stat">${property.units}</span><span class="hhp-popup-label">Units</span></div>
+              <div><span class="hhp-popup-stat">${property.built}</span><span class="hhp-popup-label">Built</span></div>
             </div>
-            <div style="font-size:11px;color:#16A34A;font-weight:600;">● ${property.status}</div>
           </div>`
         )
         .addTo(mapRef.current);
@@ -102,7 +117,7 @@ const Portfolio = () => {
     setSelectedProperty(null);
     popupsRef.current.forEach((p) => p.remove());
     if (mapRef.current) {
-      mapRef.current.flyTo({ center: [-95.3078362685698, 36.29323680677572], zoom: 15, duration: 800 });
+      mapRef.current.flyTo({ center: CAMPUS_CENTER, zoom: 15, duration: 800 });
     }
   };
 
@@ -123,29 +138,60 @@ const Portfolio = () => {
       mapboxgl.accessToken = MAPBOX_TOKEN;
       const map = new mapboxgl.Map({
         container: mapContainer.current,
-        style: 'mapbox://styles/mapbox/light-v11',
-        center: [-95.3078362685698, 36.29323680677572],
-        zoom: 15,
+        // Dark basemap. light-v11 rendered as near-white over a small-town street
+        // grid, which read as an empty page rather than a designed one. Dark sits
+        // with the navy brand and lets the gold marker carry the eye.
+        style: 'mapbox://styles/mapbox/dark-v11',
+        center: CAMPUS_CENTER,
+        zoom: 14.2,
+        pitch: 45,
+        bearing: -18,
+        antialias: true,
+        attributionControl: true,
       });
 
-      map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+      map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'top-right');
+      map.scrollZoom.disable(); // Don't hijack page scroll; zoom via the controls.
 
-      // Built-in marker — eliminates CSS drift on zoom
-      const marker = new mapboxgl.Marker({ color: '#0A2342', scale: 1.2 })
-        .setLngLat([-95.3078362685698, 36.29323680677572])
+      map.on('load', () => {
+        // Strip POI and transit clutter — competing labels are what made the
+        // original read busy and generic.
+        for (const layer of map.getStyle().layers ?? []) {
+          if (/poi-label|transit-label|airport-label/.test(layer.id)) {
+            map.setLayoutProperty(layer.id, 'visibility', 'none');
+          }
+        }
+
+        // No 3D building extrusions here. Pryor has almost no tall structures, so
+        // they rendered as scattered blue patches rather than skyline — noise, not
+        // depth. The camera pitch alone carries the dimensionality.
+      });
+
+      // Built-in marker — eliminates CSS drift on zoom. Gold reads as the accent
+      // against the dark basemap; navy would disappear into it.
+      const marker = new mapboxgl.Marker({ color: '#C8952E', scale: 1.35 })
+        .setLngLat(CAMPUS_CENTER)
         .addTo(map);
 
       marker.getElement().style.cursor = 'pointer';
       marker.getElement().addEventListener('click', () => {
         popupsRef.current.forEach((p) => p.remove());
-        const popup = new mapboxgl.Popup({ offset: 25, closeButton: true, maxWidth: '300px' })
-          .setLngLat([-95.3078362685698, 36.29323680677572])
+        const popup = new mapboxgl.Popup({
+          offset: 30,
+          closeButton: true,
+          maxWidth: '320px',
+          className: 'hhp-popup',
+        })
+          .setLngLat(CAMPUS_CENTER)
           .setHTML(
-            '<div style="font-family:sans-serif;padding:8px 4px;">' +
-            '<div style="font-size:16px;font-weight:700;color:#0A2342;margin-bottom:4px;">HHP Managed Properties</div>' +
-            '<div style="font-size:13px;color:#666;margin-bottom:6px;">901 SE 9th Street, Pryor, OK 74361</div>' +
-            '<div style="font-size:13px;color:#0A2342;font-weight:600;">3 Properties · 85 Units</div>' +
-            '<div style="font-size:12px;color:#16A34A;font-weight:600;margin-top:4px;">● All Active</div>' +
+            '<div class="hhp-popup-body">' +
+              '<span class="hhp-popup-eyebrow">Managed Portfolio</span>' +
+              '<h3 class="hhp-popup-title">HHP Asset Management</h3>' +
+              `<p class="hhp-popup-address">${CAMPUS_ADDRESS}</p>` +
+              '<div class="hhp-popup-stats">' +
+                `<div><span class="hhp-popup-stat">${properties.length}</span><span class="hhp-popup-label">Properties</span></div>` +
+                `<div><span class="hhp-popup-stat">${TOTAL_UNITS}</span><span class="hhp-popup-label">Units</span></div>` +
+              '</div>' +
             '</div>'
           )
           .addTo(map);
@@ -180,10 +226,35 @@ const Portfolio = () => {
         {/* Map */}
         <div className="w-full lg:w-3/5 relative bg-gray-100 h-[400px] lg:h-full">
           <div ref={mapContainer} className="absolute inset-0 w-full h-full" />
+          {/*
+            Without a Mapbox token the container just stays an empty grey box and the
+            token error surfaces from a script onload callback, so it never trips the
+            ErrorBoundary. Show the address instead of nothing.
+          */}
+          {!MAPBOX_TOKEN && (
+            <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
+              <div>
+                <MapPin className="h-8 w-8 text-hhp-navy mx-auto mb-3" aria-hidden="true" />
+                <p className="font-semibold text-hhp-navy">{CAMPUS_ADDRESS}</p>
+                <p className="text-sm text-hhp-charcoal/70 mt-1">
+                  {properties.length} properties · {TOTAL_UNITS} units
+                </p>
+              </div>
+            </div>
+          )}
           {/* Results count overlay */}
-          <div className="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg px-4 py-2 border-l-4 border-l-[#C8952E]">
-            <span className="text-sm font-semibold text-hhp-navy">({properties.length}) Properties</span>
-            <span className="text-sm text-hhp-charcoal/60 ml-1">· Pryor, OK</span>
+          {/* Reads as an overlay on the dark basemap rather than a white sticker. */}
+          <div className="absolute top-5 left-5 z-10 bg-hhp-navy/85 backdrop-blur-md rounded-sm shadow-xl border border-white/15 px-5 py-3">
+            <div className="text-[10px] font-heading font-bold uppercase tracking-[0.22em] mb-1.5" style={{ color: '#C8952E' }}>
+              Managed Portfolio
+            </div>
+            <div className="flex items-baseline gap-5 text-white">
+              <span className="text-sm font-semibold">
+                {properties.length} Properties
+              </span>
+              <span className="text-sm font-semibold">{TOTAL_UNITS} Units</span>
+            </div>
+            <div className="text-[11px] text-white/55 mt-1">Pryor, Oklahoma</div>
           </div>
         </div>
 
@@ -280,7 +351,8 @@ const Portfolio = () => {
             /* List View */
             <div>
               <div className="p-6 pb-3">
-                <h2 className="font-heading text-xl font-bold text-hhp-navy tracking-wide uppercase mb-1">Managed Properties</h2>
+                {/* Was an <h2>, leaving the page with no <h1> at all. */}
+                <h1 className="font-heading text-xl font-bold text-hhp-navy tracking-wide uppercase mb-1">Managed Properties</h1>
                 <p className="text-base text-hhp-charcoal/50">({properties.length}) Results Found</p>
               </div>
 

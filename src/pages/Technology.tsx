@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Bot, BarChart3, Settings, ArrowRight, CheckCircle, TrendingUp, DollarSign, Clock, Zap } from 'lucide-react';
+import { Layers, BarChart3, Settings, ArrowRight, CheckCircle, TrendingUp, DollarSign, Clock, Zap } from 'lucide-react';
 import Layout from '@/components/Layout/Layout';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 import DashboardShowcase from '@/components/DashboardShowcase';
@@ -10,7 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 const Technology = () => {
   const technologyPillars = [
     {
-      icon: Bot,
+      icon: Layers,
       title: "Proprietary Platforms",
       snippet: "Purpose-built systems power transaction and operations intelligence across acquisitions, leasing, and property management. Real-time comps, absorption forecasts, delinquency/turnover risk scores, and KPI dashboards turn data into action.",
       highlights: [
@@ -72,24 +72,25 @@ const Technology = () => {
     }
   ];
 
+  // Mechanism, not outcome metrics. The figures that used to sit here ("2×",
+  // "10–15%", "6–10% NOI improvement potential") were not sourced to any portfolio,
+  // period, or client, so they could not survive a prospect asking "compared to what?"
+  // What is stated below is verifiable by any owner we work with.
   const kpiCards = [
     {
       icon: Clock,
-      title: "Faster Decisions",
-      metric: "2×",
-      description: "reduction in time from data to decision"
+      title: "Same Numbers, Same Time",
+      description: "Owners see the operating data we see, as it lands — not in a month-end summary assembled after the fact."
     },
     {
       icon: DollarSign,
-      title: "Lower Cost to Operate", 
-      metric: "10–15%",
-      description: "savings via automation/analytics"
+      title: "Cost at the Line-Item Level",
+      description: "Because the work is self-performed, reporting reflects labor hours, materials, and time on site rather than a subcontractor invoice with margin already priced in."
     },
     {
       icon: TrendingUp,
-      title: "Improved Performance",
-      metric: "6–10%",
-      description: "NOI improvement potential with retention & optimization"
+      title: "Built and Maintained In House",
+      description: "We build our asset management and operating systems rather than licensing them, so the software changes when the way we operate changes."
     }
   ];
 
@@ -141,27 +142,27 @@ const Technology = () => {
     <>
       {/* SEO Meta Tags */}
       <Helmet>
-        <title>HHP Asset Group | Technology</title>
+        <title>HHP Asset Management | Technology</title>
         <meta 
           name="description" 
-          content="Explore HHP's Technology: Proprietary Platforms, Advisory & Analytics, and Custom Solutions that deliver measurable performance, faster decisions, and institutional-grade execution." 
+          content="The asset management and operating systems HHP builds and maintains in house — so owners see line-item cost as it happens, not a month-end summary." 
         />
         <meta 
           name="keywords" 
           content="real estate technology, proprietary platforms, property management software, real estate analytics, owner dashboards, custom solutions"
         />
-        <meta property="og:title" content="HHP Asset Group | Technology" />
-        <meta property="og:description" content="Explore HHP's Technology: Proprietary Platforms, Advisory & Analytics, and Custom Solutions that deliver measurable performance, faster decisions, and institutional-grade execution." />
+        <meta property="og:title" content="HHP Asset Management | Technology" />
+        <meta property="og:description" content="The asset management and operating systems HHP builds and maintains in house — so owners see line-item cost as it happens, not a month-end summary." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://hhpasset.com/technology" />
-        <meta property="og:image" content="https://hhpasset.com/images/hhp-logo.png" />
+        <meta property="og:image" content="https://hhpasset.com/images/hhp-social-share.png" />
         <link rel="canonical" href="https://hhpasset.com/technology" />
         
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="HHP Asset Group | Technology" />
+        <meta name="twitter:title" content="HHP Asset Management | Technology" />
         <meta name="twitter:description" content="Explore HHP's Technology: Proprietary Platforms, Advisory & Analytics, and Custom Solutions." />
-        <meta name="twitter:image" content="https://hhpasset.com/images/hhp-logo.png" />
+        <meta name="twitter:image" content="https://hhpasset.com/images/hhp-social-share.png" />
       </Helmet>
 
       <Layout>
@@ -198,7 +199,7 @@ const Technology = () => {
           <div className="container-premium">
             <div className="max-w-4xl mx-auto">
               <p className="text-lg sm:text-xl leading-relaxed text-gray-600 text-center">
-                Our proprietary data stack and analytics frameworks deliver institutional-grade execution—faster decisions, tighter controls, and measurable ROI.
+                We build and maintain our own asset management and operating systems rather than licensing someone else's. Because both Facility Services and the software are ours, we see what work actually costs, line by line — and owners see the same numbers we do.
               </p>
             </div>
           </div>
@@ -273,7 +274,7 @@ const Technology = () => {
             <div className="text-center mb-16">
               <h2 className="section-title text-hhp-navy mb-6">How It Works</h2>
               <p className="text-xl leading-relaxed text-hhp-charcoal max-w-3xl mx-auto">
-                Our proven implementation process ensures seamless integration and maximum ROI from day one.
+                How a new property comes onto our systems, from first walk-through to owners reading live numbers.
               </p>
             </div>
             
@@ -299,9 +300,9 @@ const Technology = () => {
         <section className="bg-gray-50 section-spacing">
           <div className="container-premium">
             <div className="text-center mb-16">
-              <h2 className="section-title text-hhp-navy mb-6">Featured Outcomes</h2>
+              <h2 className="section-title text-hhp-navy mb-6">What This Changes</h2>
               <p className="text-xl leading-relaxed text-hhp-charcoal max-w-3xl mx-auto">
-                Measurable results that drive real business value across every implementation.
+                What owning both Facility Services and the software changes for an owner.
               </p>
             </div>
             
@@ -313,12 +314,9 @@ const Technology = () => {
                     <div className="icon-accent mx-auto mb-6 w-16 h-16 flex items-center justify-center">
                       <IconComponent className="h-8 w-8" />
                     </div>
-                    <h3 className="text-2xl font-display font-bold text-hhp-navy mb-2">
+                    <h3 className="text-2xl font-display font-bold text-hhp-navy mb-4">
                       {card.title}
                     </h3>
-                    <div className="text-4xl font-bold text-hhp-navy mb-4">
-                      {card.metric}
-                    </div>
                     <p className="text-hhp-charcoal">
                       {card.description}
                     </p>
@@ -364,10 +362,10 @@ const Technology = () => {
         <section className="bg-hhp-navy text-white section-spacing">
           <div className="container-premium text-center">
             <h2 className="section-title text-white mb-6">
-              Let's Build Your Technology Advantage
+              See What Your Reporting Would Look Like
             </h2>
             <p className="text-xl leading-relaxed text-white/90 mb-12 max-w-3xl mx-auto">
-              Ready to transform your operations with data-driven insights and automation? Let's discuss your specific needs and implementation timeline.
+              Want to see what your reporting would actually look like? We'll walk you through the systems using real numbers.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -375,22 +373,22 @@ const Technology = () => {
                 to="/contact" 
                 className="bg-white text-hhp-navy px-8 py-4 rounded-lg font-heading font-semibold tracking-[0.06em] uppercase hover:bg-white/90 transition-all duration-300 inline-flex items-center justify-center w-auto max-w-[300px] sm:max-w-none mx-auto sm:mx-0"
                 onClick={() => {
-                  trackButtonClick('request_demo_cta', 'final_cta');
-                  trackLinkClick('Request a Demo', '/contact');
+                  trackButtonClick('see_the_systems_cta', 'final_cta');
+                  trackLinkClick('See the Systems', '/contact');
                 }}
               >
-                Request a Demo
+                See the Systems
                 <ArrowRight className="h-5 w-5 ml-2" />
               </Link>
               <Link 
                 to="/technology/platforms" 
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-heading font-semibold tracking-[0.06em] uppercase hover:bg-white hover:text-hhp-navy transition-all duration-300 inline-flex items-center justify-center w-auto max-w-[300px] sm:max-w-none mx-auto sm:mx-0"
                 onClick={() => {
-                  trackButtonClick('see_pricing_cta', 'final_cta');
-                  trackLinkClick('See Pricing & Licensing', '/technology/platforms');
+                  trackButtonClick('explore_platforms_cta', 'final_cta');
+                  trackLinkClick('Explore the Platforms', '/technology/platforms');
                 }}
               >
-                See Pricing & Licensing
+                Explore the Platforms
                 <ArrowRight className="h-5 w-5 ml-2" />
               </Link>
             </div>

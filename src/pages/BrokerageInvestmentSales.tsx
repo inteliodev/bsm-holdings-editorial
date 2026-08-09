@@ -6,8 +6,8 @@ import { useSEO } from '@/hooks/useSEO';
 
 const BrokerageInvestmentSales = () => {
   useSEO({
-    title: 'Investment Sales | HHP Asset Group',
-    description: 'Institutional-grade analysis and targeted disposition. Expert investment sales services for optimal transaction outcomes.'
+    title: 'Investment Sales | HHP Asset Management',
+    description: 'Rigorous analysis and targeted disposition, underwritten from the expense side by people who operate buildings.'
   });
 
   const services = [
@@ -44,9 +44,9 @@ const BrokerageInvestmentSales = () => {
   ];
 
   const proofPoints = [
-    { metric: '4.2-6.8%', label: 'Cap Rate Range' },
-    { metric: '$180-450/SF', label: 'Price per Square Foot' },
-    { metric: '90 Days', label: 'Average Marketing Time' }
+    { metric: "Operator's Underwriting", label: 'We underwrite from the expense side using real operating cost, because we run buildings as well as sell them.' },
+    { metric: 'Documented Assumptions', label: 'Every projection is traceable to its source, so a buyer’s diligence confirms the story rather than unwinding it.' },
+    { metric: 'Local Market Read', label: 'Oklahoma comps and buyer relationships specific to the Tulsa and Oklahoma City metros.' }
   ];
 
   return (
@@ -59,7 +59,7 @@ const BrokerageInvestmentSales = () => {
               Investment Sales
             </h1>
             <p className="text-xl leading-relaxed text-white/90 mb-12">
-              Institutional-grade analysis and targeted disposition. Expert investment sales services for optimal transaction outcomes.
+              Rigorous analysis and targeted disposition, underwritten from the expense side by people who operate buildings.
             </p>
             <Link to="/contact" className="bg-white text-hhp-navy px-8 py-4 rounded-lg font-medium hover:bg-white/90 transition-all duration-300 shadow-elegant">
               Request a BOV
@@ -74,7 +74,7 @@ const BrokerageInvestmentSales = () => {
           <div className="text-center mb-16">
             <h2 className="section-title text-hhp-navy mb-6">Comprehensive Sales Services</h2>
             <p className="text-xl leading-relaxed text-hhp-charcoal max-w-3xl mx-auto">
-              Our investment sales team delivers institutional-grade expertise for complex commercial real estate transactions.
+              Our investment sales team delivers disciplined execution on complex commercial real estate transactions.
             </p>
           </div>
           
@@ -100,7 +100,7 @@ const BrokerageInvestmentSales = () => {
       <section className="bg-gray-50 section-spacing">
         <div className="container-premium">
           <div className="text-center mb-12">
-            <h2 className="section-title text-hhp-navy mb-6">Market Performance</h2>
+            <h2 className="section-title text-hhp-navy mb-6">How We Approach a Sale</h2>
             <p className="text-xl leading-relaxed text-hhp-charcoal max-w-3xl mx-auto">
               Our data-driven approach consistently delivers optimal pricing and transaction velocity.
             </p>
@@ -109,10 +109,10 @@ const BrokerageInvestmentSales = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {proofPoints.map((point, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl font-display font-bold text-hhp-navy mb-2">
+                <div className="text-xl font-display font-bold text-hhp-navy mb-3">
                   {point.metric}
                 </div>
-                <div className="text-hhp-charcoal font-medium">
+                <div className="text-hhp-charcoal leading-relaxed">
                   {point.label}
                 </div>
               </div>
@@ -157,7 +157,7 @@ const BrokerageInvestmentSales = () => {
       {/* Premium CTA Banner */}
       <PremiumCTABanner
         title="Ready to Maximize Your Property's Value?"
-        description="Let our investment sales experts guide you through the entire disposition process with institutional-grade analysis and execution."
+        description="Let our investment sales experts guide you through the entire disposition process with rigorous analysis and execution."
         primaryCTA="Request a BOV"
         primaryLink="/contact"
         secondaryCTA="View All Services"

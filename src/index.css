@@ -6,7 +6,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* HHP Asset Group Design System - Premium Typography & Colors */
+/* HHP Asset Management Design System - Premium Typography & Colors */
 
 @layer base {
   :root {
@@ -698,4 +698,101 @@
   position: absolute;
   top: 16px;
   right: 24px;
+}
+/* ── Portfolio map ────────────────────────────────────────────────────────
+   The Mapbox popup is injected as raw HTML outside React, so it is styled
+   here rather than with utility classes. Previously it carried hardcoded
+   hex inline and sat outside the design system entirely. */
+.hhp-popup .mapboxgl-popup-content {
+  background: #0A2342;
+  border: 1px solid rgba(200, 149, 46, 0.35);
+  border-radius: 4px;
+  padding: 20px 22px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
+}
+.hhp-popup .mapboxgl-popup-tip { border-top-color: #0A2342; border-bottom-color: #0A2342; }
+.hhp-popup .mapboxgl-popup-close-button {
+  background: transparent !important;
+  border: 0 !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-size: 22px;
+  line-height: 1;
+  padding: 8px 12px 0 0 !important;
+  right: 0;
+  top: 2px;
+}
+.hhp-popup .mapboxgl-popup-close-button:hover { color: #C8952E !important; background: transparent !important; }
+/* The default focus ring painted a light box over the navy popup. Suppress it for
+   pointer input, keep an on-brand ring for keyboard users. */
+.hhp-popup .mapboxgl-popup-close-button:focus { outline: none !important; }
+.hhp-popup .mapboxgl-popup-close-button:focus-visible {
+  outline: 2px solid #C8952E !important;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.hhp-popup-eyebrow {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #C8952E;
+  margin-bottom: 8px;
+}
+.hhp-popup-title {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 4px;
+  letter-spacing: 0.04em;
+}
+.hhp-popup-address {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 16px;
+}
+.hhp-popup-stats {
+  display: flex;
+  gap: 28px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+.hhp-popup-stat {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.1;
+}
+.hhp-popup-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 4px;
+}
+
+/* Mapbox's own controls default to white-on-white against the dark basemap.
+   Its stylesheet is injected into <head> at runtime, so it loads AFTER the
+   bundled CSS and wins on equal specificity — hence !important here. */
+.mapboxgl-ctrl-group {
+  background: rgba(10, 35, 66, 0.92) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-radius: 3px !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+}
+.mapboxgl-ctrl-group button + button {
+  border-top: 1px solid rgba(255, 255, 255, 0.16) !important;
+}
+.mapboxgl-ctrl-group button:hover { background: rgba(200, 149, 46, 0.18) !important; }
+.mapboxgl-ctrl-group button .mapboxgl-ctrl-icon { filter: invert(1) !important; opacity: 0.85; }
+.mapboxgl-ctrl-attrib, .mapboxgl-ctrl-attrib a {
+  background: rgba(10, 35, 66, 0.7) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
 }

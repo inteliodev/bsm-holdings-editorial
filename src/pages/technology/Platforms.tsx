@@ -19,7 +19,7 @@ const Platforms = () => {
             </h1>
             <p className="text-xl leading-relaxed text-white/90 mb-8 drop-shadow-md">
               From acquisitions to tenant retention, HHP's purpose-built systems accelerate
-              decision-making, eliminate inefficiencies, and drive institutional-level performance
+              decision-making, remove manual steps, and keep operating cost visible
               across every asset class.
             </p>
             
@@ -28,10 +28,10 @@ const Platforms = () => {
               className="inline-block bg-white text-hhp-navy px-8 py-4 rounded-lg font-medium hover:bg-white/90 transition-colors duration-200 w-auto max-w-[300px] sm:max-w-none mx-auto sm:mx-0"
               onClick={() => {
                 trackButtonClick('request_demo_cta', 'platforms_hero');
-                trackLinkClick('Request a Demo', '/contact');
+                trackLinkClick('See the Systems', '/contact');
               }}
             >
-              Request a Demo
+              See the Systems
               <ArrowRight className="inline ml-2 h-5 w-5" />
             </Link>
           </div>
@@ -239,54 +239,28 @@ const Platforms = () => {
         </div>
       </section>
 
-      {/* Insights Tab Examples */}
-      <section className="bg-gray-50 section-spacing">
-        <div className="container-premium">
-          <h2 className="section-title text-hhp-navy mb-12 text-center">Insights Tab Examples</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl p-6 shadow-lg">
-              <span className="inline-block bg-hhp-accent/10 text-hhp-navy px-3 py-1 rounded-full text-sm font-medium mb-4">
-                Case Study
-              </span>
-              <h3 className="text-xl font-semibold text-hhp-navy mb-3">
-                "We reduced underwriting time by 70% across a $100M multifamily pipeline."
-              </h3>
-              <p className="text-hhp-charcoal">
-                Real-world results from our deal intelligence platform.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-xl p-6 shadow-lg">
-              <span className="inline-block bg-hhp-accent/10 text-hhp-navy px-3 py-1 rounded-full text-sm font-medium mb-4">
-                Whitepaper
-              </span>
-              <h3 className="text-xl font-semibold text-hhp-navy mb-3">
-                "Lease Optimization in the Age of Predictive Analytics"
-              </h3>
-              <p className="text-hhp-charcoal">
-                Comprehensive analysis of data-driven leasing strategies and best practices.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/*
+        Removed: an "Insights Tab Examples" section holding a "Case Study" card quoting
+        "We reduced underwriting time by 70% across a $100M multifamily pipeline" with
+        no client, date, or source, and a "Whitepaper" card for a document that does not
+        exist. Reinstate only with attributable material.
+      */}
 
       {/* CTA Banner */}
       <section className="bg-hhp-navy section-spacing">
         <div className="container-premium text-center">
           <h2 className="section-title text-white mb-8">
-            Ready to transform your real estate operations?
+            Want to see the systems running?
           </h2>
           <Link 
             to="/contact" 
             className="inline-block bg-white text-hhp-navy px-8 py-4 rounded-lg font-medium hover:bg-white/90 transition-colors duration-200 w-auto max-w-[300px] sm:max-w-none mx-auto sm:mx-0"
             onClick={() => {
               trackButtonClick('request_demo_cta', 'platforms_banner');
-              trackLinkClick('Request a Demo', '/contact');
+              trackLinkClick('See the Systems', '/contact');
             }}
           >
-            Request a Demo
+            See the Systems
             <ArrowRight className="inline ml-2 h-5 w-5" />
           </Link>
         </div>

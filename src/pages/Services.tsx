@@ -146,7 +146,7 @@ const Services = () => {
             Ready to Experience the Future of Real Estate?
           </h2>
           <p className="text-xl leading-relaxed text-white/90 mb-12 max-w-3xl mx-auto">
-            Whether you're looking to acquire, develop, manage, or sell — our comprehensive services and proprietary data platforms deliver institutional-grade results with boutique-level service.
+            Whether you're looking to acquire, develop, manage, or sell — our comprehensive services and proprietary data platforms deliver the discipline of a large shop with the accountability of a small one.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">

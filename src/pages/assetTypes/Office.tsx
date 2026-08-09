@@ -79,28 +79,6 @@ const Office = () => {
       servicesTitle="Integrated Services for Office"
       showAboutUs={true}
       
-      // Case Studies
-      caseStudies={[
-        {
-          image: "/images/office-case1.jpg",
-          title: "Class A Repositioning",
-          description: "Transformed aging Class B office building into premium workspace through strategic renovations and technology upgrades.",
-          impact: "45% rent premium achieved, 98% occupancy maintained throughout transition"
-        },
-        {
-          image: "/images/office-case2.jpg",
-          title: "Flexible Workspace Innovation",
-          description: "Redesigned office floors to accommodate hybrid work models, creating flexible meeting spaces and collaborative areas.",
-          impact: "30% increase in tenant satisfaction, 25% improvement in space utilization"
-        },
-        {
-          image: "/images/office-case3.jpg",
-          title: "Technology Integration",
-          description: "Implemented smart building systems and tenant apps for a 200,000 sq ft office property, enhancing operational efficiency.",
-          impact: "22% reduction in operational costs, 90% tenant adoption of building technology"
-        }
-      ]}
-      
       // Technology Advantages / HHP Advantage
       technologyAdvantages={[
         {

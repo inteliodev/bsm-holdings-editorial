@@ -7,6 +7,18 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { trackFormSubmission, trackContactFormInteraction, trackButtonClick, trackConversion } from '@/utils/analytics';
+import ServiceAreaSection from '@/components/ServiceAreaSection';
+import LocalBusinessSchema from '@/components/LocalBusinessSchema';
+
+// Endpoint is configurable so it can be moved off a third-party domain without a
+// code change. Falls back to the current webhook so nothing breaks before the DNS
+// move lands.
+const CONTACT_WEBHOOK_URL =
+  import.meta.env.VITE_CONTACT_WEBHOOK_URL ||
+  'https://n8n.capitalaiadvisors.com/webhook/hhp-contact';
+
+const CONTACT_EMAIL = 'info@hhpasset.com';
+const CONTACT_PHONE = '(918) 899-1650';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +29,8 @@ const Contact = () => {
     property_address: '',
     message: ''
   });
+  // Honeypot. Real users never see this field, so anything in it is a bot.
+  const [website, setWebsite] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -35,6 +49,17 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    // Honeypot tripped — show the normal success state so the bot gets no signal,
+    // but send nothing.
+    if (website) {
+      toast({
+        title: 'Message Sent Successfully!',
+        description: "We'll get back to you within 24 hours.",
+      });
+      setIsSubmitting(false);
+      return;
+    }
 
     // Track form interaction start
     trackContactFormInteraction('start', 'contact');
@@ -61,11 +86,11 @@ const Contact = () => {
       submitted_at: new Date().toISOString()
     };
 
-    // Only n8n webhook (notifications/automation)
-    let webhookOk = false;
-    let webhookErrMsg = '';
-    try {
-      const res = await fetch('https://n8n.capitalaiadvisors.com/webhook/hhp-contact', {
+    // Two independent sinks, attempted concurrently. The webhook drives notification
+    // and automation; the Supabase insert is the durable record. A lead is only lost
+    // if BOTH fail, so an n8n outage no longer drops inbound business on the floor.
+    const sendWebhook = async () => {
+      const res = await fetch(CONTACT_WEBHOOK_URL, {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
@@ -76,17 +101,37 @@ const Contact = () => {
           property_address: payload.property_address ?? 'Not provided',
         })
       });
-      if (res.ok) {
-        webhookOk = true;
-      } else {
-        webhookErrMsg = `Webhook ${res.status} ${res.statusText}`;
-      }
-    } catch (err: any) {
-      webhookErrMsg = err?.message || String(err);
-    }
+      if (!res.ok) throw new Error(`Webhook ${res.status} ${res.statusText}`);
+    };
 
-    if (webhookOk) {
-      // Success if either path worked
+    // Dynamic import keeps the Supabase client out of the eager bundle — it is only
+    // fetched when someone actually submits the form.
+    const saveToDatabase = async () => {
+      const { supabase } = await import('@/integrations/supabase/client');
+      const { error } = await supabase.from('contacts').insert([{
+        name: payload.name,
+        email: payload.email,
+        phone: payload.phone,
+        inquiry_type: payload.inquiry_type,
+        property_address: payload.property_address,
+        message: payload.message,
+      }]);
+      if (error) throw new Error(error.message);
+    };
+
+    const [webhookResult, dbResult] = await Promise.allSettled([sendWebhook(), saveToDatabase()]);
+    const delivered = webhookResult.status === 'fulfilled' || dbResult.status === 'fulfilled';
+
+    if (delivered) {
+      // At least one sink accepted the lead. Log a partial failure so it is still
+      // visible in monitoring rather than passing silently.
+      if (webhookResult.status === 'rejected' || dbResult.status === 'rejected') {
+        console.error('Contact form partial delivery:', {
+          webhook: webhookResult.status === 'rejected' ? webhookResult.reason?.message : 'ok',
+          database: dbResult.status === 'rejected' ? dbResult.reason?.message : 'ok',
+        });
+      }
+
       trackFormSubmission('contact_form', formData.inquiry_type || 'general');
       trackContactFormInteraction('complete', 'contact');
       trackConversion('contact_form_submission');
@@ -105,12 +150,16 @@ const Contact = () => {
         message: ''
       });
     } else {
-      // Both failed – show most relevant error and log details
+      // Both sinks failed. Log the detail for us; give the prospect a way through
+      // rather than a raw fetch error they can do nothing with.
       trackContactFormInteraction('error', 'contact');
-      console.error('Contact form error:', { webhookErrMsg });
+      console.error('Contact form error:', {
+        webhook: webhookResult.status === 'rejected' ? webhookResult.reason?.message : 'ok',
+        database: dbResult.status === 'rejected' ? dbResult.reason?.message : 'ok',
+      });
       toast({
-        title: 'Submission failed',
-        description: webhookErrMsg || 'Something went wrong. Please try again.',
+        title: "We couldn't send your message",
+        description: `Please email ${CONTACT_EMAIL} or call ${CONTACT_PHONE} and we'll pick it up right away.`,
         variant: 'destructive',
       });
     }
@@ -120,6 +169,7 @@ const Contact = () => {
 
   return (
     <Layout>
+      <LocalBusinessSchema />
       {/* Hero Section */}
       <section 
         className="relative min-h-[500px] flex items-center justify-center bg-cover bg-center bg-no-repeat"
@@ -132,7 +182,7 @@ const Contact = () => {
               CONTACT
             </h1>
             <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-white/90 mb-8 sm:mb-10 lg:mb-12 drop-shadow-md">
-              Ready to transform your real estate operations? Let's discuss how HHP can help you achieve your goals.
+              Tell us about the property. We'll tell you what we'd do with it, and what it would cost.
             </p>
           </div>
         </div>
@@ -152,6 +202,25 @@ const Contact = () => {
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                {/*
+                  Honeypot. Hidden from sighted users and from assistive tech, and
+                  excluded from the tab order, so only a bot filling every field will
+                  populate it. Uses left:-9999px rather than display:none because some
+                  bots skip fields that are display:none.
+                */}
+                <div aria-hidden="true" className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden">
+                  <label htmlFor="website">Website</label>
+                  <input
+                    id="website"
+                    name="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
+                  />
+                </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm sm:text-base font-medium text-hhp-charcoal mb-2">
@@ -281,7 +350,13 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-hhp-navy mb-1">Email</h3>
-                    <p className="text-hhp-charcoal">info@hhpasset.com</p>
+                    <a
+                      href={`mailto:${CONTACT_EMAIL}`}
+                      className="text-hhp-charcoal hover:text-hhp-navy underline-offset-4 hover:underline transition-colors"
+                      onClick={() => trackButtonClick('email_link', 'contact_info')}
+                    >
+                      {CONTACT_EMAIL}
+                    </a>
       
                   </div>
                 </div>
@@ -292,7 +367,13 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-hhp-navy mb-1">Phone</h3>
-                    <p className="text-hhp-charcoal">(918) 899-1650</p>
+                    <a
+                      href="tel:+19188991650"
+                      className="text-hhp-charcoal hover:text-hhp-navy underline-offset-4 hover:underline transition-colors"
+                      onClick={() => trackButtonClick('phone_link', 'contact_info')}
+                    >
+                      {CONTACT_PHONE}
+                    </a>
                 
                   </div>
                 </div>
@@ -302,6 +383,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
+      <ServiceAreaSection background="gray" />
     </Layout>
   );
 };

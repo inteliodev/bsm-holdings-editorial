@@ -168,7 +168,7 @@ const AdvisoryAnalytics = () => {
               <p className="text-lg leading-relaxed text-hhp-charcoal">
                 Most firms outsource their analytics to third parties. We build and own our platforms, 
                 ensuring speed, accuracy, and complete customization. This is data-native advisory that 
-                merges rigorous analytics with institutional real estate expertise.
+                merges rigorous analytics with hands-on operating experience.
               </p>
             </div>
           </div>

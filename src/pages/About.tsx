@@ -44,7 +44,7 @@ const About = () => {
               ABOUT US
             </h1>
             <p className="text-white/80 text-base sm:text-lg leading-relaxed">
-              A vertically integrated commercial real estate firm delivering institutional-grade brokerage, property management, and advisory services.
+              A vertically integrated commercial real estate firm delivering disciplined brokerage, property management, and advisory services.
             </p>
           </div>
         </div>
@@ -188,7 +188,7 @@ const About = () => {
                     {expandedBios.hayden && (
                       <div className="mt-4 space-y-3 text-sm text-hhp-charcoal leading-relaxed">
                         <p>
-                          Hayden Ashley serves as Managing Principal of HHP, where he leads firm strategy, national growth, and platform development across brokerage, property management, and advisory services.
+                          Hayden Ashley serves as Managing Principal of HHP, where he leads firm strategy, regional growth, and platform development across brokerage, property management, and advisory services.
                         </p>
                         <p>
                           An operator by background, Hayden oversees HHP's vertically integrated execution model and the development of technology-enabled systems that strengthen underwriting discipline, operational consistency, and long-term asset performance.
@@ -246,7 +246,7 @@ const About = () => {
                           His background spans the complete asset lifecycle—from acquisition and performance optimization to value-add execution—across all major asset classes. This dual perspective across property operations and facilities services enables disciplined execution at both the asset and building-services level.
                         </p>
                         <p>
-                          Phil combines technical expertise with institutional-grade operational leadership, ensuring consistent performance across portfolios and markets. His systematic approach to property operations, vendor management, and owner communication makes him a critical strategic resource for HHP's clients nationwide.
+                          Phil combines technical expertise with rigorous operational leadership, ensuring consistent performance across portfolios and markets. His systematic approach to property operations, vendor management, and owner communication makes him a critical strategic resource for the owners HHP works with.
                         </p>
                       </div>
                     )}
@@ -310,7 +310,7 @@ const About = () => {
                 <h2 className="section-title text-hhp-navy mb-6 text-center">Why HHP Was Built</h2>
                 <div className="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed text-hhp-charcoal">
                   <p>
-                    HHP was founded in response to a fundamental flaw in the traditional real estate services model. Brokerage, management, and advisory functions are typically siloed across separate firms, creating fragmented accountability, misaligned incentives, and execution gaps that directly erode asset performance.
+                    HHP was founded in response to a fundamental flaw in the traditional real estate services model. Management, maintenance, accounting, and advisory are typically divided across separate firms, creating fragmented accountability, misaligned incentives, and execution gaps that directly erode asset performance. The owner is left holding the coordination risk.
                   </p>
                   <p>
                     We began as an operator-first firm—managing our own portfolio long before serving institutional clients. That experience reinforced a simple truth: durable real estate value is created through long-term ownership thinking, not transaction-driven decision-making.
@@ -319,7 +319,7 @@ const About = () => {
                     Our evolution into a vertically integrated platform was deliberate. By aligning brokerage, asset management, and advisory services under one operating framework, we remove friction from the ownership lifecycle. Decisions are made faster, execution is tighter, and accountability is clear. Every service we provide—from acquisitions through ongoing management—operates under a single fiduciary standard: treat every asset as if we own it.
                   </p>
                   <p>
-                    Today, HHP combines boutique-level attention with institutional-grade capability. Our growth has been disciplined, grounded in operator credibility, and supported by proprietary technology that strengthens decision-making without replacing human judgment. Clients engage HHP not as a collection of service lines, but as a long-term operating partner.
+                    Today, HHP combines boutique-level attention with the discipline of a much larger shop. Our growth has been disciplined, grounded in operator credibility, and supported by proprietary technology that strengthens decision-making without replacing human judgment. Clients engage HHP not as a collection of service lines, but as a long-term operating partner.
                   </p>
                 </div>
               </div>
@@ -333,7 +333,7 @@ const About = () => {
                   <div className="bg-[#f7f9fb] border-t-[3px] border-hhp-navy p-6 md:p-8">
                     <h3 className="text-xl font-display font-semibold text-hhp-navy mb-3">Brokerage-First Strategy</h3>
                     <p className="text-base font-semibold leading-relaxed text-hhp-charcoal mb-3">
-                      Every transaction begins with institutional-grade market intelligence and disciplined underwriting.
+                      Every transaction begins with careful market work and disciplined underwriting.
                     </p>
                     <p className="text-base leading-relaxed text-hhp-charcoal">
                       Our brokerage foundation ensures acquisitions, dispositions, and leasing decisions are grounded in rigorous analysis—not momentum or market noise.

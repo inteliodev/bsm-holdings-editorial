@@ -6,7 +6,7 @@ import { useSEO } from '@/hooks/useSEO';
 
 const BrokerageSiteSelection = () => {
   useSEO({
-    title: 'Site Selection & Advisory | HHP Asset Group',
+    title: 'Site Selection & Advisory | HHP Asset Management',
     description: 'Multi-factor site scoring—demographics, traffic, competitors, and cost. Expert site selection services for optimal location decisions.'
   });
 
@@ -44,9 +44,9 @@ const BrokerageSiteSelection = () => {
   ];
 
   const proofPoints = [
-    { metric: '30-45 Days', label: 'Time to Site Selection' },
-    { metric: '$50K-200K', label: 'Cost Avoidance' },
-    { metric: '95%+', label: 'Site Success Rate' }
+    { metric: 'Total Cost of Occupancy', label: 'We weigh utilities, maintenance burden, and build-out against rent, not rent on its own.' },
+    { metric: 'Condition Assessed First', label: 'Our Facility Services team walks the building before you commit, so deferred maintenance turns up in diligence rather than after move-in.' },
+    { metric: 'Regional Knowledge', label: 'Working knowledge of submarkets across the Tulsa metro, Pryor, and Oklahoma City.' }
   ];
 
   return (
@@ -100,7 +100,7 @@ const BrokerageSiteSelection = () => {
       <section className="bg-gray-50 section-spacing">
         <div className="container-premium">
           <div className="text-center mb-12">
-            <h2 className="section-title text-hhp-navy mb-6">Proven Results</h2>
+            <h2 className="section-title text-hhp-navy mb-6">How We Select Sites</h2>
             <p className="text-xl leading-relaxed text-hhp-charcoal max-w-3xl mx-auto">
               Our systematic approach consistently delivers optimal site selections with measurable cost savings.
             </p>
@@ -109,10 +109,10 @@ const BrokerageSiteSelection = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {proofPoints.map((point, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl font-display font-bold text-hhp-navy mb-2">
+                <div className="text-xl font-display font-bold text-hhp-navy mb-3">
                   {point.metric}
                 </div>
-                <div className="text-hhp-charcoal font-medium">
+                <div className="text-hhp-charcoal leading-relaxed">
                   {point.label}
                 </div>
               </div>

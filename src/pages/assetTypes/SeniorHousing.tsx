@@ -80,28 +80,6 @@ const SeniorHousing = () => {
       servicesTitle="Integrated Services for Senior Housing"
       showAboutUs={true}
       
-      // Case Studies
-      caseStudies={[
-        {
-          image: "/images/senior-case1.jpg",
-          title: "Memory Care Excellence",
-          description: "Implemented specialized memory care programming and resident services in 120-unit assisted living community.",
-          impact: "95% resident satisfaction rating, zero deficiency survey findings for consecutive year"
-        },
-        {
-          image: "/images/senior-case2.jpg",
-          title: "Independent Living Upgrade",
-          description: "Enhanced independent living community amenities and services, attracting younger active adult residents.",
-          impact: "100% occupancy achieved, 25% premium on entrance fees"
-        },
-        {
-          image: "/images/senior-case3.jpg",
-          title: "Care Continuum Optimization",
-          description: "Optimized care level transitions and resident services across independent living, assisted living, and memory care.",
-          impact: "90% resident retention rate, 30% improvement in operational efficiency"
-        }
-      ]}
-      
       // Technology Advantages / HHP Advantage
       technologyAdvantages={[
         {

@@ -9,8 +9,8 @@ import { useSEO } from '@/hooks/useSEO';
 
 const ManagementMultifamily = () => {
   useSEO({
-    title: 'Multifamily Asset Management | HHP Asset Group',
-    description: 'Scalable operations with resident-first focus. Institutional-quality multifamily management enhanced by workflow automation.'
+    title: 'Multifamily Asset Management | HHP Asset Management',
+    description: 'Scalable operations with resident-first focus. Disciplined multifamily management enhanced by workflow automation.'
   });
 
   const coreCapabilities = [
@@ -107,7 +107,7 @@ const ManagementMultifamily = () => {
       <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: 'url(/images/multifamily-hero.jpg)' }}
+          style={{ backgroundImage: 'url(/images/multifamily-image-trendy.jpg)' }}
         />
         <div className="absolute inset-0 bg-hhp-navy/40" />
         
@@ -145,7 +145,7 @@ const ManagementMultifamily = () => {
               The multifamily sector is experiencing unprecedented pressure. Insurance and labor costs are climbing, tenants demand digital experiences, and competition for renewals is fierce. Owners must deliver consistent returns while protecting NOI from inflationary expense creep.
             </p>
             <p className="text-lg leading-relaxed text-hhp-charcoal">
-              HHP Asset Group delivers institutional-quality management enhanced by workflow automation — reducing OPEX, strengthening tenant retention, and providing board-ready transparency.
+              HHP delivers disciplined management enhanced by workflow automation — controlling operating cost, strengthening tenant retention, and giving owners reporting they can act on.
             </p>
           </div>
         </div>
@@ -226,8 +226,8 @@ const ManagementMultifamily = () => {
 
       {/* Premium CTA Banner */}
       <PremiumCTABanner
-        title="Maximize multifamily performance with institutional discipline and data-driven insights."
-        description="Trust HHP Asset Group for scalable multifamily management with predictive analytics and resident-first operations."
+        title="Run multifamily assets with real cost discipline and data owners can see."
+        description="Trust HHP Asset Management for scalable multifamily management with predictive analytics and resident-first operations."
         primaryCTA="Contact Us"
         primaryLink="/contact"
         secondaryCTA="See All Services"

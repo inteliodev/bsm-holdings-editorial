@@ -5,40 +5,44 @@ import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 import { Helmet } from 'react-helmet-async';
 
 const AssetTypes = () => {
+  // `proofPoint` previously held six invented performance figures ("8% NOI growth
+  // portfolio-wide", "Average sales per SF increased 18% post-remerchandising", etc.)
+  // for asset classes HHP does not currently operate. Replaced with what we actually
+  // bring to each class. Restore numbers only when they are sourced to a real property.
   const assetTypes = [
     {
       title: "Multifamily",
-      proofPoint: "95% tenant satisfaction and 8% NOI growth portfolio-wide.",
+      proofPoint: "Occupancy, renewals, and turn time managed against a leasing plan, with unit-level cost reported line by line.",
       image: "/images/multifamily-image-trendy.jpg",
       href: "/asset-types/multifamily"
     },
     {
       title: "Affordable Housing",
-      proofPoint: "100% HUD audit compliance across three managed communities.",
+      proofPoint: "Hands-on HUD Section 202 and PRAC experience, including 50059 and EIV file discipline.",
       image: "/images/affordable-housing-image.jpeg",
       href: "/asset-types/hud-affordable"
     },
     {
       title: "Office",
-      proofPoint: "15% OpEx savings achieved through workplace realignment.",
+      proofPoint: "Building systems and operating expense managed against budget, with tenant service handled by our own Facility Services teams.",
       image: "/images/office-image.jpg",
       href: "/asset-types/office"
     },
     {
       title: "Retail",
-      proofPoint: "Average sales per SF increased 18% post-remerchandising.",
+      proofPoint: "Leasing, CAM reconciliation, and site upkeep handled by one accountable team.",
       image: "/images/retail-image.jpg",
       href: "/asset-types/retail"
     },
     {
       title: "Industrial & Logistics",
-      proofPoint: "Warehouse occupancy and utilization improved 22% via predictive forecasting.",
+      proofPoint: "Capital planning and preventive maintenance scheduled against the asset’s life cycle, not deferred until failure.",
       image: "/images/industrial-image.webp",
       href: "/asset-types/industrial"
     },
     {
       title: "Senior Housing & Healthcare",
-      proofPoint: "Occupancy recovery 10% faster than market average post-pandemic.",
+      proofPoint: "Our current operating portfolio — three HUD Section 202 senior communities in Pryor, Oklahoma.",
       image: "/images/senior-housing-image.jpg",
       href: "/asset-types/senior-housing"
     }
@@ -48,27 +52,27 @@ const AssetTypes = () => {
     <>
       {/* SEO Meta Tags */}
       <Helmet>
-        <title>HHP Asset Group | Asset Types We Serve</title>
+        <title>HHP Asset Management | Asset Types We Serve</title>
         <meta 
           name="description" 
-          content="Explore HHP's expertise across Multifamily, HUD & Affordable, Office, Retail, Industrial, and Senior Housing—powered by data, analytics, and institutional execution." 
+          content="How HHP approaches Multifamily, HUD & Affordable, Office, Retail, Industrial, and Senior Housing — in-house Facility Services, proprietary systems, and line-item cost visibility." 
         />
         <meta 
           name="keywords" 
           content="asset types, multifamily, office, retail, industrial, senior housing, HUD affordable housing, property management, real estate services" 
         />
-        <meta property="og:title" content="HHP Asset Group | Asset Types We Serve" />
-        <meta property="og:description" content="Explore HHP's expertise across Multifamily, HUD & Affordable, Office, Retail, Industrial, and Senior Housing—powered by data, analytics, and institutional execution." />
+        <meta property="og:title" content="HHP Asset Management | Asset Types We Serve" />
+        <meta property="og:description" content="How HHP approaches Multifamily, HUD & Affordable, Office, Retail, Industrial, and Senior Housing — in-house Facility Services, proprietary systems, and line-item cost visibility." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://hhpasset.com/asset-types" />
-        <meta property="og:image" content="https://hhpasset.com/images/hhp-logo.png" />
+        <meta property="og:image" content="https://hhpasset.com/images/hhp-social-share.png" />
         <link rel="canonical" href="https://hhpasset.com/asset-types" />
         
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="HHP Asset Group | Asset Types We Serve" />
+        <meta name="twitter:title" content="HHP Asset Management | Asset Types We Serve" />
         <meta name="twitter:description" content="Explore HHP's expertise across Multifamily, HUD & Affordable, Office, Retail, Industrial, and Senior Housing." />
-        <meta name="twitter:image" content="https://hhpasset.com/images/hhp-logo.png" />
+        <meta name="twitter:image" content="https://hhpasset.com/images/hhp-social-share.png" />
       </Helmet>
 
       <Layout>
@@ -95,7 +99,7 @@ const AssetTypes = () => {
                 Every Asset Class, One Integrated Platform
               </h2>
               <p className="text-xl leading-relaxed text-gray-600 mb-8">
-                HHP Asset Group operates across every major property type—from multifamily and affordable housing to office, retail, industrial, and senior living. Our integrated services, technology, and analytics deliver performance, compliance, and value no matter the asset class.
+                HHP Asset Management operates across every major property type—from multifamily and affordable housing to office, retail, industrial, and senior living. Our integrated services, technology, and analytics deliver performance, compliance, and value no matter the asset class.
               </p>
               <Link 
                 to="#asset-types" 
@@ -161,7 +165,7 @@ const AssetTypes = () => {
               Ready to Optimize Your Portfolio?
             </h2>
             <p className="text-xl leading-relaxed text-white/90 mb-12 max-w-3xl mx-auto">
-              Whether you're managing multifamily, office, retail, industrial, or specialized assets — our integrated platform delivers institutional-grade results with boutique-level service across every asset class.
+              Whether you're managing multifamily, office, retail, industrial, or specialized assets — our integrated platform delivers the discipline of a large shop with the accountability of a small one.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">

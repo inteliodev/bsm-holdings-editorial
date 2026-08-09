@@ -7,7 +7,7 @@ const Multifamily = () => {
     <>
       {/* SEO Meta Tags */}
       <Helmet>
-        <title>Multifamily Property Management & Investment Services | HHP Asset Group</title>
+        <title>Multifamily Property Management & Investment Services | HHP Asset Management</title>
         <meta 
           name="description" 
           content="Expert multifamily property management, investment sales, and advisory services. Enhance value across stabilized, lease-up, and mixed-use communities." 
@@ -16,25 +16,25 @@ const Multifamily = () => {
           name="keywords" 
           content="multifamily property management, apartment management, multifamily investment, lease-up services, NOI optimization, mixed-use development"
         />
-        <meta property="og:title" content="Multifamily Property Management Services | HHP Asset Group" />
+        <meta property="og:title" content="Multifamily Property Management Services | HHP Asset Management" />
         <meta property="og:description" content="Enhancing value across stabilized, lease-up, and mixed-use communities with data-driven property management." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://hhpasset.com/services/multifamily" />
-        <meta property="og:image" content="https://hhpasset.com/images/multifamily-image-header.jpg" />
+        <meta property="og:image" content="https://hhpasset.com/images/multifamily-image-trendy.jpg" />
         <link rel="canonical" href="https://hhpasset.com/services/multifamily" />
         
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Multifamily Property Management Services | HHP Asset Group" />
+        <meta name="twitter:title" content="Multifamily Property Management Services | HHP Asset Management" />
         <meta name="twitter:description" content="Enhancing value across stabilized, lease-up, and mixed-use communities." />
-        <meta name="twitter:image" content="https://hhpasset.com/images/multifamily-image-header.jpg" />
+        <meta name="twitter:image" content="https://hhpasset.com/images/multifamily-image-trendy.jpg" />
       </Helmet>
 
       <AssetTypePage
         // Hero Section
         heroImage="/images/multifamily-image-trendy.jpg"
         title="Multifamily"
-        tagline="Institutional management and advisory across stabilized, lease-up, and mixed-use communities"
+        tagline="Hands-on management and advisory across stabilized, lease-up, and mixed-use communities"
         heroButtonText="Schedule a Consultation"
         
         // Market Context

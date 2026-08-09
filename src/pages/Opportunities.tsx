@@ -10,7 +10,7 @@ const Opportunities = () => {
       title: 'Property Management - Operations',
       department: 'Operations',
       location: 'Tulsa, OK / Multiple Oklahoma locations',
-      description: 'Lead day-to-day operations for institutional-grade commercial properties. Direct accountability for financial performance, tenant relations, and asset preservation.',
+      description: 'Lead day-to-day operations for commercial properties. Direct accountability for financial performance, tenant relations, and asset preservation.',
     },
     {
       id: 2,
@@ -59,7 +59,7 @@ const Opportunities = () => {
               Opportunities
             </h1>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white/90">
-              Join HHP Asset Group
+              Join HHP Asset Management
             </h2>
           </div>
         </div>
@@ -79,7 +79,7 @@ const Opportunities = () => {
               </p>
               
               <p>
-                You'll work on institutional-scale assets and challenges. Our portfolio includes multifamily, office, retail, industrial, and senior housing properties. You'll gain exposure to technology, brokerage, management, and advisory — not siloed into one function.
+                You'll get range rather than a narrow lane. Because brokerage, asset management, property management, and and Facility Services all sit under one roof, you'll see how a decision on one side lands on the other — not siloed into one function.
               </p>
               
               <p>

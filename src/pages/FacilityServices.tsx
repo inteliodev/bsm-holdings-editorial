@@ -93,7 +93,7 @@ const FacilityServices = () => {
               Facility Services
             </h1>
             <p className="text-xl leading-relaxed text-white/90 drop-shadow-md">
-              Every trade, in-house. One call, one accountable team.
+              Facility Services, in house. One call, one accountable team.
             </p>
           </div>
         </div>
@@ -108,7 +108,7 @@ const FacilityServices = () => {
               <h2 className="section-title text-hhp-navy mb-6">Introduction</h2>
               <div className="space-y-4 text-lg leading-relaxed text-gray-600">
                 <p>
-                  Through HHP Facility Services, LLC, every facility service and maintenance item within our properties is handled internally — construction, roofing, general contracting, HVAC, plumbing, electrical, lawncare, janitorial, and everything in between. We are not a broker of subcontractors. We are the crew.
+                  Through HHP Facility Services, LLC, every facility service and maintenance item within our properties is handled internally — construction, roofing, general contracting, HVAC, plumbing, electrical, lawncare, janitorial, and everything in between. We are not a broker of subcontractors. The work is performed by our own personnel.
                 </p>
                 <p>
                   That means no markup stacking, no waiting on a third party's schedule, and no finger-pointing when something goes wrong. One team is accountable for the condition of the asset, and that team answers to the owner.
@@ -146,7 +146,7 @@ const FacilityServices = () => {
               </div>
             </div>
 
-            {/* Self-Performed Trades */}
+            {/* Self-Performed Facility Services */}
             <div id="self-performed">
               <h2 className="section-title text-hhp-navy mb-6">What We Self-Perform</h2>
               <p className="text-lg leading-relaxed text-gray-600 mb-12 max-w-3xl">
@@ -187,7 +187,7 @@ const FacilityServices = () => {
               <h2 className="section-title text-hhp-navy mb-6">What In-House Control Does to Cost</h2>
               <div className="space-y-4 text-lg leading-relaxed text-gray-600 mb-10 max-w-3xl">
                 <p>
-                  When the crew is ours, we see what the work actually costs — labor hours, materials, and time on site — instead of a subcontractor's invoice with margin already baked in. There is no markup on self-performed work, and no incentive to inflate scope.
+                  Because the work is self-performed, we see what it actually costs — labor hours, materials, and time on site — rather than a subcontractor's invoice with margin already priced in. There is no markup on self-performed work, and no incentive to inflate scope.
                 </p>
                 <p>
                   That visibility compounds. We know what a roof repair costs across the portfolio, what a unit turn should run, and when a number is out of line. Owners get the same line-item detail we do, which is how costs come down and stay down.
@@ -216,7 +216,7 @@ const FacilityServices = () => {
               <h2 className="section-title text-hhp-navy mb-6">Our Systems Are In-House Too</h2>
               <div className="space-y-4 text-lg leading-relaxed text-gray-600 max-w-3xl">
                 <p>
-                  Vertical integration does not stop at the trades. The asset management and operating systems that run our properties are our own — designed, built, and maintained by HHP. We are not paying to license someone else's software or waiting on a vendor's roadmap to fix what our operators need today.
+                  Vertical integration does not stop at Facility Services. The asset management and operating systems that run our properties are our own — designed, built, and maintained by HHP. We are not paying to license someone else's software or waiting on a vendor's roadmap to fix what our operators need today.
                 </p>
                 <p>
                   Work orders, cost tracking, compliance, and owner reporting all live in one system we own. That is why cost data reaches owners in real time rather than at month-end, and why we can change how something works the week we decide it should work differently.
@@ -300,7 +300,7 @@ const FacilityServices = () => {
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
                         <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
-                        <span>In-house crews across every core trade</span>
+                        <span>Every Facility Services discipline staffed in house</span>
                       </div>
                       <div className="flex items-start">
                         <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
@@ -424,7 +424,7 @@ const FacilityServices = () => {
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
                         <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
-                        <span>In-house janitorial crews</span>
+                        <span>In-house janitorial personnel</span>
                       </div>
                       <div className="flex items-start">
                         <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
@@ -557,7 +557,7 @@ const FacilityServices = () => {
                   </div>
                   <div className="flex items-start">
                     <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
-                    <span>Every trade self-performed — no subcontractor markup</span>
+                    <span>Facility Services performed in house — no subcontractor markup</span>
                   </div>
                   <div className="flex items-start">
                     <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>

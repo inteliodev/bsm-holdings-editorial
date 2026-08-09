@@ -1,6 +1,7 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { logError } from '@/utils/debug';
 
 interface Props {
   children: ReactNode;
@@ -23,7 +24,9 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('ErrorBoundary caught an error:', error, errorInfo);
+    // Report as well as log — previously this only hit the console, so every render
+    // error that blanked the site in production was invisible to us.
+    logError(error, 'ErrorBoundary');
     this.setState({
       error,
       errorInfo

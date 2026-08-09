@@ -21,18 +21,23 @@ const Header = () => {
   const navigation = [
     { name: 'About', href: '/about' },
     {
+      // Asset management is the positioning; "Services" is the nav label because it is
+      // what visitors look for. Technology moved in here rather than staying a
+      // top-level tab — a "Technology" tab reads as selling software, which is the
+      // opposite of how HHP positions. Brokerage sits here as a supporting capability.
       name: 'Services',
       href: '/services',
       submenu: [
         { name: 'Property Management', href: '/services/property-management' },
         { name: 'Facility Services', href: '/services/facility-services' },
         { name: 'Financial Services', href: '/services/financial-services' },
+        { name: 'Brokerage & Advisory', href: '/brokerage' },
+        { name: 'Technology', href: '/technology' },
         { name: 'Multifamily', href: '/asset-types/multifamily' },
         { name: 'Senior Housing', href: '/asset-types/senior-housing' },
         { name: 'Affordable Housing', href: '/asset-types/hud-affordable' }
       ]
     },
-    { name: 'Technology', href: '/technology' },
     { name: 'Properties', href: '/portfolio' }
   ];
 
@@ -210,9 +215,16 @@ const Header = () => {
               trackLinkClick('HHP Logo', '/');
             }}
           >
-            <img 
-              src="/images/hhp-logo-navy-letters.png" 
-              alt="HHP Asset Group" 
+            {/*
+              Vector master from the brand kit. Primary Cropped is the primary mark on
+              a tight artboard, so it fills the header band without built-in padding.
+              4 kB and sharp at any pixel density, vs. 107 kB for the raster.
+            */}
+            <img
+              src="/brand/vector/HHP_Logo_Primary_Cropped.svg"
+              alt="HHP Asset Management"
+              width={509}
+              height={177}
               className="h-8 sm:h-10 md:h-11 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-none transition-all duration-300"
             />
           </Link>

@@ -9,8 +9,8 @@ import { useSEO } from '@/hooks/useSEO';
 
 const ManagementHUD = () => {
   useSEO({
-    title: 'HUD & Affordable Housing Management | HHP Asset Group',
-    description: 'Institutional compliance and resident-centered service for HUD properties. Audit-ready operations powered by automated compliance tracking and data-driven insights.'
+    title: 'HUD & Affordable Housing Management | HHP Asset Management',
+    description: 'Rigorous compliance and resident-centered service for HUD properties. Audit-ready operations powered by automated compliance tracking and data-driven insights.'
   });
 
   const coreCapabilities = [
@@ -129,10 +129,10 @@ const ManagementHUD = () => {
         <div className="relative z-10 container-premium text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="hero-title text-white mb-8">
-              Institutional Compliance. Resident-Centered Service.
+              Rigorous Compliance. Resident-Centered Service.
             </h1>
             <p className="text-xl leading-relaxed text-white/90 mb-8">
-              HHP Asset Group delivers audit-ready operations across HUD properties, powered by automated compliance tracking and data-driven insights that protect subsidy revenue and ensure resident stability.
+              HHP Asset Management delivers audit-ready operations across HUD properties, powered by automated compliance tracking and data-driven insights that protect subsidy revenue and ensure resident stability.
             </p>
                         
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -159,10 +159,10 @@ const ManagementHUD = () => {
             <p className="text-lg leading-relaxed text-hhp-charcoal mb-8">
               HUD and affordable housing properties operate under continuous oversight. MOR reviews, REAC inspections, HAP voucher submissions, and procurement standards create a cycle of regulatory risk. Even minor certification errors can trigger findings, repayments, and subsidy interruptions.
 
-HHP Asset Group transforms HUD compliance into a competitive advantage. We automate certifications, standardize tenant files, and deliver audit-ready reporting — ensuring subsidy revenue flows without interruption.
+HHP Asset Management transforms HUD compliance into a competitive advantage. We automate certifications, standardize tenant files, and deliver audit-ready reporting — ensuring subsidy revenue flows without interruption.
             </p>
             <p className="text-lg leading-relaxed text-hhp-charcoal">
-              HHP Asset Group ensures compliance discipline with HUD programs while using technology to provide owners real-time visibility into their portfolio.
+              HHP Asset Management ensures compliance discipline with HUD programs while using technology to provide owners real-time visibility into their portfolio.
             </p>
           </div>
         </div>
@@ -245,9 +245,9 @@ HHP Asset Group transforms HUD compliance into a competitive advantage. We autom
 
       {/* Premium CTA Banner */}
       <PremiumCTABanner
-        title="Protect your HUD portfolio with institutional-grade compliance and data-driven oversight."
-        description="Trust HHP Asset Group for precision HUD property management with 99%+ compliance rates and seamless audit outcomes."
-        primaryCTA="Contact HHP Asset Group"
+        title="Protect your HUD portfolio with rigorous compliance and data-driven oversight."
+        description="Trust HHP Asset Management for precision HUD property management with 99%+ compliance rates and seamless audit outcomes."
+        primaryCTA="Contact HHP Asset Management"
         primaryLink="/contact"
         secondaryCTA="See All Services"
         secondaryLink="/asset-management"

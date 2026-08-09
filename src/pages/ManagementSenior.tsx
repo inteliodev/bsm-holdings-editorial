@@ -9,8 +9,8 @@ import { useSEO } from '@/hooks/useSEO';
 
 const ManagementSenior = () => {
   useSEO({
-    title: 'Senior Housing Asset Management | HHP Asset Group',
-    description: 'Compassionate service meets institutional oversight. Senior housing management with compliance excellence and resident-centered care.'
+    title: 'Senior Housing Asset Management | HHP Asset Management',
+    description: 'Compassionate service meets rigorous oversight. Senior housing management with compliance excellence and resident-centered care.'
   });
 
   const coreCapabilities = [
@@ -122,7 +122,7 @@ const ManagementSenior = () => {
               Senior Housing Asset Management
             </h1>
             <p className="text-xl leading-relaxed text-white/90 mb-8">
-              Compassionate service. Institutional oversight.
+              Compassionate service. Rigorous oversight.
             </p>
                         
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -149,7 +149,7 @@ const ManagementSenior = () => {
             <p className="text-lg leading-relaxed text-hhp-charcoal">
               Senior housing demands both healthcare compliance and hospitality excellence. Owners face rising staffing costs, regulatory oversight, and heightened family expectations. Operational gaps directly impact reputation and revenue stability.
 
-HHP Asset Group combines compassionate service with data-driven analytics to deliver compliance, occupancy stability, and superior resident experiences.
+HHP Asset Management combines compassionate service with data-driven analytics to deliver compliance, occupancy stability, and superior resident experiences.
             </p>
           </div>
         </div>
@@ -233,8 +233,8 @@ HHP Asset Group combines compassionate service with data-driven analytics to del
 
       {/* Premium CTA Banner */}
       <PremiumCTABanner
-        title="Deliver care and compliance with institutional-grade oversight."
-        description="Trust HHP Asset Group for compassionate senior housing management with 99%+ compliance rates and exceptional resident satisfaction."
+        title="Deliver care and compliance with rigorous oversight."
+        description="Trust HHP Asset Management for compassionate senior housing management with 99%+ compliance rates and exceptional resident satisfaction."
         primaryCTA="Contact Us"
         primaryLink="/contact"
         secondaryCTA="See All Services"

@@ -10,8 +10,8 @@ import { useSEO } from '@/hooks/useSEO';
 
 const ManagementCommercial = () => {
   useSEO({
-    title: 'Office Asset Management | HHP Asset Group',
-    description: 'Efficient operations with stronger tenant experiences. Office management backed by leasing analytics built for institutional investors.'
+    title: 'Office Asset Management | HHP Asset Management',
+    description: 'Efficient operations with stronger tenant experiences. Office management backed by leasing analytics and in-house building services.'
   });
 
   const coreCapabilities = [
@@ -28,7 +28,7 @@ const ManagementCommercial = () => {
     {
       icon: Wrench,
       title: 'In-House Facility Services',
-      description: 'Every trade self-performed — one accountable team, no vendor stack'
+      description: 'Facility Services performed in house — one accountable team, no vendor stack'
     },
     {
       icon: Heart,
@@ -151,7 +151,7 @@ const ManagementCommercial = () => {
               The office sector faces volatility driven by hybrid work, elevated vacancies, and energy cost inflation. Tenants demand high-quality amenities and flexible lease structures while owners seek to stabilize NOI and reposition assets.
             </p>
             <p className="text-lg leading-relaxed text-hhp-charcoal">
-              HHP Asset Group combines operational rigor with leasing analytics to reduce costs, improve tenant experiences, and deliver the reporting sophistication institutional investors demand.
+              HHP combines operational rigor with leasing analytics to control cost, improve tenant experience, and give owners reporting detailed enough to act on.
             </p>
           </div>
         </div>
@@ -233,7 +233,7 @@ const ManagementCommercial = () => {
       {/* Premium CTA Banner */}
       <PremiumCTABanner
         title="Future-proof your office portfolio with data-driven oversight."
-        description="Trust HHP Asset Group for efficient office management with data-driven leasing analytics and stronger tenant experiences."
+        description="Trust HHP Asset Management for efficient office management with data-driven leasing analytics and stronger tenant experiences."
         primaryCTA="Contact Us"
         primaryLink="/contact"
         secondaryCTA="See All Services"

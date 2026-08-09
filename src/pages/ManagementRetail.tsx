@@ -9,7 +9,7 @@ import { useSEO } from '@/hooks/useSEO';
 
 const ManagementRetail = () => {
   useSEO({
-    title: 'Retail Asset Management | HHP Asset Group',
+    title: 'Retail Asset Management | HHP Asset Management',
     description: 'Optimized operations with stronger tenant mix. Retail management enhanced by tenant performance insights and NOI protection.'
   });
 
@@ -150,7 +150,7 @@ const ManagementRetail = () => {
               Retail portfolios face consumer shifts, e-commerce competition, and evolving tenant needs. Owners must curate tenant mix, enforce CAM recoveries, and manage rising OPEX while protecting NOI.
             </p>
             <p className="text-lg leading-relaxed text-hhp-charcoal">
-              HHP Asset Group integrates brokerage, management, and leasing insights to reduce costs, protect revenue, and give owners transparency into tenant performance.
+              HHP Asset Management integrates brokerage, management, and leasing insights to reduce costs, protect revenue, and give owners transparency into tenant performance.
             </p>
           </div>
         </div>
@@ -232,7 +232,7 @@ const ManagementRetail = () => {
       {/* Premium CTA Banner */}
       <PremiumCTABanner
         title="Protect NOI with smarter, transparent retail management."
-        description="Trust HHP Asset Group for optimized retail management with data-driven insights and stronger tenant mix strategies."
+        description="Trust HHP Asset Management for optimized retail management with data-driven insights and stronger tenant mix strategies."
         primaryCTA="Contact Us"
         primaryLink="/contact"
         secondaryCTA="See All Services"

@@ -80,7 +80,7 @@ const InvestorPortal = () => {
   return (
     <Layout>
       <Helmet>
-        <title>Investor Portal - HHP Asset Group</title>
+        <title>Investor Portal - HHP Asset Management</title>
         <meta name="description" content="Access your investor portal to view portfolio performance, financial reports, market insights, transaction history, and investment documentation." />
       </Helmet>
 
@@ -99,7 +99,7 @@ const InvestorPortal = () => {
               Access your portfolio and investment data
             </p>
             <p className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto">
-              Secure, comprehensive access to real-time performance metrics, financial reporting, and institutional-grade investment analytics.
+              Secure, comprehensive access to real-time performance metrics, financial reporting, and detailed investment reporting.
             </p>
           </div>
         </div>
@@ -220,7 +220,7 @@ const InvestorPortal = () => {
                 <div className="flex items-start space-x-2 bg-blue-50 border border-blue-200 rounded-md p-3">
                   <Shield className="h-5 w-5 text-hhp-navy flex-shrink-0 mt-0.5" />
                   <p className="text-xs text-hhp-charcoal">
-                    Enterprise-grade security with encrypted data transmission. Your investment data is protected with institutional-level safeguards.
+                    Enterprise-grade security with encrypted data transmission. Your investment data is protected with access controls and encrypted transmission.
                   </p>
                 </div>
 
@@ -268,7 +268,7 @@ const InvestorPortal = () => {
                   <FileText className="h-5 w-5 text-hhp-navy flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm font-medium text-hhp-charcoal">Market Insights & Analysis</p>
-                    <p className="text-xs text-hhp-charcoal/70">Institutional research access</p>
+                    <p className="text-xs text-hhp-charcoal/70">Market research access</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">

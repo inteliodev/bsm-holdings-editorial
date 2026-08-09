@@ -3,9 +3,16 @@ import { Link } from 'react-router-dom';
 import { BarChart3, FileText, TrendingUp, CheckCircle, ArrowRight, Calendar, Users, Building, DollarSign } from 'lucide-react';
 import Layout from '@/components/Layout/Layout';
 import { useToast } from '@/hooks/use-toast';
+import { trackFormSubmission, trackConversion } from '@/utils/analytics';
+
+const NEWSLETTER_WEBHOOK_URL =
+  import.meta.env.VITE_NEWSLETTER_WEBHOOK_URL ||
+  'https://n8n.capitalaiadvisors.com/webhook/hhp-newsletter';
 
 const Insights = () => {
   const [email, setEmail] = useState('');
+  // Honeypot — see Contact.tsx for the rationale.
+  const [website, setWebsite] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -13,39 +20,63 @@ const Insights = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      // Send to n8n webhook
-      const response = await fetch('https://n8n.capitalaiadvisors.com/webhook/hhp-newsletter', {
+    if (website) {
+      toast({
+        title: 'Successfully Subscribed!',
+        description: 'Check your email for a welcome message.',
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Same two-sink approach as the contact form: the webhook drives the welcome
+    // email, the database row is the durable record. Losing a subscriber because a
+    // webhook was down is avoidable.
+    const sendWebhook = async () => {
+      const response = await fetch(NEWSLETTER_WEBHOOK_URL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: email,
+          email,
           subscribed_at: new Date().toISOString(),
           source: 'Website - Insights Page'
         })
       });
+      if (!response.ok) throw new Error(`Webhook ${response.status} ${response.statusText}`);
+    };
 
-      if (response.ok) {
-        toast({
-          title: "Successfully Subscribed!",
-          description: "Check your email for a welcome message.",
-        });
-        setEmail(''); // Reset form
-      } else {
-        throw new Error('Subscription failed');
-      }
-    } catch (error) {
-      console.error('Newsletter subscription error:', error);
+    const saveToDatabase = async () => {
+      const { supabase } = await import('@/integrations/supabase/client');
+      const { error } = await supabase.from('newsletter_subscribers').insert([{
+        email,
+        source_page: 'insights',
+      }]);
+      if (error) throw new Error(error.message);
+    };
+
+    const [webhookResult, dbResult] = await Promise.allSettled([sendWebhook(), saveToDatabase()]);
+
+    if (webhookResult.status === 'fulfilled' || dbResult.status === 'fulfilled') {
+      trackFormSubmission('newsletter_signup', 'insights');
+      trackConversion('newsletter_subscription');
       toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
-        variant: "destructive",
+        title: 'Successfully Subscribed!',
+        description: 'Check your email for a welcome message.',
       });
-    } finally {
-      setIsSubmitting(false);
+      setEmail('');
+    } else {
+      console.error('Newsletter subscription error:', {
+        webhook: webhookResult.status === 'rejected' ? webhookResult.reason?.message : 'ok',
+        database: dbResult.status === 'rejected' ? dbResult.reason?.message : 'ok',
+      });
+      toast({
+        title: "We couldn't complete your subscription",
+        description: 'Please try again, or email info@hhpasset.com to be added.',
+        variant: 'destructive',
+      });
     }
+
+    setIsSubmitting(false);
   };
 
   return (
@@ -73,7 +104,7 @@ const Insights = () => {
               Market analysis, case studies, and perspectives from an operator-led real estate firm.
             </p>
             <p className="text-xl leading-relaxed text-gray-600 mb-8">
-              Stay ahead with data-driven insights and institutional-grade intelligence across markets and asset classes.
+              Stay ahead with data-driven insights and grounded market commentary across the asset classes we operate.
             </p>
             <Link to="#newsletter" className="bg-hhp-navy text-white px-8 py-4 rounded-lg font-heading font-semibold tracking-[0.06em] uppercase hover:bg-hhp-navy/90 transition-all duration-300 shadow-elegant inline-block">
               Subscribe to Insights
@@ -343,20 +374,39 @@ const Insights = () => {
             
             <div className="bg-white p-8 rounded-lg shadow-elegant">
               <div className="max-w-md mx-auto">
-                <form onSubmit={handleNewsletterSubmit} className="flex space-x-4">
+                <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4">
+                  <div aria-hidden="true" className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden">
+                    <label htmlFor="newsletter-website">Website</label>
+                    <input
+                      id="newsletter-website"
+                      name="website"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                    />
+                  </div>
+
+                  <label htmlFor="newsletter-email" className="sr-only">
+                    Email address
+                  </label>
                   <input
+                    id="newsletter-email"
+                    name="email"
                     type="email"
                     required
+                    autoComplete="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email address"
-                    className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-hhp-navy focus:border-transparent"
+                    className="flex-1 min-h-[48px] px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-hhp-navy focus:border-transparent"
                     disabled={isSubmitting}
                   />
                   <button 
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-hhp-navy text-white px-6 py-3 rounded-lg font-heading font-semibold tracking-[0.06em] uppercase hover:bg-hhp-navy/90 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-hhp-navy text-white min-h-[48px] px-6 py-3 rounded-lg font-heading font-semibold tracking-[0.06em] uppercase hover:bg-hhp-navy/90 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? 'Subscribing...' : 'Subscribe'}
                   </button>

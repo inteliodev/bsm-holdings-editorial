@@ -6,7 +6,7 @@ import { useSEO } from '@/hooks/useSEO';
 
 const BrokerageTenantRep = () => {
   useSEO({
-    title: 'Tenant Representation | HHP Asset Group',
+    title: 'Tenant Representation | HHP Asset Management',
     description: 'Right-fit space, better terms, data-backed decisions. Expert tenant representation for optimal lease negotiations and space planning.'
   });
 
@@ -44,9 +44,9 @@ const BrokerageTenantRep = () => {
   ];
 
   const proofPoints = [
-    { metric: '15-25%', label: 'Effective Rent Savings' },
-    { metric: '3-6 Months', label: 'Free Rent Secured' },
-    { metric: '$50-200/SF', label: 'TI Dollars Negotiated' }
+    { metric: 'We Represent You Only', label: 'On a tenant engagement we do not also represent the landlord, so there is no split loyalty at the negotiating table.' },
+    { metric: 'Full Occupancy Cost', label: 'We model base rent alongside escalations, CAM, TI amortization, and holdover exposure — not just the headline rate.' },
+    { metric: 'Operating Reality', label: 'We manage and maintain buildings ourselves, so we can tell you what a space actually costs to occupy.' }
   ];
 
   return (
@@ -100,7 +100,7 @@ const BrokerageTenantRep = () => {
       <section className="bg-gray-50 section-spacing">
         <div className="container-premium">
           <div className="text-center mb-12">
-            <h2 className="section-title text-hhp-navy mb-6">Proven Results</h2>
+            <h2 className="section-title text-hhp-navy mb-6">How We Represent Tenants</h2>
             <p className="text-xl leading-relaxed text-hhp-charcoal max-w-3xl mx-auto">
               Our data-driven approach consistently delivers measurable value for our tenant clients.
             </p>
@@ -109,10 +109,10 @@ const BrokerageTenantRep = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {proofPoints.map((point, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl font-display font-bold text-hhp-navy mb-2">
+                <div className="text-xl font-display font-bold text-hhp-navy mb-3">
                   {point.metric}
                 </div>
-                <div className="text-hhp-charcoal font-medium">
+                <div className="text-hhp-charcoal leading-relaxed">
                   {point.label}
                 </div>
               </div>

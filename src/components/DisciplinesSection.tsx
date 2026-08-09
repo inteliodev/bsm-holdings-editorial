@@ -26,7 +26,7 @@ const disciplines = [
   {
     number: '03',
     title: 'Facility Services',
-    description: 'Every trade in-house through HHP Facility Services, LLC — construction, roofing, HVAC, plumbing, electrical, lawncare, and janitorial. Same-day dispatch, owner-accountable.',
+    description: 'Facility Services delivered in house through HHP Facility Services, LLC — construction, roofing, HVAC, plumbing, electrical, lawncare, and janitorial. Same-day dispatch, owner-accountable.',
     features: [
       'General contracting & construction',
       'Roofing, HVAC, plumbing & electrical',

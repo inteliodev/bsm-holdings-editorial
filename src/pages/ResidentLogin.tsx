@@ -80,7 +80,7 @@ const ResidentLogin = () => {
   return (
     <Layout>
       <Helmet>
-        <title>Resident Login - HHP Asset Group</title>
+        <title>Resident Login - HHP Asset Management</title>
         <meta name="description" content="Access your resident portal to manage your account, pay rent, submit maintenance requests, and more." />
       </Helmet>
 

@@ -109,6 +109,9 @@ const AssetTypePage = ({
           <div className="max-w-4xl mx-auto space-y-8">
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold text-hhp-navy">Market Context</h2>
+              {marketText && (
+                <p className="text-hhp-charcoal leading-relaxed">{marketText}</p>
+              )}
             </div>
             <div className="border-l-4 border-hhp-accent pl-6">
               <h3 className="text-xl font-semibold text-hhp-navy mb-3">{valuePropositionTitle || "HHP's Value Proposition"}</h3>
