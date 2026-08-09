@@ -14,10 +14,10 @@ const Multifamily = () => {
         />
         <meta 
           name="keywords" 
-          content="multifamily property management, apartment management, multifamily investment, lease-up services, NOI optimization, RentalAi, mixed-use development" 
+          content="multifamily property management, apartment management, multifamily investment, lease-up services, NOI optimization, mixed-use development"
         />
         <meta property="og:title" content="Multifamily Property Management Services | HHP Asset Group" />
-        <meta property="og:description" content="Enhancing value across stabilized, lease-up, and mixed-use communities with AI-powered property management." />
+        <meta property="og:description" content="Enhancing value across stabilized, lease-up, and mixed-use communities with data-driven property management." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://hhpasset.com/services/multifamily" />
         <meta property="og:image" content="https://hhpasset.com/images/multifamily-image-header.jpg" />

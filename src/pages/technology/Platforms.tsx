@@ -3,23 +3,23 @@ import { ArrowRight, Brain, BarChart3, Building2, Users, DollarSign, Clock, Chec
 import { Link } from 'react-router-dom';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 
-const AiPlatforms = () => {
+const Platforms = () => {
   return (
     <Layout>
       {/* Hero Section */}
       <section 
         className="relative min-h-[500px] flex items-center justify-center bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(/images/ai-hero.jpg)' }}
+        style={{ backgroundImage: 'url(/images/platforms-hero.jpg)' }}
       >
         <div className="absolute inset-0 bg-hhp-navy/60"></div>
         <div className="relative z-10 container-premium">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="hero-title text-white mb-8 drop-shadow-lg">
-              Proprietary AI Platforms Transforming Real Estate
+              Proprietary Platforms Transforming Real Estate
             </h1>
             <p className="text-xl leading-relaxed text-white/90 mb-8 drop-shadow-md">
-              From acquisitions to tenant retention, HHP's suite of proprietary AI engines accelerates 
-              decision-making, eliminates inefficiencies, and drives institutional-level performance 
+              From acquisitions to tenant retention, HHP's purpose-built systems accelerate
+              decision-making, eliminate inefficiencies, and drive institutional-level performance
               across every asset class.
             </p>
             
@@ -27,7 +27,7 @@ const AiPlatforms = () => {
               to="/contact" 
               className="inline-block bg-white text-hhp-navy px-8 py-4 rounded-lg font-medium hover:bg-white/90 transition-colors duration-200 w-auto max-w-[300px] sm:max-w-none mx-auto sm:mx-0"
               onClick={() => {
-                trackButtonClick('request_demo_cta', 'ai_platforms_hero');
+                trackButtonClick('request_demo_cta', 'platforms_hero');
                 trackLinkClick('Request a Demo', '/contact');
               }}
             >
@@ -46,9 +46,9 @@ const AiPlatforms = () => {
             <div className="prose prose-lg mx-auto text-hhp-charcoal">
               <p className="text-lg leading-relaxed mb-6">
                 Unlike traditional firms that rely on static reports or generic SaaS tools, HHP has 
-                engineered vertical-specific AI platforms that continuously learn from proprietary and 
-                market data. Each platform is embedded into daily operations, producing real-time, 
-                predictive, and prescriptive insights that give clients an edge.
+                engineered vertical-specific platforms built on proprietary and market data. Each
+                platform is embedded into daily operations, producing real-time, predictive, and
+                prescriptive insights that give clients an edge.
               </p>
             </div>
           </div>
@@ -61,14 +61,14 @@ const AiPlatforms = () => {
           <h2 className="section-title text-hhp-navy mb-12 text-center">Core Platforms</h2>
           
           <div className="space-y-8">
-            {/* BrokerAi */}
+            {/* Deal Intelligence */}
             <div className="bg-white rounded-xl p-8 shadow-lg">
               <div className="flex items-start mb-6">
                 <div className="w-16 h-16 bg-hhp-accent/10 rounded-xl flex items-center justify-center mr-6 flex-shrink-0">
                   <TrendingUp className="h-8 w-8 text-hhp-navy" />
                 </div>
                 <div className="flex-grow">
-                  <h3 className="text-2xl font-semibold text-hhp-navy mb-2">BrokerAi — Deal Intelligence Engine</h3>
+                  <h3 className="text-2xl font-semibold text-hhp-navy mb-2">Deal Intelligence Engine</h3>
                   <p className="text-lg text-hhp-charcoal mb-4">
                     Automated valuation models with live market comps, cap rate trending, and sensitivity analysis.
                   </p>
@@ -88,7 +88,7 @@ const AiPlatforms = () => {
                     <div className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-hhp-navy mr-3 mt-1 flex-shrink-0" />
                       <p className="text-sm text-hhp-charcoal">
-                        <strong>Instant underwriting models</strong> with AI-generated offering memoranda.
+                        <strong>Instant underwriting models</strong> with auto-generated offering memoranda.
                       </p>
                     </div>
                   </div>
@@ -96,14 +96,14 @@ const AiPlatforms = () => {
               </div>
             </div>
 
-            {/* LeaseAi */}
+            {/* Leasing */}
             <div className="bg-white rounded-xl p-8 shadow-lg">
               <div className="flex items-start mb-6">
                 <div className="w-16 h-16 bg-hhp-accent/10 rounded-xl flex items-center justify-center mr-6 flex-shrink-0">
                   <Building2 className="h-8 w-8 text-hhp-navy" />
                 </div>
                 <div className="flex-grow">
-                  <h3 className="text-2xl font-semibold text-hhp-navy mb-2">LeaseAi — Portfolio & Leasing Optimizer</h3>
+                  <h3 className="text-2xl font-semibold text-hhp-navy mb-2">Portfolio & Leasing Optimizer</h3>
                   <p className="text-lg text-hhp-charcoal mb-4">
                     Predictive rent roll modeling with scenario-based vacancy and renewal simulations.
                   </p>
@@ -111,7 +111,7 @@ const AiPlatforms = () => {
                     <div className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-hhp-navy mr-3 mt-1 flex-shrink-0" />
                       <p className="text-sm text-hhp-charcoal">
-                        <strong>Smart prospect targeting:</strong> AI identifies high-probability tenants and matches them to spaces.
+                        <strong>Smart prospect targeting:</strong> identifies high-probability tenants and matches them to spaces.
                       </p>
                     </div>
                     <div className="flex items-start">
@@ -131,14 +131,14 @@ const AiPlatforms = () => {
               </div>
             </div>
 
-            {/* RentalAi */}
+            {/* Multifamily */}
             <div className="bg-white rounded-xl p-8 shadow-lg">
               <div className="flex items-start mb-6">
                 <div className="w-16 h-16 bg-hhp-accent/10 rounded-xl flex items-center justify-center mr-6 flex-shrink-0">
                   <Users className="h-8 w-8 text-hhp-navy" />
                 </div>
                 <div className="flex-grow">
-                  <h3 className="text-2xl font-semibold text-hhp-navy mb-2">RentalAi — Multifamily Performance Suite</h3>
+                  <h3 className="text-2xl font-semibold text-hhp-navy mb-2">Multifamily Performance Suite</h3>
                   <p className="text-lg text-hhp-charcoal mb-4">
                     Rent optimization using demand signals, local comps, and seasonality.
                   </p>
@@ -158,7 +158,7 @@ const AiPlatforms = () => {
                     <div className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-hhp-navy mr-3 mt-1 flex-shrink-0" />
                       <p className="text-sm text-hhp-charcoal">
-                        <strong>AI-driven maintenance prioritization</strong> for lower operating costs.
+                        <strong>Data-driven maintenance prioritization</strong> for lower operating costs.
                       </p>
                     </div>
                   </div>
@@ -166,14 +166,14 @@ const AiPlatforms = () => {
               </div>
             </div>
 
-            {/* CapitalAi */}
+            {/* Financial */}
             <div className="bg-white rounded-xl p-8 shadow-lg">
               <div className="flex items-start mb-6">
                 <div className="w-16 h-16 bg-hhp-accent/10 rounded-xl flex items-center justify-center mr-6 flex-shrink-0">
                   <DollarSign className="h-8 w-8 text-hhp-navy" />
                 </div>
                 <div className="flex-grow">
-                  <h3 className="text-2xl font-semibold text-hhp-navy mb-2">CapitalAi — Financial Automation Hub</h3>
+                  <h3 className="text-2xl font-semibold text-hhp-navy mb-2">Financial Automation Hub</h3>
                   <p className="text-lg text-hhp-charcoal mb-4">
                     Continuous variance tracking across budgets, forecasts, and actuals.
                   </p>
@@ -217,7 +217,7 @@ const AiPlatforms = () => {
                 <Target className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold text-hhp-navy mb-4">Precision</h3>
-              <p className="text-hhp-charcoal">Models trained specifically on real estate data, not generalized AI.</p>
+              <p className="text-hhp-charcoal">Models built specifically on real estate data, not generic benchmarks.</p>
             </div>
             
             <div className="text-center">
@@ -250,10 +250,10 @@ const AiPlatforms = () => {
                 Case Study
               </span>
               <h3 className="text-xl font-semibold text-hhp-navy mb-3">
-                "BrokerAi reduced underwriting time by 70% across a $100M multifamily pipeline."
+                "We reduced underwriting time by 70% across a $100M multifamily pipeline."
               </h3>
               <p className="text-hhp-charcoal">
-                Real-world results from our AI-powered deal intelligence platform.
+                Real-world results from our deal intelligence platform.
               </p>
             </div>
 
@@ -262,10 +262,10 @@ const AiPlatforms = () => {
                 Whitepaper
               </span>
               <h3 className="text-xl font-semibold text-hhp-navy mb-3">
-                "Lease Optimization in the Age of Predictive AI"
+                "Lease Optimization in the Age of Predictive Analytics"
               </h3>
               <p className="text-hhp-charcoal">
-                Comprehensive analysis of AI-driven leasing strategies and best practices.
+                Comprehensive analysis of data-driven leasing strategies and best practices.
               </p>
             </div>
           </div>
@@ -276,13 +276,13 @@ const AiPlatforms = () => {
       <section className="bg-hhp-navy section-spacing">
         <div className="container-premium text-center">
           <h2 className="section-title text-white mb-8">
-            Ready to transform your real estate operations with AI?
+            Ready to transform your real estate operations?
           </h2>
           <Link 
             to="/contact" 
             className="inline-block bg-white text-hhp-navy px-8 py-4 rounded-lg font-medium hover:bg-white/90 transition-colors duration-200 w-auto max-w-[300px] sm:max-w-none mx-auto sm:mx-0"
             onClick={() => {
-              trackButtonClick('request_demo_cta', 'ai_platforms_banner');
+              trackButtonClick('request_demo_cta', 'platforms_banner');
               trackLinkClick('Request a Demo', '/contact');
             }}
           >
@@ -295,4 +295,4 @@ const AiPlatforms = () => {
   );
 };
 
-export default AiPlatforms;
+export default Platforms;

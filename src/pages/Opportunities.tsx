@@ -31,7 +31,7 @@ const Opportunities = () => {
       title: 'Technology Implementation - Systems',
       department: 'Technology',
       location: 'Tulsa, OK / Remote',
-      description: 'Deploy and maintain proprietary AI platforms and data systems. Work directly with operations and brokerage teams to solve real problems.',
+      description: 'Deploy and maintain proprietary data platforms and systems. Work directly with operations and brokerage teams to solve real problems.',
     },
     {
       id: 5,

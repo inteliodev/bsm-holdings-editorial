@@ -11,10 +11,10 @@ const Brokerage = () => {
         <div className="container-premium">
           <div className="max-w-4xl mx-auto text-center fade-in">
             <h1 className="hero-title text-white mb-8">
-              Brokerage Services — Powered by BrokerAi
+              Brokerage Services — Backed by In-House Underwriting
             </h1>
             <p className="text-xl leading-relaxed text-white/90 mb-12">
-              Institutional-grade sales, leasing, and capital markets solutions across multifamily, office, industrial, retail, mixed-use, and senior housing. Our proprietary BrokerAi platform delivers AI underwriting, predictive buyer matching, and transaction optimization.
+              Institutional-grade sales, leasing, and capital markets solutions across multifamily, office, industrial, retail, mixed-use, and senior housing. We underwrite in-house, match buyers against live market data, and optimize every transaction.
             </p>
             <Link to="/contact" className="bg-white text-hhp-navy px-8 py-4 rounded-lg font-medium hover:bg-white/90 transition-all duration-300 shadow-elegant">
               Schedule Consultation
@@ -34,7 +34,7 @@ const Brokerage = () => {
               </div>
               
               <p className="text-xl leading-relaxed text-hhp-charcoal">
-                Comprehensive investment sales services for transactions ranging from $5M to $500M+ across all major asset classes. Our BrokerAi platform provides AI-powered underwriting, predictive buyer matching, and market analysis to maximize transaction velocity and value.
+                Comprehensive investment sales services for transactions ranging from $5M to $500M+ across all major asset classes. In-house underwriting, predictive buyer matching, and market analysis maximize transaction velocity and value.
               </p>
 
               <div className="space-y-4">
@@ -56,10 +56,10 @@ const Brokerage = () => {
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-lg font-display font-semibold text-hhp-navy mb-4">BrokerAi Capabilities:</h3>
+                <h3 className="text-lg font-display font-semibold text-hhp-navy mb-4">Underwriting Capabilities:</h3>
                 <div className="grid grid-cols-1 gap-3">
                   {[
-                    'AI underwriting and risk assessment',
+                    'Institutional underwriting and risk assessment',
                     'Predictive buyer matching algorithms',
                     'Market analysis and pricing optimization',
                     'Transaction timeline acceleration',
@@ -101,7 +101,7 @@ const Brokerage = () => {
               </div>
               
               <p className="text-xl leading-relaxed text-hhp-charcoal">
-                Strategic tenant and landlord representation with AI-powered vacancy forecasting, rent benchmarking, and lease optimization. Our comprehensive approach maximizes occupancy rates and rental income across all property types.
+                Strategic tenant and landlord representation with predictive vacancy forecasting, rent benchmarking, and lease optimization. Our comprehensive approach maximizes occupancy rates and rental income across all property types.
               </p>
 
               <div className="space-y-4">
@@ -123,7 +123,7 @@ const Brokerage = () => {
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-lg font-display font-semibold text-hhp-navy mb-4">AI-Powered Features:</h3>
+                <h3 className="text-lg font-display font-semibold text-hhp-navy mb-4">Data-Driven Features:</h3>
                 <div className="grid grid-cols-1 gap-3">
                   {[
                     'Vacancy forecasting and prediction',
@@ -167,7 +167,7 @@ const Brokerage = () => {
               </div>
               
               <p className="text-xl leading-relaxed text-hhp-charcoal">
-                Sophisticated debt and equity placement services with AI risk modeling and capital optimization. We structure complex financing solutions for institutional investors, REITs, and private equity funds across all asset classes.
+                Sophisticated debt and equity placement services with quantitative risk modeling and capital optimization. We structure complex financing solutions for institutional investors, REITs, and private equity funds across all asset classes.
               </p>
 
               <div className="space-y-4">
@@ -189,7 +189,7 @@ const Brokerage = () => {
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-lg font-display font-semibold text-hhp-navy mb-4">AI Risk Modeling:</h3>
+                <h3 className="text-lg font-display font-semibold text-hhp-navy mb-4">Risk Modeling:</h3>
                 <div className="grid grid-cols-1 gap-3">
                   {[
                     'Credit risk assessment and scoring',
@@ -220,7 +220,7 @@ const Brokerage = () => {
                     <div className="text-hhp-charcoal">Transactions Facilitated</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-display font-bold text-hhp-navy mb-2">AI-Powered</div>
+                    <div className="text-2xl font-display font-bold text-hhp-navy mb-2">Data-Driven</div>
                     <div className="text-hhp-charcoal">Risk Assessment</div>
                   </div>
                   <div className="text-center">
@@ -245,7 +245,7 @@ const Brokerage = () => {
               </div>
               
               <p className="text-xl leading-relaxed text-hhp-charcoal">
-                Comprehensive portfolio valuations, feasibility studies, and corporate real estate advisory services. Our AI-assisted valuation models provide accurate, data-driven insights for investment decisions and strategic planning.
+                Comprehensive portfolio valuations, feasibility studies, and corporate real estate advisory services. Our valuation models provide accurate, data-driven insights for investment decisions and strategic planning.
               </p>
 
               <div className="space-y-4">
@@ -267,7 +267,7 @@ const Brokerage = () => {
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-lg font-display font-semibold text-hhp-navy mb-4">AI-Assisted Valuations:</h3>
+                <h3 className="text-lg font-display font-semibold text-hhp-navy mb-4">Valuation Models:</h3>
                 <div className="grid grid-cols-1 gap-3">
                   {[
                     'Automated comparable analysis',
@@ -294,7 +294,7 @@ const Brokerage = () => {
                 <h3 className="text-xl font-display font-semibold text-hhp-navy mb-6 text-center">Advisory Excellence</h3>
                 <div className="space-y-6">
                   <div className="text-center">
-                    <div className="text-2xl font-display font-bold text-hhp-navy mb-2">AI-Enhanced</div>
+                    <div className="text-2xl font-display font-bold text-hhp-navy mb-2">Data-Enhanced</div>
                     <div className="text-hhp-charcoal">Valuation Accuracy</div>
                   </div>
                   <div className="text-center">
@@ -319,7 +319,7 @@ const Brokerage = () => {
             Ready to Transform Your Portfolio?
           </h2>
           <p className="text-xl leading-relaxed text-white/90 mb-12 max-w-3xl mx-auto">
-            Experience the future of commercial real estate brokerage with our AI-native BrokerAi platform and institutional-grade expertise.
+            Experience the future of commercial real estate brokerage with vertically integrated execution and institutional-grade expertise.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -333,7 +333,7 @@ const Brokerage = () => {
               to="/technology" 
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium hover:bg-white hover:text-hhp-navy transition-all duration-300 inline-block"
             >
-              Explore BrokerAi Platform
+              Explore Our Platform
             </Link>
           </div>
         </div>

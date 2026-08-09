@@ -77,7 +77,7 @@ const AdvisoryAnalytics = () => {
                     </p>
                     <p className="text-hhp-charcoal flex items-start">
                       <CheckCircle className="h-4 w-4 text-hhp-navy mr-2 mt-1 flex-shrink-0" />
-                      <span className="text-sm">AI-driven submarket risk scoring.</span>
+                      <span className="text-sm">Data-driven submarket risk scoring.</span>
                     </p>
                   </div>
                 </div>
@@ -141,7 +141,7 @@ const AdvisoryAnalytics = () => {
                   <div className="space-y-2">
                     <p className="text-hhp-charcoal flex items-start">
                       <CheckCircle className="h-4 w-4 text-hhp-navy mr-2 mt-1 flex-shrink-0" />
-                      <span className="text-sm">Capital stack optimization with AI-driven scenario planning.</span>
+                      <span className="text-sm">Capital stack optimization with scenario planning.</span>
                     </p>
                     <p className="text-hhp-charcoal flex items-start">
                       <CheckCircle className="h-4 w-4 text-hhp-navy mr-2 mt-1 flex-shrink-0" />
@@ -168,7 +168,7 @@ const AdvisoryAnalytics = () => {
               <p className="text-lg leading-relaxed text-hhp-charcoal">
                 Most firms outsource their analytics to third parties. We build and own our platforms, 
                 ensuring speed, accuracy, and complete customization. This is data-native advisory that 
-                merges AI with institutional real estate expertise.
+                merges rigorous analytics with institutional real estate expertise.
               </p>
             </div>
           </div>
@@ -186,10 +186,10 @@ const AdvisoryAnalytics = () => {
                 Research Report
               </span>
               <h3 className="text-xl font-semibold text-hhp-navy mb-3">
-                "AI and Cap Rates: How Predictive Models are Redefining Valuations"
+                "Data and Cap Rates: How Predictive Models are Redefining Valuations"
               </h3>
               <p className="text-hhp-charcoal">
-                Deep dive into how AI-driven analytics are transforming property valuation methodologies.
+                Deep dive into how predictive analytics are transforming property valuation methodologies.
               </p>
             </div>
 

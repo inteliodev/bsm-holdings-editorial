@@ -10,7 +10,7 @@ import { useSEO } from '@/hooks/useSEO';
 const ManagementIndustrial = () => {
   useSEO({
     title: 'Industrial Asset Management | HHP Asset Group',
-    description: 'Streamlined logistics with reliable tenant performance. Industrial management enhanced by LeaseAi predictive analytics for operational excellence.'
+    description: 'Streamlined logistics with reliable tenant performance. Industrial management backed by predictive analytics for operational excellence.'
   });
 
   const coreCapabilities = [
@@ -64,7 +64,7 @@ const ManagementIndustrial = () => {
     {
       icon: Calendar,
       title: 'Predictive Maintenance Scheduling',
-      description: 'AI-powered scheduling to prevent equipment failures'
+      description: 'Predictive scheduling to prevent equipment failures'
     },
     {
       icon: BarChart3,
@@ -150,7 +150,7 @@ const ManagementIndustrial = () => {
               Industrial assets are in demand but face rising construction, utility, and labor costs. Tenants require uptime, operational reliability, and lease flexibility. Owners must deliver predictable NOI while supporting supply chain tenants in a fast-moving market.
             </p>
             <p className="text-lg leading-relaxed text-hhp-charcoal">
-              HHP Asset Group leverages LeaseAi predictive analytics to reduce downtime, optimize lease escalations, and provide owners real-time cost visibility.
+              HHP Asset Group leverages predictive analytics to reduce downtime, optimize lease escalations, and provide owners real-time cost visibility.
             </p>
           </div>
         </div>
@@ -208,7 +208,7 @@ const ManagementIndustrial = () => {
           <div className="text-center mb-16">
             <h2 className="section-title text-white mb-6">Technology Edge</h2>
             <p className="text-xl leading-relaxed text-white/90 max-w-3xl mx-auto">
-              LeaseAi automates:
+              Our platform automates:
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -232,7 +232,7 @@ const ManagementIndustrial = () => {
       {/* Premium CTA Banner */}
       <PremiumCTABanner
         title="Streamline industrial assets with predictive, data-driven oversight."
-        description="Trust HHP Asset Group for streamlined industrial management with LeaseAi-powered analytics and reliable tenant performance."
+        description="Trust HHP Asset Group for streamlined industrial management with predictive analytics and reliable tenant performance."
         primaryCTA="Contact Us"
         primaryLink="/contact"
         secondaryCTA="See All Services"

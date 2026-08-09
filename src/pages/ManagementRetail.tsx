@@ -10,7 +10,7 @@ import { useSEO } from '@/hooks/useSEO';
 const ManagementRetail = () => {
   useSEO({
     title: 'Retail Asset Management | HHP Asset Group',
-    description: 'Optimized operations with stronger tenant mix. Retail management enhanced by RentalAi insights for tenant performance and NOI protection.'
+    description: 'Optimized operations with stronger tenant mix. Retail management enhanced by tenant performance insights and NOI protection.'
   });
 
   const coreCapabilities = [
@@ -97,7 +97,7 @@ const ManagementRetail = () => {
     {
       icon: Target,
       title: 'Predictive Vacancy Analytics',
-      description: 'AI-powered forecasting for tenant turnover and vacancy risk'
+      description: 'Predictive forecasting for tenant turnover and vacancy risk'
     },
     {
       icon: BarChart3,
@@ -150,7 +150,7 @@ const ManagementRetail = () => {
               Retail portfolios face consumer shifts, e-commerce competition, and evolving tenant needs. Owners must curate tenant mix, enforce CAM recoveries, and manage rising OPEX while protecting NOI.
             </p>
             <p className="text-lg leading-relaxed text-hhp-charcoal">
-              HHP Asset Group integrates brokerage, management, and LeaseAi insights to reduce costs, protect revenue, and give owners transparency into tenant performance.
+              HHP Asset Group integrates brokerage, management, and leasing insights to reduce costs, protect revenue, and give owners transparency into tenant performance.
             </p>
           </div>
         </div>
@@ -208,7 +208,7 @@ const ManagementRetail = () => {
           <div className="text-center mb-16">
             <h2 className="section-title text-white mb-6">Technology Edge</h2>
             <p className="text-xl leading-relaxed text-white/90 max-w-3xl mx-auto">
-              RentalAi delivers:
+              Our platform delivers:
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -232,7 +232,7 @@ const ManagementRetail = () => {
       {/* Premium CTA Banner */}
       <PremiumCTABanner
         title="Protect NOI with smarter, transparent retail management."
-        description="Trust HHP Asset Group for optimized retail management with RentalAi-powered insights and stronger tenant mix strategies."
+        description="Trust HHP Asset Group for optimized retail management with data-driven insights and stronger tenant mix strategies."
         primaryCTA="Contact Us"
         primaryLink="/contact"
         secondaryCTA="See All Services"

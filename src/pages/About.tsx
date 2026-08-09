@@ -349,7 +349,7 @@ const About = () => {
                     </p>
                   </div>
                   <div className="bg-[#f7f9fb] border-t-[3px] border-hhp-navy p-6 md:p-8">
-                    <h3 className="text-xl font-display font-semibold text-hhp-navy mb-3">Data & AI-Enabled Decision Making</h3>
+                    <h3 className="text-xl font-display font-semibold text-hhp-navy mb-3">Data-Driven Decision Making</h3>
                     <p className="text-base font-semibold leading-relaxed text-hhp-charcoal mb-3">
                       Proprietary platforms augment human expertise with real-time insight, automated compliance, and performance monitoring.
                     </p>

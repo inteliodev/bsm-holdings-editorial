@@ -18,7 +18,7 @@ const CustomSolutions = () => {
               Technology That Adapts to You
             </h1>
             <p className="text-xl leading-relaxed text-white/90 mb-8 drop-shadow-md">
-              Every client has unique goals. HHP designs and deploys bespoke AI and data solutions 
+              Every client has unique goals. HHP designs and deploys bespoke data and automation solutions
               that embed into your operations — unlocking efficiency, compliance, and growth.
             </p>
             
@@ -237,10 +237,10 @@ const CustomSolutions = () => {
                 Industry Insight
               </span>
               <h3 className="text-xl font-semibold text-hhp-navy mb-3">
-                "Compliance Automation: How AI Is Transforming HUD Operations"
+                "Compliance Automation: How Technology Is Transforming HUD Operations"
               </h3>
               <p className="text-hhp-charcoal">
-                Deep dive into how AI and automation are revolutionizing compliance management in HUD-regulated properties.
+                Deep dive into how automation is revolutionizing compliance management in HUD-regulated properties.
               </p>
             </div>
           </div>

@@ -11,7 +11,7 @@ import { useSEO } from '@/hooks/useSEO';
 const ManagementCommercial = () => {
   useSEO({
     title: 'Office Asset Management | HHP Asset Group',
-    description: 'Efficient operations with stronger tenant experiences. Office management enhanced by LeaseAi-powered analytics for institutional investors.'
+    description: 'Efficient operations with stronger tenant experiences. Office management backed by leasing analytics built for institutional investors.'
   });
 
   const coreCapabilities = [
@@ -27,8 +27,8 @@ const ManagementCommercial = () => {
     },
     {
       icon: Wrench,
-      title: 'Vendor Consolidation & Facilities Management',
-      description: 'Strategic vendor management with facilities oversight'
+      title: 'In-House Facility Services',
+      description: 'Every trade self-performed — one accountable team, no vendor stack'
     },
     {
       icon: Heart,
@@ -151,7 +151,7 @@ const ManagementCommercial = () => {
               The office sector faces volatility driven by hybrid work, elevated vacancies, and energy cost inflation. Tenants demand high-quality amenities and flexible lease structures while owners seek to stabilize NOI and reposition assets.
             </p>
             <p className="text-lg leading-relaxed text-hhp-charcoal">
-              HHP Asset Group combines operational rigor with LeaseAi-powered analytics to reduce costs, improve tenant experiences, and deliver the reporting sophistication institutional investors demand.
+              HHP Asset Group combines operational rigor with leasing analytics to reduce costs, improve tenant experiences, and deliver the reporting sophistication institutional investors demand.
             </p>
           </div>
         </div>
@@ -209,7 +209,7 @@ const ManagementCommercial = () => {
           <div className="text-center mb-16">
             <h2 className="section-title text-white mb-6">Technology Edge</h2>
             <p className="text-xl leading-relaxed text-white/90 max-w-3xl mx-auto">
-              LeaseAi powers:
+              Our leasing analytics power:
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -233,7 +233,7 @@ const ManagementCommercial = () => {
       {/* Premium CTA Banner */}
       <PremiumCTABanner
         title="Future-proof your office portfolio with data-driven oversight."
-        description="Trust HHP Asset Group for efficient office management with LeaseAi-powered analytics and stronger tenant experiences."
+        description="Trust HHP Asset Group for efficient office management with data-driven leasing analytics and stronger tenant experiences."
         primaryCTA="Contact Us"
         primaryLink="/contact"
         secondaryCTA="See All Services"

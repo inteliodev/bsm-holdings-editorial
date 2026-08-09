@@ -1,10 +1,84 @@
 import Layout from '@/components/Layout/Layout';
-import { ArrowRight, CheckCircle, Users, Shield } from 'lucide-react';
+import { ArrowRight, CheckCircle, Users, Shield, HardHat, Building2, Wrench, Trees, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
-const FacilitiesManagement = () => {
+const selfPerformedTrades = [
+  {
+    icon: HardHat,
+    title: 'Construction & General Contracting',
+    items: [
+      'General contracting',
+      'Ground-up construction',
+      'Renovations & capital improvements',
+      'Tenant improvements & build-outs',
+      'Carpentry & framing',
+      'Drywall, paint & finish work',
+      'Flooring installation & replacement',
+    ],
+  },
+  {
+    icon: Building2,
+    title: 'Roofing & Building Exterior',
+    items: [
+      'Roof replacement & repair',
+      'Gutters & downspouts',
+      'Siding, windows & doors',
+      'Concrete, asphalt & parking lots',
+      'Striping, signage & wayfinding',
+      'Fencing & gates',
+      'Pressure washing',
+    ],
+  },
+  {
+    icon: Wrench,
+    title: 'Mechanical, Electrical & Plumbing',
+    items: [
+      'HVAC install, service & preventive maintenance',
+      'Plumbing & drain service',
+      'Water heaters & boilers',
+      'Electrical service & repair',
+      'Interior & exterior lighting',
+      'Appliance repair & replacement',
+    ],
+  },
+  {
+    icon: Trees,
+    title: 'Grounds & Seasonal',
+    items: [
+      'Lawncare & landscaping',
+      'Irrigation install & repair',
+      'Tree & shrub care',
+      'Snow & ice removal',
+      'Seasonal grounds preparation',
+    ],
+  },
+  {
+    icon: Sparkles,
+    title: 'Interior Services & Unit Turns',
+    items: [
+      'Janitorial & commercial cleaning',
+      'Unit turns & make-ready',
+      'Carpet & hard-floor care',
+      'Trash-out & junk removal',
+      'Pest control',
+    ],
+  },
+  {
+    icon: Shield,
+    title: 'Safety, Security & Restoration',
+    items: [
+      'Fire & life-safety systems',
+      'Access control & locksmith',
+      'Camera & security systems',
+      'Storm damage & insurance restoration',
+      '24/7 emergency response',
+    ],
+  },
+];
+
+const FacilityServices = () => {
   return (
     <Layout>
       {/* Hero Section */}
@@ -16,8 +90,11 @@ const FacilitiesManagement = () => {
         <div className="relative z-10 container-premium">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="hero-title text-white mb-4 drop-shadow-lg">
-              Facilities Management
+              Facility Services
             </h1>
+            <p className="text-xl leading-relaxed text-white/90 drop-shadow-md">
+              Every trade, in-house. One call, one accountable team.
+            </p>
           </div>
         </div>
       </section>
@@ -31,20 +108,20 @@ const FacilitiesManagement = () => {
               <h2 className="section-title text-hhp-navy mb-6">Introduction</h2>
               <div className="space-y-4 text-lg leading-relaxed text-gray-600">
                 <p>
-                  HHP provides facilities management services focused on operational reliability, safety, and long-term asset preservation. Our approach integrates preventive maintenance, vendor oversight, compliance management, and commercial cleaning operations to ensure buildings perform predictably — not reactively.
+                  Through HHP Facility Services, LLC, every facility service and maintenance item within our properties is handled internally — construction, roofing, general contracting, HVAC, plumbing, electrical, lawncare, janitorial, and everything in between. We are not a broker of subcontractors. We are the crew.
                 </p>
                 <p>
-                  We manage facilities with an owner's mindset, prioritizing uptime, cost control, cleanliness standards, and risk mitigation while supporting tenant satisfaction and asset value.
+                  That means no markup stacking, no waiting on a third party's schedule, and no finger-pointing when something goes wrong. One team is accountable for the condition of the asset, and that team answers to the owner.
                 </p>
               </div>
             </div>
 
             {/* Philosophy Section */}
             <div className="mb-12">
-              <h2 className="section-title text-hhp-navy mb-6">Our Facilities Management Philosophy</h2>
+              <h2 className="section-title text-hhp-navy mb-6">Our Facility Services Philosophy</h2>
               <div className="space-y-4 text-lg leading-relaxed text-gray-600">
                 <p>
-                  Effective facilities management is not about chasing work orders. It is about systems, accountability, and proactive execution.
+                  Effective facility services are not about chasing work orders. It is about systems, accountability, and proactive execution.
                 </p>
                 <p>
                   We focus on maintaining the physical integrity, safety, and cleanliness of each asset by anticipating issues before they disrupt operations. Building systems, exterior conditions, life-safety components, and janitorial standards are managed through structured schedules, documented inspections, and disciplined vendor or in-house coordination.
@@ -69,9 +146,87 @@ const FacilitiesManagement = () => {
               </div>
             </div>
 
+            {/* Self-Performed Trades */}
+            <div id="self-performed">
+              <h2 className="section-title text-hhp-navy mb-6">What We Self-Perform</h2>
+              <p className="text-lg leading-relaxed text-gray-600 mb-12 max-w-3xl">
+                Licensed, insured, and on staff. If it keeps a building running, we do it ourselves — and we schedule it around the property, not around a subcontractor's backlog.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {selfPerformedTrades.map((group) => {
+                  const Icon = group.icon;
+                  return (
+                    <div key={group.title} className="bg-white border border-gray-200 rounded-xl p-8">
+                      <div className="w-12 h-12 rounded-lg bg-hhp-accent/10 flex items-center justify-center mb-6">
+                        <Icon className="h-6 w-6 text-hhp-navy" />
+                      </div>
+                      <h3 className="font-heading font-semibold text-lg sm:text-xl text-hhp-navy mb-4">
+                        {group.title}
+                      </h3>
+                      <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                        {group.items.map((item) => (
+                          <div key={item} className="flex items-start">
+                            <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <p className="mt-8 text-lg leading-relaxed text-gray-600 italic">
+                Don't see it listed? Ask. If it falls inside the property line, it is almost certainly something we already handle.
+              </p>
+            </div>
+
+            {/* Cost Control */}
+            <div>
+              <h2 className="section-title text-hhp-navy mb-6">What In-House Control Does to Cost</h2>
+              <div className="space-y-4 text-lg leading-relaxed text-gray-600 mb-10 max-w-3xl">
+                <p>
+                  When the crew is ours, we see what the work actually costs — labor hours, materials, and time on site — instead of a subcontractor's invoice with margin already baked in. There is no markup on self-performed work, and no incentive to inflate scope.
+                </p>
+                <p>
+                  That visibility compounds. We know what a roof repair costs across the portfolio, what a unit turn should run, and when a number is out of line. Owners get the same line-item detail we do, which is how costs come down and stay down.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+                {[
+                  'No subcontractor markup on self-performed work',
+                  'True cost visibility — labor, materials, and time, line by line',
+                  'Portfolio-wide benchmarks for every recurring scope',
+                  'Scheduling we control, so small issues never become capital events',
+                  'Bids measured against what the work actually costs us',
+                  'Real-time cost reporting to ownership, not a 30-day lag',
+                ].map((point) => (
+                  <div key={point} className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-hhp-navy mr-3 mt-1 flex-shrink-0" />
+                    <span className="text-base leading-relaxed text-gray-600">{point}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* In-House Technology */}
+            <div>
+              <h2 className="section-title text-hhp-navy mb-6">Our Systems Are In-House Too</h2>
+              <div className="space-y-4 text-lg leading-relaxed text-gray-600 max-w-3xl">
+                <p>
+                  Vertical integration does not stop at the trades. The asset management and operating systems that run our properties are our own — designed, built, and maintained by HHP. We are not paying to license someone else's software or waiting on a vendor's roadmap to fix what our operators need today.
+                </p>
+                <p>
+                  Work orders, cost tracking, compliance, and owner reporting all live in one system we own. That is why cost data reaches owners in real time rather than at month-end, and why we can change how something works the week we decide it should work differently.
+                </p>
+              </div>
+            </div>
+
             {/* Core Functions Accordion */}
             <div id="core-functions" className="pt-4">
-              <h2 className="section-title text-hhp-navy mb-6">Core Facilities Management Functions</h2>
+              <h2 className="section-title text-hhp-navy mb-6">Core Facility Services Functions</h2>
               
               <Accordion type="single" collapsible className="w-full">
                 {/* Engineering & Building Systems */}
@@ -91,7 +246,7 @@ const FacilitiesManagement = () => {
                       </div>
                       <div className="flex items-start">
                         <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
-                        <span>Troubleshooting and repair coordination</span>
+                        <span>In-house troubleshooting and repair</span>
                       </div>
                       <div className="flex items-start">
                         <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
@@ -136,20 +291,20 @@ const FacilitiesManagement = () => {
                   </AccordionContent>
                 </AccordionItem>
 
-                {/* Vendor & Contractor Management */}
+                {/* Self-Performed Execution */}
                 <AccordionItem value="vendor" className="border-b border-gray-300 py-3">
                   <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
-                    Vendor & Contractor Management
+                    Self-Performed Execution
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
                         <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
-                        <span>Vendor sourcing and qualification</span>
+                        <span>In-house crews across every core trade</span>
                       </div>
                       <div className="flex items-start">
                         <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
-                        <span>Bidding and contract negotiation</span>
+                        <span>No subcontractor markup on self-performed work</span>
                       </div>
                       <div className="flex items-start">
                         <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
@@ -161,7 +316,7 @@ const FacilitiesManagement = () => {
                       </div>
                       <div className="flex items-start">
                         <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
-                        <span>Vendor relationship management</span>
+                        <span>Specialty vendors engaged only where licensing requires</span>
                       </div>
                     </div>
                   </AccordionContent>
@@ -215,7 +370,7 @@ const FacilitiesManagement = () => {
                       </div>
                       <div className="flex items-start">
                         <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
-                        <span>Roofing system oversight</span>
+                        <span>Roof repair and replacement, self-performed</span>
                       </div>
                       <div className="flex items-start">
                         <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
@@ -269,7 +424,7 @@ const FacilitiesManagement = () => {
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
                         <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
-                        <span>Janitorial service coordination and oversight</span>
+                        <span>In-house janitorial crews</span>
                       </div>
                       <div className="flex items-start">
                         <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
@@ -281,7 +436,7 @@ const FacilitiesManagement = () => {
                       </div>
                       <div className="flex items-start">
                         <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
-                        <span>Specialty cleaning coordination</span>
+                        <span>Specialty and post-construction cleaning</span>
                       </div>
                       <div className="flex items-start">
                         <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
@@ -295,7 +450,7 @@ const FacilitiesManagement = () => {
               {/* Closing Statement */}
               <div className="mt-8 pt-8 border-t border-gray-200">
                 <p className="text-lg leading-relaxed text-gray-600 italic">
-                  Our facilities platform is designed to protect asset condition, operational standards, and tenant experience today while preserving flexibility and value for future ownership decisions.
+                  Our facility services platform is designed to protect asset condition, operational standards, and tenant experience today while preserving flexibility and value for future ownership decisions.
                 </p>
               </div>
             </div>
@@ -309,7 +464,7 @@ const FacilitiesManagement = () => {
         <div className="relative h-[400px] md:h-auto">
           <img 
             src="/images/about-us-image.jpg" 
-            alt="Facilities Management"
+            alt="Facility Services"
             className="absolute inset-0 w-full h-full object-cover"
           />
         </div>
@@ -335,7 +490,7 @@ const FacilitiesManagement = () => {
                 to="/contact" 
                 className="inline-block bg-white text-gray-800 px-8 py-4 rounded font-heading font-semibold tracking-[0.06em] uppercase hover:bg-gray-100 transition"
                 onClick={() => {
-                  trackButtonClick('contact_us_cta', 'facilities_management_split');
+                  trackButtonClick('contact_us_cta', 'facility_services_split');
                   trackLinkClick('Contact Us', '/contact');
                 }}
               >
@@ -402,7 +557,7 @@ const FacilitiesManagement = () => {
                   </div>
                   <div className="flex items-start">
                     <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
-                    <span>Proactive maintenance and cleaning standards</span>
+                    <span>Every trade self-performed — no subcontractor markup</span>
                   </div>
                   <div className="flex items-start">
                     <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
@@ -435,7 +590,7 @@ const FacilitiesManagement = () => {
               to="/opportunities" 
               className="bg-white text-hhp-navy px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-heading font-semibold tracking-[0.06em] uppercase hover:bg-white/90 transition-all duration-300 flex-shrink-0"
               onClick={() => {
-                trackButtonClick('view_opportunities_cta', 'facilities_management_careers');
+                trackButtonClick('view_opportunities_cta', 'facility_services_careers');
                 trackLinkClick('View Opportunities', '/opportunities');
               }}
             >
@@ -457,7 +612,7 @@ const FacilitiesManagement = () => {
                 to="/faq" 
                 className="bg-hhp-navy text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-heading font-semibold tracking-[0.06em] uppercase hover:bg-hhp-navy/90 transition flex-shrink-0"
                 onClick={() => {
-                  trackButtonClick('visit_faq_cta', 'facilities_management_faq');
+                  trackButtonClick('visit_faq_cta', 'facility_services_faq');
                   trackLinkClick('Visit our FAQ page', '/faq');
                 }}
               >
@@ -475,11 +630,11 @@ const FacilitiesManagement = () => {
             to="/contact" 
             className="group inline-flex items-center gap-2 bg-hhp-navy text-white px-8 py-4 rounded-lg font-heading font-semibold tracking-[0.06em] uppercase hover:bg-hhp-navy/90 transition-all duration-200 shadow-lg w-auto max-w-[300px] sm:max-w-none mx-auto sm:mx-0"
             onClick={() => {
-              trackButtonClick('discuss_facilities_management_alignment', 'facilities_management_cta');
-              trackLinkClick('Discuss Facilities Management Alignment', '/contact');
+              trackButtonClick('discuss_facility_services_alignment', 'facility_services_cta');
+              trackLinkClick('Discuss Facility Services Alignment', '/contact');
             }}
           >
-            Discuss Facilities Management Alignment
+            Discuss Facility Services Alignment
             <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -488,5 +643,5 @@ const FacilitiesManagement = () => {
   );
 };
 
-export default FacilitiesManagement;
+export default FacilityServices;
 

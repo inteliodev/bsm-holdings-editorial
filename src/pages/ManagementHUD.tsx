@@ -10,7 +10,7 @@ import { useSEO } from '@/hooks/useSEO';
 const ManagementHUD = () => {
   useSEO({
     title: 'HUD & Affordable Housing Management | HHP Asset Group',
-    description: 'Institutional compliance and resident-centered service for HUD properties. Audit-ready operations powered by RentalAi and data-driven insights.'
+    description: 'Institutional compliance and resident-centered service for HUD properties. Audit-ready operations powered by automated compliance tracking and data-driven insights.'
   });
 
   const coreCapabilities = [
@@ -132,7 +132,7 @@ const ManagementHUD = () => {
               Institutional Compliance. Resident-Centered Service.
             </h1>
             <p className="text-xl leading-relaxed text-white/90 mb-8">
-              HHP Asset Group delivers audit-ready operations across HUD properties, powered by RentalAi and data-driven insights that protect subsidy revenue and ensure resident stability.
+              HHP Asset Group delivers audit-ready operations across HUD properties, powered by automated compliance tracking and data-driven insights that protect subsidy revenue and ensure resident stability.
             </p>
                         
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -159,7 +159,7 @@ const ManagementHUD = () => {
             <p className="text-lg leading-relaxed text-hhp-charcoal mb-8">
               HUD and affordable housing properties operate under continuous oversight. MOR reviews, REAC inspections, HAP voucher submissions, and procurement standards create a cycle of regulatory risk. Even minor certification errors can trigger findings, repayments, and subsidy interruptions.
 
-HHP Asset Group transforms HUD compliance into a competitive advantage. With RentalAi, we automate certifications, standardize tenant files, and deliver audit-ready reporting — ensuring subsidy revenue flows without interruption.
+HHP Asset Group transforms HUD compliance into a competitive advantage. We automate certifications, standardize tenant files, and deliver audit-ready reporting — ensuring subsidy revenue flows without interruption.
             </p>
             <p className="text-lg leading-relaxed text-hhp-charcoal">
               HHP Asset Group ensures compliance discipline with HUD programs while using technology to provide owners real-time visibility into their portfolio.
@@ -219,10 +219,10 @@ HHP Asset Group transforms HUD compliance into a competitive advantage. With Ren
           <div className="text-center mb-16">
             <h2 className="section-title text-white mb-6">Technology Edge</h2>
             <p className="text-xl leading-relaxed text-white/90 max-w-3xl mx-auto">
-              RentalAi for HUD Operations
+              Compliance Automation for HUD Operations
             </p>
             <p className="text-lg leading-relaxed text-white/90 mt-4">
-              RentalAi automates the complex layers of HUD compliance and reporting:
+              We automate the complex layers of HUD compliance and reporting:
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

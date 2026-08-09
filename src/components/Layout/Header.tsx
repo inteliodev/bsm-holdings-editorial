@@ -25,7 +25,7 @@ const Header = () => {
       href: '/services',
       submenu: [
         { name: 'Property Management', href: '/services/property-management' },
-        { name: 'Facilities Management', href: '/services/facilities-management' },
+        { name: 'Facility Services', href: '/services/facility-services' },
         { name: 'Financial Services', href: '/services/financial-services' },
         { name: 'Multifamily', href: '/asset-types/multifamily' },
         { name: 'Senior Housing', href: '/asset-types/senior-housing' },

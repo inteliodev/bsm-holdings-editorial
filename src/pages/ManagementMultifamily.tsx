@@ -10,7 +10,7 @@ import { useSEO } from '@/hooks/useSEO';
 const ManagementMultifamily = () => {
   useSEO({
     title: 'Multifamily Asset Management | HHP Asset Group',
-    description: 'Scalable operations with resident-first focus. Institutional-quality multifamily management enhanced by RentalAi automation.'
+    description: 'Scalable operations with resident-first focus. Institutional-quality multifamily management enhanced by workflow automation.'
   });
 
   const coreCapabilities = [
@@ -145,7 +145,7 @@ const ManagementMultifamily = () => {
               The multifamily sector is experiencing unprecedented pressure. Insurance and labor costs are climbing, tenants demand digital experiences, and competition for renewals is fierce. Owners must deliver consistent returns while protecting NOI from inflationary expense creep.
             </p>
             <p className="text-lg leading-relaxed text-hhp-charcoal">
-              HHP Asset Group delivers institutional-quality management enhanced by RentalAi automation — reducing OPEX, strengthening tenant retention, and providing board-ready transparency.
+              HHP Asset Group delivers institutional-quality management enhanced by workflow automation — reducing OPEX, strengthening tenant retention, and providing board-ready transparency.
             </p>
           </div>
         </div>
@@ -187,7 +187,7 @@ const ManagementMultifamily = () => {
         <div className="container-premium">
           <h2 className="section-title text-hhp-navy mb-6 text-center">Data & Insights</h2>
           <p className="text-xl leading-relaxed text-hhp-charcoal max-w-3xl mx-auto text-center mb-12">
-            Turning Data Into Action with RentalAi
+            Turning Data Into Action
           </p>
           <IconGrid 
          
@@ -203,7 +203,7 @@ const ManagementMultifamily = () => {
           <div className="text-center mb-16">
             <h2 className="section-title text-white mb-6">Technology Edge</h2>
             <p className="text-xl leading-relaxed text-white/90 max-w-3xl mx-auto">
-              RentalAi powers smarter multifamily operations with:
+              We power smarter multifamily operations with:
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -226,7 +226,7 @@ const ManagementMultifamily = () => {
 
       {/* Premium CTA Banner */}
       <PremiumCTABanner
-        title="Maximize multifamily performance with institutional discipline and AI-driven insights."
+        title="Maximize multifamily performance with institutional discipline and data-driven insights."
         description="Trust HHP Asset Group for scalable multifamily management with predictive analytics and resident-first operations."
         primaryCTA="Contact Us"
         primaryLink="/contact"

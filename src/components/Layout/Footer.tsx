@@ -3,7 +3,7 @@ import { Mail, MapPin, Linkedin, Facebook } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-hhp-navy text-white -mt-px">
+    <footer className="relative z-30 bg-hhp-navy text-white -mt-px">
       <div className="container-premium pt-0 sm:pt-2 pb-4 sm:pb-6">
         {/* Top Row: Logo + Navigation */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 sm:gap-8 mb-6 sm:mb-8">

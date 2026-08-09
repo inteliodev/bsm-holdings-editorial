@@ -49,7 +49,7 @@ const FAQ = () => {
     },
     {
       question: "What sets HHP apart from other property management firms?",
-      answer: "HHP differentiates itself through vertical integration, operational discipline, and technology-enabled decision-making. Unlike traditional firms that silo services, we combine brokerage, management, and advisory under a single fiduciary mindset. We maintain selective portfolio sizes to ensure accountability, provide direct oversight without call-center models, and integrate proprietary AI platforms that enhance—not replace—human judgment and execution."
+      answer: "HHP differentiates itself through vertical integration, operational discipline, and technology-enabled decision-making. Unlike traditional firms that silo services, we combine brokerage, management, and advisory under a single fiduciary mindset. We maintain selective portfolio sizes to ensure accountability, provide direct oversight without call-center models, and integrate proprietary data platforms that enhance—not replace—human judgment and execution."
     },
     {
       question: "Do you offer property management for HUD and affordable housing?",

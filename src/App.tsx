@@ -41,7 +41,7 @@ const AdvisorySiteSelection = lazy(() => import("./pages/services/AdvisorySiteSe
 const DevelopmentAdvisory = lazy(() => import("./pages/services/DevelopmentAdvisory"));
 const BrokerConsulting = lazy(() => import("./pages/services/BrokerConsulting"));
 const FinancialServices = lazy(() => import("./pages/services/FinancialServices"));
-const FacilitiesManagement = lazy(() => import("./pages/FacilitiesManagement"));
+const FacilityServices = lazy(() => import("./pages/FacilityServices"));
 // Legacy service pages (for backward compatibility)
 const InvestmentSales = lazy(() => import("./pages/services/InvestmentSales"));
 const LandlordRepresentation = lazy(() => import("./pages/services/LandlordRepresentation"));
@@ -62,7 +62,7 @@ const IndustrialAssetType = lazy(() => import("./pages/assetTypes/Industrial"));
 const SeniorHousingAssetType = lazy(() => import("./pages/assetTypes/SeniorHousing"));
 
 // New Technology Pages
-const AiPlatforms = lazy(() => import("./pages/technology/AiPlatforms"));
+const Platforms = lazy(() => import("./pages/technology/Platforms"));
 const AdvisoryAnalytics = lazy(() => import("./pages/technology/AdvisoryAnalytics"));
 const CustomSolutions = lazy(() => import("./pages/technology/CustomSolutions"));
 
@@ -97,7 +97,9 @@ const App = () => (
               <Route path="/services/development-advisory" element={<DevelopmentAdvisory />} />
               <Route path="/services/broker-consulting" element={<BrokerConsulting />} />
               <Route path="/services/financial-services" element={<FinancialServices />} />
-              <Route path="/services/facilities-management" element={<FacilitiesManagement />} />
+              <Route path="/services/facility-services" element={<FacilityServices />} />
+              {/* Legacy: previous Facilities Management path */}
+              <Route path="/services/facilities-management" element={<FacilityServices />} />
 
               {/* Legacy service routes (for backward compatibility) */}
               <Route path="/services/investment-sales" element={<InvestmentSales />} />
@@ -117,7 +119,9 @@ const App = () => (
               <Route path="/asset-types/senior-housing" element={<SeniorHousingAssetType />} />
 
               {/* Technology Routes */}
-              <Route path="/technology/ai-platforms" element={<AiPlatforms />} />
+              <Route path="/technology/platforms" element={<Platforms />} />
+              {/* Legacy: old AI-branded path */}
+              <Route path="/technology/ai-platforms" element={<Platforms />} />
               <Route path="/technology/advisory-analytics" element={<AdvisoryAnalytics />} />
               <Route path="/technology/custom-solutions" element={<CustomSolutions />} />
 

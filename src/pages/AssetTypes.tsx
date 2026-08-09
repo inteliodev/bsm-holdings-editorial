@@ -32,7 +32,7 @@ const AssetTypes = () => {
     },
     {
       title: "Industrial & Logistics",
-      proofPoint: "Warehouse occupancy and utilization improved 22% via AI forecasting.",
+      proofPoint: "Warehouse occupancy and utilization improved 22% via predictive forecasting.",
       image: "/images/industrial-image.webp",
       href: "/asset-types/industrial"
     },
@@ -51,14 +51,14 @@ const AssetTypes = () => {
         <title>HHP Asset Group | Asset Types We Serve</title>
         <meta 
           name="description" 
-          content="Explore HHP's expertise across Multifamily, HUD & Affordable, Office, Retail, Industrial, and Senior Housing—powered by AI, analytics, and institutional execution." 
+          content="Explore HHP's expertise across Multifamily, HUD & Affordable, Office, Retail, Industrial, and Senior Housing—powered by data, analytics, and institutional execution." 
         />
         <meta 
           name="keywords" 
           content="asset types, multifamily, office, retail, industrial, senior housing, HUD affordable housing, property management, real estate services" 
         />
         <meta property="og:title" content="HHP Asset Group | Asset Types We Serve" />
-        <meta property="og:description" content="Explore HHP's expertise across Multifamily, HUD & Affordable, Office, Retail, Industrial, and Senior Housing—powered by AI, analytics, and institutional execution." />
+        <meta property="og:description" content="Explore HHP's expertise across Multifamily, HUD & Affordable, Office, Retail, Industrial, and Senior Housing—powered by data, analytics, and institutional execution." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://hhpasset.com/asset-types" />
         <meta property="og:image" content="https://hhpasset.com/images/hhp-logo.png" />

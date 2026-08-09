@@ -2,11 +2,11 @@ const disciplines = [
   {
     number: '01',
     title: 'Asset Management',
-    description: 'AI-driven portfolio intelligence that transforms how owners understand and optimize their assets.',
+    description: 'Data-driven portfolio intelligence that transforms how owners understand and optimize their assets.',
     features: [
       'Capital planning & rent optimization',
       'Real-time financial dashboards',
-      'Budget vs. actual with AI commentary',
+      'Budget vs. actual with written commentary',
       'Replacement reserve strategy',
       'Owner reporting & board communications',
     ],
@@ -14,7 +14,7 @@ const disciplines = [
   {
     number: '02',
     title: 'Property Management',
-    description: 'Day-to-day operations powered by APEX, with compliance built into every workflow — not bolted on after.',
+    description: 'Day-to-day operations run on our own platform, with compliance built into every workflow — not bolted on after.',
     features: [
       'Compliance automation & monitoring',
       'Tenant certification & recertification',
@@ -26,13 +26,13 @@ const disciplines = [
   {
     number: '03',
     title: 'Facility Services',
-    description: 'In-house maintenance capability through HHP Facility Services, LLC — AI-dispatched, owner-accountable.',
+    description: 'Every trade in-house through HHP Facility Services, LLC — construction, roofing, HVAC, plumbing, electrical, lawncare, and janitorial. Same-day dispatch, owner-accountable.',
     features: [
-      'AI-routed work order dispatch',
-      'Preventive maintenance scheduling',
-      'Grounds & exterior management',
-      'Storm damage & insurance coordination',
-      'Vendor management & QC',
+      'General contracting & construction',
+      'Roofing, HVAC, plumbing & electrical',
+      'Lawncare, grounds & snow removal',
+      'Janitorial & unit turns',
+      'Storm damage & insurance restoration',
     ],
   },
 ];
@@ -50,7 +50,7 @@ const DisciplinesSection = () => {
           One Integrated Platform.
         </h2>
         <p className="text-lg sm:text-xl leading-relaxed text-hhp-charcoal max-w-3xl mb-12 sm:mb-16">
-          We don't list tasks — we deliver outcomes. Every service line is powered by APEX and built around the metrics that actually matter to owners.
+          We don't list tasks — we deliver outcomes. Every service line runs on one integrated platform we built ourselves, around the metrics that actually matter to owners.
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { CheckCircle, Users, Zap, TrendingUp, ArrowRight, Building2, BarChart3, HeadphonesIcon, Bot, Target, DollarSign, FileText, Globe, Shield, Home as HomeIcon, ShoppingBag, Factory, Heart, Settings, MapPin, Handshake } from 'lucide-react';
 import Layout from '@/components/Layout/Layout';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
-import ApexPlatformSection from '@/components/ApexPlatformSection';
+import PlatformSection from '@/components/PlatformSection';
 import commercialImage from '@/assets/commercial-building.webp';
 import heroImage from '@/assets/hero-property.jpg';
 
@@ -43,7 +43,7 @@ const Home = () => {
                 />
               </div>
               <p className="text-lg sm:text-xl lg:text-2xl xl:text-3xl leading-relaxed sm:leading-tight text-white mb-4 sm:mb-5 px-2 -mt-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
-                AI-Native Asset & Property Management
+                Vertically Integrated. Data Driven. Forward Thinking.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                 <Link
@@ -95,7 +95,7 @@ const Home = () => {
               Our approach
             </h2>
             <p className="text-lg sm:text-xl leading-relaxed text-hhp-charcoal text-center">
-              HHP pairs AI-native technology with experienced property operators to manage, maintain, and optimize real estate assets. Our proprietary platforms automate routine workflows, surface actionable insights, and keep owners informed in real time—so properties run leaner, residents are served faster, and every decision is backed by data.
+              HHP is fully vertically integrated. Brokerage, asset management, property management, and every facility service trade sit under one roof—and so does the technology that runs them. We build and maintain our own asset management and operating systems rather than licensing someone else's. Because the crews and the software are both ours, we see what work actually costs, line by line, and owners see the same numbers we do in real time. Properties run leaner, residents are served faster, and decisions get made on what the numbers actually say.
             </p>
           </div>
         </div>
@@ -107,7 +107,7 @@ const Home = () => {
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <h2 className="section-title text-hhp-navy mb-4 sm:mb-6">Core Services</h2>
             <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-hhp-charcoal max-w-3xl mx-auto px-4">
-              AI-powered operations across property management, facilities, and financial services — built to perform, not just report.
+              Data-driven operations across property management, facility services, and financial services — built to perform, not just report.
             </p>
           </div>
           
@@ -155,18 +155,18 @@ const Home = () => {
             </Link>
 
             <Link
-              to="/services/facilities-management"
+              to="/services/facility-services"
               className="premium-card hover:shadow-elegant hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
               style={{ backgroundImage: 'url(/images/facilities-management-hero-image.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
               onClick={() => {
-                trackButtonClick('facilities_management', 'core_services');
-                trackLinkClick('Facilities Management', '/services/facilities-management');
+                trackButtonClick('facility_services', 'core_services');
+                trackLinkClick('Facility Services', '/services/facility-services');
               }}
             >
               <div className="absolute inset-0 bg-black/60 group-hover:bg-black/50 transition-all duration-300" />
               <div className="relative z-10 flex flex-col items-start justify-end text-left p-4 sm:p-6 h-full">
                 <h3 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl mb-3 text-left">
-                  Facilities Management
+                  Facility Services
                 </h3>
                 <div className="flex items-center text-white font-medium group-hover:translate-x-2 transition-transform duration-300 text-base sm:text-lg text-left">
                   <span>Explore Service</span>
@@ -184,7 +184,7 @@ const Home = () => {
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <h2 className="section-title text-hhp-navy mb-4 sm:mb-6">Asset Types We Serve</h2>
             <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-hhp-navy max-w-3xl mx-auto px-4">
-              Specialized management across housing asset classes where AI-driven operations make the biggest impact.
+              Specialized management across housing asset classes where disciplined, data-driven operations make the biggest impact.
             </p>
           </div>
           
@@ -255,7 +255,7 @@ const Home = () => {
         </div>
       </section>
 
-      <ApexPlatformSection />
+      <PlatformSection />
 
       </div>
     </Layout>

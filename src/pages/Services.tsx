@@ -41,9 +41,9 @@ const Services = () => {
       href: "/services/financial-services"
     },
     {
-      title: "Facilities Management",
+      title: "Facility Services",
       image: "/images/facilities-management-hero-image.jpg",
-      href: "/services/facilities-management"
+      href: "/services/facility-services"
     }
   ];
 
@@ -72,7 +72,7 @@ const Services = () => {
               Comprehensive Real Estate Services, Reimagined
             </h2>
             <p className="text-xl leading-relaxed text-gray-600">
-              HHP delivers the full lifecycle of commercial real estate services — from acquisitions and development to management, leasing, sales, and strategic advisory — all powered by proprietary AI platforms.
+              HHP delivers the full lifecycle of commercial real estate services — from acquisitions and development to management, leasing, sales, and strategic advisory — all under one roof.
             </p>
           </div>
         </div>
@@ -146,7 +146,7 @@ const Services = () => {
             Ready to Experience the Future of Real Estate?
           </h2>
           <p className="text-xl leading-relaxed text-white/90 mb-12 max-w-3xl mx-auto">
-            Whether you're looking to acquire, develop, manage, or sell — our comprehensive services and proprietary AI platforms deliver institutional-grade results with boutique-level service.
+            Whether you're looking to acquire, develop, manage, or sell — our comprehensive services and proprietary data platforms deliver institutional-grade results with boutique-level service.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">

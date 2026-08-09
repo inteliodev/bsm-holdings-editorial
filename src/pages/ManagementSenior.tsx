@@ -86,7 +86,7 @@ const ManagementSenior = () => {
   const technologyFeatures = [
     {
       icon: AlertTriangle,
-      title: 'RentalAi Compliance Alerts',
+      title: 'Automated Compliance Alerts',
       description: 'Automated alerts for licensing deadlines and regulatory changes'
     },
     {
@@ -97,7 +97,7 @@ const ManagementSenior = () => {
     {
       icon: Target,
       title: 'Predictive Occupancy Analytics',
-      description: 'AI-powered forecasting for resident turnover and capacity planning'
+      description: 'Predictive forecasting for resident turnover and capacity planning'
     },
     {
       icon: FileSearch,
@@ -149,7 +149,7 @@ const ManagementSenior = () => {
             <p className="text-lg leading-relaxed text-hhp-charcoal">
               Senior housing demands both healthcare compliance and hospitality excellence. Owners face rising staffing costs, regulatory oversight, and heightened family expectations. Operational gaps directly impact reputation and revenue stability.
 
-HHP Asset Group combines compassionate service with RentalAi-powered analytics to deliver compliance, occupancy stability, and superior resident experiences.
+HHP Asset Group combines compassionate service with data-driven analytics to deliver compliance, occupancy stability, and superior resident experiences.
             </p>
           </div>
         </div>
@@ -207,10 +207,10 @@ HHP Asset Group combines compassionate service with RentalAi-powered analytics t
           <div className="text-center mb-16">
             <h2 className="section-title text-white mb-6">Technology Edge</h2>
             <p className="text-xl leading-relaxed text-white/90 max-w-3xl mx-auto">
-              RentalAi for Senior Housing Operations
+              Compliance Automation for Senior Housing Operations
             </p>
             <p className="text-lg leading-relaxed text-white/90 mt-4">
-              RentalAi automates the complex layers of senior housing compliance and care coordination:
+              We automate the complex layers of senior housing compliance and care coordination:
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

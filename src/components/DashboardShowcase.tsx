@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const ApexDashboardShowcase = () => {
+const DashboardShowcase = () => {
   return (
     <section className="bg-[#061829] py-16 sm:py-20 lg:py-24 relative z-30 overflow-hidden">
       {/* Grid background */}
@@ -15,14 +15,14 @@ const ApexDashboardShowcase = () => {
           <div>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-8" style={{ backgroundColor: 'rgba(200,149,46,0.15)', border: '1px solid rgba(200,149,46,0.25)', color: '#C8952E' }}>
               <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#C8952E' }} />
-              AI-Native Property Management
+              Vertically Integrated Operations
             </div>
             <h2 className="section-title text-white mb-6">
               Institutional Intelligence.<br />
               <span style={{ color: '#C8952E' }}>Every Asset Optimized.</span>
             </h2>
             <p className="text-lg sm:text-xl leading-relaxed text-gray-400 mb-10 max-w-lg">
-              Our proprietary APEX platform combines institutional-grade underwriting with AI-powered operations to deliver owner outcomes that traditional management can't match.
+              Institutional-grade underwriting and in-house operations run on the same platform — so owners see current numbers instead of last month's PDF, and every decision is made on data.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/technology" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5" style={{ backgroundColor: '#C8952E', color: '#061829' }}>
@@ -40,7 +40,7 @@ const ApexDashboardShowcase = () => {
             <div className="rounded-xl overflow-hidden" style={{ backgroundColor: 'rgba(27,42,74,0.6)', border: '1px solid rgba(200,149,46,0.12)', backdropFilter: 'blur(20px)' }}>
               {/* Dashboard header */}
               <div className="px-5 py-4 flex items-center justify-between" style={{ borderBottom: '1px solid rgba(200,149,46,0.08)' }}>
-                <span className="text-xs font-semibold text-gray-300 uppercase tracking-wider">APEX Command Center</span>
+                <span className="text-xs font-semibold text-gray-300 uppercase tracking-wider">Owner Command Center</span>
                 <span className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider" style={{ color: '#4ADE80' }}>
                   <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: '#4ADE80' }} />
                   Live
@@ -107,4 +107,4 @@ const ApexDashboardShowcase = () => {
   );
 };
 
-export default ApexDashboardShowcase;
+export default DashboardShowcase;

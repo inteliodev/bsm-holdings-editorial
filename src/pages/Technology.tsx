@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Bot, BarChart3, Settings, ArrowRight, CheckCircle, TrendingUp, DollarSign, Clock, Zap } from 'lucide-react';
 import Layout from '@/components/Layout/Layout';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
-import ApexDashboardShowcase from '@/components/ApexDashboardShowcase';
+import DashboardShowcase from '@/components/DashboardShowcase';
 import DisciplinesSection from '@/components/DisciplinesSection';
 import { Helmet } from 'react-helmet-async';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -11,14 +11,14 @@ const Technology = () => {
   const technologyPillars = [
     {
       icon: Bot,
-      title: "AI Platforms",
-      snippet: "BrokerAi, RentalAi, and LeaseAi power transaction and operations intelligence across acquisitions, leasing, and property management. Real-time comps, absorption forecasts, delinquency/turnover risk scores, and KPI dashboards turn data into action.",
+      title: "Proprietary Platforms",
+      snippet: "Purpose-built systems power transaction and operations intelligence across acquisitions, leasing, and property management. Real-time comps, absorption forecasts, delinquency/turnover risk scores, and KPI dashboards turn data into action.",
       highlights: [
-        "Live comps, cap-rate curves, and sales velocity (BrokerAi)",
-        "Rent/absorption forecasting and tenant churn risk (LeaseAi, RentalAi)",
+        "Live comps, cap-rate curves, and sales velocity",
+        "Rent/absorption forecasting and tenant churn risk",
         "Owner dashboards: NOI, delinquency, expense variance"
       ],
-      href: "/technology/ai-platforms"
+      href: "/technology/platforms"
     },
     {
       icon: BarChart3,
@@ -144,14 +144,14 @@ const Technology = () => {
         <title>HHP Asset Group | Technology</title>
         <meta 
           name="description" 
-          content="Explore HHP's Technology: AI Platforms, Advisory & Analytics, and Custom Solutions that deliver measurable performance, faster decisions, and institutional-grade execution." 
+          content="Explore HHP's Technology: Proprietary Platforms, Advisory & Analytics, and Custom Solutions that deliver measurable performance, faster decisions, and institutional-grade execution." 
         />
         <meta 
           name="keywords" 
-          content="real estate technology, AI platforms, property management software, real estate analytics, BrokerAi, RentalAi, LeaseAi, custom solutions" 
+          content="real estate technology, proprietary platforms, property management software, real estate analytics, owner dashboards, custom solutions"
         />
         <meta property="og:title" content="HHP Asset Group | Technology" />
-        <meta property="og:description" content="Explore HHP's Technology: AI Platforms, Advisory & Analytics, and Custom Solutions that deliver measurable performance, faster decisions, and institutional-grade execution." />
+        <meta property="og:description" content="Explore HHP's Technology: Proprietary Platforms, Advisory & Analytics, and Custom Solutions that deliver measurable performance, faster decisions, and institutional-grade execution." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://hhpasset.com/technology" />
         <meta property="og:image" content="https://hhpasset.com/images/hhp-logo.png" />
@@ -160,7 +160,7 @@ const Technology = () => {
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="HHP Asset Group | Technology" />
-        <meta name="twitter:description" content="Explore HHP's Technology: AI Platforms, Advisory & Analytics, and Custom Solutions." />
+        <meta name="twitter:description" content="Explore HHP's Technology: Proprietary Platforms, Advisory & Analytics, and Custom Solutions." />
         <meta name="twitter:image" content="https://hhpasset.com/images/hhp-logo.png" />
       </Helmet>
 
@@ -198,13 +198,13 @@ const Technology = () => {
           <div className="container-premium">
             <div className="max-w-4xl mx-auto">
               <p className="text-lg sm:text-xl leading-relaxed text-gray-600 text-center">
-                Our proprietary AI stack and analytics frameworks deliver institutional-grade execution—faster decisions, tighter controls, and measurable ROI.
+                Our proprietary data stack and analytics frameworks deliver institutional-grade execution—faster decisions, tighter controls, and measurable ROI.
               </p>
             </div>
           </div>
         </section>
 
-        <ApexDashboardShowcase />
+        <DashboardShowcase />
         <DisciplinesSection />
 
         {/* Technology Pillars Grid */}
@@ -367,7 +367,7 @@ const Technology = () => {
               Let's Build Your Technology Advantage
             </h2>
             <p className="text-xl leading-relaxed text-white/90 mb-12 max-w-3xl mx-auto">
-              Ready to transform your operations with AI-powered insights and automation? Let's discuss your specific needs and implementation timeline.
+              Ready to transform your operations with data-driven insights and automation? Let's discuss your specific needs and implementation timeline.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -383,11 +383,11 @@ const Technology = () => {
                 <ArrowRight className="h-5 w-5 ml-2" />
               </Link>
               <Link 
-                to="/technology/ai-platforms" 
+                to="/technology/platforms" 
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-heading font-semibold tracking-[0.06em] uppercase hover:bg-white hover:text-hhp-navy transition-all duration-300 inline-flex items-center justify-center w-auto max-w-[300px] sm:max-w-none mx-auto sm:mx-0"
                 onClick={() => {
                   trackButtonClick('see_pricing_cta', 'final_cta');
-                  trackLinkClick('See Pricing & Licensing', '/technology/ai-platforms');
+                  trackLinkClick('See Pricing & Licensing', '/technology/platforms');
                 }}
               >
                 See Pricing & Licensing

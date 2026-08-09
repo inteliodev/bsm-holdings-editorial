@@ -42,7 +42,7 @@ interface AssetTypePageProps {
     title: string;
     description: string;
   }>;
-  technologyTitle?: string; // Optional: defaults to "AI-Driven Advantage for {title}"
+  technologyTitle?: string; // Optional: defaults to "Data-Driven Advantage for {title}"
   technologySubtitle?: string; // Optional: defaults to "Our proprietary platforms..."
   useModernLayout?: boolean; // Optional: if true, uses list layout instead of cards
   
@@ -384,7 +384,7 @@ const AssetTypePage = ({
           <div className="container-premium">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-hhp-navy mb-6">
-                {technologyTitle || `AI-Driven Advantage for ${title}`}
+                {technologyTitle || `Data-Driven Advantage for ${title}`}
               </h2>
             </div>
             
