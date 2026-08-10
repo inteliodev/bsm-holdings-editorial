@@ -86,6 +86,18 @@ const TEAM: Department[] = [
     ],
   },
   {
+    name: 'Property Management',
+    members: [
+      {
+        id: 'valarie',
+        name: 'Valarie Ellis',
+        title: 'Property Manager',
+        email: 'valarie@hhpasset.com',
+        // No headshot yet.
+      },
+    ],
+  },
+  {
     name: 'Administrative Services',
     members: [
       {
@@ -117,8 +129,6 @@ const TEAM: Department[] = [
       },
     ],
   },
-  // Still pending: Valarie Ellis — department and title required. Her address
-  // follows the same firstname@hhpasset.com convention as everyone else.
 ];
 
 /**
