@@ -21,7 +21,7 @@ Site copy carries hard constraints (no AI branding, no SaaS-vendor voice). **Rea
 - **React 18** with **TypeScript**
 - **Vite** with SWC plugin
 - **Tailwind CSS** + **shadcn/ui**
-- **React Router v6** (31 routes)
+- **React Router v6** (30 routes)
 - **TanStack React Query**
 - **Supabase** (database & auth)
 - Deployed on **Vercel**
@@ -36,12 +36,40 @@ npm run dev        # Start dev server on port 8080
 ## Scripts
 
 ```bash
-npm run dev        # Start dev server
-npm run build      # Production build
-npm run build:dev  # Development build
-npm run lint       # ESLint
-npm run preview    # Preview production build
+npm run dev            # Start dev server
+npm run build          # Production build + prerender + sitemap
+npm run build:norender # Production build without prerendering
+npm run lint           # ESLint
+npm run typecheck      # tsc --noEmit
+npm run preview        # Preview production build
 ```
+
+There is no test framework. `npm run typecheck` plus a clean `npm run build` are
+the closest equivalent — run both before pushing.
+
+## Design System
+
+Tokens live in `:root` in `src/index.css` and are surfaced through
+`tailwind.config.ts`. Use the token, not a literal — inlined hex values that then
+drift have been the recurring failure here.
+
+**Fonts are self-hosted** via `@fontsource-variable` (imported in `src/main.tsx`):
+Archivo Variable for display, Inter Variable for body. Do not add a Google Fonts
+`<link>`. Brandon Grotesque used to lead every stack but was never licensed or
+loaded, so it silently fell through to Montserrat.
+
+**Headings are not uppercase.** A base rule used to force caps on every heading,
+button and nav link, which capped the type scale at 2rem because caps break down
+when set large. Caps are opt-in via `.u-caps` and `.eyebrow`. Display sizes are
+fluid `clamp()` tokens (`text-display-2xl` … `display-md`), so they need no
+breakpoint ladder.
+
+Navy is `#0A2342`, gold `#C8952E`. `hhp-accent` is gold — it previously pointed
+at a pale sky blue the design had abandoned while ~47 usages still referenced it.
+
+There is no global `!important` override block any more; fluid sizing replaced
+its purpose. The 44/48px touch targets it was legitimately providing are now set
+at the component, with a `.tap` utility for inline text CTAs.
 
 ## Environment Variables
 
@@ -71,16 +99,43 @@ src/
     DisciplinesSection.tsx     # Asset Mgmt / Property Mgmt / Facility Services
     ServiceAreaSection.tsx     # Service area by metro (Home, Contact)
     LocalBusinessSchema.tsx    # RealEstateAgent JSON-LD + areaServed
+    SiteSchema.tsx             # Organization + WebSite + Breadcrumb + Service (all routes)
+    AccessRequestForm.tsx      # Shared form for both portal pages
   data/
     serviceArea.ts             # Canonical NAP + service-area cities (single source of truth)
+  lib/
+    leads.ts                   # submitLead() — webhook + Supabase, used by all three forms
   hooks/           # Custom hooks (analytics, SEO, scroll)
   utils/           # Utilities (analytics, debug)
   integrations/    # Supabase client & types
 ```
 
+## SEO & AEO
+
+- **Per-route tags** are stamped into the prerendered HTML from
+  `scripts/routeMeta.mjs` (title, description, canonical, OG, Twitter, `noindex`).
+- **Structured data**: `SiteSchema.tsx` renders from `Layout`, so every route carries
+  `Organization` + `WebSite`. `BreadcrumbList` (nested routes) and `Service`
+  (capability pages) are derived from the pathname, so new routes are covered without
+  touching the component. `LocalBusinessSchema` shares the Organization `@id` so the
+  two merge into one entity rather than competing. `FAQ.tsx` emits `FAQPage` with all
+  23 questions.
+- **`public/llms.txt`** is the plain-language description for answer engines. It states
+  the retired trade name and that HHP is an operating company, not a software vendor or
+  an AI company — the two things a retrieval system is most likely to get wrong.
+- **`robots.txt`** names the answer-engine crawlers explicitly. They were already
+  covered by the wildcard; naming them makes the intent unambiguous.
+
+Verify structured data after a deploy — assert on content, never on status code:
+
+```bash
+curl -s https://hhpasset.com/ | grep -o '"@type":"[A-Za-z]*"' | sort -u
+curl -s -o /dev/null -w "%{content_type}\n" https://hhpasset.com/llms.txt   # text/plain
+```
+
 ## Routing
 
-31 routes, all reachable from the header, footer, or a hub page. Verify after any routing change — this should print nothing:
+30 routes, all reachable from the header, footer, or a hub page. Verify after any routing change — this should print nothing:
 
 ```bash
 grep -oE 'path="[^"]+"' src/App.tsx | sed 's/path="//;s/"//' | sort -u > /tmp/routes.txt
@@ -90,7 +145,11 @@ comm -23 /tmp/routes.txt /tmp/links.txt | grep -v '^\*$' | grep -v '^/$'
 
 30 legacy URLs 301 to their replacements via the `redirects` array in `vercel.json`. **Redirects must be declared there, not in React** — the catch-all rewrite means every path returns HTTP 200, so a client-side redirect would never emit a 301.
 
-`public/sitemap.xml` is generated from the route table. Regenerate it whenever routes change; it previously drifted for over a year.
+**The sitemap is generated at build time** into `dist/sitemap.xml` by
+`scripts/prerender.mjs`, from the same route table, excluding `noindex` routes.
+There is deliberately no `public/sitemap.xml`: the hand-maintained file drifted
+for over a year and shipped `xmlns="http://www.w3.org/schemas/sitemap/0.9"`,
+which is not the sitemap namespace, so Google was very likely rejecting it.
 
 ## Images
 
@@ -128,6 +187,15 @@ unaffected.
 - **The build fails if any route fails to prerender.** That is deliberate — a silently
   un-prerendered deploy looks fine and is invisibly broken for crawlers. Use
   `npm run build:norender` to ship without it.
+- **A browser that cannot launch at all is *not* fatal.** It logs loudly and skips
+  prerendering. Failing there means nothing deploys, which is strictly worse than
+  deploying without prerendered HTML. Route-level failures remain fatal.
+- **Vercel needs `@sparticuz/chromium`.** Puppeteer's own Chrome download is present on
+  Vercel's build image but the shared libraries it links against are not, so it exits
+  127 with `libnspr4.so: cannot open shared object file`. That broke **every production
+  deploy** from the moment prerendering was introduced until it was found. The script
+  switches to `@sparticuz/chromium` when `VERCEL` or `CI` is set; local builds use
+  normal Chrome.
 - **Chrome is cached in `.cache/puppeteer`** via `.puppeteerrc.cjs`, so Vercel's build
   cache covers it. Build-time only; nothing ships to the client.
 
@@ -144,7 +212,30 @@ hydration-mismatch class of bug to worry about.
 
 ## Deployment
 
-Deployed via Vercel with SPA routing configured in `vercel.json`.
+Vercel project `intelio/hhpbrokerandmanagement`, deploying from `main`, with SPA
+routing configured in `vercel.json`.
+
+**A successful `git push` tells you nothing about whether the site updated.**
+Production deploys failed silently for hours here (see the Prerendering section
+and `DEBUGGING_GUIDE.md`). Confirm every time:
+
+```bash
+npx vercel ls | head -5              # latest Production deploy must say Ready
+npx vercel inspect <url> --logs      # if it says Error
+
+# and confirm the live bundle is actually yours
+curl -s https://hhpasset.com/ | grep -o 'assets/index-[A-Za-z0-9_-]*\.js'
+ls dist/assets/index-*.js
+```
+
+### Google / Bing setup (not in this repo)
+
+Search Console and Bing Webmaster Tools verification tokens go in `index.html`
+once obtained; the Business Profile is claimed and verified outside the codebase.
+Keep the NAP identical to `src/data/serviceArea.ts` — the site, the structured
+data and the Business Profile must agree, and mismatch is the most common cause
+of weak local ranking. **The site currently publishes no phone number**, so if
+the Business Profile lists one they are already out of step.
 
 ## Brand Assets
 
@@ -165,6 +256,23 @@ Tracked but not yet addressed:
 
 - **Two SEO mechanisms still coexist in the app** (`useSEO` and `react-helmet-async`) and neither covers every route. This no longer affects crawlers — the prerender step writes per-route tags from `scripts/routeMeta.mjs` — but it should be unified for the in-app tab title on client-side navigation.
 - **Two lockfiles** (`bun.lockb` and `package-lock.json`) are committed; CI may resolve differently from local.
-- **Two hero videos remain large**: `technology-hero.mp4` (6.5 MB) and `HeroHomePageHHP.mp4` (3.2 MB), together most of `public/`. They need re-encoding with ffmpeg, which is not available in this environment.
+- **Two hero videos remain large**: `technology-hero.mp4` (6.5 MB) and `HeroHomePageHHP.mp4` (3.2 MB), together most of `public/`. They need re-encoding with ffmpeg, which is not available in this environment. `technology-hero.mp4` also has no `poster`, so that hero is black until it loads.
 - **No `srcset`/`sizes` on any image**, so phones download desktop-sized assets. Less severe now that nothing exceeds ~320 kB, but still worth adding for the full-bleed backgrounds.
 - **38 of 48 shadcn components are unused**, along with `zod`, `date-fns`, `@hookform/resolvers`, and `@tanstack/react-query` (provider only, no queries).
+- **`Insights.tsx` presents nine pieces of content that do not exist.** The eleven fake
+  "Download PDF" / "Read More" link affordances were removed so the cards no longer
+  advertise a click that goes nowhere, but the reports and articles themselves still
+  need writing before anything can be linked.
+- **Nine service pages share a byte-identical "ABOUT US" paragraph**, and the lower half
+  of each has no imagery. Extracting the repeated blocks (`AboutSplit`, `CareersBand`,
+  `FaqCta`, `PageHero`, `Section`) into shared components would stop the duplication
+  drifting and make per-page imagery a one-line change.
+- **The About hero photograph is a New York skyline** on an Oklahoma operator's site.
+- **`useSEO.ts` is imported by no page** (superseded by the prerender step) — remove or
+  wire it up.
+- **Eight orphaned components** remain in `src/components/`: `BenefitsCards`, `IconGrid`,
+  `PremiumCTABanner`, `ProcessSteps`, `ProofPoints`, `ServiceCards`, and `ServicesSubNav`
+  (whose links point at `/management/*` routes deleted from `App.tsx`).
+- **The portals collect access requests but there is no portal.** `InvestorPortal` still
+  advertises a feature list for a product that does not exist yet — retained at the
+  owner's explicit request.

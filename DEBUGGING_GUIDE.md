@@ -4,6 +4,143 @@
 
 ---
 
+## 🚀 **DEPLOY: EVERY PRODUCTION BUILD FAILED FOR HOURS, SILENTLY (FIXED)**
+
+### Symptom
+Commits pushed to `main` cleanly. The live site kept serving an older build.
+Nothing in the repo looked wrong, and nothing surfaced the failure — you only
+notice if you happen to compare the live asset hash against a local build.
+
+### Root cause
+`npm run build` runs `scripts/prerender.mjs`, which launches Puppeteer. Vite
+built fine; the prerender step exited 1:
+
+```
+✓ built in 8.43s
+chrome: error while loading shared libraries: libnspr4.so:
+        cannot open shared object file
+Error: Failed to launch the browser process: Code: 127
+Error: Command "npm run build" exited with 1
+```
+
+Puppeteer's downloaded Chrome **is present** on Vercel's build image, but the
+system libraries it links against are not. This broke the moment prerendering
+was introduced, so the last good deploy predated the feature.
+
+### Fix
+Two changes, both in `scripts/prerender.mjs`:
+
+1. Use `@sparticuz/chromium` when `process.env.VERCEL` or `CI` is set — a
+   Chromium built for serverless/CI containers. Local builds are unaffected.
+2. A browser that will not launch is **non-fatal**. Prerendering is an SEO
+   enhancement and the app is a working SPA without it; failing the build means
+   nothing ships, which is strictly worse. Route-level failures stay fatal,
+   because those mean a page actually threw.
+
+### How to detect this class of bug
+A green `git push` is not a deploy. Compare the live bundle to the local one:
+
+```bash
+curl -s https://hhpasset.com/ | grep -o 'assets/index-[A-Za-z0-9_-]*\.js'
+ls dist/assets/index-*.js
+# different hash = the live site is not your build
+npx vercel ls | head -5
+```
+
+---
+
+## 🕳️ **THE CATCH-ALL MAKES EVERY URL LOOK LIKE IT EXISTS**
+
+`vercel.json` rewrites unmatched paths to `index.html`, so **a 200 proves
+nothing** — this is the single easiest trap in this repo to fall into, and it
+has been fallen into more than once.
+
+A newly added `public/llms.txt` appeared to be live:
+
+```
+$ curl -s -o /dev/null -w "HTTP %{http_code} %{size_download}" .../llms.txt
+HTTP 200  3488 bytes
+```
+
+It was not deployed at all. The same request to a deliberately nonsense path
+returned **byte-identical** output — both were `index.html`.
+
+### How to check a static file actually exists
+Assert on content type or content, never on status:
+
+```bash
+curl -s -o /dev/null -w "%{content_type}\n" https://hhpasset.com/llms.txt
+# text/plain  = real file
+# text/html   = SPA fallback, the file is not there
+
+curl -s https://hhpasset.com/definitely-not-real-xyz | head -c 60
+# compare against the file you are testing
+```
+
+---
+
+## 🪟 **`backdrop-filter` BREAKS `position: fixed` CHILDREN**
+
+### Symptom
+The mobile menu opened correctly but the header's own logo and close button
+vanished behind it. Nothing errored; types and build were clean.
+
+### Root cause
+The overlay sheet is a descendant of `<header>`, and the header had
+`backdrop-blur-md`. **A non-`none` `backdrop-filter` makes an element a
+containing block for `position: fixed` descendants.** So `fixed inset-0`
+resolved against the header box rather than the viewport, and the sheet painted
+over the header's contents.
+
+### Fix
+Drop the blur while the sheet is open, and give the header's top bar
+`relative z-50` so it keeps painting above the `z-40` sheet.
+
+### Worth remembering
+The same applies to `filter`, `transform`, `perspective`, `contain: paint` and
+`will-change`. Adding any of them to an ancestor silently re-anchors fixed
+children, with no error and no type failure. If a `fixed` element lands in the
+wrong place, walk its ancestors looking for these properties first.
+
+---
+
+## 📱 **DELETING THE `!important` BLOCK REMOVED TOUCH TARGETS**
+
+The ~220-line mobile override block in `index.css` was mostly harmful — it reset
+typography, grid gaps and padding below 768px and fought every responsive change
+made in JSX. But buried inside it was a blanket rule giving every anchor a 48px
+minimum height on mobile.
+
+Removing the block dropped the header logo to 32px, footer links to 36px, social
+buttons to 40px, and every inline text CTA to ~20px. Nothing looked broken on
+desktop and nothing failed a build.
+
+Touch targets are now sized at the component, with a `.tap` utility for inline
+text links that act as CTAs. **When you delete a broad rule, enumerate what it
+was legitimately doing before assuming it was all bad.**
+
+Audit with a headless pass at 390px, asserting on measurements rather than
+screenshots: horizontal scroll, elements wider than the viewport, interactive
+targets under 44px, text under 12px.
+
+---
+
+## 🎨 **CSS CLASSES THAT DO NOT EXIST FAIL SILENTLY**
+
+Three classes were referenced and never defined. Tailwind emits nothing for an
+unknown class and React does not care, so each rendered as *almost* correct:
+
+| Class | Where | Effect |
+| --- | --- | --- |
+| `icon-hhp-accent` | `Brokerage.tsx` ×4 | `.icon-accent` exists; this does not. The **first checklist in every section rendered navy and the second uncoloured** |
+| `bg-hhip-accent/10` | `technology/CustomSolutions.tsx` | Typo for `hhp`. One of four icon wells rendered transparent |
+| `min-h-auto` | `Technology.tsx` | Not a Tailwind class at all |
+
+Grep for suspicious class names when something looks subtly inconsistent between
+two elements that should match.
+
+---
+
 ## 🔗 **SEO: EVERY ROUTE SELF-CANONICALIZED TO THE HOMEPAGE (FIXED)**
 
 ### Symptom

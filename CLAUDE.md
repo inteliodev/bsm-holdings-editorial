@@ -41,14 +41,42 @@ The Facility Services page states "no subcontractor markup on self-performed wor
 ## Commands
 
 ```bash
-npm run dev        # Start dev server on port 8080
-npm run build      # Production build
-npm run build:dev  # Development build
-npm run lint       # ESLint
-npm run preview    # Preview production build locally
+npm run dev          # Start dev server on port 8080
+npm run build        # Production build + prerender + sitemap
+npm run build:norender # Production build without the prerender step
+npm run lint         # ESLint
+npm run typecheck    # tsc --noEmit
+npm run preview      # Preview production build locally
 ```
 
-No test framework is configured.
+No test framework is configured. `npm run typecheck` and a clean `npm run build`
+are the closest thing to a test suite — run both before pushing.
+
+## Deployment
+
+Vercel project `intelio/hhpbrokerandmanagement`, deploying from `main`.
+
+**A push succeeding tells you nothing about whether the site updated.** Deploys
+have failed silently for hours here. Always confirm:
+
+```bash
+npx vercel ls | head -5          # latest Production deploy must say Ready
+npx vercel inspect <url> --logs  # if it says Error
+```
+
+`npm run build` runs `scripts/prerender.mjs`, which needs Chrome. Puppeteer's
+own Chrome download **cannot launch on Vercel's build image** — the binary is
+there but the shared libraries it links against are not, and it exits 127 with
+`libnspr4.so: cannot open shared object file`. The script uses
+`@sparticuz/chromium` when `process.env.VERCEL` or `CI` is set for that reason;
+locally it uses normal Chrome. If Chrome cannot start at all the prerender is
+skipped loudly rather than failing the build, because a site that cannot deploy
+is worse than one without prerendered HTML. Individual *route* failures are
+still fatal.
+
+`sitemap.xml` is generated into `dist/` by the same script from the route table,
+excluding `noindex` routes. There is deliberately no `public/sitemap.xml` — the
+hand-maintained one drifted and shipped an invalid XML namespace for a long time.
 
 ## Architecture
 
@@ -56,7 +84,7 @@ No test framework is configured.
 - **React 18** with **TypeScript** (strict mode off)
 - **Vite** with SWC plugin for compilation
 - **Tailwind CSS** + **shadcn/ui** (40+ Radix UI components in `src/components/ui/`)
-- **React Router v6** — SPA with 60+ routes defined in `src/App.tsx`
+- **React Router v6** — SPA with 30 routes defined in `src/App.tsx`
 - **TanStack React Query** for server state
 - **React Hook Form + Zod** for form validation
 - **Supabase** for database and auth
@@ -74,7 +102,7 @@ No test framework is configured.
 - `src/integrations/supabase/` — Supabase client init and auto-generated types
 
 ### Routing
-All routes are in `src/App.tsx` (61 `<Route>` entries). The app includes legacy backward-compatible routes that map old URLs to new page components. Vercel is configured with a catch-all rewrite to `index.html` for SPA routing (`vercel.json`).
+All routes are in `src/App.tsx` (30 `<Route>` entries). The app includes legacy backward-compatible routes that map old URLs to new page components. Vercel is configured with a catch-all rewrite to `index.html` for SPA routing (`vercel.json`).
 
 Because of that catch-all, **every path returns HTTP 200 even if no route matches** — `curl` status codes prove nothing about whether a route works. Verify routes in a browser and assert on rendered content instead.
 
@@ -98,8 +126,29 @@ The Home hero is `position: fixed; z-index: 0` with content scrolling over it, s
 ### Reusable Page Templates
 `src/components/AssetTypePage.tsx` is a shared template used by all 6 asset type detail pages. When modifying asset type pages, update the template rather than individual pages when possible.
 
-### Contact Form
-The contact form in `src/pages/Contact.tsx` submits to an n8n webhook at `https://n8n.capitalaiadvisors.com/webhook/hhp-contact`.
+### Lead capture
+Three surfaces submit leads: the contact form, and the two portal access-request
+forms. Delivery lives in **`src/lib/leads.ts`** (`submitLead`) — two independent
+sinks attempted concurrently, the n8n webhook and a Supabase `contacts` insert,
+so a lead is only lost if both fail. Route new forms through it rather than
+re-implementing the pattern.
+
+`src/components/AccessRequestForm.tsx` backs both portal pages.
+
+**The portals do not authenticate anything.** They previously rendered a sign-in
+that awaited a 1500ms timeout and then showed a success toast — any password
+"worked", nothing was stored, and neither destination route exists. They are now
+honest access-request forms with no password field. Do not add one back unless
+real auth exists behind it.
+
+### Structured data
+`src/components/SiteSchema.tsx` renders from `Layout`, so every route carries
+`Organization` + `WebSite`, plus `BreadcrumbList` on nested routes and `Service`
+on capability pages — both derived from the pathname, so new routes are covered
+automatically. `LocalBusinessSchema` (Home, Contact) shares the Organization
+`@id` so the two merge into one entity. `FAQ.tsx` emits `FAQPage`.
+
+`public/llms.txt` is the plain-language description for answer engines.
 
 ### Error Handling
 - Global `ErrorBoundary` component wraps the entire app in `App.tsx`
@@ -111,19 +160,76 @@ The contact form in `src/pages/Contact.tsx` submits to an n8n webhook at `https:
 
 ## Design System
 
-### Brand Colors (Tailwind)
-- `hhp-navy` — primary dark navy
-- `hhp-accent` — accent blue
-- `hhp-charcoal` — body text
-- `hhp-white` — backgrounds
+All tokens live in `:root` in `src/index.css` and are exposed through
+`tailwind.config.ts`. Prefer the token over a literal — the recurring failure
+mode in this repo has been hex values inlined in components that then drift.
 
 ### Typography
-- Headings: `font-heading` (Brandon Grotesque → Montserrat fallback)
-- Body: `font-body` (Inter system stack)
-- Display: `font-display` (same as heading)
 
-### Custom Shadows
-`shadow-elegant`, `shadow-premium`, `shadow-subtle` — defined via CSS variables in `src/index.css`.
+Fonts are **self-hosted** via `@fontsource-variable`, imported in `src/main.tsx`.
+Do not add a Google Fonts `<link>`: it puts a third-party DNS + TLS handshake on
+the critical path and ships static weights where the variable faces cover
+100–900.
+
+- `font-display` / `font-heading` — **Archivo Variable** (Montserrat is fallback only)
+- `font-body` — **Inter Variable**
+
+Brandon Grotesque was previously first in every stack but was never licensed or
+loaded, so it always silently fell through. It is gone; do not reintroduce it.
+
+**Headings are not uppercase.** A base-layer rule used to force
+`text-transform: uppercase` on every `h1`–`h6`, every `<button>` and every
+`nav a`. Caps destroy word-shape, which capped the entire type scale at 2rem.
+Caps are now opt-in:
+
+- `.u-caps` — uppercase + tracking, for labels
+- `.eyebrow` — the canonical gold kicker with a hairline rule (add
+  `.eyebrow-bare` to drop the rule)
+
+Display sizes are fluid `clamp()` tokens, so they need no breakpoint ladder:
+`text-display-2xl` (hero) · `display-xl` · `display-lg` (section `h2`) ·
+`display-md` · `text-eyebrow`. `.hero-title`, `.section-title` and
+`.hero-headline` are built from the same scale.
+
+### Colour
+
+- `hhp-navy` — `#0A2342`, the canonical brand navy
+- `hhp-navy-deep` / `hhp-navy-soft` — darker ground, hairlines on dark
+- `hhp-gold` — `#C8952E`, the accent
+- `hhp-accent` — **also gold**; it used to be a pale sky blue the design had
+  abandoned while ~47 usages still pointed at it
+- `hhp-charcoal` — body text, slightly cooled so it sits with navy
+- `surface` / `surface-sunken` — replaces `bg-gray-50` and a one-off `#f7f9fb`
+
+### Elevation, radius, motion
+
+- `shadow-subtle` · `shadow-elegant` · `shadow-premium` · `shadow-card` ·
+  `shadow-card-hover` — two-stop layered shadows (a single large blur reads as a
+  smudge at these sizes)
+- `--radius: 4px`
+- `--ease-out-expo` (also available as `ease-out-expo`) is the house curve
+
+### Component classes
+
+`.container-premium` · `.section-spacing` (fluid; used ~58 times, so it sets the
+site's vertical rhythm) · `.premium-card` · `.platform-card-hover` (gold top bar
+that wipes in — the canonical card hover) · `.btn-hero` · `.btn-secondary` ·
+`.scrim-hero` / `.scrim-bottom` (gradient scrims for text over photography —
+never use a flat `bg-black/NN`, it mutes the whole image) · `.tap` (mobile touch
+target for inline text links).
+
+### Mobile
+
+There is **no** global `!important` override block any more. It was ~220 lines
+that reset typography, grid gaps and padding below 768px and fought every
+responsive change made in JSX. Fluid `clamp()` sizing replaced its purpose.
+
+What it *was* legitimately doing — 44/48px touch targets — is now handled at the
+component. If you add an inline text link that acts as a CTA, give it `.tap`.
+
+Audit with a headless pass at 390px before shipping layout work: check for
+horizontal scroll, elements wider than the viewport, and interactive targets
+under 44px.
 
 ## Environment Variables
 
