@@ -36,7 +36,10 @@ const Footer = () => {
        fixed element paints above static content regardless of z-index, which
        previously left this footer invisible on the homepage. Do not remove. */
     <footer className="relative z-30 -mt-px bg-hhp-navy text-white">
-      <div className="container-premium pb-10 pt-16 sm:pt-20">
+      {/* Top padding is deliberately larger than the logo is tall. The mark was
+          previously set 56px tall inside 64px of padding, so it read as jammed
+          against the boundary with the white section above it. */}
+      <div className="container-premium pb-10 pt-20 sm:pt-24">
         <div className="grid grid-cols-2 gap-x-8 gap-y-12 lg:grid-cols-12 lg:gap-x-12">
           {/* Brand */}
           <div className="col-span-2 lg:col-span-4">
@@ -48,7 +51,7 @@ const Footer = () => {
               width={509}
               height={177}
               loading="lazy"
-              className="h-12 w-auto object-contain sm:h-14"
+              className="h-10 w-auto object-contain sm:h-11"
             />
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/55">
               Vertically Integrated. Data Driven. Forward Thinking.
