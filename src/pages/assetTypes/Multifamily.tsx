@@ -1,164 +1,199 @@
 import AssetTypePage from '@/components/AssetTypePage';
-import { BarChart3, Users, Zap, DollarSign } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 const Multifamily = () => {
   return (
     <>
-      {/* SEO Meta Tags */}
+      {/* SEO Meta Tags. The canonical and og:url previously pointed at
+          /services/multifamily, which is not a registered route — the catch-all
+          rewrite made it look like a 200 while resolving to NotFound. */}
       <Helmet>
         <title>Multifamily Property Management & Investment Services | HHP Asset Management</title>
-        <meta 
-          name="description" 
-          content="Expert multifamily property management, investment sales, and advisory services. Enhance value across stabilized, lease-up, and mixed-use communities." 
+        <meta
+          name="description"
+          content="Operator-led multifamily property management, underwriting and advisory. Self-performed trades, line-item cost visibility, and reporting without the month-end lag."
         />
-        <meta 
-          name="keywords" 
-          content="multifamily property management, apartment management, multifamily investment, lease-up services, NOI optimization, mixed-use development"
+        <meta
+          name="keywords"
+          content="multifamily property management, apartment management, multifamily investment, unit turns, NOI optimization, self-performed maintenance"
         />
         <meta property="og:title" content="Multifamily Property Management Services | HHP Asset Management" />
-        <meta property="og:description" content="Enhancing value across stabilized, lease-up, and mixed-use communities with data-driven property management." />
+        <meta property="og:description" content="Operator-led multifamily management with self-performed trades and line-item cost visibility." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://hhpasset.com/services/multifamily" />
+        <meta property="og:url" content="https://hhpasset.com/asset-types/multifamily" />
         <meta property="og:image" content="https://hhpasset.com/images/multifamily-image-trendy.jpg" />
-        <link rel="canonical" href="https://hhpasset.com/services/multifamily" />
-        
+        <link rel="canonical" href="https://hhpasset.com/asset-types/multifamily" />
+
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Multifamily Property Management Services | HHP Asset Management" />
-        <meta name="twitter:description" content="Enhancing value across stabilized, lease-up, and mixed-use communities." />
+        <meta name="twitter:description" content="Operator-led multifamily management with self-performed trades and line-item cost visibility." />
         <meta name="twitter:image" content="https://hhpasset.com/images/multifamily-image-trendy.jpg" />
       </Helmet>
 
       <AssetTypePage
-        // Hero Section
         heroImage="/images/multifamily-image-trendy.jpg"
+        eyebrow="Asset Class"
         title="Multifamily"
-        tagline="Hands-on management and advisory across stabilized, lease-up, and mixed-use communities"
-        heroButtonText="Schedule a Consultation"
-        
-        // Market Context
-        marketText="Multifamily assets operate in a competitive environment shaped by local market dynamics, operating costs, and resident expectations. Owners must balance occupancy, revenue stability, expense control, and long-term capital preservation while adapting to shifting market conditions. Sustained performance in multifamily requires disciplined operations, consistent resident engagement, and financial oversight aligned with ownership objectives."
-        valueProposition="HHP provides operator-led property management and advisory services for multifamily assets, grounded in accountability, execution, and institutional operating standards. Our approach emphasizes: Occupancy stability and resident retention; Revenue and expense discipline; Preventive maintenance and asset stewardship; Transparent reporting and owner communication. We manage multifamily properties with a long-term ownership mindset, aligning daily operations with asset strategy, market positioning, and capital objectives."
-        valuePropositionTitle="HHP's Approach to Multifamily"
-        
-        // Services Context
+        tagline="Turn time is occupancy, and occupancy is revenue"
+        heroButtonText="Talk to us about a community"
+        mark="multifamily"
+
+        marketText="Multifamily is decided in the gap between one resident moving out and the next moving in. Every day a unit sits is revenue that cannot be recovered later in the year, and the length of that gap is set by whether the paint, flooring and punch work can be scheduled immediately or has to be bid. The same is true of a work order: response time is the single thing residents cite most in renewal decisions, and it is entirely an operating variable. Rate matters, but rate is a market condition. Turn time is a choice."
+        valuePropositionTitle="Where HHP fits"
+        valueProposition="Turns and maintenance are performed by our own personnel, so a unit turn is scheduled rather than tendered. That compresses the vacancy gap and means the cost of the turn reports as labor hours and materials rather than a contractor invoice with margin already priced in."
+
+        metricsIntro="Multifamily performance is an operating result, not a market one. These are the figures we hold against every community."
+        metrics={[
+          {
+            label: 'Turn time',
+            detail:
+              'Days from notice to rent-ready, measured per unit rather than averaged. Because turns are self-performed, this is a schedule we control rather than a vendor queue we join.',
+          },
+          {
+            label: 'Cost per turn',
+            detail:
+              'Labor hours and materials per unit, separated from capital work. A turn cost that only exists as an invoice total cannot be managed.',
+          },
+          {
+            label: 'Work order response time',
+            detail:
+              'Hours from submission to resolution. The number residents cite most at renewal, and one that is entirely within an operator’s control.',
+          },
+          {
+            label: 'Renewal rate',
+            detail:
+              'Tracked against response time and turn quality rather than against rate alone, because renewals are usually lost on service and only blamed on rent.',
+          },
+          {
+            label: 'Delinquency and collections',
+            detail:
+              'Aged by resident with the intervention history attached, so a collection problem is visible while it is still a conversation.',
+          },
+          {
+            label: 'Controllable expense per unit',
+            detail:
+              'Separated from taxes, insurance and debt service, so the part of the operating line an operator can actually move is reported on its own.',
+          },
+        ]}
+
         services={{
           propertyManagement: {
-            description: "Comprehensive multifamily property management focused on operational consistency and resident service.",
+            description:
+              'On-site operation by HHP personnel, with maintenance and turns performed in house rather than dispatched to a rotating set of contractors.',
             services: [
-              "Day-to-day property and on-site staff oversight",
-              "Resident relations and service request coordination",
-              "Vendor management and service quality oversight",
-              "Preventive maintenance and capital planning",
-              "Financial management, budgeting, and reporting"
-            ]
+              'Day-to-day property and on-site staff oversight',
+              'Resident relations and service request coordination',
+              'Vendor management and service quality oversight',
+              'Preventive maintenance and capital planning',
+              'Financial management, budgeting, and reporting',
+            ],
           },
           advisorySiteSelection: {
-            description: "Strategic advisory services supporting acquisition, repositioning, and long-term ownership decisions.",
+            description:
+              'Operational due diligence that reports what the community will cost to run, including the turn and maintenance load a rent roll never shows.',
             services: [
-              "Market and submarket analysis",
-              "Operational due diligence and asset reviews",
-              "Transition planning for new ownership or management",
-              "Asset strategy development for stabilized and value-add properties"
-            ]
+              'Market and submarket analysis',
+              'Operational due diligence and asset reviews',
+              'Transition planning for new ownership or management',
+              'Asset strategy development for stabilized and value-add properties',
+            ],
           },
           investmentSales: {
-            description: "Advisory support for ownership transitions, recapitalizations, and strategic portfolio decisions involving multifamily assets.",
+            description:
+              'We underwrite from the expense side because we operate communities, so the maintenance and turn assumptions are ones we would have to deliver.',
             services: [
-              "Valuation and underwriting support",
-              "Buyer and stakeholder coordination",
-              "Transaction execution support",
-              "Post-transaction operational transition planning"
-            ]
+              'Valuation and underwriting support',
+              'Buyer and stakeholder coordination',
+              'Transaction execution support',
+              'Post-transaction operational transition planning',
+            ],
           },
           landlordRepresentation: {
-            description: "Occupancy and leasing oversight aligned with market conditions and asset positioning.",
+            description:
+              'Rent positioning set against real turn capacity, so a leasing target is one the maintenance schedule can actually support.',
             services: [
-              "Leasing strategy coordination",
-              "Rent positioning and renewal oversight",
-              "Resident onboarding and move-in coordination",
-              "Retention-focused resident engagement"
-            ]
+              'Leasing strategy coordination',
+              'Rent positioning and renewal oversight',
+              'Resident onboarding and move-in coordination',
+              'Retention-focused resident engagement',
+            ],
           },
           tenantRepresentation: {
-            description: "Structured communication and engagement supporting resident satisfaction and community stability.",
+            description:
+              'Every call, request and follow-up logged against both the unit and the resident, so the full history of a tenancy is retrievable on request.',
             services: [
-              "Resident communication and issue resolution",
-              "Community standards and lease compliance oversight",
-              "Coordination of resident services and programming"
-            ]
+              'Resident communication and issue resolution',
+              'Community standards and lease compliance oversight',
+              'Coordination of resident services and programming',
+            ],
           },
           acquisitionsDevelopment: {
-            description: "Support across acquisition, redevelopment, and development phases with a focus on operational readiness and continuity.",
+            description:
+              'Renovation and repositioning run through our own general contracting, which removes a layer of markup from every project above the maintenance threshold.',
             services: [
-              "Acquisition underwriting and operational review",
-              "Development and redevelopment advisory",
-              "Operational setup for new or repositioned assets",
-              "Lease-up and stabilization planning"
-            ]
-          }
+              'Acquisition underwriting and operational review',
+              'Development and redevelopment advisory',
+              'Operational setup for new or repositioned assets',
+              'Lease-up and stabilization planning',
+            ],
+          },
         }}
         serviceTitles={{
-          investmentSales: "Transaction Advisory",
-          landlordRepresentation: "Leasing & Occupancy Management",
-          tenantRepresentation: "Resident & Community Relations"
+          investmentSales: 'Transaction Advisory',
+          landlordRepresentation: 'Leasing & Occupancy Management',
+          tenantRepresentation: 'Resident & Community Relations',
         }}
-        servicesTitle="Integrated Services for Multifamily"
-        showAboutUs={true}
-        
-        // Technology Advantages / HHP Advantage
+        servicesTitle="Integrated services for multifamily"
+        servicesSubtitle="Six capabilities under one firm, so no part of the community is somebody else's responsibility."
+
+        technologyTitle="The HHP advantage for multifamily"
         technologyAdvantages={[
           {
-            icon: <BarChart3 className="h-8 w-8 text-white" />,
-            title: "Operator-Led Performance",
-            description: "Hands-on operational oversight focused on occupancy stability, expense control, and long-term asset performance."
+            title: 'Turns performed, not tendered',
+            description:
+              'Paint, flooring, punch work and janitorial are performed by our own personnel. A turn starts when the unit is vacant rather than when a contractor has capacity, which is where vacancy days are actually won.',
           },
           {
-            icon: <Users className="h-8 w-8 text-white" />,
-            title: "Revenue & Expense Discipline",
-            description: "Market-informed rent strategy, renewal oversight, and cost controls aligned with ownership objectives."
+            title: 'Same-day response as an operating standard',
+            description:
+              'Work orders route directly to HHP Facility Services and, in most cases, are resolved the same day. Response time is the number residents remember at renewal.',
           },
           {
-            icon: <Zap className="h-8 w-8 text-white" />,
-            title: "Maintenance & Asset Stewardship",
-            description: "Preventive maintenance programs and capital planning designed to protect asset condition and reduce operational risk."
+            title: 'Cost visible at the line item',
+            description:
+              'Each order records labor hours, materials and time on site rather than resolving to an invoice. There is no subcontractor markup on self-performed work, and specialty vendors are engaged only where licensing requires it.',
           },
           {
-            icon: <DollarSign className="h-8 w-8 text-white" />,
-            title: "Resident Experience Execution",
-            description: "Consistent resident communication and service delivery supporting retention and community stability."
+            title: 'Reporting without the month-end lag',
+            description:
+              'Occupancy, delinquency and expense variance reach owners as they land. The systems producing that reporting are built and maintained by HHP.',
           },
           {
-            icon: <BarChart3 className="h-8 w-8 text-white" />,
-            title: "Owner Transparency",
-            description: "Clear financial reporting, performance monitoring, and proactive communication aligned with institutional ownership standards."
-          }
+            title: 'One firm accountable',
+            description:
+              'Property management, the trades and the accounting report into the same principal, so a maintenance failure and its cost are answered by the same people.',
+          },
         ]}
-        technologyTitle="The HHP Advantage for Multifamily"
-        useModernLayout={true}
-        
-        // Insights
-        insights={[
-          {
-            title: "Operating Multifamily in Changing Markets",
-            description: "Perspectives on occupancy trends, operating costs, and resident expectations.",
-            date: "December 2024"
-          },
-          {
-            title: "Revenue and Retention Strategies",
-            description: "Insights into rent positioning, renewals, and resident engagement.",
-            date: "November 2024"
-          },
-          {
-            title: "Long-Term Multifamily Ownership",
-            description: "Guidance on capital planning, expense management, and asset performance.",
-            date: "October 2024"
-          }
-        ]}
-        insightsTitle="Insights & Research"
-        
-        // CTA Section - Removed
+
+        proof={{
+          kind: 'seeking',
+          image: '/images/property-management-picture.webp',
+          imageAlt: 'Multifamily community exterior',
+          title: 'What we underwrite for in multifamily',
+          body: 'HHP’s managed portfolio today is senior and affordable housing in Pryor, Oklahoma. We underwrite and advise on conventional multifamily, and these are the conditions under which we will take a community on.',
+          points: [
+            'A community where turn time and response time can be improved by operating it differently',
+            'Deferred maintenance we can scope before closing rather than discover in the first quarter',
+            'An ownership that wants controllable expense reported separately from taxes, insurance and debt service',
+            'Proximity to our Tulsa and Oklahoma City personnel, so turns and maintenance are ours rather than dispatched',
+          ],
+          href: '/contact',
+          hrefLabel: 'Start a conversation',
+        }}
+
+        ctaTitle="Tell us about the community"
+        ctaBody="Send us the rent roll, the turn log and the last twelve months of operating statements. We will tell you where we think the vacancy days are going."
       />
     </>
   );

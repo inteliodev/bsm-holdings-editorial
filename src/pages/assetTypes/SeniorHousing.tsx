@@ -1,136 +1,171 @@
 import AssetTypePage from '@/components/AssetTypePage';
-import { Heart, Shield, Users, Calendar } from 'lucide-react';
 
 const SeniorHousing = () => {
   return (
     <AssetTypePage
-      // Hero Section
       heroImage="/images/senior-housing-image.jpg"
+      eyebrow="Asset Class"
       title="Senior Housing"
-      tagline="Delivering operational stability and resident-focused care solutions"
-      
-      // Market Context
-      marketText="Senior housing operates at the intersection of real estate, healthcare, and hospitality. Operators must balance resident well-being, regulatory oversight, staffing complexity, and financial sustainability while maintaining a high standard of care and service. As demographics continue to shift and operating costs rise, long-term success in senior housing depends on disciplined operations, strong leadership, and consistent execution across care delivery, facilities management, and financial oversight."
-      valueProposition="HHP provides operator-led property management and advisory services for senior housing communities, grounded in accountability, resident-focused execution, and institutional operating standards. Our approach emphasizes: Resident safety, dignity, and quality of life; Regulatory compliance and operational readiness; Staffing stability and service consistency; Financial discipline and transparent reporting. We work closely with owners, operators, and care partners to support communities across independent living, assisted living, and memory care environments, with a focus on long-term sustainability and trust."
-      valuePropositionTitle="HHP's Approach to Senior Housing"
-      
-      // Services Context
+      tagline="The class we operate ourselves, every day, in Pryor"
+      heroButtonText="Talk to us about a community"
+      mark="senior"
+
+      marketText="Senior housing is the least forgiving class to operate and the easiest to under-resource. Residents are long-tenured, so a community's reputation is built over years and spent in weeks. Response time is not a service metric here — a failed water heater or a lift that will not run is a safety matter for someone who cannot easily work around it. And where the community is federally assisted, the compliance calendar is not administrative overhead sitting beside operations; it is the operation. Miss a recertification window and the subsidy that funds the building is in question."
+      valuePropositionTitle="Where HHP fits"
+      valueProposition="This is the class we operate directly. HHP manages three HUD Section 202 communities on one campus in Pryor, Oklahoma — 85 units in total — with the property management, the trades and the accounting all in house. What we describe on this page is not a capability statement; it is how we run buildings we are accountable for today."
+
+      metricsIntro="These are the figures we hold against the communities we operate, not a generic list."
+      metrics={[
+        {
+          label: 'Occupancy and waitlist depth',
+          detail:
+            'Occupancy on its own says nothing about resilience. Waitlist depth is what determines whether a move-out is a two-week gap or a two-month one.',
+        },
+        {
+          label: 'Recertification timeliness',
+          detail:
+            'Annual and interim certifications tracked against their due dates rather than reconstructed at audit. The calendar is monitored continuously, not assembled ahead of a review.',
+        },
+        {
+          label: 'Inspection readiness',
+          detail:
+            'Unit and site condition held to inspection standard year round, so a scheduled inspection is a confirmation rather than a scramble.',
+        },
+        {
+          label: 'Work order response time',
+          detail:
+            'Hours from report to resolution. In a senior community this is a safety measure first and a satisfaction measure second, which is why the trades are ours.',
+        },
+        {
+          label: 'Resident tenure',
+          detail:
+            'Long tenure is the point of this class. It is also the clearest signal that the building is being run well, and it moves slowly enough to be trusted.',
+        },
+        {
+          label: 'Subsidy reconciliation',
+          detail:
+            'Assistance payments reconciled against the rent roll each period, so a discrepancy is found in the month it occurs.',
+        },
+      ]}
+
       services={{
         propertyManagement: {
-          description: "Comprehensive senior housing management focused on operational reliability, resident experience, and regulatory alignment.",
+          description:
+            'On-site operation by HHP personnel who know the residents by name — which in a community with this tenure profile is an operating advantage, not a courtesy.',
           services: [
-            "Day-to-day community operations and on-site oversight",
-            "Facilities management and preventive maintenance",
-            "Vendor coordination and service quality oversight",
-            "Financial management, budgeting, and reporting",
-            "Resident relations and community standards enforcement"
-          ]
+            'Day-to-day community operations and on-site oversight',
+            'Facilities management and preventive maintenance',
+            'Vendor coordination and service quality oversight',
+            'Financial management, budgeting, and reporting',
+            'Resident relations and community standards enforcement',
+          ],
         },
         advisorySiteSelection: {
-          description: "Strategic advisory services supporting acquisition, development, and long-term ownership decisions in senior housing.",
+          description:
+            'Feasibility and diligence informed by operating three of these communities ourselves, including what the compliance load actually costs to carry.',
           services: [
-            "Market and demographic analysis",
-            "Feasibility studies and operational due diligence",
-            "Transition planning for new ownership or operators",
-            "Long-term asset and operational strategy development"
-          ]
+            'Market and demographic analysis',
+            'Feasibility studies and operational due diligence',
+            'Transition planning for new ownership or operators',
+            'Long-term asset and operational strategy development',
+          ],
         },
         investmentSales: {
-          description: "Advisory support for ownership transitions, recapitalizations, and strategic portfolio decisions within senior housing environments.",
+          description:
+            'We underwrite from the expense side because we operate this class, so the staffing and compliance assumptions in our model are ones we live with.',
           services: [
-            "Valuation and underwriting support",
-            "Buyer and stakeholder coordination",
-            "Transaction execution support",
-            "Post-transaction operational and management transitions"
-          ]
+            'Valuation and underwriting support',
+            'Buyer and stakeholder coordination',
+            'Transaction execution support',
+            'Post-transaction operational and management transitions',
+          ],
         },
         landlordRepresentation: {
-          description: "Occupancy strategy and leasing oversight aligned with community positioning, care levels, and resident needs.",
+          description:
+            'Occupancy managed through the waitlist rather than reacted to at notice, so the gap between one resident and the next stays short.',
           services: [
-            "Occupancy strategy development",
-            "Move-in coordination and resident onboarding",
-            "Coordination between leasing, care, and operations teams",
-            "Retention-focused resident engagement support"
-          ]
+            'Occupancy strategy development',
+            'Move-in coordination and resident onboarding',
+            'Coordination between leasing, care, and operations teams',
+            'Retention-focused resident engagement support',
+          ],
         },
         tenantRepresentation: {
-          description: "Structured communication and coordination supporting resident satisfaction and family confidence.",
+          description:
+            'Communication that includes families, because in this class the person raising a concern is often not the person living in the unit.',
           services: [
-            "Resident communication and issue resolution",
-            "Family engagement and reporting coordination",
-            "Support for care-related operational workflows",
-            "Alignment between management, staff, and families"
-          ]
+            'Resident communication and issue resolution',
+            'Family engagement and reporting coordination',
+            'Support for care-related operational workflows',
+            'Alignment between management, staff, and families',
+          ],
         },
         acquisitionsDevelopment: {
-          description: "Support across acquisition, redevelopment, and development phases with a focus on operational readiness and service continuity.",
+          description:
+            'Capital work and unit renovation run through our own general contracting, scheduled around residents who are at home during the working day.',
           services: [
-            "Acquisition underwriting and operational review",
-            "Development and redevelopment advisory",
-            "Operational setup for staffing, systems, and services",
-            "Lease-up and stabilization planning"
-          ]
-        }
+            'Acquisition underwriting and operational review',
+            'Development and redevelopment advisory',
+            'Operational setup for staffing, systems, and services',
+            'Lease-up and stabilization planning',
+          ],
+        },
       }}
       serviceTitles={{
-        investmentSales: "Transaction Advisory",
-        landlordRepresentation: "Leasing & Occupancy Management",
-        tenantRepresentation: "Resident & Family Engagement"
+        investmentSales: 'Transaction Advisory',
+        landlordRepresentation: 'Leasing & Occupancy Management',
+        tenantRepresentation: 'Resident & Family Engagement',
       }}
-      servicesTitle="Integrated Services for Senior Housing"
-      showAboutUs={true}
-      
-      // Technology Advantages / HHP Advantage
+      servicesTitle="Integrated services for senior housing"
+      servicesSubtitle="Six capabilities under one firm — the same structure we run our own communities on."
+
+      technologyTitle="The HHP advantage for senior housing"
       technologyAdvantages={[
         {
-          icon: <Heart className="h-8 w-8 text-white" />,
-          title: "Resident-Centered Operations",
-          description: "Operational execution designed to prioritize resident well-being, safety, and quality of life across all care levels."
+          title: 'We operate this class ourselves',
+          description:
+            'Three HUD Section 202 communities on one campus in Pryor, Oklahoma. Everything described here is drawn from buildings we are accountable for, not from a capability deck.',
         },
         {
-          icon: <Shield className="h-8 w-8 text-white" />,
-          title: "Regulatory & Operational Readiness",
-          description: "Structured oversight aligned with applicable regulations, inspections, and operational requirements to support compliance and continuity."
+          title: 'Self-performed trades, so response is immediate',
+          description:
+            'Plumbing, electrical, HVAC, roofing and grounds are performed by our own personnel. For residents who cannot easily work around a failure, the difference between same-day and next-week is the whole service.',
         },
         {
-          icon: <Users className="h-8 w-8 text-white" />,
-          title: "Staffing & Service Oversight",
-          description: "Management practices supporting staffing stability, training consistency, and accountability across service teams."
+          title: 'Compliance carried continuously',
+          description:
+            'Certifications, recertifications and inspection readiness are monitored year round rather than reconstructed ahead of a review, so files stay audit-ready as a matter of course.',
         },
         {
-          icon: <Calendar className="h-8 w-8 text-white" />,
-          title: "Facilities & Asset Stewardship",
-          description: "Preventive maintenance and capital planning designed to preserve building systems, safety standards, and long-term asset condition."
+          title: 'Cost visible at the line item',
+          description:
+            'Work reports as labor hours, materials and time on site rather than a vendor invoice with margin already priced in. There is no subcontractor markup on self-performed work, and specialty vendors are engaged only where licensing requires it.',
         },
         {
-          icon: <Heart className="h-8 w-8 text-white" />,
-          title: "Owner & Family Confidence",
-          description: "Clear reporting, communication, and governance supporting trust among owners, families, and stakeholders."
-        }
+          title: 'One firm accountable',
+          description:
+            'Property management, the trades and the accounting report into the same principal. Owners review the same figures we do, as they land.',
+        },
       ]}
-      technologyTitle="The HHP Advantage for Senior Housing"
-      useModernLayout={true}
-      
-      // Insights
-      insights={[
-        {
-          title: "Operating Senior Housing in a Changing Regulatory Environment",
-          description: "Perspectives on regulatory oversight, inspections, and operational best practices in senior housing communities.",
-          date: "December 2024"
-        },
-        {
-          title: "Staffing Stability and Service Quality in Senior Living",
-          description: "Insights into workforce management, service consistency, and resident outcomes.",
-          date: "November 2024"
-        },
-        {
-          title: "Long-Term Value Creation in Senior Housing",
-          description: "Strategies for balancing care delivery, occupancy, and financial sustainability.",
-          date: "October 2024"
-        }
-      ]}
-      
-      // CTA Section - Removed
+
+      proof={{
+        kind: 'operating',
+        image: '/images/properties/grounds-oak-tree.webp',
+        imageAlt:
+          'Single-storey senior homes under mature oaks at the Pryor campus',
+        title: 'Mayor Wallis Manor and Venture Villas',
+        body: 'Three HUD Section 202 communities on one campus at 901 SE 9th Street in Pryor, Oklahoma. Single-storey one-bedroom homes with a community room, a resident library and shaded grounds, operated by HHP with the property management, the trades and the accounting all in house.',
+        stats: [
+          { value: '3', label: 'Communities' },
+          { value: '85', label: 'Units' },
+          { value: 'Pryor, OK', label: 'Market' },
+        ],
+        href: '/portfolio',
+        hrefLabel: 'See the portfolio',
+      }}
+
+      ctaTitle="Talk to us about a senior community"
+      ctaBody="We operate this class every day. Send us the rent roll and the compliance calendar, and we will tell you what we would expect to find."
     />
   );
 };
