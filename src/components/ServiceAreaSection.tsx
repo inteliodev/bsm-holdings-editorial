@@ -39,28 +39,16 @@ const ServiceAreaSection = ({
               key={metro.name}
               className="platform-card-hover flex flex-col border border-border bg-white p-7 sm:p-9"
             >
-              <div className="flex items-start justify-between gap-4 border-b border-border pb-5">
-                <div className="flex items-baseline gap-4">
-                  <span
-                    aria-hidden="true"
-                    className="font-display text-2xl font-semibold leading-none text-hhp-gold/35"
-                  >
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <h3 className="font-display text-xl font-semibold text-hhp-navy sm:text-2xl">
-                    {metro.name}
-                  </h3>
-                </div>
-                {/* Derived from the data rather than asserted — the count is
-                    always whatever serviceArea.ts actually lists. */}
-                <div className="flex-shrink-0 text-right">
-                  <div className="font-display text-2xl font-semibold leading-none text-hhp-navy">
-                    {metro.cities.length}
-                  </div>
-                  <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-hhp-charcoal/50">
-                    Cities
-                  </div>
-                </div>
+              <div className="flex items-baseline gap-4 border-b border-border pb-5">
+                <span
+                  aria-hidden="true"
+                  className="font-display text-2xl font-semibold leading-none text-hhp-gold/35"
+                >
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <h3 className="font-display text-xl font-semibold text-hhp-navy sm:text-2xl">
+                  {metro.name}
+                </h3>
               </div>
 
               <p className="mt-5 leading-relaxed text-hhp-charcoal">{metro.blurb}</p>
