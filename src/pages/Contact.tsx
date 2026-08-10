@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Mail, Send } from 'lucide-react';
+import { CONTACT_WEBHOOK_URL } from '@/lib/leads';
 import Layout from '@/components/Layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,10 +14,6 @@ import LocalBusinessSchema from '@/components/LocalBusinessSchema';
 // Endpoint is configurable so it can be moved off a third-party domain without a
 // code change. Falls back to the current webhook so nothing breaks before the DNS
 // move lands.
-const CONTACT_WEBHOOK_URL =
-  import.meta.env.VITE_CONTACT_WEBHOOK_URL ||
-  'https://n8n.capitalaiadvisors.com/webhook/hhp-contact';
-
 const CONTACT_EMAIL = 'info@hhpasset.com';
 
 const Contact = () => {
