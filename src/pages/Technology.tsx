@@ -4,6 +4,7 @@ import Layout from '@/components/Layout/Layout';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 import DashboardShowcase from '@/components/DashboardShowcase';
 import DisciplinesSection from '@/components/DisciplinesSection';
+import SystemStack from '@/components/SystemStack';
 import { Helmet } from 'react-helmet-async';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
@@ -218,6 +219,12 @@ const Technology = () => {
 
         <DashboardShowcase />
         <DisciplinesSection />
+
+        {/* The six platform layers, moved here from Home. They describe the
+            software, so they belong on the software page — and as the third of
+            the scrollytelling models they cut through the system the way the
+            others cut through the firm and the asset. */}
+        <SystemStack />
 
         {/* Technology Pillars Grid. Was the only section on the page with no
             heading block, and sat white-on-white between two other white

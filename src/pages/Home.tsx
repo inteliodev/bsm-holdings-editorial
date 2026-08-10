@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Layout from '@/components/Layout/Layout';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
-import PlatformSection from '@/components/PlatformSection';
 import CapabilityStack from '@/components/CapabilityStack';
 import ServiceAreaSection from '@/components/ServiceAreaSection';
 import LocalBusinessSchema from '@/components/LocalBusinessSchema';
@@ -341,11 +340,10 @@ const Home = () => {
         </div>
       </section>
 
-      {/* The disciplines, as a stack. Sits before PlatformSection so the
-          narrative runs: here is the firm, then here is the system that runs it. */}
+      {/* The disciplines, as a stack. The six platform layers that used to sit
+          below this moved to /technology as SystemStack, where they belong —
+          Home now makes the firm's argument and hands off to that page. */}
       <CapabilityStack />
-
-      <PlatformSection />
 
       <ServiceAreaSection />
 

@@ -230,7 +230,7 @@
   }
 
   /* The canonical gold kicker. Consolidates three variants that coexisted: the
-     rule+label in PlatformSection, the pill in DisciplinesSection and
+     rule+label the scrollytelling sections use, the pill in DisciplinesSection and
      DashboardShowcase, and .section-tag-gold, which was defined and never used. */
   .eyebrow {
     display: inline-flex;

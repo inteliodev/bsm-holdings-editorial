@@ -384,7 +384,7 @@ const About = () => {
                 </div>
 
                 {/* Numbered editorial rows rather than four identical grey
-                    boxes. Same language as PlatformSection: oversized gold
+                    boxes. Same language as the scrollytelling models: oversized gold
                     numeral, hairline rules, no card chrome. */}
                 <ol className="mx-auto mt-12 max-w-5xl border-t border-border md:mt-16">
                   {OPERATING_PRINCIPLES.map((principle, index) => (

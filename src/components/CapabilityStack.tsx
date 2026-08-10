@@ -77,8 +77,7 @@ const CapabilityStack = () => {
     <section className="section-spacing bg-white">
       <div className="container-premium">
         <div className="mx-auto mb-16 max-w-3xl text-center">
-          {/* Not "Built In House" — PlatformSection uses that eyebrow directly
-              below this section on Home. */}
+          {/* "Built In House" belongs to SystemStack on /technology now. */}
           <span className="eyebrow mb-5 justify-center">Capabilities</span>
           <h2 className="section-title text-hhp-navy">One firm, top to bottom</h2>
           <p className="mt-6 text-lg leading-relaxed text-hhp-charcoal">
