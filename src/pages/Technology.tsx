@@ -166,30 +166,41 @@ const Technology = () => {
       </Helmet>
 
       <Layout>
-        {/* Hero Section */}
-        <section className="relative min-h-[500px] flex items-center justify-center overflow-hidden bg-black">
-          {/* Video Background */}
-          <video
-            className="absolute inset-0 w-full h-full object-cover z-0"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            onLoadedMetadata={(e) => {
-              e.currentTarget.play().catch(() => {
-                // Silently handle autoplay failures
-              });
+        {/*
+          Hero. Was a 6.87 MB stock video with no `poster`, so the page opened
+          as a black rectangle until it downloaded — and a stock clip is a weak
+          argument for a page whose whole claim is that the systems are built
+          here. Drawn instead: the same navy ground and gold grid the dashboard
+          mockup below uses, so the page opens in the language of the product.
+        */}
+        <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden bg-hhp-navy-deep py-20">
+          <div
+            className="absolute inset-0"
+            aria-hidden="true"
+            style={{
+              backgroundImage:
+                'linear-gradient(hsl(var(--hhp-gold) / 0.07) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--hhp-gold) / 0.07) 1px, transparent 1px)',
+              backgroundSize: '68px 68px',
             }}
-          >
-            <source src="/images/technology-hero.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-hhp-navy/60 z-0"></div>
-          <div className="relative z-10 container-premium">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="hero-title text-white mb-4 drop-shadow-lg">
-                Technology
-              </h1>
+          />
+          <div
+            className="absolute inset-0"
+            aria-hidden="true"
+            style={{
+              background:
+                'radial-gradient(120% 90% at 50% 30%, hsl(var(--hhp-gold) / 0.12), transparent 55%), radial-gradient(100% 100% at 50% 100%, hsl(var(--hhp-navy-deep)) 20%, transparent 70%)',
+            }}
+          />
+          <div className="container-premium relative z-10">
+            <div className="mx-auto max-w-3xl text-center">
+              <span className="eyebrow mb-6 justify-center text-hhp-gold">
+                Proprietary Platforms
+              </span>
+              <h1 className="hero-title mb-6 text-white">Technology</h1>
+              <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/70">
+                The operating and reporting systems behind every property we manage — built and
+                maintained by HHP, not licensed.
+              </p>
             </div>
           </div>
         </section>
@@ -208,10 +219,16 @@ const Technology = () => {
         <DashboardShowcase />
         <DisciplinesSection />
 
-        {/* Technology Pillars Grid */}
-        <section id="technology-pillars" className="bg-white section-spacing">
+        {/* Technology Pillars Grid. Was the only section on the page with no
+            heading block, and sat white-on-white between two other white
+            sections so the three merged into one long field. */}
+        <section id="technology-pillars" className="bg-surface section-spacing">
           <div className="container-premium">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 sm:gap-8 -mx-4 sm:mx-0">
+            <div className="mx-auto mb-14 max-w-3xl text-center">
+              <span className="eyebrow mb-5 justify-center">What We Run</span>
+              <h2 className="section-title text-hhp-navy">The systems behind the operation</h2>
+            </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
               {technologyPillars.map((pillar, index) => {
                 const IconComponent = pillar.icon;
                 return (
@@ -228,9 +245,11 @@ const Technology = () => {
                       <div className="icon-accent p-3 rounded-lg group-hover:scale-110 transition-transform duration-300">
                         <IconComponent className="h-8 w-8" />
                       </div>
-                      <h2 className="text-xl font-display font-bold text-hhp-navy">
+                      {/* h3, not h2: these are cards inside a section that now
+                          has its own h2, so the outline no longer runs flat. */}
+                      <h3 className="font-display text-xl font-semibold text-hhp-navy">
                         {pillar.title}
-                      </h2>
+                      </h3>
                     </div>
                     
                     {/* Pillar Description */}
@@ -297,7 +316,7 @@ const Technology = () => {
         </section>
 
         {/* Featured Outcomes */}
-        <section className="bg-gray-50 section-spacing">
+        <section className="bg-surface section-spacing">
           <div className="container-premium">
             <div className="text-center mb-16">
               <h2 className="section-title text-hhp-navy mb-6">What This Changes</h2>
@@ -328,7 +347,7 @@ const Technology = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="bg-gray-50 section-spacing">
+        <section className="bg-white section-spacing">
           <div className="container-premium">
             <div className="text-center mb-16">
               <h2 className="section-title text-hhp-navy mb-6">Frequently Asked Questions</h2>

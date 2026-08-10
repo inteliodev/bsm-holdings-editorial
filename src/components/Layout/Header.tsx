@@ -483,7 +483,7 @@ const Header = () => {
                     <div>
                       <div className="flex items-center justify-between">
                         <button
-                          className="flex-1 py-3 text-left text-hhp-charcoal hover:text-hhp-navy transition-colors duration-200 font-medium min-h-[48px] flex items-center"
+                          className="flex min-h-[52px] flex-1 items-center py-3 text-left font-display text-lg font-semibold text-hhp-navy transition-colors duration-200 hover:text-hhp-gold"
                           onClick={() => {
                             // Navigate to main page for Services and Asset Types
                             if (item.name === 'Services') {
@@ -496,8 +496,10 @@ const Header = () => {
                         >
                           {item.name}
                         </button>
+                        {/* Ghost, not a filled square — the grey background read
+                            as a stuck hover state. */}
                         <button
-                          className="p-3 hover:bg-gray-100 rounded transition-colors duration-200 min-h-[48px] min-w-[48px] flex items-center justify-center"
+                          className="flex min-h-[48px] min-w-[48px] items-center justify-center rounded text-hhp-charcoal/60 transition-colors duration-200 hover:text-hhp-navy"
                           onClick={() => toggleMobileAccordion(item.name)}
                           aria-label={`Toggle ${item.name} menu`}
                         >
@@ -508,7 +510,7 @@ const Header = () => {
                       </div>
                       
                       {mobileAccordions[item.name] && (
-                        <div className="ml-4 space-y-0">
+                        <div className="ml-1 space-y-0 border-l border-border pl-4">
                           {item.submenu.map((subItem, index) => (
                             subItem.name === 'divider' ? (
                               <hr key={`mobile-divider-${index}`} className="my-0 border-gray-200" />
@@ -529,7 +531,7 @@ const Header = () => {
                   ) : (
                     <Link
                   to={item.href}
-                  className="flex-1 py-3 text-left text-hhp-charcoal hover:text-hhp-navy transition-colors duration-200 font-medium min-h-[48px] flex items-center"
+                  className="flex min-h-[52px] flex-1 items-center py-3 text-left font-display text-lg font-semibold text-hhp-navy transition-colors duration-200 hover:text-hhp-gold"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     trackNavigationClick(item.name);
@@ -554,17 +556,20 @@ const Header = () => {
               </div>
               
               {/* Mobile Utility Links */}
-              <div className="flex flex-col space-y-2 pt-4 border-t border-gray-200">
+              {/* Utility links previously carried px-2, putting them at a third
+                  indent that aligned with neither the top-level items nor the
+                  submenu. They now share the top-level left edge. */}
+              <div className="flex flex-col space-y-1 border-t border-border pt-5">
                 <Link 
                   to="/resident-login" 
-                  className="text-hhp-charcoal hover:text-hhp-navy text-sm font-medium transition-colors duration-200 py-3 px-2 hover:bg-gray-50 rounded-md min-h-[48px] flex items-center"
+                  className="flex min-h-[48px] items-center rounded-md py-3 text-sm font-medium text-hhp-charcoal/75 transition-colors duration-200 hover:text-hhp-navy"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Resident Login
                 </Link>
                 <Link 
                   to="/investor-portal" 
-                  className="text-hhp-charcoal hover:text-hhp-navy text-sm font-medium transition-colors duration-200 py-3 px-2 hover:bg-gray-50 rounded-md min-h-[48px] flex items-center"
+                  className="flex min-h-[48px] items-center rounded-md py-3 text-sm font-medium text-hhp-charcoal/75 transition-colors duration-200 hover:text-hhp-navy"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Investor Portal
