@@ -49,6 +49,54 @@ npx vercel ls | head -5
 
 ---
 
+## 🎞️ **INTERSECTIONOBSERVER BANDS FAIL AT THE ENDS OF A LIST**
+
+### Symptom
+A scrollytelling section ended with layer **01** highlighted while layer **05**
+filled the screen. Mid-scroll it tracked correctly, so it looked fine unless you
+watched the last step.
+
+### Root cause
+Tracking used an `IntersectionObserver` with a narrow `rootMargin` band:
+
+```js
+{ rootMargin: '-45% 0px -45% 0px', threshold: [0, 0.5, 1] }
+```
+
+That resolves "which step is current" only while a step is *inside* the band.
+Scroll past the end of the section — or jump with a fast scroll — and nothing
+intersects, no callback fires, and the diagram keeps whatever it was last set
+to. There is no event for "nothing is active any more".
+
+### Fix
+`src/hooks/useActiveStep.ts` measures instead: whichever step's midpoint is
+nearest the middle of the viewport wins. That always resolves to exactly one
+answer, including at both ends, and costs one rAF-throttled pass over a handful
+of elements.
+
+### How to detect this class of bug
+Scroll to the very end of the section, not just through it. Anything that
+derives state from "what is currently intersecting" needs an answer for the case
+where **nothing** is.
+
+---
+
+## 🖼️ **FAVICONS ARE NOT LOGOS SCALED DOWN**
+
+The favicons were the full three-letter HHP lockup exported at each size. At
+16px it was an illegible smear: three thin serif letters, with the artwork
+occupying only ~9% of the canvas. They were also `#09275D`, a royal blue, not
+the brand navy `#0A2342` — so the browser tab did not match the site.
+
+`public/favicon.svg` is now the master: a **single H** from the real brand
+letterform, cropped tight and set large on `#0A2342`. One letter survives 16px;
+three never will. The PNGs are rasterised from that SVG so every size agrees.
+
+Check a favicon by rendering it at 16px and looking at it, not by opening the
+512px version.
+
+---
+
 ## 🕳️ **THE CATCH-ALL MAKES EVERY URL LOOK LIKE IT EXISTS**
 
 `vercel.json` rewrites unmatched paths to `index.html`, so **a 200 proves

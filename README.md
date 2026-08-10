@@ -94,8 +94,10 @@ The Supabase entries in `.env.example` are not read at runtime; `src/integration
 src/
   pages/           # Page components (services/, assetTypes/, technology/)
   components/      # Reusable components (Layout/, ui/)
-    PlatformSection.tsx        # Six operating layers on Home (editorial list, navy)
-    DashboardShowcase.tsx      # Dashboard mockup on Technology
+    CapabilityStack.tsx        # Scrollytelling: the firm (Home)
+    BuildingSection.tsx        # Scrollytelling: the asset (Facility Services)
+    SystemStack.tsx            # Scrollytelling: the software (Technology)
+    DashboardShowcase.tsx      # Dashboard mockup on Technology (illustrative figures)
     DisciplinesSection.tsx     # Asset Mgmt / Property Mgmt / Facility Services
     ServiceAreaSection.tsx     # Service area by metro (Home, Contact)
     LocalBusinessSchema.tsx    # RealEstateAgent JSON-LD + areaServed
@@ -105,7 +107,10 @@ src/
     serviceArea.ts             # Canonical NAP + service-area cities (single source of truth)
   lib/
     leads.ts                   # submitLead() — webhook + Supabase, used by all three forms
-  hooks/           # Custom hooks (analytics, SEO, scroll)
+  hooks/
+    useActiveStep.ts           # Which scrollytelling step is current (all three sections)
+    useTimeOfDay.ts            # dawn/day/dusk/night in America/Chicago
+    useScrollAnimation.tsx     # Prerender-safe scroll reveal (0.7 opacity floor)
   utils/           # Utilities (analytics, debug)
   integrations/    # Supabase client & types
 ```
@@ -132,6 +137,31 @@ Verify structured data after a deploy — assert on content, never on status cod
 curl -s https://hhpasset.com/ | grep -o '"@type":"[A-Za-z]*"' | sort -u
 curl -s -o /dev/null -w "%{content_type}\n" https://hhpasset.com/llms.txt   # text/plain
 ```
+
+## Scrollytelling sections
+
+Three sections share one interaction — a sticky diagram beside scrolling steps —
+and each cuts through a different object, so the pattern reads as a house style
+rather than a repeated trick:
+
+| Page | Component | Subject |
+| --- | --- | --- |
+| Home | `CapabilityStack` | the firm |
+| Facility Services | `BuildingSection` | the asset |
+| Technology | `SystemStack` | the software |
+
+Two rules if you add another:
+
+- **Use `useActiveStep`.** Do not reimplement tracking with an
+  IntersectionObserver band — it fails at the ends of a list (see
+  `DEBUGGING_GUIDE.md`).
+- **Scroll may change emphasis, never visibility.** Every layer and every word
+  must be in the DOM at rest, or the section will not survive the prerender.
+  Verify in `dist/`, not in the browser.
+
+The Portfolio map's lighting and the Home hero tint both come from
+`useTimeOfDay`, keyed to the real clock in America/Chicago rather than the
+visitor's locale.
 
 ## Routing
 
@@ -256,7 +286,7 @@ Tracked but not yet addressed:
 
 - **Two SEO mechanisms still coexist in the app** (`useSEO` and `react-helmet-async`) and neither covers every route. This no longer affects crawlers — the prerender step writes per-route tags from `scripts/routeMeta.mjs` — but it should be unified for the in-app tab title on client-side navigation.
 - **Two lockfiles** (`bun.lockb` and `package-lock.json`) are committed; CI may resolve differently from local.
-- **Two hero videos remain large**: `technology-hero.mp4` (6.5 MB) and `HeroHomePageHHP.mp4` (3.2 MB), together most of `public/`. They need re-encoding with ffmpeg, which is not available in this environment. `technology-hero.mp4` also has no `poster`, so that hero is black until it loads.
+- **`HeroHomePageHHP.mp4` is 3.2 MB** and is now the only large video; it needs re-encoding with ffmpeg, which is not available in this environment. (`technology-hero.mp4` was deleted — the Technology hero is drawn rather than filmed, which took `public/images` from 15 MB to 8.5 MB.)
 - **No `srcset`/`sizes` on any image**, so phones download desktop-sized assets. Less severe now that nothing exceeds ~320 kB, but still worth adding for the full-bleed backgrounds.
 - **38 of 48 shadcn components are unused**, along with `zod`, `date-fns`, `@hookform/resolvers`, and `@tanstack/react-query` (provider only, no queries).
 - **`Insights.tsx` presents nine pieces of content that do not exist.** The eleven fake

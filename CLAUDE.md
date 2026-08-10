@@ -115,13 +115,59 @@ Renamed routes keep their old path pointing at the same component rather than re
 
 ### Marketing Sections
 Home and Technology compose several standalone section components. When updating positioning copy, these are usually the files to touch:
-- `src/components/PlatformSection.tsx` — six-capability grid on Home
-- `src/components/DashboardShowcase.tsx` — dark dashboard mockup on Technology
+- `src/components/DashboardShowcase.tsx` — dark dashboard mockup on Technology. Its
+  figures are illustrative, not wired to live data.
 - `src/components/DisciplinesSection.tsx` — three disciplines (Asset Management, Property Management, Facility Services)
 - `src/pages/FacilityServices.tsx` — self-performed trades grid (data lives in the `selfPerformedTrades` array at the top of the file), cost-control and in-house-technology sections
 
 ### Homepage Stacking Context (known gotcha)
 The Home hero is `position: fixed; z-index: 0` with content scrolling over it, so **any sibling that must appear above the hero needs an explicit stacking context**. A `position: fixed` element paints above static content regardless of z-index, which previously left the footer invisible on Home. `Footer.tsx` carries `relative z-30` for this reason — do not remove it. Home's own scrolling content uses the same `relative z-30` wrapper.
+
+### Scrollytelling sections (the house pattern)
+Three sections share one interaction — a sticky diagram beside scrolling steps,
+where the active step highlights its layer. Each deliberately cuts through a
+**different object**, so it reads as a house style rather than a repeated trick:
+
+| Page | Component | Subject | Diagram |
+| --- | --- | --- | --- |
+| Home | `CapabilityStack.tsx` | the firm | slab stack |
+| Facility Services | `BuildingSection.tsx` | the asset | building cutaway |
+| Technology | `SystemStack.tsx` | the software | UI wireframe |
+
+All three use **`useActiveStep`** (`src/hooks/useActiveStep.ts`) — do not
+reimplement this with an IntersectionObserver band; see `DEBUGGING_GUIDE.md` for
+why that fails at the ends of a list.
+
+They are built so scroll changes only *emphasis*, never visibility: every layer
+and every word is in the DOM at rest. That is what lets them survive the
+prerender. If you add one, keep that property and verify it in `dist/`.
+
+SVG layers use `.bl` (dark ground) or `.bl bl-light` (light ground).
+
+### Time-of-day lighting
+`src/hooks/useTimeOfDay.ts` returns `dawn | day | dusk | night` from the real
+clock in **America/Chicago** — HHP's market, deliberately not the visitor's
+locale, because the subject is the asset. It drives the Portfolio map's Mapbox
+`lightPreset` and the Home hero's tint, so the site and the campus are lit the
+same way at the same moment. The hero tint layers *over* the scrim, so text
+contrast never depends on the hour.
+
+### Team roster
+`src/pages/About.tsx` holds a `TEAM` array of departments. Adding, moving or
+retitling anyone is a data edit — do not go back to hand-written cards.
+
+`image` and `bio` are both optional. Someone without a headshot renders as name,
+title and email with **no placeholder portrait and no initials avatar** — a
+placeholder is what makes a missing photo read as broken. The grid is
+`items-start` so a photo-less card sizes to its own content.
+
+Headshots are 900×1125 webp (the 4:5 the cards crop to), cropped head-and-
+shoulders so everyone reads at the same scale.
+
+### Favicon
+`public/favicon.svg` is the master — a single **H** from the brand letterform on
+`#0A2342`. The PNGs are rasterised from it. Do not regenerate them from the
+three-letter lockup: at 16px it is an illegible smear.
 
 ### Reusable Page Templates
 `src/components/AssetTypePage.tsx` is a shared template used by all 6 asset type detail pages. When modifying asset type pages, update the template rather than individual pages when possible.
