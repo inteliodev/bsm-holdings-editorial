@@ -8,6 +8,94 @@ import { Mail, ChevronDown, ChevronUp } from 'lucide-react';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 
 /**
+ * The team, grouped by department.
+ *
+ * Was three hand-written cards, ~150 lines of identical markup repeated with
+ * different names — which is why the roster could not grow without copying the
+ * block again. Adding, moving or retitling anyone is now a data edit.
+ *
+ * `image` and `bio` are both optional by design. Following the Robinson Park
+ * pattern, someone without a headshot is listed exactly like everyone else —
+ * name, title, email — with no grey silhouette and no initials avatar, so a
+ * missing photo does not read as a broken card. That lets people go live before
+ * their headshot exists.
+ */
+type Member = {
+  id: string;
+  name: string;
+  title: string;
+  email?: string;
+  image?: string;
+  bio?: string[];
+};
+
+type Department = {
+  name: string;
+  members: Member[];
+};
+
+const TEAM: Department[] = [
+  {
+    name: 'Executive Team',
+    members: [
+      {
+        id: 'hayden',
+        name: 'Hayden Ashley',
+        title: 'Managing Principal',
+        email: 'hayden@hhpasset.com',
+        image: haydenImage,
+        bio: [
+          "Hayden Ashley serves as Managing Principal of HHP, where he leads firm strategy, regional growth, and platform development across brokerage, property management, and advisory services.",
+          "An operator by background, Hayden oversees HHP's vertically integrated execution model and the development of technology-enabled systems that strengthen underwriting discipline, operational consistency, and long-term asset performance.",
+          "Hayden's experience spans institutional real estate, Big Four accounting, and enterprise operations. He has worked with two of the world's largest commercial real estate firms—Newmark and Colliers—and began his career auditing Fortune 500 companies at Ernst & Young. Across brokerage, advisory, and ownership-oriented roles, he has been involved in over $2.0 billion in real estate transactions.",
+          "This foundation informs HHP's disciplined, fiduciary approach and its focus on aligned incentives across the full asset lifecycle.",
+        ],
+      },
+      {
+        id: 'phil',
+        name: 'Phil Ashley',
+        title: 'Director of Operations',
+        email: 'phil@hhpasset.com',
+        image: philImage,
+        bio: [
+          "Phil Ashley serves as Director of Operations, bringing two decades of investment property and facilities expertise to HHP's enterprise-level service delivery. In addition to his real estate operations background, Phil founded and operated one of the largest commercial cleaning companies in Oklahoma, giving him deep, hands-on experience in large-scale facilities management, vendor oversight, and service execution.",
+          "His background spans the complete asset lifecycle—from acquisition and performance optimization to value-add execution—across all major asset classes. This dual perspective across property operations and facilities services enables disciplined execution at both the asset and building-services level.",
+          "Phil combines technical expertise with rigorous operational leadership, ensuring consistent performance across portfolios and markets. His systematic approach to property operations, vendor management, and owner communication makes him a critical strategic resource for the owners HHP works with.",
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Administrative Services',
+    members: [
+      {
+        id: 'hannah',
+        name: 'Hannah Fanning',
+        title: 'Administrative Director',
+        email: 'hannah@hhpasset.com',
+        image: hannahImage,
+        bio: [
+          "Hannah Fanning serves as Administrative Director at HHP, where she oversees firmwide administrative functions and supports consistent service execution across all portfolios. She provides structured coordination between ownership, residents, and third-party vendors, ensuring administrative accuracy and continuity.",
+          "With over a decade of experience in enterprise logistics and communications, Hannah brings disciplined organization, documentation control, and process reliability to HHP's day-to-day administrative framework.",
+          "Her leadership supports transparent reporting, efficient workflows, and client-focused service aligned with the institutional standards HHP maintains across its platform.",
+        ],
+      },
+    ],
+  },
+  // Pending, and deliberately not published yet — each needs a title, and
+  // Hannah's move to Accounting has to land at the same time so that
+  // "Administrative Director" is not shown against two people at once:
+  //
+  //   Accounting         — Hannah Fanning, new title required
+  //   Administrative     — Marshella Franklin, Administrative Director
+  //                        (headshot ready: src/assets/marshella-franklin.webp)
+  //   Facility Services  — Andrew Hoanzl, title required
+  //                        (headshot ready: src/assets/andrew-hoanzl.webp)
+  //                      — Preston Ellis, title required, no headshot
+  //   Department TBC     — Valarie Ellis, title required, no headshot
+];
+
+/**
  * Operating principles.
  *
  * Previously four copy-pasted grey boxes. Lifted into data so the layout is
@@ -192,167 +280,89 @@ const About = () => {
             {/* Tab 1: Our People */}
             {activeTab === 'people' && (
               <div className="fade-in animate-in fade-in duration-300">
-                <div className="text-center mb-8">
-                  <h2 className="section-title text-hhp-navy mb-4">Executive Team</h2>
-                </div>
-
-                {/* Team Grid - 3 Column Layout */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 max-w-7xl mx-auto">
-                  {/* Hayden Ashley */}
-                  {/* The portrait runs edge to edge; every other direct child is
-                      inset, which avoids restructuring the card's internals. */}
-                  <div className="platform-card-hover flex flex-col overflow-hidden border border-border bg-white pb-6 [&>*:not(img)]:px-6 [&>h3]:mt-6">
-                    <img 
-                      src={haydenImage} 
-                      alt="Hayden Ashley, Managing Principal" 
-                      className="aspect-[4/5] w-full bg-surface object-cover object-top" loading="lazy" decoding="async" />
-                    <h3 className="text-xl font-display font-semibold text-hhp-navy mb-1 text-center">Hayden Ashley</h3>
-                    <h4 className="text-base font-medium text-hhp-navy mb-4 text-center italic">Managing Principal</h4>
-                    
-                    {/* Email Contact - Always Visible */}
-                    <div className="flex items-center justify-center space-x-2 mb-5">
-                      <Mail className="h-4 w-4 text-hhp-navy" />
-                      <a 
-                        href="mailto:hayden@hhpasset.com" 
-                        className="tap text-sm text-hhp-navy hover:text-hhp-navy/80 transition-colors duration-200 font-medium"
-                      >
-                        hayden@hhpasset.com
-                      </a>
-                    </div>
-
-                    {/* Expandable Bio */}
-                    <button
-                      onClick={() => toggleBio('hayden')}
-                      className="flex items-center justify-center space-x-2 text-sm text-hhp-navy hover:text-hhp-navy/80 transition-colors duration-200"
-                    >
-                      <span>{expandedBios.hayden ? 'Hide Bio' : 'View Bio'}</span>
-                      {expandedBios.hayden ? (
-                        <ChevronUp className="h-4 w-4" />
-                      ) : (
-                        <ChevronDown className="h-4 w-4" />
-                      )}
-                    </button>
-
-                    {expandedBios.hayden && (
-                      <div className="mt-4 space-y-3 text-sm text-hhp-charcoal leading-relaxed">
-                        <p>
-                          Hayden Ashley serves as Managing Principal of HHP, where he leads firm strategy, regional growth, and platform development across brokerage, property management, and advisory services.
-                        </p>
-                        <p>
-                          An operator by background, Hayden oversees HHP's vertically integrated execution model and the development of technology-enabled systems that strengthen underwriting discipline, operational consistency, and long-term asset performance.
-                        </p>
-                        <p>
-                          Hayden's experience spans institutional real estate, Big Four accounting, and enterprise operations. He has worked with two of the world's largest commercial real estate firms—Newmark and Colliers—and began his career auditing Fortune 500 companies at Ernst & Young. Across brokerage, advisory, and ownership-oriented roles, he has been involved in over $2.0 billion in real estate transactions.
-                        </p>
-                        <p>
-                          This foundation informs HHP's disciplined, fiduciary approach and its focus on aligned incentives across the full asset lifecycle.
-                        </p>
+                <div className="space-y-16">
+                  {TEAM.map((department) => (
+                    <div key={department.name}>
+                      <div className="mb-8 border-b border-border pb-5">
+                        <span className="eyebrow">{department.name}</span>
                       </div>
-                    )}
-                  </div>
 
-                  {/* Phil Ashley */}
-                  {/* The portrait runs edge to edge; every other direct child is
-                      inset, which avoids restructuring the card's internals. */}
-                  <div className="platform-card-hover flex flex-col overflow-hidden border border-border bg-white pb-6 [&>*:not(img)]:px-6 [&>h3]:mt-6">
-                    <img 
-                      src={philImage} 
-                      alt="Phil Ashley, Director of Operations" 
-                      className="aspect-[4/5] w-full bg-surface object-cover object-top" loading="lazy" decoding="async" />
-                    <h3 className="text-xl font-display font-semibold text-hhp-navy mb-1 text-center">Phil Ashley</h3>
-                    <h4 className="text-base font-medium text-hhp-navy mb-4 text-center italic">Director of Operations</h4>
-                    
-                    {/* Email Contact - Always Visible */}
-                    <div className="flex items-center justify-center space-x-2 mb-5">
-                      <Mail className="h-4 w-4 text-hhp-navy" />
-                      <a 
-                        href="mailto:phil@hhpasset.com" 
-                        className="tap text-sm text-hhp-navy hover:text-hhp-navy/80 transition-colors duration-200 font-medium"
-                      >
-                        phil@hhpasset.com
-                      </a>
-                    </div>
+                      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+                        {department.members.map((member) => (
+                          <div
+                            key={member.id}
+                            /* The portrait runs edge to edge; every other direct
+                               child is inset, which avoids restructuring the
+                               card's internals. */
+                            className="platform-card-hover flex flex-col overflow-hidden border border-border bg-white pb-6 [&>*:not(img)]:px-6 [&>h3]:mt-6"
+                          >
+                            {member.image ? (
+                              <img
+                                src={member.image}
+                                alt={`${member.name}, ${member.title}`}
+                                className="aspect-[4/5] w-full bg-surface object-cover object-top"
+                                loading="lazy"
+                                decoding="async"
+                              />
+                            ) : (
+                              /* No placeholder portrait by design — an empty
+                                 frame or an initials circle reads as a broken
+                                 card. The entry simply starts at the name. */
+                              <div className="pt-8" />
+                            )}
 
-                    {/* Expandable Bio */}
-                    <button
-                      onClick={() => toggleBio('phil')}
-                      className="flex items-center justify-center space-x-2 text-sm text-hhp-navy hover:text-hhp-navy/80 transition-colors duration-200"
-                    >
-                      <span>{expandedBios.phil ? 'Hide Bio' : 'View Bio'}</span>
-                      {expandedBios.phil ? (
-                        <ChevronUp className="h-4 w-4" />
-                      ) : (
-                        <ChevronDown className="h-4 w-4" />
-                      )}
-                    </button>
+                            <h3 className="mb-1 text-center font-display text-xl font-semibold text-hhp-navy">
+                              {member.name}
+                            </h3>
+                            <h4 className="mb-4 text-center text-base font-medium italic text-hhp-navy">
+                              {member.title}
+                            </h4>
 
-                    {expandedBios.phil && (
-                      <div className="mt-4 space-y-3 text-sm text-hhp-charcoal leading-relaxed">
-                        <p>
-                          Phil Ashley serves as Director of Operations, bringing two decades of investment property and facilities expertise to HHP's enterprise-level service delivery. In addition to his real estate operations background, Phil founded and operated one of the largest commercial cleaning companies in Oklahoma, giving him deep, hands-on experience in large-scale facilities management, vendor oversight, and service execution.
-                        </p>
-                        <p>
-                          His background spans the complete asset lifecycle—from acquisition and performance optimization to value-add execution—across all major asset classes. This dual perspective across property operations and facilities services enables disciplined execution at both the asset and building-services level.
-                        </p>
-                        <p>
-                          Phil combines technical expertise with rigorous operational leadership, ensuring consistent performance across portfolios and markets. His systematic approach to property operations, vendor management, and owner communication makes him a critical strategic resource for the owners HHP works with.
-                        </p>
+                            {member.email && (
+                              <div className="mb-5 flex items-center justify-center space-x-2">
+                                <Mail className="h-4 w-4 text-hhp-navy" />
+                                <a
+                                  href={`mailto:${member.email}`}
+                                  className="tap text-sm font-medium text-hhp-navy transition-colors duration-200 hover:text-hhp-navy/80"
+                                >
+                                  {member.email}
+                                </a>
+                              </div>
+                            )}
+
+                            {member.bio && (
+                              <>
+                                <button
+                                  onClick={() => toggleBio(member.id)}
+                                  className="flex items-center justify-center space-x-2 text-sm text-hhp-navy transition-colors duration-200 hover:text-hhp-navy/80"
+                                  aria-expanded={Boolean(expandedBios[member.id])}
+                                >
+                                  <span>{expandedBios[member.id] ? 'Hide Bio' : 'View Bio'}</span>
+                                  {expandedBios[member.id] ? (
+                                    <ChevronUp className="h-4 w-4" />
+                                  ) : (
+                                    <ChevronDown className="h-4 w-4" />
+                                  )}
+                                </button>
+
+                                {expandedBios[member.id] && (
+                                  <div className="mt-4 space-y-3 text-sm leading-relaxed text-hhp-charcoal">
+                                    {member.bio.map((paragraph, i) => (
+                                      <p key={i}>{paragraph}</p>
+                                    ))}
+                                  </div>
+                                )}
+                              </>
+                            )}
+                          </div>
+                        ))}
                       </div>
-                    )}
-                  </div>
-
-                  {/* Hannah Fanning */}
-                  {/* The portrait runs edge to edge; every other direct child is
-                      inset, which avoids restructuring the card's internals. */}
-                  <div className="platform-card-hover flex flex-col overflow-hidden border border-border bg-white pb-6 [&>*:not(img)]:px-6 [&>h3]:mt-6">
-                    <img 
-                      src={hannahImage} 
-                      alt="Hannah Fanning, Administrative Director" 
-                      className="aspect-[4/5] w-full bg-surface object-cover object-top" loading="lazy" decoding="async" />
-                    <h3 className="text-xl font-display font-semibold text-hhp-navy mb-1 text-center">Hannah Fanning</h3>
-                    <h4 className="text-base font-medium text-hhp-navy mb-4 text-center italic">Administrative Director</h4>
-                    
-                    {/* Email Contact - Always Visible */}
-                    <div className="flex items-center justify-center space-x-2 mb-5">
-                      <Mail className="h-4 w-4 text-hhp-navy" />
-                      <a 
-                        href="mailto:hannah@hhpasset.com" 
-                        className="tap text-sm text-hhp-navy hover:text-hhp-navy/80 transition-colors duration-200 font-medium"
-                      >
-                        hannah@hhpasset.com
-                      </a>
                     </div>
-
-                    {/* Expandable Bio */}
-                    <button
-                      onClick={() => toggleBio('hannah')}
-                      className="flex items-center justify-center space-x-2 text-sm text-hhp-navy hover:text-hhp-navy/80 transition-colors duration-200"
-                    >
-                      <span>{expandedBios.hannah ? 'Hide Bio' : 'View Bio'}</span>
-                      {expandedBios.hannah ? (
-                        <ChevronUp className="h-4 w-4" />
-                      ) : (
-                        <ChevronDown className="h-4 w-4" />
-                      )}
-                    </button>
-
-                    {expandedBios.hannah && (
-                      <div className="mt-4 space-y-3 text-sm text-hhp-charcoal leading-relaxed">
-                        <p>
-                          Hannah Fanning serves as Administrative Director at HHP, where she oversees firmwide administrative functions and supports consistent service execution across all portfolios. She provides structured coordination between ownership, residents, and third-party vendors, ensuring administrative accuracy and continuity.
-                        </p>
-                        <p>
-                          With over a decade of experience in enterprise logistics and communications, Hannah brings disciplined organization, documentation control, and process reliability to HHP's day-to-day administrative framework.
-                        </p>
-                        <p>
-                          Her leadership supports transparent reporting, efficient workflows, and client-focused service aligned with the institutional standards HHP maintains across its platform.
-                        </p>
-                      </div>
-                    )}
-                  </div>
+                  ))}
                 </div>
               </div>
             )}
+
 
             {/* Tab 2: Our Story */}
             {activeTab === 'story' && (
