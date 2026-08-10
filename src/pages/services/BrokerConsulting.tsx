@@ -48,19 +48,19 @@ const BrokerConsulting = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Transition planning and oversight</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Interim operational support</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Risk identification and mitigation</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Stakeholder coordination</span>
                       </div>
                     </div>
@@ -78,19 +78,19 @@ const BrokerConsulting = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Operational assessments</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Financial performance review</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Process and structure evaluation</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Objective findings and recommendations</span>
                       </div>
                     </div>
@@ -108,15 +108,15 @@ const BrokerConsulting = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Board-ready analysis and reporting</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Third-party validation</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Strategic input for high-impact decisions</span>
                       </div>
                     </div>
@@ -134,15 +134,15 @@ const BrokerConsulting = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Special projects</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Interim leadership or advisory support</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Short-term, high-impact engagements</span>
                       </div>
                     </div>
@@ -155,19 +155,19 @@ const BrokerConsulting = () => {
                   <h3 className="text-xl font-display font-semibold text-hhp-navy mb-4">Engagement Style</h3>
                   <div className="space-y-2 text-lg leading-relaxed text-gray-600">
                     <div className="flex items-start">
-                      <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                      <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                       <span>Defined scope and objectives</span>
                     </div>
                     <div className="flex items-start">
-                      <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                      <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                       <span>Clear deliverables</span>
                     </div>
                     <div className="flex items-start">
-                      <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                      <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                       <span>Independent, objective perspective</span>
                     </div>
                     <div className="flex items-start">
-                      <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                      <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                       <span>Professional discretion and accountability</span>
                     </div>
                   </div>
@@ -177,19 +177,19 @@ const BrokerConsulting = () => {
                   <h3 className="text-xl font-display font-semibold text-hhp-navy mb-4">Who Consulting Services Are For</h3>
                   <div className="space-y-2 text-lg leading-relaxed text-gray-600">
                     <div className="flex items-start">
-                      <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                      <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                       <span>Owners navigating operational or organizational transitions</span>
                     </div>
                     <div className="flex items-start">
-                      <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                      <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                       <span>Boards seeking independent, third-party perspective</span>
                     </div>
                     <div className="flex items-start">
-                      <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                      <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                       <span>Stakeholders managing complex operational challenges</span>
                     </div>
                     <div className="flex items-start">
-                      <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                      <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                       <span>Firms requiring specialized interim support</span>
                     </div>
                   </div>
@@ -268,19 +268,19 @@ const BrokerConsulting = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Ongoing broker supervision</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Associate oversight and guidance</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Transaction review protocols</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Regulatory compliance monitoring</span>
                       </div>
                     </div>
@@ -298,19 +298,19 @@ const BrokerConsulting = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Contract and transaction review</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Compliance verification</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Risk identification and issue escalation</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Guidance on complex or non-standard transactions</span>
                       </div>
                     </div>
@@ -328,19 +328,19 @@ const BrokerConsulting = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>License compliance oversight</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Regulatory guidance and interpretation</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Support during audits or inquiries</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Ongoing compliance monitoring</span>
                       </div>
                     </div>
@@ -358,19 +358,19 @@ const BrokerConsulting = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Brokerage policies and procedures</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Compliance documentation</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Governance structure support</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Ongoing refinement as regulations evolve</span>
                       </div>
                     </div>
@@ -388,15 +388,15 @@ const BrokerConsulting = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Support during platform transitions</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Guidance on operational structure</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Advisory input as needed</span>
                       </div>
                     </div>
@@ -409,19 +409,19 @@ const BrokerConsulting = () => {
                   <h3 className="text-xl font-display font-semibold text-hhp-navy mb-4">Who Broker of Record Services Are For</h3>
                   <div className="space-y-2 text-lg leading-relaxed text-gray-600">
                     <div className="flex items-start">
-                      <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                      <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                       <span>Independent commercial brokerages</span>
                     </div>
                     <div className="flex items-start">
-                      <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                      <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                       <span>Specialty firms and niche practices</span>
                     </div>
                     <div className="flex items-start">
-                      <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                      <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                       <span>Teams exiting national platforms</span>
                     </div>
                     <div className="flex items-start">
-                      <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                      <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                       <span>Brokerages seeking continuity and long-term stability</span>
                     </div>
                   </div>
@@ -444,23 +444,27 @@ const BrokerConsulting = () => {
                   <div className="w-12 h-12 bg-hhp-accent/10 rounded-xl flex items-center justify-center mr-4">
                     <Users className="h-6 w-6 text-hhp-navy" />
                   </div>
-                  <h2 className="section-title text-hhp-navy">Who We Work With</h2>
+                  {/* Was a level-2 heading sitting visually beneath the level-3 sub-blocks
+                      above it, so the document outline ran backwards. */}
+                  <h3 className="font-display text-xl font-semibold text-hhp-navy">
+                    Who We Work With
+                  </h3>
                 </div>
                 <div className="space-y-3 text-gray-600">
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Independent commercial brokerages</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Owners navigating operational or organizational transitions</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Boards seeking independent, third-party perspective</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Brokerages seeking continuity and long-term stability</span>
                   </div>
                 </div>
@@ -472,23 +476,25 @@ const BrokerConsulting = () => {
                   <div className="w-12 h-12 bg-hhp-accent/10 rounded-xl flex items-center justify-center mr-4">
                     <Shield className="h-6 w-6 text-hhp-navy" />
                   </div>
-                  <h2 className="section-title text-hhp-navy">How We Differ</h2>
+                  <h3 className="font-display text-xl font-semibold text-hhp-navy">
+                    How We Differ
+                  </h3>
                 </div>
                 <div className="space-y-3 text-gray-600">
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Regulatory-first mindset</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Disciplined, non-intrusive oversight</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Integration with brokerage, advisory, and financial insight</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Focus on stability, continuity, and long-term outcomes</span>
                   </div>
                 </div>
@@ -531,20 +537,42 @@ const BrokerConsulting = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-gray-50 py-16">
-        <div className="container-premium text-center">
-          <Link 
-            to="/contact" 
-            className="group inline-flex items-center gap-2 bg-hhp-navy text-white px-8 py-4 rounded-lg font-heading font-semibold tracking-[0.06em] uppercase hover:bg-hhp-navy/90 transition-all duration-200 shadow-lg w-auto max-w-[300px] sm:max-w-none mx-auto sm:mx-0"
-            onClick={() => {
-              trackButtonClick('explore_services_consulting', 'broker_consulting_cta');
-              trackLinkClick('Explore Services or Request Consulting Support', '/contact');
-            }}
-          >
-            Explore Services or Request Consulting Support
-            <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-          </Link>
+      {/* Closing CTA. The page previously ended on an unlabelled button
+          floating on grey — no heading, no copy — so it stopped rather than
+          concluded. It was also the only services page with no closing block at
+          all after the careers band. */}
+      <section className="section-spacing bg-hhp-navy text-white">
+        <div className="container-premium">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="eyebrow mb-5 justify-center text-hhp-gold">
+              Consulting &amp; Broker of Record
+            </span>
+            <h2 className="section-title text-white">Talk to us about your brokerage</h2>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
+              Whether you need Broker of Record coverage, compliance oversight, or an independent
+              perspective on an operational decision, we can help.
+            </p>
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+              <Link
+                to="/contact"
+                className="group inline-flex min-h-[52px] items-center justify-center gap-2 rounded bg-white px-8 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.08em] text-hhp-navy transition-colors hover:bg-hhp-gold hover:text-hhp-navy-deep"
+                onClick={() => {
+                  trackButtonClick('explore_services_consulting', 'broker_consulting_cta');
+                  trackLinkClick('Request Consulting Support', '/contact');
+                }}
+              >
+                Request consulting support
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                to="/faq"
+                className="text-sm text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline"
+                onClick={() => trackLinkClick('FAQ - Broker Consulting', '/faq')}
+              >
+                Have more questions?
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </Layout>

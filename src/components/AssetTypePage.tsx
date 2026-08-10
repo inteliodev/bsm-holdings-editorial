@@ -155,7 +155,7 @@ const AssetTypePage = ({
                           <div className="space-y-2 text-base leading-relaxed text-gray-600">
                             {services.propertyManagement.services.map((service, idx) => (
                               <div key={idx} className="flex items-start">
-                                <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                                <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                                 <span>{service}</span>
                               </div>
                             ))}
@@ -188,7 +188,7 @@ const AssetTypePage = ({
                           <div className="space-y-2 text-base leading-relaxed text-gray-600">
                             {services.advisorySiteSelection.services.map((service, idx) => (
                               <div key={idx} className="flex items-start">
-                                <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                                <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                                 <span>{service}</span>
                               </div>
                             ))}
@@ -221,7 +221,7 @@ const AssetTypePage = ({
                           <div className="space-y-2 text-base leading-relaxed text-gray-600">
                             {services.investmentSales.services.map((service, idx) => (
                               <div key={idx} className="flex items-start">
-                                <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                                <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                                 <span>{service}</span>
                               </div>
                             ))}
@@ -254,7 +254,7 @@ const AssetTypePage = ({
                           <div className="space-y-2 text-base leading-relaxed text-gray-600">
                             {services.landlordRepresentation.services.map((service, idx) => (
                               <div key={idx} className="flex items-start">
-                                <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                                <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                                 <span>{service}</span>
                               </div>
                             ))}
@@ -287,7 +287,7 @@ const AssetTypePage = ({
                           <div className="space-y-2 text-base leading-relaxed text-gray-600">
                             {services.tenantRepresentation.services.map((service, idx) => (
                               <div key={idx} className="flex items-start">
-                                <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                                <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                                 <span>{service}</span>
                               </div>
                             ))}
@@ -320,7 +320,7 @@ const AssetTypePage = ({
                           <div className="space-y-2 text-base leading-relaxed text-gray-600">
                             {services.acquisitionsDevelopment.services.map((service, idx) => (
                               <div key={idx} className="flex items-start">
-                                <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                                <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                                 <span>{service}</span>
                               </div>
                             ))}

@@ -68,23 +68,23 @@ const AdvisorySiteSelection = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Needs assessment and criteria development</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Market and submarket evaluation</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Comparative site analysis</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Financial impact assessment</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Support through selection and execution</span>
                       </div>
                     </div>
@@ -102,23 +102,23 @@ const AdvisorySiteSelection = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Market demand and supply analysis</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Competitive landscape evaluation</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Use and positioning analysis</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Preliminary financial feasibility</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Risk identification and mitigation</span>
                       </div>
                     </div>
@@ -136,23 +136,23 @@ const AdvisorySiteSelection = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Asset-level performance review</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Portfolio-wide analysis</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Capital allocation insight</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Identification of underperforming assets</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Strategic prioritization</span>
                       </div>
                     </div>
@@ -170,23 +170,23 @@ const AdvisorySiteSelection = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Performance trend analysis</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Market timing considerations</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Operational and leasing risk assessment</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Scenario modeling</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Objective recommendation support</span>
                       </div>
                     </div>
@@ -204,19 +204,19 @@ const AdvisorySiteSelection = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Long-term real estate planning</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Alignment with business objectives</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Capital planning considerations</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Integration with brokerage and management insight</span>
                       </div>
                     </div>
@@ -234,19 +234,19 @@ const AdvisorySiteSelection = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Board-ready presentations</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Third-party review and validation</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Independent perspective for complex decisions</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Support during critical review processes</span>
                       </div>
                     </div>
@@ -309,19 +309,19 @@ const AdvisorySiteSelection = () => {
               <h2 className="section-title text-hhp-navy mb-6">When Clients Engage Us</h2>
               <div className="space-y-2 text-lg leading-relaxed text-gray-600">
                 <div className="flex items-start">
-                  <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                  <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                   <span>Prior to committing capital</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                  <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                   <span>During portfolio transitions</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                  <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                   <span>When internal consensus is unclear</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                  <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                   <span>When third-party validation is required</span>
                 </div>
               </div>
@@ -332,19 +332,19 @@ const AdvisorySiteSelection = () => {
               <h2 className="section-title text-hhp-navy mb-6">Value We Bring</h2>
               <div className="space-y-2 text-lg leading-relaxed text-gray-600">
                 <div className="flex items-start">
-                  <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                  <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                   <span>Objective, independent analysis</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                  <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                   <span>Market-grounded assumptions</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                  <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                   <span>Awareness of execution and operational realities</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                  <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                   <span>Clear, disciplined communication</span>
                 </div>
               </div>
@@ -362,19 +362,19 @@ const AdvisorySiteSelection = () => {
                 </div>
                 <div className="space-y-3 text-gray-600">
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Owners navigating operational or organizational transitions</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Boards seeking independent, third-party perspective</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Stakeholders managing complex operational challenges</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Firms requiring specialized interim support</span>
                   </div>
                 </div>
@@ -390,19 +390,19 @@ const AdvisorySiteSelection = () => {
                 </div>
                 <div className="space-y-3 text-gray-600">
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Advisory-first mindset</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>No transactional pressure</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Integration with brokerage, management, and financial insight</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Focus on clarity and decision quality</span>
                   </div>
                 </div>

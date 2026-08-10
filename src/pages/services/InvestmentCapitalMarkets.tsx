@@ -68,23 +68,23 @@ const InvestmentCapitalMarkets = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Asset valuation and pricing strategy</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Market positioning and buyer targeting</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Marketing and exposure coordination</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Offer evaluation and negotiation</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Coordination through closing</span>
                       </div>
                     </div>
@@ -102,23 +102,23 @@ const InvestmentCapitalMarkets = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Market and submarket analysis</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Financial review and assumption validation</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Risk identification and mitigation</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Support through due diligence</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Transaction structuring and execution</span>
                       </div>
                     </div>
@@ -136,23 +136,23 @@ const InvestmentCapitalMarkets = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Site and asset evaluation</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Financial comparison of alternatives</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Transaction structuring</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Lease and occupancy considerations</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Coordination through closing and occupancy</span>
                       </div>
                     </div>
@@ -170,19 +170,19 @@ const InvestmentCapitalMarkets = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Income and expense analysis</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Comparable sales review</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Sensitivity and scenario analysis</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Consideration of leasing and operational risk</span>
                       </div>
                     </div>
@@ -200,19 +200,19 @@ const InvestmentCapitalMarkets = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Deal structure evaluation</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Negotiation strategy</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Coordination with legal and financial advisors</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Alignment with ownership objectives</span>
                       </div>
                     </div>
@@ -230,19 +230,19 @@ const InvestmentCapitalMarkets = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Timeline and process coordination</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Due diligence oversight</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Communication management</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Closing support</span>
                       </div>
                     </div>
@@ -305,19 +305,19 @@ const InvestmentCapitalMarkets = () => {
               <h2 className="section-title text-hhp-navy mb-6">How We Approach Transactions</h2>
               <div className="space-y-2 text-lg leading-relaxed text-gray-600 mb-4">
                 <div className="flex items-start">
-                  <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                  <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                   <span>Clear underwriting assumptions</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                  <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                   <span>Realistic view of income, expenses, and capital requirements</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                  <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                   <span>Consideration of operational and leasing risk</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                  <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                   <span>Objective analysis without pressure or forced outcomes</span>
                 </div>
               </div>
@@ -349,19 +349,19 @@ const InvestmentCapitalMarkets = () => {
                 </div>
                 <div className="space-y-3 text-gray-600">
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Private capital</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Small and mid-sized investors</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Owner-users</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Long-term holders</span>
                   </div>
                 </div>
@@ -377,19 +377,19 @@ const InvestmentCapitalMarkets = () => {
                 </div>
                 <div className="space-y-3 text-gray-600">
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Strategy-driven, not volume-driven</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Operationally informed underwriting</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Clear communication and disciplined execution</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Alignment with ownership and portfolio goals</span>
                   </div>
                 </div>

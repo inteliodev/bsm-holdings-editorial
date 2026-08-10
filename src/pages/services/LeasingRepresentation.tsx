@@ -68,23 +68,23 @@ const LeasingRepresentation = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Market and submarket analysis</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Competitive property review</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Rent positioning and pricing strategy</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Concession and incentive evaluation</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Assessment of tenant demand and absorption</span>
                       </div>
                     </div>
@@ -103,23 +103,23 @@ const LeasingRepresentation = () => {
                     <p className="text-base font-medium text-gray-600 mb-3">Landlord representation services include:</p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Leasing strategy development</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Marketing coordination and exposure</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Tenant qualification and underwriting</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Lease negotiation and structuring</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Coordination through execution and delivery</span>
                       </div>
                     </div>
@@ -138,23 +138,23 @@ const LeasingRepresentation = () => {
                     <p className="text-base font-medium text-gray-600 mb-3">Tenant representation services include:</p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Needs assessment and market evaluation</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Site selection and tour coordination</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Financial comparison of alternatives</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Lease term negotiation</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Coordination through occupancy</span>
                       </div>
                     </div>
@@ -172,23 +172,23 @@ const LeasingRepresentation = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Lease term and renewal structure</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Expense recovery and escalation analysis</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Responsibility allocation and risk exposure</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Flexibility and exit considerations</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Alignment with ownership objectives</span>
                       </div>
                     </div>
@@ -206,23 +206,23 @@ const LeasingRepresentation = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Coordination with ownership and management</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Interface with legal counsel as needed</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Timeline management</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Documentation oversight</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Transition support through occupancy</span>
                       </div>
                     </div>
@@ -240,19 +240,19 @@ const LeasingRepresentation = () => {
                     </p>
                     <div className="space-y-2 text-base leading-relaxed text-gray-600">
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Alignment with property management strategy</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Consideration of maintenance and operational impact</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Integration with asset-level financial analysis</span>
                       </div>
                       <div className="flex items-start">
-                        <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                        <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Support for broader ownership and portfolio goals</span>
                       </div>
                     </div>
@@ -333,23 +333,23 @@ const LeasingRepresentation = () => {
                 </div>
                 <div className="space-y-3 text-gray-600">
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Commercial property owners</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Partnerships and ownership groups</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Owner-users</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Tenants seeking strategic representation</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Assets requiring thoughtful stabilization</span>
                   </div>
                 </div>
@@ -365,19 +365,19 @@ const LeasingRepresentation = () => {
                 </div>
                 <div className="space-y-3 text-gray-600">
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Strategy-first leasing approach</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Focus on lease quality, not just occupancy</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Integration with management and advisory services</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="inline-block w-4 h-px bg-gray-600 mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Clear communication and disciplined execution</span>
                   </div>
                 </div>
