@@ -192,8 +192,7 @@ previously said nothing specific to their class — every service description re
   retail, turn time for multifamily, load factor for office).
 - **`proof`** — **honest by construction.** `kind: 'operating'` states a real
   portfolio with real figures; `kind: 'seeking'` states underwriting criteria
-  instead. HHP operates only the three Section 202 communities in Pryor, so only
-  Senior Housing and Affordable Housing use `operating`. Never give another class
+  instead. Today only Senior Housing and Affordable Housing use `operating`. Never give another class
   `operating` without a real asset behind it — and never write `seeking` copy as
   an admission of absence. These are business-development pages: lead with the
   capability that shapes the criteria, then list what we look for. Pryor belongs

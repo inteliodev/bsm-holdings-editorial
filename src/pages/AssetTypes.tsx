@@ -42,7 +42,7 @@ const AssetTypes = () => {
     },
     {
       title: "Senior Housing & Healthcare",
-      proofPoint: "Our current operating portfolio — three HUD Section 202 senior communities in Pryor, Oklahoma.",
+      proofPoint: "Hands-on Section 202 and PRAC operations, including the three senior communities on our Pryor campus.",
       image: "/images/senior-housing-image.jpg",
       href: "/asset-types/senior-housing"
     }

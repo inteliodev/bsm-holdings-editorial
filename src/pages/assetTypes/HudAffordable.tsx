@@ -12,7 +12,7 @@ const HudAffordable = () => {
 
       marketText="In assisted housing the regulatory file and the building are the same asset. A missed recertification window, an unresolved income discrepancy or a unit that will not pass inspection does not produce an administrative note — it puts the subsidy that funds the property in question. That is a different risk profile from conventional multifamily, and it rewards operators who treat compliance as a continuous operating discipline rather than a reporting exercise performed twice a year. It also punishes deferred maintenance harder, because the inspection standard is external and it does not negotiate."
       valuePropositionTitle="Where HHP fits"
-      valueProposition="We operate HUD-assisted housing directly — three Section 202 communities on one campus in Pryor, Oklahoma. Compliance administration, the maintenance that keeps units inspection-ready and the accounting that reconciles the subsidy all sit inside one firm, which is what allows a discrepancy to be found in the month it occurs rather than at audit."
+      valueProposition="We operate HUD-assisted housing directly. Compliance administration, the maintenance that keeps units inspection-ready and the accounting that reconciles the subsidy all sit inside one firm, which is what allows a discrepancy to be found in the month it occurs rather than at audit."
 
       metricsIntro="Assisted housing is held to an external standard on a fixed calendar. These are the figures we carry continuously."
       metrics={[
@@ -124,7 +124,7 @@ const HudAffordable = () => {
         {
           title: 'We operate HUD-assisted housing ourselves',
           description:
-            'Three Section 202 communities on one campus in Pryor, Oklahoma. The compliance discipline described here is the one we are audited on, not a service description.',
+            'The compliance discipline described here is the one we are audited on, not a service description — including at the Section 202 campus we run in Pryor, Oklahoma.',
         },
         {
           title: 'Compliance carried continuously',
@@ -153,11 +153,11 @@ const HudAffordable = () => {
         image: '/images/properties/entrance-sign.webp',
         imageAlt:
           'Entrance sign at Mayor Wallis Manor and Venture Villa in Pryor, Oklahoma',
-        title: 'Three HUD Section 202 communities, operated in house',
-        body: 'Mayor Wallis Manor and Venture Villas I and II sit on one campus at 901 SE 9th Street in Pryor, Oklahoma — 85 income-restricted one-bedroom homes for elderly residents, with compliance administration, maintenance and accounting all held by HHP.',
+        title: 'The Pryor campus, operated in house',
+        body: 'One of the properties we operate: Mayor Wallis Manor and Venture Villas I and II, on one campus at 901 SE 9th Street in Pryor, Oklahoma — income-restricted one-bedroom homes for elderly residents, with compliance administration, maintenance and accounting all held by HHP.',
         stats: [
-          { value: '3', label: 'Communities' },
-          { value: '85', label: 'Units' },
+          { value: '3', label: 'Communities on campus' },
+          { value: '85', label: 'Units on campus' },
           { value: 'Section 202', label: 'Program' },
         ],
         href: '/portfolio',

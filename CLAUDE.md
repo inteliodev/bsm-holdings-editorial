@@ -254,9 +254,16 @@ property management focused on operational consistency…"*:
   a page about its asset class rather than about HHP.
 - **`proof`** — **honest by construction.** `kind: 'operating'` states a real
   portfolio with real figures; `kind: 'seeking'` states underwriting criteria
-  instead. HHP operates only the three Section 202 communities in Pryor, so only
-  Senior Housing and Affordable Housing use `operating`. **Never** give another
+  instead. Today only Senior Housing and Affordable Housing use `operating`. **Never** give another
   class `operating` without a real asset behind it.
+
+  **Do not present any single property as the whole portfolio.** The Pryor
+  campus is *a* property HHP operates, not the extent of what it operates —
+  `src/pages/Portfolio.tsx` lists only Pryor because that is all the page has
+  ever been given, which is a data gap and not a description of the firm. Copy
+  must say "one of the campuses we operate", never "our current operating
+  portfolio", and figures must be labelled to their scope ("units on campus")
+  rather than read as firm totals.
 
   **`seeking` states criteria, never absence.** These are business-development
   pages. Do not write "HHP does not currently operate X" or name the Pryor

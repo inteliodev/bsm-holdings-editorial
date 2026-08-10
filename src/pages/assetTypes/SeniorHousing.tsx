@@ -12,7 +12,7 @@ const SeniorHousing = () => {
 
       marketText="Senior housing is the least forgiving class to operate and the easiest to under-resource. Residents are long-tenured, so a community's reputation is built over years and spent in weeks. Response time is not a service metric here — a failed water heater or a lift that will not run is a safety matter for someone who cannot easily work around it. And where the community is federally assisted, the compliance calendar is not administrative overhead sitting beside operations; it is the operation. Miss a recertification window and the subsidy that funds the building is in question."
       valuePropositionTitle="Where HHP fits"
-      valueProposition="This is the class we operate directly. HHP manages three HUD Section 202 communities on one campus in Pryor, Oklahoma — 85 units in total — with the property management, the trades and the accounting all in house. What we describe on this page is not a capability statement; it is how we run buildings we are accountable for today."
+      valueProposition="This is a class we operate directly, with the property management, the trades and the accounting all in house. What we describe on this page is not a capability statement — it is how we run senior communities we are accountable for today."
 
       metricsIntro="These are the figures we hold against the communities we operate, not a generic list."
       metrics={[
@@ -124,7 +124,7 @@ const SeniorHousing = () => {
         {
           title: 'We operate this class ourselves',
           description:
-            'Three HUD Section 202 communities on one campus in Pryor, Oklahoma. Everything described here is drawn from buildings we are accountable for, not from a capability deck.',
+            'Everything described here is drawn from senior communities we are accountable for, not from a capability deck — including the HUD Section 202 campus at Pryor, Oklahoma.',
         },
         {
           title: 'Self-performed trades, so response is immediate',
@@ -154,11 +154,11 @@ const SeniorHousing = () => {
         imageAlt:
           'Single-storey senior homes under mature oaks at the Pryor campus',
         title: 'Mayor Wallis Manor and Venture Villas',
-        body: 'Three HUD Section 202 communities on one campus at 901 SE 9th Street in Pryor, Oklahoma. Single-storey one-bedroom homes with a community room, a resident library and shaded grounds, operated by HHP with the property management, the trades and the accounting all in house.',
+        body: 'One of the campuses we operate: three HUD Section 202 communities at 901 SE 9th Street in Pryor, Oklahoma. Single-storey one-bedroom homes with a community room, a resident library and shaded grounds, run with the property management, the trades and the accounting all in house.',
         stats: [
-          { value: '3', label: 'Communities' },
-          { value: '85', label: 'Units' },
-          { value: 'Pryor, OK', label: 'Market' },
+          { value: '3', label: 'Communities on campus' },
+          { value: '85', label: 'Units on campus' },
+          { value: 'Section 202', label: 'Program' },
         ],
         href: '/portfolio',
         hrefLabel: 'See the portfolio',
