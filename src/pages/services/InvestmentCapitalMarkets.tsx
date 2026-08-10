@@ -29,7 +29,7 @@ const InvestmentCapitalMarkets = () => {
             {/* Our Role */}
             <div>
               <h2 className="section-title text-hhp-navy mb-6">Our Role</h2>
-              <div className="space-y-4 text-lg leading-relaxed text-gray-600">
+              <div className="space-y-4 text-lg leading-relaxed text-hhp-charcoal">
                 <p>
                   We serve as both broker and advisor, providing structured guidance throughout the transaction lifecycle.
                 </p>
@@ -59,14 +59,14 @@ const InvestmentCapitalMarkets = () => {
               <Accordion type="single" collapsible className="w-full">
                 {/* 1. Investment Sales Representation */}
                 <AccordionItem value="sales" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Investment Sales Representation
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We represent owners in the disposition of commercial assets with a focus on pricing discipline, positioning, and execution.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Asset valuation and pricing strategy</span>
@@ -93,14 +93,14 @@ const InvestmentCapitalMarkets = () => {
 
                 {/* 2. Acquisition Advisory */}
                 <AccordionItem value="acquisition" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Acquisition Advisory
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We advise buyers on the evaluation and acquisition of commercial real estate.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Market and submarket analysis</span>
@@ -127,14 +127,14 @@ const InvestmentCapitalMarkets = () => {
 
                 {/* 3. Owner-User Transactions */}
                 <AccordionItem value="owner-user" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Owner-User Transactions
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We support owner-users acquiring or disposing of real estate with both operational and investment considerations.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Site and asset evaluation</span>
@@ -161,14 +161,14 @@ const InvestmentCapitalMarkets = () => {
 
                 {/* 4. Pricing, Valuation & Underwriting */}
                 <AccordionItem value="pricing" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Pricing, Valuation & Underwriting
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We provide valuation guidance grounded in realistic assumptions and market context.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Income and expense analysis</span>
@@ -191,14 +191,14 @@ const InvestmentCapitalMarkets = () => {
 
                 {/* 5. Deal Structuring & Negotiation */}
                 <AccordionItem value="structuring" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Deal Structuring & Negotiation
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We focus on structuring transactions to align risk, economics, and flexibility.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Deal structure evaluation</span>
@@ -221,14 +221,14 @@ const InvestmentCapitalMarkets = () => {
 
                 {/* 6. Transaction Management & Execution */}
                 <AccordionItem value="execution" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Transaction Management & Execution
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We manage the transaction process from initial strategy through closing.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Timeline and process coordination</span>
@@ -303,7 +303,7 @@ const InvestmentCapitalMarkets = () => {
             {/* How We Approach Transactions */}
             <div>
               <h2 className="section-title text-hhp-navy mb-6">How We Approach Transactions</h2>
-              <div className="space-y-2 text-lg leading-relaxed text-gray-600 mb-4">
+              <div className="space-y-2 text-lg leading-relaxed text-hhp-charcoal mb-4">
                 <div className="flex items-start">
                   <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                   <span>Clear underwriting assumptions</span>
@@ -321,7 +321,7 @@ const InvestmentCapitalMarkets = () => {
                   <span>Objective analysis without pressure or forced outcomes</span>
                 </div>
               </div>
-              <p className="text-lg leading-relaxed text-gray-600">
+              <p className="text-lg leading-relaxed text-hhp-charcoal">
                 We are aligned with long-term decision-making, not transaction volume.
               </p>
             </div>
@@ -329,10 +329,10 @@ const InvestmentCapitalMarkets = () => {
             {/* Why Our Approach Matters */}
             <div>
               <h2 className="section-title text-hhp-navy mb-6">Why Our Approach Matters</h2>
-              <p className="text-lg leading-relaxed text-gray-600">
+              <p className="text-lg leading-relaxed text-hhp-charcoal">
                 Transactions that ignore operational realities often underperform after closing.
               </p>
-              <p className="text-lg leading-relaxed text-gray-600 mt-4">
+              <p className="text-lg leading-relaxed text-hhp-charcoal mt-4">
                 Our approach integrates brokerage execution with management and advisory insight, allowing clients to make informed decisions with a clear view of both risk and opportunity.
               </p>
             </div>
@@ -347,7 +347,7 @@ const InvestmentCapitalMarkets = () => {
                   </div>
                   <h2 className="section-title text-hhp-navy">Who We Work With</h2>
                 </div>
-                <div className="space-y-3 text-gray-600">
+                <div className="space-y-3 text-hhp-charcoal">
                   <div className="flex items-start">
                     <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Private capital</span>
@@ -375,7 +375,7 @@ const InvestmentCapitalMarkets = () => {
                   </div>
                   <h2 className="section-title text-hhp-navy">How We Differ</h2>
                 </div>
-                <div className="space-y-3 text-gray-600">
+                <div className="space-y-3 text-hhp-charcoal">
                   <div className="flex items-start">
                     <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Strategy-driven, not volume-driven</span>
@@ -397,8 +397,8 @@ const InvestmentCapitalMarkets = () => {
             </div>
 
             {/* Optional Closing Line */}
-            <div className="pt-8 border-t border-gray-200">
-              <p className="text-lg leading-relaxed text-gray-600 italic">
+            <div className="pt-8 border-t border-border">
+              <p className="text-lg leading-relaxed text-hhp-charcoal italic">
                 Sound transaction decisions are built on clear assumptions, disciplined execution, and an understanding of how assets perform over time.
               </p>
             </div>

@@ -268,7 +268,7 @@ const Home = () => {
       </section>
 
       {/* Asset Types Section */}
-      <section className="bg-gray-50 pt-12 pb-8 sm:pt-16 sm:pb-10 lg:pt-20 lg:pb-12">
+      <section className="bg-surface pt-12 pb-8 sm:pt-16 sm:pb-10 lg:pt-20 lg:pb-12">
         <div className="container-premium">
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <h2 className="section-title text-hhp-navy mb-4 sm:mb-6">Asset Types We Serve</h2>

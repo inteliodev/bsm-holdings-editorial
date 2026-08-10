@@ -25,7 +25,7 @@ const IconGrid = ({ title, services, columns = 3 }: IconGridProps) => {
               const IconComponent = service.icon;
               return (
                 <div key={index} className="text-center group">
-                  <div className="bg-gray-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-hhp-accent/10 transition-colors duration-300">
+                  <div className="bg-surface rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-hhp-accent/10 transition-colors duration-300">
                     <IconComponent className="h-8 w-8 text-hhp-navy" />
                   </div>
                   <h3 className="text-lg font-display font-semibold text-hhp-navy mb-3">

@@ -98,25 +98,33 @@ const AssetTypes = () => {
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-hhp-navy mb-6 tracking-[0.06em] uppercase">
                 Every Asset Class, One Integrated Platform
               </h2>
-              <p className="text-xl leading-relaxed text-gray-600 mb-8">
+              <p className="text-xl leading-relaxed text-hhp-charcoal mb-8">
                 HHP Asset Management operates across every major property type—from multifamily and affordable housing to office, retail, industrial, and senior living. Our integrated services, technology, and analytics deliver performance, compliance, and value no matter the asset class.
               </p>
-              <Link 
-                to="#asset-types" 
-                className="inline-block bg-hhp-navy text-white px-8 py-4 rounded-lg font-heading font-semibold tracking-[0.06em] uppercase hover:bg-hhp-navy/90 transition-all duration-300 shadow-elegant"
+              {/* A plain anchor, not <Link>. React Router resolves `to="#x"` to
+                  `<currentPath>#x` and updates the URL without scrolling, and
+                  ScrollToTop only fires on pathname change — so this button
+                  moved nothing. Native fragment navigation scrolls and honours
+                  the target's scroll-margin-top. */}
+              <a
+                href="#asset-types"
+                className="btn-hero"
                 onClick={() => {
                   trackButtonClick('explore_asset_types_cta', 'asset_types_intro');
                   trackLinkClick('Explore Asset Types', '#asset-types');
                 }}
               >
-                Explore Asset Types →
-              </Link>
+                Explore Asset Types
+              </a>
             </div>
           </div>
         </section>
 
         {/* Asset Types Grid */}
-        <section id="asset-types" className="bg-white section-spacing">
+        <section
+          id="asset-types"
+          className="bg-white section-spacing scroll-mt-[calc(var(--header-h)+1.5rem)]"
+        >
           <div className="container-premium">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 sm:gap-8 -mx-4 sm:mx-0">
               {assetTypes.map((assetType, index) => {

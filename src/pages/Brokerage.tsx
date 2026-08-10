@@ -91,7 +91,7 @@ const Brokerage = () => {
       </section>
 
       {/* Leasing Services */}
-      <section className="bg-gray-50 section-spacing">
+      <section className="bg-surface section-spacing">
         <div className="container-premium">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
@@ -246,7 +246,7 @@ const Brokerage = () => {
       </section>
 
       {/* Valuations & Advisory */}
-      <section className="bg-gray-50 section-spacing">
+      <section className="bg-surface section-spacing">
         <div className="container-premium">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">

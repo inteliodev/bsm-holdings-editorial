@@ -553,7 +553,8 @@
   transition:
     stroke 600ms cubic-bezier(0.16, 1, 0.3, 1),
     fill 600ms cubic-bezier(0.16, 1, 0.3, 1),
-    stroke-width 600ms cubic-bezier(0.16, 1, 0.3, 1);
+    stroke-width 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .bl.is-active {
@@ -583,8 +584,107 @@
   fill: hsl(var(--hhp-gold));
 }
 
+/* The accent tab is present at every step and only changes colour, so the
+   diagram never gains or loses a mark on scroll — emphasis, not visibility. */
+.bl-light .bl-solid {
+  fill: hsl(var(--hhp-navy) / 0.12);
+  stroke: none;
+}
+
+/* ── Extruded slabs (capability stack) ────────────────────────────────────
+   Each layer is drawn as three faces so the stack reads as stacked material
+   rather than stacked outlines. The faces carry their own fill because the
+   group's fill is what `.bl` uses for the front face, and a lit top needs to
+   differ from a shaded side. */
+.bl-light .bl-top {
+  fill: hsl(var(--hhp-navy) / 0.04);
+}
+
+.bl-light .bl-side {
+  fill: hsl(var(--hhp-navy) / 0.08);
+}
+
+.bl-light.is-active .bl-top {
+  fill: hsl(var(--hhp-gold) / 0.24);
+}
+
+.bl-light.is-active .bl-side {
+  fill: hsl(var(--hhp-gold) / 0.34);
+}
+
+/* The active layer slides out of the stack toward the reader. Horizontal only:
+   a vertical lift would collide with the neighbouring slab. */
+.bl.is-active.bl-lift {
+  transform: translateX(-9px);
+}
+
+/* Labels sit inside the slab groups so they travel with the lift. They set
+   their own fill and clear the inherited stroke, which would otherwise outline
+   the glyphs. */
+.bl-tag {
+  fill: hsl(var(--hhp-navy) / 0.38);
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  transition: fill 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  /* The spine runs behind the labels. A ground-coloured halo painted under the
+     glyphs knocks it out, rather than nudging the labels off the slab centre. */
+  stroke: hsl(var(--hhp-white));
+  stroke-width: 3.5px;
+  paint-order: stroke fill;
+}
+
+.bl-light.is-active .bl-tag {
+  fill: hsl(var(--hhp-navy));
+}
+
+/* Scroll rail. `.bl-rail-fill` is driven by stroke-dashoffset from the hook's
+   progress value, so it grows as the section is read. */
+.bl-rail {
+  fill: none;
+  stroke: hsl(var(--hhp-navy) / 0.12);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.bl-rail-fill {
+  fill: none;
+  stroke: hsl(var(--hhp-gold));
+  stroke-width: 2;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bl-rail-node {
+  fill: hsl(var(--hhp-navy) / 0.18);
+  stroke: none;
+  transition: fill 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bl-rail-node.is-active {
+  fill: hsl(var(--hhp-gold));
+}
+
+/* Below lg the diagrams are pinned in a compact sticky bar, roughly half their
+   desktop width. A 1.4px stroke in a 400-unit viewBox renders sub-pixel at that
+   scale and the whole diagram greys out, so the linework is weighted up. The
+   in-slab labels cannot survive the reduction at any weight — they would be
+   under 4px — and they are already carried by the step list and the live
+   caption, so they are hidden rather than shrunk. They stay in the DOM. */
+@media (max-width: 1023px) {
+  .bl { stroke-width: 2.2; }
+  .bl.is-active { stroke-width: 3; }
+  .bl-rail,
+  .bl-rail-fill { stroke-width: 3.5; }
+  .bl-tag { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .bl { transition: none; }
+  .bl,
+  .bl-tag,
+  .bl-rail-fill,
+  .bl-rail-node { transition: none; }
 }
 
 /* ── Portfolio markers ────────────────────────────────────────────────────

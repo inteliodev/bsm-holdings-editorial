@@ -234,7 +234,7 @@ const About = () => {
       <section className="bg-white py-12 lg:py-16">
         <div className="container-premium">
           {/* Tab Navigation */}
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 border-b border-gray-200 pb-4" role="tablist" aria-label="About HHP sections">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 border-b border-border pb-4" role="tablist" aria-label="About HHP sections">
             <button
               onClick={() => handleTabChange('people')}
               onKeyDown={(e) => {
@@ -325,8 +325,15 @@ const About = () => {
 
                       {/* items-start so a card without a headshot sizes to its
                           own content instead of stretching to match a card that
-                          has one, which left a large empty panel beneath it. */}
-                      <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+                          has one, which left a large empty panel beneath it.
+
+                          The portrait is exactly as wide as its grid track, so
+                          the column ladder — not the image — is what sets the
+                          headshot size. The old ladder peaked at ~454px in the
+                          md range and ~400px at xl, which read as a feature
+                          gallery rather than a roster. This keeps every card
+                          between roughly 215px and 365px. */}
+                      <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 lg:gap-10">
                         {department.members.map((member) => (
                           <div
                             key={member.id}

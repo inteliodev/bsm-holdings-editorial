@@ -100,15 +100,17 @@ const Insights = () => {
       <section className="bg-white py-12 sm:py-16">
         <div className="container-premium">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-xl leading-relaxed text-gray-600 mb-4">
+            <p className="text-xl leading-relaxed text-hhp-charcoal mb-4">
               Market analysis, case studies, and perspectives from an operator-led real estate firm.
             </p>
-            <p className="text-xl leading-relaxed text-gray-600 mb-8">
+            <p className="text-xl leading-relaxed text-hhp-charcoal mb-8">
               Stay ahead with data-driven insights and grounded market commentary across the asset classes we operate.
             </p>
-            <Link to="#newsletter" className="bg-hhp-navy text-white px-8 py-4 rounded-lg font-heading font-semibold tracking-[0.06em] uppercase hover:bg-hhp-navy/90 transition-all duration-300 shadow-elegant inline-block">
+            {/* Plain anchor — <Link to="#hash"> updates the URL without
+                scrolling, so this button did nothing. */}
+            <a href="#newsletter" className="btn-hero">
               Subscribe to Insights
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -172,7 +174,7 @@ const Insights = () => {
       </section>
 
       {/* Case Studies */}
-      <section className="bg-gray-50 section-spacing">
+      <section className="bg-surface section-spacing">
         <div className="container-premium">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -320,7 +322,10 @@ const Insights = () => {
       </section>
 
       {/* Newsletter Signup */}
-      <section id="newsletter" className="bg-gray-50 section-spacing">
+      <section
+        id="newsletter"
+        className="bg-surface section-spacing scroll-mt-[calc(var(--header-h)+1.5rem)]"
+      >
         <div className="container-premium">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="section-title text-hhp-navy mb-6">Stay Ahead with Our Insights</h2>

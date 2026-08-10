@@ -29,7 +29,7 @@ const LeasingRepresentation = () => {
             {/* Our Leasing Philosophy */}
             <div>
               <h2 className="section-title text-hhp-navy mb-6">Our Leasing Philosophy</h2>
-              <div className="space-y-4 text-lg leading-relaxed text-gray-600">
+              <div className="space-y-4 text-lg leading-relaxed text-hhp-charcoal">
                 <p>
                   Leasing is not a marketing exercise. It is a capital decision.
                 </p>
@@ -59,14 +59,14 @@ const LeasingRepresentation = () => {
               <Accordion type="single" collapsible className="w-full">
                 {/* 1. Market & Asset Positioning */}
                 <AccordionItem value="market" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Market & Asset Positioning
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We begin with a clear understanding of the asset's position within its competitive set.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Market and submarket analysis</span>
@@ -93,15 +93,15 @@ const LeasingRepresentation = () => {
 
                 {/* 2. Landlord Representation */}
                 <AccordionItem value="landlord" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Landlord Representation
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We represent owners in the leasing of commercial space with a focus on protecting asset value and supporting long-term performance.
                     </p>
-                    <p className="text-base font-medium text-gray-600 mb-3">Landlord representation services include:</p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <p className="text-base font-medium text-hhp-charcoal mb-3">Landlord representation services include:</p>
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Leasing strategy development</span>
@@ -128,15 +128,15 @@ const LeasingRepresentation = () => {
 
                 {/* 3. Tenant Representation */}
                 <AccordionItem value="tenant" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Tenant Representation
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We advise tenants on site selection and lease negotiation with an emphasis on operational fit, cost structure, and long-term flexibility.
                     </p>
-                    <p className="text-base font-medium text-gray-600 mb-3">Tenant representation services include:</p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <p className="text-base font-medium text-hhp-charcoal mb-3">Tenant representation services include:</p>
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Needs assessment and market evaluation</span>
@@ -163,14 +163,14 @@ const LeasingRepresentation = () => {
 
                 {/* 4. Lease Structuring & Risk Mitigation */}
                 <AccordionItem value="lease" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Lease Structuring & Risk Mitigation
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We focus on the details that materially impact long-term outcomes.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Lease term and renewal structure</span>
@@ -197,14 +197,14 @@ const LeasingRepresentation = () => {
 
                 {/* 5. Execution & Coordination */}
                 <AccordionItem value="execution" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Execution & Coordination
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We manage the leasing process through execution to ensure consistency and accountability.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Coordination with ownership and management</span>
@@ -231,14 +231,14 @@ const LeasingRepresentation = () => {
 
                 {/* 6. Integration with Management & Advisory */}
                 <AccordionItem value="integration" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Integration with Management & Advisory
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       Our leasing work is informed by real operational experience.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Alignment with property management strategy</span>
@@ -313,10 +313,10 @@ const LeasingRepresentation = () => {
             {/* Why Our Approach Matters */}
             <div>
               <h2 className="section-title text-hhp-navy mb-6">Why Our Approach Matters</h2>
-              <p className="text-lg leading-relaxed text-gray-600">
+              <p className="text-lg leading-relaxed text-hhp-charcoal">
                 Poorly structured leases often create hidden costs, operational friction, and long-term constraints.
               </p>
-              <p className="text-lg leading-relaxed text-gray-600 mt-4">
+              <p className="text-lg leading-relaxed text-hhp-charcoal mt-4">
                 Our leasing work is informed by management, advisory, and financial insight — not just deal-making — allowing us to deliver outcomes that support both near-term stability and long-term value.
               </p>
             </div>
@@ -331,7 +331,7 @@ const LeasingRepresentation = () => {
                   </div>
                   <h2 className="section-title text-hhp-navy">Who We Work With</h2>
                 </div>
-                <div className="space-y-3 text-gray-600">
+                <div className="space-y-3 text-hhp-charcoal">
                   <div className="flex items-start">
                     <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Commercial property owners</span>
@@ -363,7 +363,7 @@ const LeasingRepresentation = () => {
                   </div>
                   <h2 className="section-title text-hhp-navy">How We Differ</h2>
                 </div>
-                <div className="space-y-3 text-gray-600">
+                <div className="space-y-3 text-hhp-charcoal">
                   <div className="flex items-start">
                     <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Strategy-first leasing approach</span>
@@ -385,8 +385,8 @@ const LeasingRepresentation = () => {
             </div>
 
             {/* Optional Closing Line */}
-            <div className="pt-8 border-t border-gray-200">
-              <p className="text-lg leading-relaxed text-gray-600 italic">
+            <div className="pt-8 border-t border-border">
+              <p className="text-lg leading-relaxed text-hhp-charcoal italic">
                 Leasing decisions should support the asset long after the ink dries. Our approach is designed to do exactly that.
               </p>
             </div>

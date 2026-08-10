@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Mail, MapPin, Phone } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ExternalLink, Globe, Mail, MapPin, Phone } from 'lucide-react';
 import type { Map as MapboxMap, Marker as MapboxMarker, Popup as MapboxPopup } from 'mapbox-gl';
 import Layout from '@/components/Layout/Layout';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
@@ -18,7 +18,61 @@ const CAMPUS_ADDRESS = '901 SE 9th Street, Pryor, OK 74361';
 const FAN_ZOOM = 16.6;
 const FAN_RADIUS_M = 24;
 
-const properties = [
+/** The three communities share one campus, one office and one website. */
+const CAMPUS_WEBSITE = 'https://mayorwallis.com';
+
+/**
+ * Shared campus amenities. All three communities are served by the same office,
+ * community room and grounds, so this is stated once rather than duplicated
+ * into each record where it would drift.
+ */
+const CAMPUS_AMENITIES = [
+  'Community room with game tables and piano',
+  'Resident library',
+  'Covered mail porch and picnic area',
+  'Shaded grounds and walking lawn',
+  'On-site office, Mon–Fri 8:30am–5pm',
+];
+
+type Photo = { src: string; alt: string };
+
+/**
+ * Campus photography, shared for the same reason the amenities are. Ordered so
+ * the entrance sign leads — it is the only shot that names the property.
+ */
+const CAMPUS_PHOTOS: Photo[] = [
+  { src: '/images/properties/entrance-sign.webp', alt: 'Entrance sign at Mayor Wallis Manor and Venture Villa' },
+  { src: '/images/properties/grounds-oak-tree.webp', alt: 'Single-storey homes under mature oaks on the Pryor campus' },
+  { src: '/images/properties/office-mail-porch.webp', alt: 'Covered porch at the leasing office with mailboxes and picnic tables' },
+  { src: '/images/properties/community-room.webp', alt: 'Community room with game tables, a piano and seating' },
+  { src: '/images/properties/community-library.webp', alt: 'The resident library' },
+  { src: '/images/properties/library-shelves.webp', alt: 'Shelves of donated books in the resident library' },
+  { src: '/images/properties/back-lawn.webp', alt: 'Shaded lawn behind the homes' },
+];
+
+type Property = {
+  id: string;
+  name: string;
+  short: string;
+  address: string;
+  type: string;
+  units: number;
+  status: string;
+  built: string;
+  beds: string;
+  baths: string;
+  /** Approximate unit size, as published by the community. */
+  sqft: string;
+  phone: string;
+  email: string;
+  website: string;
+  description: string;
+};
+
+/* Declared rather than inferred from the literal. `(typeof properties)[number]`
+   widens the union the moment one record carries a field another does not, and
+   every read of that field then fails to compile. */
+const properties: Property[] = [
   {
     id: 'mwm',
     name: 'Mayor Wallis Manor',
@@ -30,8 +84,10 @@ const properties = [
     built: '1991',
     beds: '1 BD',
     baths: '1 BA',
+    sqft: '~560',
     phone: '(918) 825-1250',
     email: 'mwm@hhpasset.com',
+    website: CAMPUS_WEBSITE,
     description:
       'A 31-unit HUD Section 202 senior housing community providing affordable, supportive housing for elderly residents in Pryor, Oklahoma.',
   },
@@ -43,11 +99,15 @@ const properties = [
     type: 'Senior Housing',
     units: 24,
     status: 'Active',
+    // NOTE: mayorwallis.com lists Venture Villa I as built in 1995, the same
+    // year as Villa II. Left at 1985 pending confirmation of which is correct.
     built: '1985',
     beds: '1 BD',
     baths: '1 BA',
+    sqft: '~560–700',
     phone: '(918) 825-1250',
     email: 'mwm@hhpasset.com',
+    website: CAMPUS_WEBSITE,
     description:
       'A 24-unit HUD Section 202 senior housing community located on the Pryor campus, serving elderly residents through the PRAC program.',
   },
@@ -62,14 +122,14 @@ const properties = [
     built: '1995',
     beds: '1 BD',
     baths: '1 BA',
+    sqft: '~560',
     phone: '(918) 825-1250',
     email: 'mwm@hhpasset.com',
+    website: CAMPUS_WEBSITE,
     description:
       'A 30-unit HUD Section 202 senior housing community, the newest addition to the Pryor campus with modern amenities for senior residents.',
   },
 ];
-
-type Property = (typeof properties)[number];
 
 const TOTAL_UNITS = properties.reduce((sum, p) => sum + p.units, 0);
 
@@ -92,9 +152,23 @@ function fanOffset(index: number, total: number): [number, number] {
   return [CAMPUS_CENTER[0] + dLng, CAMPUS_CENTER[1] + dLat];
 }
 
-const Stat = ({ value, label }: { value: string | number; label: string }) => (
+const Stat = ({
+  value,
+  label,
+  /** For values that are ranges rather than counts — "~560–700" does not fit a
+      fifth column at the display size, and reads as secondary anyway. */
+  compact = false,
+}: {
+  value: string | number;
+  label: string;
+  compact?: boolean;
+}) => (
   <div>
-    <div className="font-display text-3xl font-semibold leading-none tracking-tight text-hhp-navy">
+    <div
+      className={`font-display font-semibold leading-none tracking-tight text-hhp-navy ${
+        compact ? 'text-xl' : 'text-3xl'
+      }`}
+    >
       {value}
     </div>
     <div className="mt-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-hhp-charcoal/55">
@@ -115,6 +189,7 @@ const Portfolio = () => {
   const [hoveredProperty, setHoveredProperty] = useState<string | null>(null);
   const [detailOpen, setDetailOpen] = useState(false);
   const [mapReady, setMapReady] = useState(false);
+  const [photoIndex, setPhotoIndex] = useState(0);
   const timeOfDay = useTimeOfDay();
 
   const stopOrbit = useCallback(() => {
@@ -146,6 +221,9 @@ const Portfolio = () => {
     (property: Property) => {
       setSelectedProperty(property.id);
       setDetailOpen(true);
+      // Start each property back at the entrance sign rather than wherever the
+      // previous one was left.
+      setPhotoIndex(0);
       flyToProperty(property);
       trackButtonClick(`portfolio_property_${property.id}`, 'portfolio');
     },
@@ -462,7 +540,10 @@ const Portfolio = () => {
 
           {/* Overlay. States the shared address plainly so the fanned markers
               are never mistaken for surveyed positions. */}
-          <div className="pointer-events-none absolute left-5 top-5 z-10 border border-white/12 bg-hhp-navy/85 px-5 py-4 backdrop-blur-md">
+          {/* /15, not /12: 12 is not on Tailwind's opacity scale, so no rule was
+              emitted and this hairline fell through to the global border-border
+              — a near-white grey on a navy card. */}
+          <div className="pointer-events-none absolute left-5 top-5 z-10 border border-white/15 bg-hhp-navy/85 px-5 py-4 backdrop-blur-md">
             <div className="eyebrow">Managed Portfolio</div>
             <div className="mt-3 flex items-baseline gap-6 text-white">
               <span className="font-display text-2xl font-semibold leading-none">
@@ -495,7 +576,45 @@ const Portfolio = () => {
                 <ArrowLeft className="h-4 w-4" /> All properties
               </button>
 
-              <div className="border-b border-border px-6 pb-7">
+              {/* Campus photography. The page was map-only, so a selected
+                  property showed a paragraph and two phone numbers and nothing
+                  of the asset itself. */}
+              <div className="px-6">
+                <img
+                  key={CAMPUS_PHOTOS[photoIndex].src}
+                  src={CAMPUS_PHOTOS[photoIndex].src}
+                  alt={CAMPUS_PHOTOS[photoIndex].alt}
+                  className="aspect-[16/10] w-full animate-fade-up bg-surface object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
+                  {CAMPUS_PHOTOS.map((photo, index) => (
+                    <button
+                      key={photo.src}
+                      type="button"
+                      onClick={() => setPhotoIndex(index)}
+                      aria-label={photo.alt}
+                      aria-current={index === photoIndex}
+                      className={`h-12 w-16 flex-shrink-0 overflow-hidden border-2 transition-colors ${
+                        index === photoIndex
+                          ? 'border-hhp-gold'
+                          : 'border-transparent opacity-60 hover:opacity-100'
+                      }`}
+                    >
+                      <img
+                        src={photo.src}
+                        alt=""
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="border-b border-border px-6 pb-7 pt-6">
                 <div className="eyebrow">{selectedProp.type}</div>
                 <h1 className="mt-4 font-display text-display-md text-hhp-navy">
                   {selectedProp.name}
@@ -505,11 +624,14 @@ const Portfolio = () => {
                   {selectedProp.address}
                 </p>
 
-                <div className="mt-7 grid grid-cols-4 gap-4 border-t border-border pt-6">
+                {/* Five stats wrap to two rows below ~420px rather than being
+                    crushed into five columns on a phone. */}
+                <div className="mt-7 grid grid-cols-3 gap-4 border-t border-border pt-6 sm:grid-cols-5">
                   <Stat value={selectedProp.units} label="Units" />
                   <Stat value={selectedProp.built} label="Built" />
                   <Stat value={selectedProp.beds.replace(' BD', '')} label="Beds" />
                   <Stat value={selectedProp.baths.replace(' BA', '')} label="Baths" />
+                  <Stat value={selectedProp.sqft} label="Sq Ft" compact />
                 </div>
               </div>
 
@@ -520,6 +642,26 @@ const Portfolio = () => {
                 <p className="mt-3 leading-relaxed text-hhp-charcoal/80">
                   {selectedProp.description}
                 </p>
+              </div>
+
+              <div className="border-b border-border px-6 py-7">
+                <h2 className="text-[10px] font-semibold uppercase tracking-[0.18em] text-hhp-charcoal/50">
+                  Campus Amenities
+                </h2>
+                <ul className="mt-4 space-y-2.5">
+                  {CAMPUS_AMENITIES.map((amenity) => (
+                    <li
+                      key={amenity}
+                      className="flex items-start gap-3 text-sm leading-relaxed text-hhp-charcoal/80"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="mt-[0.45rem] h-1 w-1 flex-shrink-0 rounded-full bg-hhp-gold"
+                      />
+                      {amenity}
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               <div className="border-b border-border px-6 py-7">
@@ -540,6 +682,19 @@ const Portfolio = () => {
                   >
                     <Mail className="h-4 w-4 text-hhp-gold" />
                     {selectedProp.email}
+                  </a>
+                  <a
+                    href={selectedProp.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-3 font-medium text-hhp-charcoal transition-colors hover:text-hhp-navy"
+                    onClick={() =>
+                      trackButtonClick(`property_website_${selectedProp.id}`, 'portfolio')
+                    }
+                  >
+                    <Globe className="h-4 w-4 flex-shrink-0 text-hhp-gold" />
+                    {selectedProp.website.replace(/^https?:\/\//, '')}
+                    <ExternalLink className="h-3.5 w-3.5 text-hhp-charcoal/40 transition-colors group-hover:text-hhp-gold" />
                   </a>
                 </div>
               </div>

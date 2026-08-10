@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Layout from '@/components/Layout/Layout';
 import { ArrowRight, Building, TrendingUp, Shield, Users, Target, BarChart3 } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -85,21 +85,54 @@ const AssetTypePage = ({
   heroButtonText,
   showAboutUs
 }: AssetTypePageProps) => {
-  const scrollToContact = () => {
-    const contactSection = document.getElementById('asset-contact');
-    contactSection?.scrollIntoView({ behavior: 'smooth' });
+  const navigate = useNavigate();
+
+  /**
+   * The in-page contact band only renders when a page supplies `ctaImage` and
+   * `ctaTitle`, and none of the six asset-type pages does — so scrolling alone
+   * would be another button that goes nowhere. Scroll when the target is really
+   * there, otherwise send the visitor to the contact page.
+   */
+  const goToContact = () => {
+    const section = document.getElementById('asset-contact');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+    trackButtonClick('asset_type_hero_cta', 'asset_type_hero');
+    navigate('/contact');
   };
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section 
-        className="relative h-[600px] flex items-center justify-center bg-cover bg-center bg-no-repeat"
+      {/* Hero Section.
+
+          `tagline` and `heroButtonText` were both declared as props, supplied by
+          all six asset-type pages, and rendered by neither — and scrollToContact
+          was never called, so none of these pages had a hero CTA at all despite
+          the #asset-contact target existing further down. */}
+      <section
+        className="relative flex h-[600px] items-center justify-center bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
-        <div className="absolute inset-0 bg-hhp-navy/40"></div>
-        <div className="relative z-10 container-premium text-center text-white">
-          <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-lg">{title}</h1>
+        {/* Gradient scrim rather than a flat navy wash, which muted the photo. */}
+        <div className="scrim-hero absolute inset-0" aria-hidden="true" />
+        <div className="container-premium relative z-10 text-center text-white">
+          <h1 className="hero-title text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]">
+            {title}
+          </h1>
+          {tagline && (
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/85">
+              {tagline}
+            </p>
+          )}
+          <button
+            type="button"
+            onClick={goToContact}
+            className="mt-8 inline-flex min-h-[52px] items-center justify-center rounded-none bg-white px-8 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.08em] text-hhp-navy shadow-elegant transition-all duration-300 hover:bg-hhp-gold hover:text-hhp-navy-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hhp-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
+          >
+            {heroButtonText || 'Talk to Our Experts'}
+          </button>
         </div>
       </section>
 
@@ -135,24 +168,24 @@ const AssetTypePage = ({
               <Accordion type="single" collapsible className="w-full">
                 {/* Property Management */}
                 <AccordionItem value="property-management" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     {serviceTitles?.propertyManagement || "Property Management"}
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
                     {typeof services.propertyManagement === 'string' ? (
-                      <p className="text-lg leading-relaxed text-gray-600">
+                      <p className="text-lg leading-relaxed text-hhp-charcoal">
                         {services.propertyManagement}
                       </p>
                     ) : (
                       <div className="space-y-4">
-                        <p className="text-lg leading-relaxed text-gray-600">
+                        <p className="text-lg leading-relaxed text-hhp-charcoal">
                           {services.propertyManagement.description}
                         </p>
                         <div>
-                          <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                          <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                             Services include:
                           </p>
-                          <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                          <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                             {services.propertyManagement.services.map((service, idx) => (
                               <div key={idx} className="flex items-start">
                                 <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
@@ -168,24 +201,24 @@ const AssetTypePage = ({
 
                 {/* Advisory & Site Selection */}
                 <AccordionItem value="advisory-site-selection" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     {serviceTitles?.advisorySiteSelection || "Advisory & Site Selection"}
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
                     {typeof services.advisorySiteSelection === 'string' ? (
-                      <p className="text-lg leading-relaxed text-gray-600">
+                      <p className="text-lg leading-relaxed text-hhp-charcoal">
                         {services.advisorySiteSelection}
                       </p>
                     ) : (
                       <div className="space-y-4">
-                        <p className="text-lg leading-relaxed text-gray-600">
+                        <p className="text-lg leading-relaxed text-hhp-charcoal">
                           {services.advisorySiteSelection.description}
                         </p>
                         <div>
-                          <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                          <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                             Services include:
                           </p>
-                          <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                          <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                             {services.advisorySiteSelection.services.map((service, idx) => (
                               <div key={idx} className="flex items-start">
                                 <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
@@ -201,24 +234,24 @@ const AssetTypePage = ({
 
                 {/* Investment Sales */}
                 <AccordionItem value="investment-sales" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     {serviceTitles?.investmentSales || "Investment Sales"}
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
                     {typeof services.investmentSales === 'string' ? (
-                      <p className="text-lg leading-relaxed text-gray-600">
+                      <p className="text-lg leading-relaxed text-hhp-charcoal">
                         {services.investmentSales}
                       </p>
                     ) : (
                       <div className="space-y-4">
-                        <p className="text-lg leading-relaxed text-gray-600">
+                        <p className="text-lg leading-relaxed text-hhp-charcoal">
                           {services.investmentSales.description}
                         </p>
                         <div>
-                          <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                          <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                             Services include:
                           </p>
-                          <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                          <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                             {services.investmentSales.services.map((service, idx) => (
                               <div key={idx} className="flex items-start">
                                 <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
@@ -234,24 +267,24 @@ const AssetTypePage = ({
 
                 {/* Landlord Representation */}
                 <AccordionItem value="landlord-representation" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     {serviceTitles?.landlordRepresentation || "Landlord Representation"}
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
                     {typeof services.landlordRepresentation === 'string' ? (
-                      <p className="text-lg leading-relaxed text-gray-600">
+                      <p className="text-lg leading-relaxed text-hhp-charcoal">
                         {services.landlordRepresentation}
                       </p>
                     ) : (
                       <div className="space-y-4">
-                        <p className="text-lg leading-relaxed text-gray-600">
+                        <p className="text-lg leading-relaxed text-hhp-charcoal">
                           {services.landlordRepresentation.description}
                         </p>
                         <div>
-                          <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                          <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                             Services include:
                           </p>
-                          <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                          <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                             {services.landlordRepresentation.services.map((service, idx) => (
                               <div key={idx} className="flex items-start">
                                 <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
@@ -267,24 +300,24 @@ const AssetTypePage = ({
 
                 {/* Tenant Representation */}
                 <AccordionItem value="tenant-representation" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     {serviceTitles?.tenantRepresentation || "Tenant Representation"}
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
                     {typeof services.tenantRepresentation === 'string' ? (
-                      <p className="text-lg leading-relaxed text-gray-600">
+                      <p className="text-lg leading-relaxed text-hhp-charcoal">
                         {services.tenantRepresentation}
                       </p>
                     ) : (
                       <div className="space-y-4">
-                        <p className="text-lg leading-relaxed text-gray-600">
+                        <p className="text-lg leading-relaxed text-hhp-charcoal">
                           {services.tenantRepresentation.description}
                         </p>
                         <div>
-                          <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                          <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                             Services include:
                           </p>
-                          <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                          <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                             {services.tenantRepresentation.services.map((service, idx) => (
                               <div key={idx} className="flex items-start">
                                 <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
@@ -300,24 +333,24 @@ const AssetTypePage = ({
 
                 {/* Acquisitions & Development */}
                 <AccordionItem value="acquisitions-development" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     {serviceTitles?.acquisitionsDevelopment || "Acquisitions & Development"}
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
                     {typeof services.acquisitionsDevelopment === 'string' ? (
-                      <p className="text-lg leading-relaxed text-gray-600">
+                      <p className="text-lg leading-relaxed text-hhp-charcoal">
                         {services.acquisitionsDevelopment}
                       </p>
                     ) : (
                       <div className="space-y-4">
-                        <p className="text-lg leading-relaxed text-gray-600">
+                        <p className="text-lg leading-relaxed text-hhp-charcoal">
                           {services.acquisitionsDevelopment.description}
                         </p>
                         <div>
-                          <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                          <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                             Services include:
                           </p>
-                          <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                          <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                             {services.acquisitionsDevelopment.services.map((service, idx) => (
                               <div key={idx} className="flex items-start">
                                 <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
@@ -382,7 +415,7 @@ const AssetTypePage = ({
 
       {/* Technology & Data Advantage / HHP Advantage */}
       {technologyAdvantages && technologyAdvantages.length > 0 && (
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-surface">
           <div className="container-premium">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-hhp-navy mb-6">
@@ -397,7 +430,7 @@ const AssetTypePage = ({
                     <h3 className="text-2xl font-heading font-bold text-hhp-navy mb-4 uppercase tracking-wide">
                       {advantage.title}
                     </h3>
-                    <p className="text-lg leading-relaxed text-gray-600">
+                    <p className="text-lg leading-relaxed text-hhp-charcoal">
                       {advantage.description}
                     </p>
                   </div>
@@ -434,7 +467,7 @@ const AssetTypePage = ({
               <Link 
                 key={index}
                 to="/insights"
-                className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                className="bg-surface rounded-2xl p-8 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
               >
                 <div className="bg-hhp-navy text-white px-4 py-2 rounded-full text-sm font-medium inline-block mb-4">
                   {insight.date}

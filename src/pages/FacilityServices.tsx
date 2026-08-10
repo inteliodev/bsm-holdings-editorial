@@ -107,7 +107,7 @@ const FacilityServices = () => {
             {/* Introduction */}
             <div>
               <h2 className="section-title text-hhp-navy mb-6">Introduction</h2>
-              <div className="space-y-4 text-lg leading-relaxed text-gray-600">
+              <div className="space-y-4 text-lg leading-relaxed text-hhp-charcoal">
                 <p>
                   Through HHP Facility Services, LLC, every facility service and maintenance item within our properties is handled internally — construction, roofing, general contracting, HVAC, plumbing, electrical, lawncare, janitorial, and everything in between. We are not a broker of subcontractors. The work is performed by our own personnel.
                 </p>
@@ -120,7 +120,7 @@ const FacilityServices = () => {
             {/* Philosophy Section */}
             <div className="mb-12">
               <h2 className="section-title text-hhp-navy mb-6">Our Facility Services Philosophy</h2>
-              <div className="space-y-4 text-lg leading-relaxed text-gray-600">
+              <div className="space-y-4 text-lg leading-relaxed text-hhp-charcoal">
                 <p>
                   Effective facility services are not about chasing work orders. It is about systems, accountability, and proactive execution.
                 </p>
@@ -149,7 +149,7 @@ const FacilityServices = () => {
             {/* Self-Performed Facility Services */}
             <div id="self-performed">
               <h2 className="section-title text-hhp-navy mb-6">What We Self-Perform</h2>
-              <p className="text-lg leading-relaxed text-gray-600 mb-12 max-w-3xl">
+              <p className="text-lg leading-relaxed text-hhp-charcoal mb-12 max-w-3xl">
                 Licensed, insured, and on staff. If it keeps a building running, we do it ourselves — and we schedule it around the property, not around a subcontractor's backlog.
               </p>
 
@@ -157,14 +157,14 @@ const FacilityServices = () => {
                 {selfPerformedTrades.map((group) => {
                   const Icon = group.icon;
                   return (
-                    <div key={group.title} className="bg-white border border-gray-200 rounded-xl p-8">
+                    <div key={group.title} className="bg-white border border-border rounded-xl p-8">
                       <div className="w-12 h-12 rounded-lg bg-hhp-accent/10 flex items-center justify-center mb-6">
                         <Icon className="h-6 w-6 text-hhp-navy" />
                       </div>
                       <h3 className="font-heading font-semibold text-lg sm:text-xl text-hhp-navy mb-4">
                         {group.title}
                       </h3>
-                      <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                      <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                         {group.items.map((item) => (
                           <div key={item} className="flex items-start">
                             <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
@@ -177,7 +177,7 @@ const FacilityServices = () => {
                 })}
               </div>
 
-              <p className="mt-8 text-lg leading-relaxed text-gray-600 italic">
+              <p className="mt-8 text-lg leading-relaxed text-hhp-charcoal italic">
                 Don't see it listed? Ask. If it falls inside the property line, it is almost certainly something we already handle.
               </p>
             </div>
@@ -185,7 +185,7 @@ const FacilityServices = () => {
             {/* Cost Control */}
             <div>
               <h2 className="section-title text-hhp-navy mb-6">What In-House Control Does to Cost</h2>
-              <div className="space-y-4 text-lg leading-relaxed text-gray-600 mb-10 max-w-3xl">
+              <div className="space-y-4 text-lg leading-relaxed text-hhp-charcoal mb-10 max-w-3xl">
                 <p>
                   Because the work is self-performed, we see what it actually costs — labor hours, materials, and time on site — rather than a subcontractor's invoice with margin already priced in. There is no markup on self-performed work, and no incentive to inflate scope.
                 </p>
@@ -205,7 +205,7 @@ const FacilityServices = () => {
                 ].map((point) => (
                   <div key={point} className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-hhp-navy mr-3 mt-1 flex-shrink-0" />
-                    <span className="text-base leading-relaxed text-gray-600">{point}</span>
+                    <span className="text-base leading-relaxed text-hhp-charcoal">{point}</span>
                   </div>
                 ))}
               </div>
@@ -214,7 +214,7 @@ const FacilityServices = () => {
             {/* In-House Technology */}
             <div>
               <h2 className="section-title text-hhp-navy mb-6">Our Systems Are In-House Too</h2>
-              <div className="space-y-4 text-lg leading-relaxed text-gray-600 max-w-3xl">
+              <div className="space-y-4 text-lg leading-relaxed text-hhp-charcoal max-w-3xl">
                 <p>
                   Vertical integration does not stop at Facility Services. The asset management and operating systems that run our properties are our own — designed, built, and maintained by HHP. We are not paying to license someone else's software or waiting on a vendor's roadmap to fix what our operators need today.
                 </p>
@@ -231,11 +231,11 @@ const FacilityServices = () => {
               <Accordion type="single" collapsible className="w-full">
                 {/* Engineering & Building Systems */}
                 <AccordionItem value="engineering" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Engineering & Building Systems
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Mechanical, electrical, and plumbing system oversight</span>
@@ -262,11 +262,11 @@ const FacilityServices = () => {
 
                 {/* Preventive Maintenance & Inspections */}
                 <AccordionItem value="maintenance" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Preventive Maintenance & Inspections
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Scheduled maintenance planning and execution</span>
@@ -293,11 +293,11 @@ const FacilityServices = () => {
 
                 {/* Self-Performed Execution */}
                 <AccordionItem value="vendor" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Self-Performed Execution
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Every Facility Services discipline staffed in house</span>
@@ -324,11 +324,11 @@ const FacilityServices = () => {
 
                 {/* Safety & Regulatory Compliance */}
                 <AccordionItem value="safety" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Safety & Regulatory Compliance
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Building code compliance monitoring</span>
@@ -355,11 +355,11 @@ const FacilityServices = () => {
 
                 {/* Landscaping & Exterior Maintenance */}
                 <AccordionItem value="landscaping" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Landscaping & Exterior Maintenance
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Landscaping and grounds maintenance</span>
@@ -386,11 +386,11 @@ const FacilityServices = () => {
 
                 {/* Parking & Common Area Management */}
                 <AccordionItem value="parking" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Parking & Common Area Management
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Parking lot maintenance and striping</span>
@@ -417,11 +417,11 @@ const FacilityServices = () => {
 
                 {/* Commercial Cleaning & Janitorial Services */}
                 <AccordionItem value="cleaning" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Commercial Cleaning & Janitorial Services
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>In-house janitorial personnel</span>
@@ -448,8 +448,8 @@ const FacilityServices = () => {
               </Accordion>
 
               {/* Closing Statement */}
-              <div className="mt-8 pt-8 border-t border-gray-200">
-                <p className="text-lg leading-relaxed text-gray-600 italic">
+              <div className="mt-8 pt-8 border-t border-border">
+                <p className="text-lg leading-relaxed text-hhp-charcoal italic">
                   Our facility services platform is designed to protect asset condition, operational standards, and tenant experience today while preserving flexibility and value for future ownership decisions.
                 </p>
               </div>
@@ -517,7 +517,7 @@ const FacilityServices = () => {
                   </div>
                   <h2 className="section-title text-hhp-navy">Who We Work With</h2>
                 </div>
-                <div className="space-y-3 text-gray-600">
+                <div className="space-y-3 text-hhp-charcoal">
                   <div className="flex items-start">
                     <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Private commercial property owners</span>
@@ -549,7 +549,7 @@ const FacilityServices = () => {
                   </div>
                   <h2 className="section-title text-hhp-navy">How We Differ</h2>
                 </div>
-                <div className="space-y-3 text-gray-600">
+                <div className="space-y-3 text-hhp-charcoal">
                   <div className="flex items-start">
                     <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Selective portfolio size to ensure accountability</span>
@@ -627,7 +627,7 @@ const FacilityServices = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gray-50 py-16 sm:py-20 lg:py-24">
+      <section className="bg-surface py-16 sm:py-20 lg:py-24">
         <div className="container-premium text-center">
           <Link 
             to="/contact" 

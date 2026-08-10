@@ -29,7 +29,7 @@ const FinancialServices = () => {
             {/* Our Role */}
             <div>
               <h2 className="section-title text-hhp-navy mb-6">Our Role</h2>
-              <div className="space-y-4 text-lg leading-relaxed text-gray-600">
+              <div className="space-y-4 text-lg leading-relaxed text-hhp-charcoal">
                 <p>
                   Real estate financial performance is often obscured by fragmented reporting, incomplete assumptions, or backward-looking data.
                 </p>
@@ -62,15 +62,15 @@ const FinancialServices = () => {
               <Accordion type="single" collapsible className="w-full">
                 {/* 1. Asset-Level Financial Analysis */}
                 <AccordionItem value="asset-analysis" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Asset-Level Financial Analysis
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-3">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-3">
                       We evaluate individual assets to provide a clear picture of performance, risks, and opportunities.
                     </p>
-                    <p className="text-base font-medium text-gray-600 mb-2">Includes:</p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <p className="text-base font-medium text-hhp-charcoal mb-2">Includes:</p>
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Operating income and expense analysis</span>
@@ -97,15 +97,15 @@ const FinancialServices = () => {
 
                 {/* 2. Budgeting & Forecasting */}
                 <AccordionItem value="budgeting" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Budgeting & Forecasting
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-3">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-3">
                       We assist owners in building realistic budgets and forward-looking projections grounded in market conditions and operational realities.
                     </p>
-                    <p className="text-base font-medium text-gray-600 mb-2">Includes:</p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <p className="text-base font-medium text-hhp-charcoal mb-2">Includes:</p>
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Annual operating budgets</span>
@@ -132,15 +132,15 @@ const FinancialServices = () => {
 
                 {/* 3. Transaction Financial Support */}
                 <AccordionItem value="transaction" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Transaction Financial Support
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-3">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-3">
                       We provide financial analysis to support acquisitions, dispositions, leasing decisions, and owner-user transactions.
                     </p>
-                    <p className="text-base font-medium text-gray-600 mb-2">Includes:</p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <p className="text-base font-medium text-hhp-charcoal mb-2">Includes:</p>
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Financial review of opportunities</span>
@@ -162,7 +162,7 @@ const FinancialServices = () => {
                         <span>Support during due diligence</span>
                       </div>
                     </div>
-                    <p className="text-base leading-relaxed text-gray-600 mt-3 italic">
+                    <p className="text-base leading-relaxed text-hhp-charcoal mt-3 italic">
                       This service is often integrated with our Investment & Capital Markets and Leasing & Representation work.
                     </p>
                   </AccordionContent>
@@ -170,15 +170,15 @@ const FinancialServices = () => {
 
                 {/* 4. Owner & Board Reporting */}
                 <AccordionItem value="reporting" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Owner & Board Reporting
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-3">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-3">
                       We help ownership groups and boards gain clarity through structured, understandable reporting.
                     </p>
-                    <p className="text-base font-medium text-gray-600 mb-2">Includes:</p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <p className="text-base font-medium text-hhp-charcoal mb-2">Includes:</p>
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Customized reporting formats</span>
@@ -201,15 +201,15 @@ const FinancialServices = () => {
 
                 {/* 5. Portfolio-Level Insight */}
                 <AccordionItem value="portfolio" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Portfolio-Level Insight
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-3">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-3">
                       For owners with multiple assets, we provide consolidated views to support portfolio strategy.
                     </p>
-                    <p className="text-base font-medium text-gray-600 mb-2">Includes:</p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <p className="text-base font-medium text-hhp-charcoal mb-2">Includes:</p>
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Portfolio performance reviews</span>
@@ -284,7 +284,7 @@ const FinancialServices = () => {
             {/* How We Work */}
             <div>
               <h2 className="section-title text-hhp-navy mb-6">How We Work</h2>
-              <div className="space-y-2 text-lg leading-relaxed text-gray-600">
+              <div className="space-y-2 text-lg leading-relaxed text-hhp-charcoal">
                 <div className="flex items-start">
                   <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                   <span>Defined scope and objectives</span>
@@ -302,7 +302,7 @@ const FinancialServices = () => {
                   <span>Coordination with CPAs, lenders, and legal advisors as appropriate</span>
                 </div>
               </div>
-              <p className="text-lg leading-relaxed text-gray-600 mt-4">
+              <p className="text-lg leading-relaxed text-hhp-charcoal mt-4">
                 Our goal is to support better decisions — not to replace existing professional advisors.
               </p>
             </div>
@@ -319,7 +319,7 @@ const FinancialServices = () => {
                   </div>
                   <h2 className="section-title text-hhp-navy">Who We Work With</h2>
                 </div>
-                <div className="space-y-3 text-gray-600">
+                <div className="space-y-3 text-hhp-charcoal">
                   <div className="flex items-start">
                     <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Commercial property owners</span>
@@ -351,7 +351,7 @@ const FinancialServices = () => {
                   </div>
                   <h2 className="section-title text-hhp-navy">How We Differ</h2>
                 </div>
-                <div className="space-y-3 text-gray-600">
+                <div className="space-y-3 text-hhp-charcoal">
                   <div className="flex items-start">
                     <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Real estate-focused analysis (not generic financial advice)</span>
@@ -373,9 +373,9 @@ const FinancialServices = () => {
             </div>
 
             {/* Important Disclosure */}
-            <div className="bg-gray-50 border-l-4 border-hhp-navy p-6 rounded">
+            <div className="bg-surface border-l-4 border-hhp-navy p-6 rounded">
               <h2 className="section-title text-hhp-navy mb-4">Important Disclosure</h2>
-              <div className="space-y-3 text-lg leading-relaxed text-gray-600">
+              <div className="space-y-3 text-lg leading-relaxed text-hhp-charcoal">
                 <p>
                   HHP provides real estate financial analysis and advisory services only. We do not provide tax advice, legal advice, lending services, or regulated investment advisory services.
                 </p>

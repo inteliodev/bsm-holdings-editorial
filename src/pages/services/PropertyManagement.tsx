@@ -29,7 +29,7 @@ const PropertyManagement = () => {
             {/* Our Management Philosophy */}
             <div>
               <h2 className="section-title text-hhp-navy mb-4">Our Management Philosophy</h2>
-              <div className="space-y-4 text-lg leading-relaxed text-gray-600">
+              <div className="space-y-4 text-lg leading-relaxed text-hhp-charcoal">
                 <p>
                   Effective property management is not about volume or speed. It is about consistency, accountability, and disciplined execution over time.
                 </p>
@@ -59,14 +59,14 @@ const PropertyManagement = () => {
               <Accordion type="single" collapsible className="w-full">
                 {/* 1. Financial Oversight & Reporting */}
                 <AccordionItem value="financial" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Financial Oversight & Reporting
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We maintain tight financial controls to provide transparency, predictability, and decision-ready information.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Rent collection and receivables monitoring</span>
@@ -93,14 +93,14 @@ const PropertyManagement = () => {
 
                 {/* 2. Physical Asset Management */}
                 <AccordionItem value="asset" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Physical Asset Management
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We focus on proactive maintenance and disciplined oversight to preserve asset condition and control long-term costs.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Preventative maintenance planning</span>
@@ -127,14 +127,14 @@ const PropertyManagement = () => {
 
                 {/* 3. Lease Administration */}
                 <AccordionItem value="lease" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Lease Administration
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We manage leases as legal and financial instruments, not just documents.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Lease abstraction and administration</span>
@@ -161,14 +161,14 @@ const PropertyManagement = () => {
 
                 {/* 4. Tenant Relations & Issue Resolution */}
                 <AccordionItem value="tenant" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Tenant Relations & Issue Resolution
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We prioritize professional, consistent tenant communication to support stability and reduce friction.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Tenant communication and issue resolution</span>
@@ -191,14 +191,14 @@ const PropertyManagement = () => {
 
                 {/* 5. Risk Management & Compliance */}
                 <AccordionItem value="risk" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Risk Management & Compliance
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We identify and mitigate operational and regulatory risk before issues escalate.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Insurance coordination and compliance tracking</span>
@@ -221,14 +221,14 @@ const PropertyManagement = () => {
 
                 {/* 6. Strategic Planning & Ownership Support */}
                 <AccordionItem value="strategic" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Strategic Planning & Ownership Support
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We support ownership with forward-looking insight beyond day-to-day operations.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Operating and capital planning support</span>
@@ -251,8 +251,8 @@ const PropertyManagement = () => {
               </Accordion>
 
               {/* Optional Closing Line */}
-              <div className="mt-8 pt-8 border-t border-gray-200">
-                <p className="text-lg leading-relaxed text-gray-600 italic">
+              <div className="mt-8 pt-8 border-t border-border">
+                <p className="text-lg leading-relaxed text-hhp-charcoal italic">
                   Our management platform is designed to support stable operations today while preserving flexibility and value for future ownership decisions.
                 </p>
               </div>
@@ -316,7 +316,7 @@ const PropertyManagement = () => {
                   </div>
                   <h2 className="section-title text-hhp-navy">Who We Work With</h2>
                 </div>
-                <div className="space-y-3 text-gray-600">
+                <div className="space-y-3 text-hhp-charcoal">
                   <div className="flex items-start">
                     <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Private owners</span>
@@ -344,7 +344,7 @@ const PropertyManagement = () => {
                   </div>
                   <h2 className="section-title text-hhp-navy">How We Differ</h2>
                 </div>
-                <div className="space-y-3 text-gray-600">
+                <div className="space-y-3 text-hhp-charcoal">
                   <div className="flex items-start">
                     <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Selective portfolio size</span>

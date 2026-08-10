@@ -12,7 +12,7 @@ interface ProofPointsProps {
 
 const ProofPoints = ({ points, title, subtitle, className = "" }: ProofPointsProps) => {
   return (
-    <section className={`bg-gray-50 section-spacing ${className}`}>
+    <section className={`bg-surface section-spacing ${className}`}>
       <div className="container-premium">
         {(title || subtitle) && (
           <div className="text-center mb-12">

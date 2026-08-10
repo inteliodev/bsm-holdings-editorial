@@ -113,11 +113,30 @@ Renamed routes keep their old path pointing at the same component rather than re
 | `/technology/platforms` | `/technology/ai-platforms` |
 | `/services/facility-services` | `/services/facilities-management` |
 
+### Header navigation
+The `navigation` array at the top of `src/components/Layout/Header.tsx` is the
+only source of truth for the header. Four tabs: **About · Services · Asset
+Types · Properties**, plus the Contact CTA and the two portal utility links.
+
+Services holds the five capabilities (Property Management, Facility Services,
+Financial Services, Brokerage & Advisory, Technology). **Asset Types is its own
+tab** listing all six types — it used to be four rows of a flat nine-item
+Services menu that mixed capabilities with sectors, and office, retail and
+industrial had no path from the header at all. The footer already treated Asset
+Types as a top-level destination.
+
+Both dropdown tabs have a landing page, so clicking the label navigates and the
+chevron (mobile) expands. `isDropdownActive()` decides which tab lights up;
+Services owns `/technology` and `/brokerage` as well as `/services`. Dropdown
+containers register into one `dropdownRefs` map — click-outside needs *every*
+container, and the earlier two-ref version ANDed a ref that was never attached,
+so the menu could only be closed by the hover timer or Escape.
+
 ### Marketing Sections
 Home and Technology compose several standalone section components. When updating positioning copy, these are usually the files to touch:
 - `src/components/DashboardShowcase.tsx` — dark dashboard mockup on Technology. Its
   figures are illustrative, not wired to live data.
-- `src/components/DisciplinesSection.tsx` — three disciplines (Asset Management, Property Management, Facility Services)
+- `src/components/DisciplinesSection.tsx` — three disciplines (Asset Management, Property Management, Facility Services). Rendered on Technology, not Home.
 - `src/pages/FacilityServices.tsx` — self-performed trades grid (data lives in the `selfPerformedTrades` array at the top of the file), cost-control and in-house-technology sections
 
 ### Homepage Stacking Context (known gotcha)
@@ -136,13 +155,36 @@ where the active step highlights its layer. Each deliberately cuts through a
 
 All three use **`useActiveStep`** (`src/hooks/useActiveStep.ts`) — do not
 reimplement this with an IntersectionObserver band; see `DEBUGGING_GUIDE.md` for
-why that fails at the ends of a list.
+why that fails at the ends of a list. It returns `{ active, progress, setRef }`;
+`progress` is the same measurement as a 0–1 fraction, for anything that fills
+continuously rather than stepping.
 
 They are built so scroll changes only *emphasis*, never visibility: every layer
 and every word is in the DOM at rest. That is what lets them survive the
 prerender. If you add one, keep that property and verify it in `dist/`.
 
-SVG layers use `.bl` (dark ground) or `.bl bl-light` (light ground).
+**The outer wrapper is `lg:grid`, not `grid` — do not "tidy" that.** `sticky`
+resolves against its containing block, and in a single-column grid each row is
+its own area, so a sticky diagram there has nowhere to travel and scrolls away
+before the steps arrive. Below `lg` the diagram is a plain block sibling of the
+step list, pinned under the header in an **opaque** bar (the list scrolls beneath
+it — at 95% the copy read straight through the diagram). At `lg` it becomes the
+grid item and `self-start` keeps it content-height inside the tall column so it
+can still stick.
+
+SVG layers use `.bl` (dark ground) or `.bl bl-light` (light ground). Supporting
+classes, all in `index.css`: `.bl-top` / `.bl-side` (extruded slab faces),
+`.bl-lift` (active layer slides out of the stack), `.bl-solid` (accent tab),
+`.bl-tag` (in-slab label, with a ground-coloured halo so the spine behind it is
+knocked out), and `.bl-rail` / `.bl-rail-fill` / `.bl-rail-node` (the progress
+rail). Below `lg` the linework is weighted up and `.bl-tag` is hidden — at half
+width a 1.4px stroke in a 400-unit viewBox renders sub-pixel and the whole
+diagram greys out.
+
+Beware `border-white/12` and friends: **12 is not on Tailwind's opacity scale**,
+so no rule is emitted and the border falls through to the global
+`* { @apply border-border }` — a near-white grey on navy. This shipped in three
+places before it was caught. Use `/10`, `/15`, or bracket it as `/[0.12]`.
 
 ### Time-of-day lighting
 `src/hooks/useTimeOfDay.ts` returns `dawn | day | dusk | night` from the real
@@ -161,8 +203,33 @@ title and email with **no placeholder portrait and no initials avatar** — a
 placeholder is what makes a missing photo read as broken. The grid is
 `items-start` so a photo-less card sizes to its own content.
 
-Headshots are 900×1125 webp (the 4:5 the cards crop to), cropped head-and-
-shoulders so everyone reads at the same scale.
+Headshots live in `src/assets/` (Vite imports, not `public/`) and are cropped to
+4:5 by `object-cover object-top`. **The sources are not consistent**: only
+`marshella-franklin` and `andrew-hoanzl` are actually 900×1125 — `hayden-ashley`
+is 800×800 and `phil-ashley` / `hannah-fanning` are 900×1350. The crop hides it
+today, but changing the card aspect ratio would make head scale drift between
+cards. Re-crop to 900×1125 before touching that ratio.
+
+The portrait is exactly as wide as its grid track, so **the column ladder sets
+the headshot size, not the image**. The ladder is
+`grid-cols-1 sm:2 md:3 xl:4`, which keeps cards in a ~215–365px band; the
+previous `md:2 lg:3` peaked at ~454px, which read as a feature gallery.
+
+### Property data
+`src/pages/Portfolio.tsx` declares an explicit `Property` type and annotates
+`const properties: Property[]`. It used to infer the shape via
+`(typeof properties)[number]`, which widens the union the moment one record
+carries a field another does not — every read of that field then fails to
+compile. Keep it declared.
+
+All three communities are one campus at one address, so the shared facts —
+`CAMPUS_ADDRESS`, `CAMPUS_WEBSITE` (mayorwallis.com), `CAMPUS_AMENITIES` and
+`CAMPUS_PHOTOS` — are module constants rather than being copied into each
+record. Photography lives in `public/images/properties/` at 900px webp; the
+detail panel is `lg:w-2/5`, so anything larger is wasted bytes.
+
+**Unresolved:** `Portfolio.tsx` lists Venture Villa I as built in 1985;
+mayorwallis.com says 1995. Flagged in a comment on the record, not guessed at.
 
 ### Favicon
 `public/favicon.svg` is the master — a single **H** from the brand letterform on

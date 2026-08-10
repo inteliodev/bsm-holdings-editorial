@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Mail, Send } from 'lucide-react';
-import { CONTACT_WEBHOOK_URL } from '@/lib/leads';
+import { submitLead } from '@/lib/leads';
 import Layout from '@/components/Layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -68,60 +68,25 @@ const Contact = () => {
       return;
     }
 
-    // Prepare shared payload
-    const payload = {
+    // Delivery lives in submitLead: two independent sinks attempted concurrently,
+    // so a lead is only lost if both fail. This page used to carry its own copy
+    // of that logic, identical apart from variable names.
+    const { delivered, webhookError, databaseError } = await submitLead({
       name: formData.name,
       email: formData.email,
       phone: formData.phone || null,
       inquiry_type: formData.inquiry_type || null,
       property_address: formData.property_address || null,
       message: formData.message,
-      submitted_at: new Date().toISOString()
-    };
-
-    // Two independent sinks, attempted concurrently. The webhook drives notification
-    // and automation; the Supabase insert is the durable record. A lead is only lost
-    // if BOTH fail, so an n8n outage no longer drops inbound business on the floor.
-    const sendWebhook = async () => {
-      const res = await fetch(CONTACT_WEBHOOK_URL, {
-        method: 'POST',
-        mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...payload,
-          phone: payload.phone ?? 'Not provided',
-          inquiry_type: payload.inquiry_type ?? 'General Inquiry',
-          property_address: payload.property_address ?? 'Not provided',
-        })
-      });
-      if (!res.ok) throw new Error(`Webhook ${res.status} ${res.statusText}`);
-    };
-
-    // Dynamic import keeps the Supabase client out of the eager bundle — it is only
-    // fetched when someone actually submits the form.
-    const saveToDatabase = async () => {
-      const { supabase } = await import('@/integrations/supabase/client');
-      const { error } = await supabase.from('contacts').insert([{
-        name: payload.name,
-        email: payload.email,
-        phone: payload.phone,
-        inquiry_type: payload.inquiry_type,
-        property_address: payload.property_address,
-        message: payload.message,
-      }]);
-      if (error) throw new Error(error.message);
-    };
-
-    const [webhookResult, dbResult] = await Promise.allSettled([sendWebhook(), saveToDatabase()]);
-    const delivered = webhookResult.status === 'fulfilled' || dbResult.status === 'fulfilled';
+    });
 
     if (delivered) {
       // At least one sink accepted the lead. Log a partial failure so it is still
       // visible in monitoring rather than passing silently.
-      if (webhookResult.status === 'rejected' || dbResult.status === 'rejected') {
+      if (webhookError || databaseError) {
         console.error('Contact form partial delivery:', {
-          webhook: webhookResult.status === 'rejected' ? webhookResult.reason?.message : 'ok',
-          database: dbResult.status === 'rejected' ? dbResult.reason?.message : 'ok',
+          webhook: webhookError ?? 'ok',
+          database: databaseError ?? 'ok',
         });
       }
 
@@ -147,8 +112,8 @@ const Contact = () => {
       // rather than a raw fetch error they can do nothing with.
       trackContactFormInteraction('error', 'contact');
       console.error('Contact form error:', {
-        webhook: webhookResult.status === 'rejected' ? webhookResult.reason?.message : 'ok',
-        database: dbResult.status === 'rejected' ? dbResult.reason?.message : 'ok',
+        webhook: webhookError ?? 'ok',
+        database: databaseError ?? 'ok',
       });
       toast({
         title: "We couldn't send your message",

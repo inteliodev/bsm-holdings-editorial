@@ -29,7 +29,7 @@ const AdvisorySiteSelection = () => {
             {/* Our Advisory Role */}
             <div>
               <h2 className="section-title text-hhp-navy mb-6">Our Advisory Role</h2>
-              <div className="space-y-4 text-lg leading-relaxed text-gray-600">
+              <div className="space-y-4 text-lg leading-relaxed text-hhp-charcoal">
                 <p>
                   Real estate decisions often involve competing objectives, incomplete information, and meaningful capital commitments.
                 </p>
@@ -59,14 +59,14 @@ const AdvisorySiteSelection = () => {
               <Accordion type="single" collapsible className="w-full">
                 {/* 1. Site Selection & Relocation Analysis */}
                 <AccordionItem value="site-selection" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Site Selection & Relocation Analysis
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We assist tenants, owner-users, and organizations in evaluating location options based on operational, financial, and strategic considerations.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Needs assessment and criteria development</span>
@@ -93,14 +93,14 @@ const AdvisorySiteSelection = () => {
 
                 {/* 2. Market & Feasibility Studies */}
                 <AccordionItem value="feasibility" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Market & Feasibility Studies
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We evaluate market conditions and project feasibility to support informed decision-making.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Market demand and supply analysis</span>
@@ -127,14 +127,14 @@ const AdvisorySiteSelection = () => {
 
                 {/* 3. Portfolio Review & Optimization */}
                 <AccordionItem value="portfolio" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Portfolio Review & Optimization
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We work with owners to assess portfolio performance and identify opportunities for improvement.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Asset-level performance review</span>
@@ -161,14 +161,14 @@ const AdvisorySiteSelection = () => {
 
                 {/* 4. Hold vs. Sell Evaluations */}
                 <AccordionItem value="hold-sell" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Hold vs. Sell Evaluations
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We provide structured analysis to support ownership decisions around disposition timing.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Performance trend analysis</span>
@@ -195,14 +195,14 @@ const AdvisorySiteSelection = () => {
 
                 {/* 5. Strategic Planning Support */}
                 <AccordionItem value="strategic" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Strategic Planning Support
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We support owners and boards with structured planning around real estate strategy.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Long-term real estate planning</span>
@@ -225,14 +225,14 @@ const AdvisorySiteSelection = () => {
 
                 {/* 6. Third-Party Validation & Board Support */}
                 <AccordionItem value="validation" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Third-Party Validation & Board Support
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We provide independent analysis to support governance and stakeholder decision-making.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Board-ready presentations</span>
@@ -307,7 +307,7 @@ const AdvisorySiteSelection = () => {
             {/* When Clients Engage Us */}
             <div>
               <h2 className="section-title text-hhp-navy mb-6">When Clients Engage Us</h2>
-              <div className="space-y-2 text-lg leading-relaxed text-gray-600">
+              <div className="space-y-2 text-lg leading-relaxed text-hhp-charcoal">
                 <div className="flex items-start">
                   <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                   <span>Prior to committing capital</span>
@@ -330,7 +330,7 @@ const AdvisorySiteSelection = () => {
             {/* Value We Bring */}
             <div>
               <h2 className="section-title text-hhp-navy mb-6">Value We Bring</h2>
-              <div className="space-y-2 text-lg leading-relaxed text-gray-600">
+              <div className="space-y-2 text-lg leading-relaxed text-hhp-charcoal">
                 <div className="flex items-start">
                   <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                   <span>Objective, independent analysis</span>
@@ -360,7 +360,7 @@ const AdvisorySiteSelection = () => {
                   </div>
                   <h2 className="section-title text-hhp-navy">Who We Work With</h2>
                 </div>
-                <div className="space-y-3 text-gray-600">
+                <div className="space-y-3 text-hhp-charcoal">
                   <div className="flex items-start">
                     <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Owners navigating operational or organizational transitions</span>
@@ -388,7 +388,7 @@ const AdvisorySiteSelection = () => {
                   </div>
                   <h2 className="section-title text-hhp-navy">How We Differ</h2>
                 </div>
-                <div className="space-y-3 text-gray-600">
+                <div className="space-y-3 text-hhp-charcoal">
                   <div className="flex items-start">
                     <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Advisory-first mindset</span>
@@ -410,8 +410,8 @@ const AdvisorySiteSelection = () => {
             </div>
 
             {/* Optional Closing Line */}
-            <div className="pt-8 border-t border-gray-200">
-              <p className="text-lg leading-relaxed text-gray-600 italic">
+            <div className="pt-8 border-t border-border">
+              <p className="text-lg leading-relaxed text-hhp-charcoal italic">
                 High-impact real estate decisions benefit from independent perspective, disciplined analysis, and clear communication.
               </p>
             </div>

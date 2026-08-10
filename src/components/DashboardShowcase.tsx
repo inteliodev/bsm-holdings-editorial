@@ -42,7 +42,7 @@ const DashboardShowcase = () => {
               className="flex items-center justify-between px-5 py-4"
               style={{ borderBottom: '1px solid hsl(var(--hhp-gold) / 0.08)' }}
             >
-              <span className="text-xs font-semibold uppercase tracking-wider text-gray-300">
+              <span className="text-xs font-semibold uppercase tracking-wider text-white/70">
                 Owner Command Center
               </span>
               <span className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-emerald-400">

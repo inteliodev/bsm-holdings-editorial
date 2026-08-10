@@ -14,9 +14,17 @@ import { useCallback, useEffect, useRef, useState } from 'react';
  * viewport wins. That always resolves to exactly one answer, including at both
  * ends of the list, and costs a single rAF-throttled pass over a handful of
  * elements.
+ *
+ * `progress` is the same measurement expressed continuously: 0 when the first
+ * step is centred, 1 when the last one is. It exists so a diagram can draw a
+ * rail that fills as you descend, which the discrete `active` index cannot
+ * express. It stays 0 under reduced motion and before the first scroll, so
+ * anything driven by it has to look deliberate at 0 — a rail that reads as
+ * "not started" rather than broken.
  */
 export function useActiveStep(count: number) {
   const [active, setActive] = useState(0);
+  const [progress, setProgress] = useState(0);
   const refs = useRef<(HTMLElement | null)[]>([]);
 
   const setRef = useCallback(
@@ -34,20 +42,32 @@ export function useActiveStep(count: number) {
     const measure = () => {
       frame = 0;
       const middle = window.innerHeight / 2;
+      const steps = refs.current.slice(0, count);
       let best = 0;
       let bestDistance = Infinity;
+      let firstMid = 0;
+      let lastMid = 0;
 
-      refs.current.slice(0, count).forEach((el, index) => {
+      steps.forEach((el, index) => {
         if (!el) return;
         const rect = el.getBoundingClientRect();
-        const distance = Math.abs(rect.top + rect.height / 2 - middle);
+        const mid = rect.top + rect.height / 2;
+        const distance = Math.abs(mid - middle);
         if (distance < bestDistance) {
           bestDistance = distance;
           best = index;
         }
+        if (index === 0) firstMid = mid;
+        if (index === steps.length - 1) lastMid = mid;
       });
 
       setActive(best);
+
+      // Midpoints are viewport-relative and increase down the page, so the span
+      // runs first -> last. Guard the single-step case, where it is zero and the
+      // ratio would be NaN.
+      const span = lastMid - firstMid;
+      setProgress(span <= 0 ? 0 : Math.min(1, Math.max(0, (middle - firstMid) / span)));
     };
 
     const onScroll = () => {
@@ -65,5 +85,5 @@ export function useActiveStep(count: number) {
     };
   }, [count]);
 
-  return { active, setRef };
+  return { active, progress, setRef };
 }

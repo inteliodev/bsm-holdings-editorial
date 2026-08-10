@@ -76,115 +76,116 @@ const SystemStack = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+        {/* Block until lg so the pinned diagram has a tall containing block to
+            travel through on phones — see CapabilityStack for the full note. */}
+        <div className="lg:grid lg:grid-cols-12 lg:gap-16">
           {/* Diagram */}
-          <div className="lg:col-span-5">
-            <div className="lg:sticky" style={{ top: 'calc(var(--header-h) + 2.5rem)' }}>
-              <svg
-                viewBox="0 0 400 470"
-                className="mx-auto w-full max-w-[350px]"
-                role="img"
-                aria-label="Wireframe of the HHP operating system showing its six layers"
-              >
-                {/* Window chrome — always neutral, it is the container not a layer */}
-                <g className="bl">
-                  <rect x="16" y="16" width="368" height="438" rx="3" />
-                  <line x1="16" y1="52" x2="384" y2="52" />
-                  <circle cx="34" cy="34" r="3.5" />
-                  <circle cx="48" cy="34" r="3.5" />
-                  <circle cx="62" cy="34" r="3.5" />
-                  <line x1="86" y1="52" x2="86" y2="454" />
-                </g>
+          {/* Opaque — the step list scrolls underneath this bar. */}
+          <div className="sticky top-[var(--header-h)] z-20 self-start border-b border-white/10 bg-hhp-navy py-4 lg:top-[calc(var(--header-h)+2.5rem)] lg:col-span-5 lg:border-b-0 lg:bg-transparent lg:py-0">
+            <svg
+              viewBox="0 0 400 470"
+              className="mx-auto max-h-[34vh] w-full max-w-[190px] lg:max-h-none lg:max-w-[350px]"
+              role="img"
+              aria-label="Wireframe of the HHP operating system showing its six layers"
+            >
+              {/* Window chrome — always neutral, it is the container not a layer */}
+              <g className="bl">
+                <rect x="16" y="16" width="368" height="438" rx="3" />
+                <line x1="16" y1="52" x2="384" y2="52" />
+                <circle cx="34" cy="34" r="3.5" />
+                <circle cx="48" cy="34" r="3.5" />
+                <circle cx="62" cy="34" r="3.5" />
+                <line x1="86" y1="52" x2="86" y2="454" />
+              </g>
 
-                {/* Sidebar rows, one per layer */}
-                <g className={cls('financial')}>
-                  <rect x="28" y="70" width="46" height="8" rx="2" />
-                </g>
-                <g className={cls('compliance')}>
-                  <rect x="28" y="90" width="46" height="8" rx="2" />
-                </g>
-                <g className={cls('workorders')}>
-                  <rect x="28" y="110" width="46" height="8" rx="2" />
-                </g>
-                <g className={cls('security')}>
-                  <rect x="28" y="130" width="46" height="8" rx="2" />
-                </g>
-                <g className={cls('comms')}>
-                  <rect x="28" y="150" width="46" height="8" rx="2" />
-                </g>
-                <g className={cls('reporting')}>
-                  <rect x="28" y="170" width="46" height="8" rx="2" />
-                </g>
+              {/* Sidebar rows, one per layer */}
+              <g className={cls('financial')}>
+                <rect x="28" y="70" width="46" height="8" rx="2" />
+              </g>
+              <g className={cls('compliance')}>
+                <rect x="28" y="90" width="46" height="8" rx="2" />
+              </g>
+              <g className={cls('workorders')}>
+                <rect x="28" y="110" width="46" height="8" rx="2" />
+              </g>
+              <g className={cls('security')}>
+                <rect x="28" y="130" width="46" height="8" rx="2" />
+              </g>
+              <g className={cls('comms')}>
+                <rect x="28" y="150" width="46" height="8" rx="2" />
+              </g>
+              <g className={cls('reporting')}>
+                <rect x="28" y="170" width="46" height="8" rx="2" />
+              </g>
 
-                {/* Financial: chart panel */}
-                <g className={cls('financial')}>
-                  <rect x="100" y="68" width="270" height="104" rx="2" />
-                  <polyline points="116,150 152,128 188,138 224,104 260,116 296,86 340,94" />
-                  <line x1="116" y1="160" x2="340" y2="160" />
-                </g>
+              {/* Financial: chart panel */}
+              <g className={cls('financial')}>
+                <rect x="100" y="68" width="270" height="104" rx="2" />
+                <polyline points="116,150 152,128 188,138 224,104 260,116 296,86 340,94" />
+                <line x1="116" y1="160" x2="340" y2="160" />
+              </g>
 
-                {/* Compliance: checklist */}
-                <g className={cls('compliance')}>
-                  <rect x="100" y="184" width="128" height="92" rx="2" />
-                  <path d="M114 206 l6 6 l10 -12" />
-                  <line x1="140" y1="208" x2="214" y2="208" />
-                  <path d="M114 232 l6 6 l10 -12" />
-                  <line x1="140" y1="234" x2="214" y2="234" />
-                  <path d="M114 258 l6 6 l10 -12" />
-                  <line x1="140" y1="260" x2="196" y2="260" />
-                </g>
+              {/* Compliance: checklist */}
+              <g className={cls('compliance')}>
+                <rect x="100" y="184" width="128" height="92" rx="2" />
+                <path d="M114 206 l6 6 l10 -12" />
+                <line x1="140" y1="208" x2="214" y2="208" />
+                <path d="M114 232 l6 6 l10 -12" />
+                <line x1="140" y1="234" x2="214" y2="234" />
+                <path d="M114 258 l6 6 l10 -12" />
+                <line x1="140" y1="260" x2="196" y2="260" />
+              </g>
 
-                {/* Work orders: queue */}
-                <g className={cls('workorders')}>
-                  <rect x="242" y="184" width="128" height="92" rx="2" />
-                  <rect x="254" y="198" width="104" height="16" rx="2" />
-                  <rect x="254" y="222" width="104" height="16" rx="2" />
-                  <rect x="254" y="246" width="104" height="16" rx="2" />
-                </g>
+              {/* Work orders: queue */}
+              <g className={cls('workorders')}>
+                <rect x="242" y="184" width="128" height="92" rx="2" />
+                <rect x="254" y="198" width="104" height="16" rx="2" />
+                <rect x="254" y="222" width="104" height="16" rx="2" />
+                <rect x="254" y="246" width="104" height="16" rx="2" />
+              </g>
 
-                {/* Security: camera + coverage arc */}
-                <g className={cls('security')}>
-                  <rect x="100" y="288" width="92" height="80" rx="2" />
-                  <rect x="126" y="308" width="26" height="14" rx="2" />
-                  <path d="M139 328 v10" />
-                  <path d="M114 350 q25 -22 52 0" />
-                </g>
+              {/* Security: camera + coverage arc */}
+              <g className={cls('security')}>
+                <rect x="100" y="288" width="92" height="80" rx="2" />
+                <rect x="126" y="308" width="26" height="14" rx="2" />
+                <path d="M139 328 v10" />
+                <path d="M114 350 q25 -22 52 0" />
+              </g>
 
-                {/* Communications: thread */}
-                <g className={cls('comms')}>
-                  <rect x="206" y="288" width="164" height="80" rx="2" />
-                  <rect x="218" y="300" width="76" height="18" rx="4" />
-                  <rect x="282" y="326" width="76" height="18" rx="4" />
-                  <line x1="218" y1="354" x2="290" y2="354" />
-                </g>
+              {/* Communications: thread */}
+              <g className={cls('comms')}>
+                <rect x="206" y="288" width="164" height="80" rx="2" />
+                <rect x="218" y="300" width="76" height="18" rx="4" />
+                <rect x="282" y="326" width="76" height="18" rx="4" />
+                <line x1="218" y1="354" x2="290" y2="354" />
+              </g>
 
-                {/* Owner reporting: statement */}
-                <g className={cls('reporting')}>
-                  <rect x="100" y="380" width="270" height="60" rx="2" />
-                  <line x1="114" y1="398" x2="212" y2="398" />
-                  <line x1="114" y1="412" x2="188" y2="412" />
-                  <line x1="114" y1="426" x2="230" y2="426" />
-                  <rect x="284" y="394" width="72" height="32" rx="2" />
-                </g>
-              </svg>
+              {/* Owner reporting: statement */}
+              <g className={cls('reporting')}>
+                <rect x="100" y="380" width="270" height="60" rx="2" />
+                <line x1="114" y1="398" x2="212" y2="398" />
+                <line x1="114" y1="412" x2="188" y2="412" />
+                <line x1="114" y1="426" x2="230" y2="426" />
+                <rect x="284" y="394" width="72" height="32" rx="2" />
+              </g>
+            </svg>
 
-              <p
-                className="mt-6 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-hhp-gold"
-                aria-live="polite"
-              >
-                {LAYERS[active]?.title}
-              </p>
-            </div>
+            <p
+              className="mt-3 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-hhp-gold lg:mt-6"
+              aria-live="polite"
+            >
+              {LAYERS[active]?.title}
+            </p>
           </div>
 
           {/* Steps */}
-          <div className="lg:col-span-7">
-            <ol className="border-t border-white/12">
+          <div className="pt-4 lg:col-span-7 lg:pt-0">
+            <ol className="border-t border-white/10">
               {LAYERS.map((layer, index) => (
                 <li key={layer.id}>
                   <div
                     ref={setRef(index)}
-                    className={`border-b border-white/12 py-9 transition-opacity duration-500 lg:py-12 ${
+                    className={`border-b border-white/10 py-9 transition-opacity duration-500 lg:py-12 ${
                       active === index ? 'opacity-100' : 'opacity-55'
                     }`}
                   >

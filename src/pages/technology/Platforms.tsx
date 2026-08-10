@@ -56,7 +56,7 @@ const Platforms = () => {
       </section>
 
       {/* Core Platforms */}
-      <section className="bg-gray-50 section-spacing">
+      <section className="bg-surface section-spacing">
         <div className="container-premium">
           <h2 className="section-title text-hhp-navy mb-12 text-center">Core Platforms</h2>
           

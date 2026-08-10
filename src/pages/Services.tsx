@@ -71,7 +71,7 @@ const Services = () => {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading text-hhp-navy mb-6 tracking-[0.06em] uppercase">
               Comprehensive Real Estate Services, Reimagined
             </h2>
-            <p className="text-xl leading-relaxed text-gray-600">
+            <p className="text-xl leading-relaxed text-hhp-charcoal">
               HHP delivers the full lifecycle of commercial real estate services — from acquisitions and development to management, leasing, sales, and strategic advisory — all under one roof.
             </p>
           </div>

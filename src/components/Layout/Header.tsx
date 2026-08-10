@@ -10,21 +10,29 @@ const Header = () => {
   const [hoverTimeout, setHoverTimeout] = useState<number | null>(null);
   const [isSticky, setIsSticky] = useState(false);
   
-  // Refs for dropdown containers and click outside detection
-  const servicesRef = useRef<HTMLDivElement>(null);
-  const assetTypesRef = useRef<HTMLDivElement>(null);
-  
+  /* One ref per dropdown container, keyed by nav label. This used to be two
+     standalone refs, only one of which was ever attached — which silently broke
+     click-outside, because the handler required *both* to be non-null. */
+  const dropdownRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
   const location = useLocation();
   const navigate = useNavigate();
 
-  // New navigation structure
+  /**
+   * Asset management is the positioning; "Services" is the nav label because it
+   * is what visitors look for. Technology sits inside it rather than being a
+   * top-level tab — a "Technology" tab reads as selling software, which is the
+   * opposite of how HHP positions. Brokerage sits there too, as a supporting
+   * capability rather than a headline.
+   *
+   * Asset types have their own tab. They were four rows of a flat nine-item
+   * Services menu that mixed capabilities with sectors, and only three of the
+   * six were listed — office, retail and industrial had no path from the header
+   * at all. The footer already treated Asset Types as a top-level destination.
+   */
   const navigation = [
     { name: 'About', href: '/about' },
     {
-      // Asset management is the positioning; "Services" is the nav label because it is
-      // what visitors look for. Technology moved in here rather than staying a
-      // top-level tab — a "Technology" tab reads as selling software, which is the
-      // opposite of how HHP positions. Brokerage sits here as a supporting capability.
       name: 'Services',
       href: '/services',
       submenu: [
@@ -32,12 +40,20 @@ const Header = () => {
         { name: 'Facility Services', href: '/services/facility-services' },
         { name: 'Financial Services', href: '/services/financial-services' },
         { name: 'Brokerage & Advisory', href: '/brokerage' },
-        { name: 'Technology', href: '/technology' },
+        { name: 'Technology', href: '/technology' }
+      ]
+    },
+    {
+      name: 'Asset Types',
+      href: '/asset-types',
+      submenu: [
         { name: 'Multifamily', href: '/asset-types/multifamily' },
-        { name: 'Senior Housing', href: '/asset-types/senior-housing' },
         { name: 'Affordable Housing', href: '/asset-types/hud-affordable' },
-        // The index page is the only route linking office, retail and industrial,
-        // so without this entry those three are unreachable.
+        { name: 'Senior Housing', href: '/asset-types/senior-housing' },
+        { name: 'Office', href: '/asset-types/office' },
+        { name: 'Retail', href: '/asset-types/retail' },
+        { name: 'Industrial & Logistics', href: '/asset-types/industrial' },
+        { name: 'divider', href: '' },
         { name: 'All Asset Types', href: '/asset-types' }
       ]
     },
@@ -52,8 +68,23 @@ const Header = () => {
     isPrimary: true
   };
 
-  // Check if current path matches dropdown items
-  const isServicesActive = location.pathname.startsWith('/services') || location.pathname.startsWith('/asset-types');
+  /**
+   * Which dropdown tab the current route belongs to. `/asset-types` used to
+   * light up Services; now each tab owns its own prefixes. Services keeps the
+   * routes that live outside `/services` but are Services entries.
+   */
+  const isDropdownActive = (name: string) => {
+    const path = location.pathname;
+    if (name === 'Asset Types') return path.startsWith('/asset-types');
+    if (name === 'Services') {
+      return (
+        path.startsWith('/services') ||
+        path.startsWith('/technology') ||
+        path.startsWith('/brokerage')
+      );
+    }
+    return false;
+  };
 
   /**
    * Home's hero is `position: fixed; inset: 0`, so it already covers the area
@@ -126,18 +157,19 @@ const Header = () => {
   };
 
   // Handle keyboard navigation
-  const handleKeyDown = (event: React.KeyboardEvent, dropdownName: string) => {
+  const handleKeyDown = (event: React.KeyboardEvent, dropdownName: string, href?: string) => {
     switch (event.key) {
-                        case 'Enter':
-                      case ' ':
-                        event.preventDefault();
-                        // Navigate to main page for Services and Asset Types
-                        if (dropdownName === 'Services') {
-                          handleMainButtonClick(dropdownName, '/services');
-                        } else {
-                          handleDropdownClick(dropdownName);
-                        }
-                        break;
+      case 'Enter':
+      case ' ':
+        event.preventDefault();
+        // A tab that has its own landing page navigates; one that is only a
+        // container just opens.
+        if (href) {
+          handleMainButtonClick(dropdownName, href);
+        } else {
+          handleDropdownClick(dropdownName);
+        }
+        break;
       case 'Escape':
         setActiveDropdown(null);
         break;
@@ -159,16 +191,18 @@ const Header = () => {
     const menuItems = document.querySelectorAll(`[role="menu"] [role="menuitem"]`);
     
     switch (event.key) {
-      case 'ArrowDown':
+      case 'ArrowDown': {
         event.preventDefault();
         const nextItem = menuItems[itemIndex + 1] as HTMLElement;
         nextItem?.focus();
         break;
-      case 'ArrowUp':
+      }
+      case 'ArrowUp': {
         event.preventDefault();
         const prevItem = menuItems[itemIndex - 1] as HTMLElement;
         prevItem?.focus();
         break;
+      }
       case 'Escape':
         setActiveDropdown(null);
         break;
@@ -188,9 +222,14 @@ const Header = () => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Node;
       
-      // Check if click is outside any dropdown
-      if (servicesRef.current && !servicesRef.current.contains(target) &&
-          assetTypesRef.current && !assetTypesRef.current.contains(target)) {
+      // Close when the click landed outside *every* dropdown container. The
+      // previous version required each ref to be non-null, and one of them
+      // never was, so this branch could not be reached and only the hover
+      // timer or Escape ever closed the menu.
+      const insideADropdown = Object.values(dropdownRefs.current).some(
+        (el) => el && el.contains(target),
+      );
+      if (!insideADropdown) {
         setActiveDropdown(null);
       }
     };
@@ -291,31 +330,31 @@ const Header = () => {
               <div key={item.name} className="relative">
                 {item.submenu ? (
                   <div
-                    ref={
-                      item.name === 'Services' ? servicesRef :
-                      assetTypesRef
-                    }
+                    ref={(el) => {
+                      dropdownRefs.current[item.name] = el;
+                    }}
                     className="relative"
                     onMouseEnter={() => handleDropdownEnter(item.name)}
                     onMouseLeave={handleDropdownLeave}
                   >
                     <button
                       className={`group relative flex items-center gap-1 px-1 py-1 text-sm font-medium leading-tight transition-colors duration-200 sm:px-2 ${
-                        item.name === 'Services' && isServicesActive
+                        isDropdownActive(item.name)
                           ? isTransparent
                             ? 'text-white'
                             : 'text-hhp-navy'
                           : navLinkClass
                       }`}
                       onClick={() => {
-                        // Navigate to main page for Services and Asset Types
-                        if (item.name === 'Services') {
-                          handleMainButtonClick(item.name, '/services');
+                        // Both dropdown tabs have their own landing page, so
+                        // clicking the label navigates rather than only opening.
+                        if (item.href) {
+                          handleMainButtonClick(item.name, item.href);
                         } else {
                           handleDropdownClick(item.name);
                         }
                       }}
-                      onKeyDown={(e) => handleKeyDown(e, item.name)}
+                      onKeyDown={(e) => handleKeyDown(e, item.name, item.href)}
                       aria-expanded={activeDropdown === item.name}
                       aria-haspopup="menu"
                       aria-controls={`${item.name.toLowerCase().replace(' ', '-')}-menu`}
@@ -331,7 +370,7 @@ const Header = () => {
                       <span
                         aria-hidden="true"
                         className={`absolute -bottom-0.5 left-1 right-1 h-0.5 origin-left bg-hhp-gold transition-transform duration-300 ease-out-expo sm:left-2 sm:right-2 ${
-                          item.name === 'Services' && isServicesActive
+                          isDropdownActive(item.name)
                             ? 'scale-x-100'
                             : 'scale-x-0 group-hover:scale-x-100'
                         }`}
@@ -349,7 +388,7 @@ const Header = () => {
                       >
                         {item.submenu.map((subItem, index) => (
                           subItem.name === 'divider' ? (
-                            <hr key={`divider-${index}`} className="my-0 border-gray-200" />
+                            <hr key={`divider-${index}`} className="my-0 border-border" />
                           ) : (
                             <Link
                               key={subItem.name}
@@ -485,9 +524,10 @@ const Header = () => {
                         <button
                           className="flex min-h-[52px] flex-1 items-center py-3 text-left font-display text-lg font-semibold text-hhp-navy transition-colors duration-200 hover:text-hhp-gold"
                           onClick={() => {
-                            // Navigate to main page for Services and Asset Types
-                            if (item.name === 'Services') {
-                              handleMainButtonClick(item.name, '/services');
+                            // The label navigates to the tab's landing page; the
+                            // chevron beside it expands the accordion.
+                            if (item.href) {
+                              handleMainButtonClick(item.name, item.href);
                               setIsMobileMenuOpen(false);
                             } else {
                               toggleMobileAccordion(item.name);
@@ -513,12 +553,12 @@ const Header = () => {
                         <div className="ml-1 space-y-0 border-l border-border pl-4">
                           {item.submenu.map((subItem, index) => (
                             subItem.name === 'divider' ? (
-                              <hr key={`mobile-divider-${index}`} className="my-0 border-gray-200" />
+                              <hr key={`mobile-divider-${index}`} className="my-0 border-border" />
                             ) : (
                               <Link
                                 key={subItem.name}
                                 to={subItem.href}
-                                className="block py-2 px-3 text-hhp-charcoal hover:text-hhp-navy hover:bg-gray-50 rounded-md transition-colors duration-200 min-h-[36px] flex items-center leading-tight"
+                                className="block py-2 px-3 text-hhp-charcoal hover:text-hhp-navy hover:bg-surface rounded-md transition-colors duration-200 min-h-[36px] flex items-center leading-tight"
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
                                 <div className="font-medium text-sm leading-tight">{subItem.name}</div>
@@ -545,7 +585,7 @@ const Header = () => {
               ))}
               
               {/* Mobile Contact CTA */}
-              <div className="mt-6 pt-4 border-t border-gray-200">
+              <div className="mt-6 pt-4 border-t border-border">
                 <Link
                   to={contactCTA.href}
                   className="block w-full bg-hhp-navy text-white px-6 py-4 rounded font-medium text-center hover:bg-hhp-navy/90 transition-colors duration-200 mb-4 min-h-[48px] flex items-center justify-center"

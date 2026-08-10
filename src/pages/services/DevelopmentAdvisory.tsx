@@ -82,14 +82,14 @@ const DevelopmentAdvisory = () => {
               <Accordion type="single" collapsible className="w-full">
                 {/* 1. Market Feasibility Analysis */}
                 <AccordionItem value="feasibility" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Market Feasibility Analysis
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We assess market conditions to determine whether proposed projects are supportable.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Market demand and absorption analysis</span>
@@ -112,14 +112,14 @@ const DevelopmentAdvisory = () => {
 
                 {/* 2. Site Evaluation & Positioning */}
                 <AccordionItem value="site-evaluation" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Site Evaluation & Positioning
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We evaluate sites based on location, access, constraints, and long-term viability.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Site and location analysis</span>
@@ -142,14 +142,14 @@ const DevelopmentAdvisory = () => {
 
                 {/* 3. Preliminary Financial Modeling */}
                 <AccordionItem value="financial-modeling" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Preliminary Financial Modeling
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We support early-stage financial evaluation to test assumptions and identify sensitivities.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>High-level development modeling</span>
@@ -172,14 +172,14 @@ const DevelopmentAdvisory = () => {
 
                 {/* 4. Entitlement & Planning Coordination */}
                 <AccordionItem value="entitlement" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Entitlement & Planning Coordination
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We coordinate with planning professionals and stakeholders during entitlement and pre-development phases.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Coordination with planners, architects, and engineers</span>
@@ -202,14 +202,14 @@ const DevelopmentAdvisory = () => {
 
                 {/* 5. Execution Advisory & Oversight */}
                 <AccordionItem value="execution" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Execution Advisory & Oversight
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We provide advisory support during execution to help manage risk and maintain alignment.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Advisory support during construction and delivery</span>
@@ -232,14 +232,14 @@ const DevelopmentAdvisory = () => {
 
                 {/* 6. Integration with Leasing, Operations & Exit Strategy */}
                 <AccordionItem value="integration" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Integration with Leasing, Operations & Exit Strategy
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We ensure development decisions support long-term performance and exit flexibility.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Leasing strategy alignment</span>
@@ -371,7 +371,7 @@ const DevelopmentAdvisory = () => {
       </section>
 
       {/* Closing Statement */}
-      <section className="bg-gray-50 section-spacing">
+      <section className="bg-surface section-spacing">
         <div className="container-premium">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-xl leading-relaxed text-hhp-charcoal font-medium">

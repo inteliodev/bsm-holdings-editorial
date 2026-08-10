@@ -29,24 +29,24 @@ const BrokerConsulting = () => {
             {/* Consulting Services */}
             <div>
               <h2 className="section-title text-hhp-navy mb-6">Consulting Services</h2>
-              <p className="text-lg leading-relaxed text-gray-600 mb-6">
+              <p className="text-lg leading-relaxed text-hhp-charcoal mb-6">
                 HHP provides consulting services for owners, boards, and stakeholders facing operational, governance, or transition-related challenges.
               </p>
-              <p className="text-lg leading-relaxed text-gray-600 mb-8">
+              <p className="text-lg leading-relaxed text-hhp-charcoal mb-8">
                 Our consulting engagements are targeted, defined in scope, and designed to deliver clarity in complex situations.
               </p>
 
               <Accordion type="single" collapsible className="w-full mb-8">
                 {/* 1. Management Transitions */}
                 <AccordionItem value="transitions" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Management Transitions
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We support ownership and boards during management changes and organizational transitions.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Transition planning and oversight</span>
@@ -69,14 +69,14 @@ const BrokerConsulting = () => {
 
                 {/* 2. Operational & Financial Reviews */}
                 <AccordionItem value="reviews" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Operational & Financial Reviews
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We provide independent reviews to assess performance and identify improvement opportunities.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Operational assessments</span>
@@ -99,14 +99,14 @@ const BrokerConsulting = () => {
 
                 {/* 3. Board & Ownership Advisory */}
                 <AccordionItem value="board" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Board & Ownership Advisory
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We support boards and ownership groups requiring independent perspective.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Board-ready analysis and reporting</span>
@@ -125,14 +125,14 @@ const BrokerConsulting = () => {
 
                 {/* 4. Special Situations & Interim Support */}
                 <AccordionItem value="special" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Special Situations & Interim Support
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We provide targeted support during complex or time-sensitive situations.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Special projects</span>
@@ -153,7 +153,7 @@ const BrokerConsulting = () => {
               <div className="space-y-6 mb-8">
                 <div>
                   <h3 className="text-xl font-display font-semibold text-hhp-navy mb-4">Engagement Style</h3>
-                  <div className="space-y-2 text-lg leading-relaxed text-gray-600">
+                  <div className="space-y-2 text-lg leading-relaxed text-hhp-charcoal">
                     <div className="flex items-start">
                       <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                       <span>Defined scope and objectives</span>
@@ -175,7 +175,7 @@ const BrokerConsulting = () => {
 
                 <div>
                   <h3 className="text-xl font-display font-semibold text-hhp-navy mb-4">Who Consulting Services Are For</h3>
-                  <div className="space-y-2 text-lg leading-relaxed text-gray-600">
+                  <div className="space-y-2 text-lg leading-relaxed text-hhp-charcoal">
                     <div className="flex items-start">
                       <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                       <span>Owners navigating operational or organizational transitions</span>
@@ -249,24 +249,24 @@ const BrokerConsulting = () => {
             {/* Broker of Record Services */}
             <div>
               <h2 className="section-title text-hhp-navy mb-6">Broker of Record Services</h2>
-              <p className="text-lg leading-relaxed text-gray-600 mb-6">
+              <p className="text-lg leading-relaxed text-hhp-charcoal mb-6">
                 HHP provides Broker of Record services in Oklahoma for independent commercial brokerages and teams seeking licensed supervision, compliance oversight, and operational support.
               </p>
-              <p className="text-lg leading-relaxed text-gray-600 mb-8">
+              <p className="text-lg leading-relaxed text-hhp-charcoal mb-8">
                 Our role is to provide regulatory coverage and professional governance while allowing firms to maintain autonomy and focus on their core business.
               </p>
 
               <Accordion type="single" collapsible className="w-full mb-8">
                 {/* 1. Broker Supervision & Oversight */}
                 <AccordionItem value="supervision" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Broker Supervision & Oversight
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We provide licensed supervision consistent with state requirements and industry best practices.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Ongoing broker supervision</span>
@@ -289,14 +289,14 @@ const BrokerConsulting = () => {
 
                 {/* 2. Transaction Review & Risk Management */}
                 <AccordionItem value="transaction" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Transaction Review & Risk Management
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We review transactions to ensure compliance, documentation integrity, and risk mitigation.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Contract and transaction review</span>
@@ -319,14 +319,14 @@ const BrokerConsulting = () => {
 
                 {/* 3. License & Regulatory Compliance Support */}
                 <AccordionItem value="license" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     License & Regulatory Compliance Support
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We support brokerages in maintaining licensing and regulatory standing.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>License compliance oversight</span>
@@ -349,14 +349,14 @@ const BrokerConsulting = () => {
 
                 {/* 4. Policy & Procedure Frameworks */}
                 <AccordionItem value="policy" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Policy & Procedure Frameworks
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We help establish clear, defensible operational frameworks.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Brokerage policies and procedures</span>
@@ -379,14 +379,14 @@ const BrokerConsulting = () => {
 
                 {/* 5. Strategic Support for Brokerage Operations */}
                 <AccordionItem value="strategic" className="border-b border-gray-300 py-3">
-                  <AccordionTrigger className="font-heading font-bold text-gray-600 uppercase tracking-wide text-xl py-8 hover:no-underline">
+                  <AccordionTrigger className="font-heading font-bold text-hhp-charcoal uppercase tracking-wide text-xl py-8 hover:no-underline">
                     Strategic Support for Brokerage Operations
                   </AccordionTrigger>
                   <AccordionContent className="pt-0 pb-8">
-                    <p className="text-lg font-semibold leading-relaxed text-gray-600 mb-4">
+                    <p className="text-lg font-semibold leading-relaxed text-hhp-charcoal mb-4">
                       We provide perspective informed by real brokerage operations.
                     </p>
-                    <div className="space-y-2 text-base leading-relaxed text-gray-600">
+                    <div className="space-y-2 text-base leading-relaxed text-hhp-charcoal">
                       <div className="flex items-start">
                         <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                         <span>Support during platform transitions</span>
@@ -407,7 +407,7 @@ const BrokerConsulting = () => {
               <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-display font-semibold text-hhp-navy mb-4">Who Broker of Record Services Are For</h3>
-                  <div className="space-y-2 text-lg leading-relaxed text-gray-600">
+                  <div className="space-y-2 text-lg leading-relaxed text-hhp-charcoal">
                     <div className="flex items-start">
                       <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                       <span>Independent commercial brokerages</span>
@@ -429,7 +429,7 @@ const BrokerConsulting = () => {
 
                 <div>
                   <h3 className="text-xl font-display font-semibold text-hhp-navy mb-4">Why HHP for Broker of Record Services</h3>
-                  <p className="text-lg leading-relaxed text-gray-600">
+                  <p className="text-lg leading-relaxed text-hhp-charcoal">
                     We understand brokerage operations from the inside. Our approach provides oversight without micromanagement, allowing firms to operate efficiently while remaining compliant and protected.
                   </p>
                 </div>
@@ -450,7 +450,7 @@ const BrokerConsulting = () => {
                     Who We Work With
                   </h3>
                 </div>
-                <div className="space-y-3 text-gray-600">
+                <div className="space-y-3 text-hhp-charcoal">
                   <div className="flex items-start">
                     <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Independent commercial brokerages</span>
@@ -480,7 +480,7 @@ const BrokerConsulting = () => {
                     How We Differ
                   </h3>
                 </div>
-                <div className="space-y-3 text-gray-600">
+                <div className="space-y-3 text-hhp-charcoal">
                   <div className="flex items-start">
                     <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Regulatory-first mindset</span>
@@ -502,8 +502,8 @@ const BrokerConsulting = () => {
             </div>
 
             {/* Optional Closing Line */}
-            <div className="bg-gray-50 border-l-4 border-hhp-navy p-6 rounded">
-              <p className="text-lg leading-relaxed text-gray-600 italic">
+            <div className="bg-surface border-l-4 border-hhp-navy p-6 rounded">
+              <p className="text-lg leading-relaxed text-hhp-charcoal italic">
                 Effective governance and advisory support require clarity, discipline, and experienced perspective — particularly during periods of change.
               </p>
             </div>

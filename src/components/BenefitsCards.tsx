@@ -14,7 +14,7 @@ interface BenefitsCardsProps {
 
 const BenefitsCards = ({ benefits, testimonial }: BenefitsCardsProps) => {
   return (
-    <section className="bg-gray-50 section-spacing">
+    <section className="bg-surface section-spacing">
       <div className="container-premium">
         <div className="max-w-6xl mx-auto">
           <h2 className="section-title text-hhp-navy mb-12 text-center">Owner Benefits</h2>

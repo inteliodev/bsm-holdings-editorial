@@ -29,6 +29,49 @@ type Capability = {
   href: string;
 };
 
+type Slab = { x: number; y: number; w: number; h: number };
+
+/** Axonometric depth. The stack is lit from the top-right. */
+const DX = 22;
+const DY = 13;
+
+/**
+ * The three visible faces of an extruded slab. Drawing the thickness rather
+ * than outlining a rectangle is what makes the stack read as stacked material,
+ * which is the whole claim the section is making.
+ */
+const faces = ({ x, y, w, h }: Slab) => ({
+  front: `M${x} ${y} H${x + w} V${y + h} H${x} Z`,
+  top: `M${x} ${y} L${x + DX} ${y - DY} L${x + w + DX} ${y - DY} L${x + w} ${y} Z`,
+  side: `M${x + w} ${y} L${x + w + DX} ${y - DY} L${x + w + DX} ${y + h - DY} L${x + w} ${y + h} Z`,
+});
+
+/* Asset management is the widest plate and technology the widest footing, so
+   the silhouette narrows into the operating disciplines and flares again at the
+   base — the umbrella above, the foundation below. */
+const SLABS: Record<string, Slab> = {
+  am: { x: 66, y: 80, w: 258, h: 46 },
+  pm: { x: 90, y: 154, w: 210, h: 56 },
+  fs: { x: 90, y: 230, w: 210, h: 56 },
+  fin: { x: 90, y: 306, w: 210, h: 56 },
+  tech: { x: 58, y: 386, w: 270, h: 72 },
+};
+
+const PLINTH: Slab = { x: 50, y: 472, w: 286, h: 14 };
+
+const RAIL_X = 22;
+const RAIL_TOP = 46;
+const RAIL_BOTTOM = 486;
+const RAIL_LENGTH = RAIL_BOTTOM - RAIL_TOP;
+
+const SPINE_X = 195;
+
+/* Labels and accent tabs share one x across every slab rather than insetting
+   from each slab's own left edge, which would step in and out with the
+   silhouette and read as misalignment. Both clear the widest layer's edge. */
+const TAB_X = 104;
+const LABEL_X = 126;
+
 const CAPABILITIES: Capability[] = [
   {
     id: 'am',
@@ -68,10 +111,17 @@ const CAPABILITIES: Capability[] = [
 ];
 
 const CapabilityStack = () => {
-  const { active, setRef } = useActiveStep(CAPABILITIES.length);
+  const { active, progress, setRef } = useActiveStep(CAPABILITIES.length);
 
   const activeId = CAPABILITIES[active]?.id;
-  const cls = (id: string) => `bl bl-light ${activeId === id ? 'is-active' : ''}`;
+  const cls = (id: string) =>
+    `bl bl-light bl-lift ${activeId === id ? 'is-active' : ''}`;
+
+  /** Label baseline and accent-tab position, centred on the slab's front face. */
+  const inset = (slab: Slab) => ({
+    labelY: slab.y + slab.h / 2 + 3.5,
+    tabY: slab.y + slab.h / 2 - 11,
+  });
 
   return (
     <section className="section-spacing bg-white">
@@ -86,66 +136,118 @@ const CapabilityStack = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+        {/* Not a grid until lg. Below that the diagram is a plain block sibling
+            of the step list, which is what gives `sticky` a tall containing
+            block to travel through — in a single-column grid each row is its
+            own area and the diagram would scroll away before the steps arrive,
+            taking the whole interaction with it. On lg the diagram becomes the
+            grid item and `self-start` keeps it content-height inside the tall
+            column so it can still stick. */}
+        <div className="lg:grid lg:grid-cols-12 lg:gap-16">
           {/* Diagram */}
-          <div className="lg:col-span-5">
-            <div className="lg:sticky" style={{ top: 'calc(var(--header-h) + 2.5rem)' }}>
-              <svg
-                viewBox="0 0 400 520"
-                className="mx-auto w-full max-w-[330px]"
-                role="img"
-                aria-label="Diagram of HHP's capabilities as a single vertical stack, from asset management down to the technology that supports it"
-              >
-                {/* Spine — one firm, running the full height */}
-                <g className="bl bl-light is-active">
-                  <line x1="200" y1="40" x2="200" y2="470" strokeDasharray="5 8" />
-                </g>
+          {/* Opaque, not translucent: the step list scrolls underneath this bar,
+              and at 95% the copy read straight through the diagram. */}
+          <div className="sticky top-[var(--header-h)] z-20 self-start border-b border-border bg-white py-4 lg:top-[calc(var(--header-h)+2.5rem)] lg:col-span-5 lg:border-b-0 lg:bg-transparent lg:py-0">
+            <svg
+              viewBox="0 0 400 510"
+              className="mx-auto max-h-[34vh] w-full max-w-[180px] lg:max-h-none lg:max-w-[380px]"
+              role="img"
+              aria-label="Diagram of HHP's capabilities as a single vertical stack, from asset management down to the technology that supports it"
+            >
+              {/* Read-progress rail. Always present; the gold segment grows. */}
+              <line
+                className="bl-rail"
+                x1={RAIL_X}
+                y1={RAIL_TOP}
+                x2={RAIL_X}
+                y2={RAIL_BOTTOM}
+              />
+              <line
+                className="bl-rail-fill"
+                x1={RAIL_X}
+                y1={RAIL_TOP}
+                x2={RAIL_X}
+                y2={RAIL_BOTTOM}
+                strokeDasharray={RAIL_LENGTH}
+                strokeDashoffset={RAIL_LENGTH * (1 - progress)}
+              />
+              {CAPABILITIES.map((capability) => {
+                const slab = SLABS[capability.id];
+                return (
+                  <circle
+                    key={`node-${capability.id}`}
+                    className={`bl-rail-node ${activeId === capability.id ? 'is-active' : ''}`}
+                    cx={RAIL_X}
+                    cy={slab.y + slab.h / 2}
+                    r={3.5}
+                  />
+                );
+              })}
 
-                {/* Asset management: the plate across the top */}
-                <g className={cls('am')}>
-                  <path d="M44 96 H356 L332 60 H68 Z" />
-                  <line x1="44" y1="96" x2="356" y2="96" />
-                  <circle cx="200" cy="42" r="7" />
-                </g>
+              {/* Spine — one firm, running the full height behind the stack */}
+              <g className="bl bl-light is-active">
+                <line
+                  x1={SPINE_X}
+                  y1={RAIL_TOP}
+                  x2={SPINE_X}
+                  y2={RAIL_BOTTOM}
+                  strokeDasharray="5 8"
+                />
+                <circle cx={SPINE_X} cy={RAIL_TOP} r="7" />
+              </g>
 
-                {/* Operating disciplines */}
-                <g className={cls('pm')}>
-                  <rect x="80" y="120" width="240" height="62" rx="2" />
-                  <line x1="110" y1="151" x2="160" y2="151" />
-                </g>
+              {CAPABILITIES.map((capability) => {
+                const slab = SLABS[capability.id];
+                const face = faces(slab);
+                const { labelY, tabY } = inset(slab);
+                const plinth = capability.id === 'tech' ? faces(PLINTH) : null;
 
-                <g className={cls('fs')}>
-                  <rect x="80" y="196" width="240" height="62" rx="2" />
-                  <line x1="110" y1="227" x2="160" y2="227" />
-                </g>
+                return (
+                  <g key={capability.id} className={cls(capability.id)}>
+                    <path className="bl-top" d={face.top} />
+                    <path className="bl-side" d={face.side} />
+                    <path d={face.front} />
 
-                <g className={cls('fin')}>
-                  <rect x="80" y="272" width="240" height="62" rx="2" />
-                  <line x1="110" y1="303" x2="160" y2="303" />
-                </g>
+                    {/* The foundation carries its own detail: a dashed seam and
+                        three service nodes, so it reads as substrate rather
+                        than as one more floor. */}
+                    {plinth && (
+                      <>
+                        <line
+                          x1={slab.x + 26}
+                          y1={slab.y + 58}
+                          x2={slab.x + slab.w - 26}
+                          y2={slab.y + 58}
+                          strokeDasharray="4 6"
+                        />
+                        <circle cx={slab.x + 52} cy={slab.y + 58} r="3.5" />
+                        <circle cx={slab.x + slab.w / 2} cy={slab.y + 58} r="3.5" />
+                        <circle cx={slab.x + slab.w - 52} cy={slab.y + 58} r="3.5" />
+                        <path className="bl-top" d={plinth.top} />
+                        <path className="bl-side" d={plinth.side} />
+                        <path d={plinth.front} />
+                      </>
+                    )}
 
-                {/* Technology: the foundation everything stands on */}
-                <g className={cls('tech')}>
-                  <path d="M52 356 H348 V424 H52 Z" />
-                  <line x1="52" y1="392" x2="348" y2="392" strokeDasharray="4 6" />
-                  <path d="M36 424 H364 L348 470 H52 Z" />
-                  <circle cx="120" cy="376" r="4" />
-                  <circle cx="200" cy="376" r="4" />
-                  <circle cx="280" cy="376" r="4" />
-                </g>
-              </svg>
+                    <rect className="bl-solid" x={TAB_X} y={tabY} width="3" height="22" />
+                    <text className="bl-tag" x={LABEL_X} y={labelY}>
+                      {capability.name.toUpperCase()}
+                    </text>
+                  </g>
+                );
+              })}
+            </svg>
 
-              <p
-                className="mt-6 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-hhp-gold"
-                aria-live="polite"
-              >
-                {CAPABILITIES[active]?.role}
-              </p>
-            </div>
+            <p
+              className="mt-3 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-hhp-gold lg:mt-6"
+              aria-live="polite"
+            >
+              {CAPABILITIES[active]?.role}
+            </p>
           </div>
 
           {/* Steps */}
-          <div className="lg:col-span-7">
+          <div className="pt-4 lg:col-span-7 lg:pt-0">
             <ol className="border-t border-border">
               {CAPABILITIES.map((capability, index) => (
                 <li key={capability.id}>

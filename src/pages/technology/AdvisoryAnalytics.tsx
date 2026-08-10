@@ -55,7 +55,7 @@ const AdvisoryAnalytics = () => {
       </section>
 
       {/* Key Capabilities */}
-      <section className="bg-gray-50 section-spacing">
+      <section className="bg-surface section-spacing">
         <div className="container-premium">
           <h2 className="section-title text-hhp-navy mb-12 text-center">Key Capabilities</h2>
           
@@ -176,7 +176,7 @@ const AdvisoryAnalytics = () => {
       </section>
 
       {/* Insights Tab Examples */}
-      <section className="bg-gray-50 section-spacing">
+      <section className="bg-surface section-spacing">
         <div className="container-premium">
           <h2 className="section-title text-hhp-navy mb-12 text-center">Insights Tab Examples</h2>
           
