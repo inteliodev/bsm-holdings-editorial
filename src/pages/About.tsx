@@ -214,7 +214,7 @@ const About = () => {
                       <Mail className="h-4 w-4 text-hhp-navy" />
                       <a 
                         href="mailto:hayden@hhpasset.com" 
-                        className="text-sm text-hhp-navy hover:text-hhp-navy/80 transition-colors duration-200 font-medium"
+                        className="tap text-sm text-hhp-navy hover:text-hhp-navy/80 transition-colors duration-200 font-medium"
                       >
                         hayden@hhpasset.com
                       </a>
@@ -267,7 +267,7 @@ const About = () => {
                       <Mail className="h-4 w-4 text-hhp-navy" />
                       <a 
                         href="mailto:phil@hhpasset.com" 
-                        className="text-sm text-hhp-navy hover:text-hhp-navy/80 transition-colors duration-200 font-medium"
+                        className="tap text-sm text-hhp-navy hover:text-hhp-navy/80 transition-colors duration-200 font-medium"
                       >
                         phil@hhpasset.com
                       </a>
@@ -317,7 +317,7 @@ const About = () => {
                       <Mail className="h-4 w-4 text-hhp-navy" />
                       <a 
                         href="mailto:hannah@hhpasset.com" 
-                        className="text-sm text-hhp-navy hover:text-hhp-navy/80 transition-colors duration-200 font-medium"
+                        className="tap text-sm text-hhp-navy hover:text-hhp-navy/80 transition-colors duration-200 font-medium"
                       >
                         hannah@hhpasset.com
                       </a>

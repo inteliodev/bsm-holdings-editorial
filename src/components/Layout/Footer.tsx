@@ -21,11 +21,14 @@ const SERVICE_LINKS = [
   { to: '/brokerage', label: 'Brokerage' },
 ];
 
+// 44px minimum touch target. The old global `!important` block force-fed every
+// anchor a 48px min-height on mobile; removing that block meant these had to be
+// sized honestly at the component instead.
 const linkClass =
-  'inline-flex min-h-[36px] items-center text-sm text-white/65 transition-colors hover:text-white';
+  'inline-flex min-h-[44px] items-center text-sm text-white/65 transition-colors hover:text-white';
 
 const columnHeading =
-  'mb-5 text-[10px] font-semibold uppercase tracking-[0.18em] text-hhp-gold';
+  'mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-hhp-gold';
 
 const Footer = () => {
   return (
@@ -55,7 +58,7 @@ const Footer = () => {
                 href="https://www.linkedin.com/company/hhpasset"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center border border-white/15 text-white/70 transition-colors hover:border-hhp-gold hover:text-hhp-gold"
+                className="flex h-11 w-11 items-center justify-center border border-white/15 text-white/70 transition-colors hover:border-hhp-gold hover:text-hhp-gold"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-4 w-4" />
@@ -64,7 +67,7 @@ const Footer = () => {
                 href="https://www.facebook.com/share/1JLHp25e3N/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center border border-white/15 text-white/70 transition-colors hover:border-hhp-gold hover:text-hhp-gold"
+                className="flex h-11 w-11 items-center justify-center border border-white/15 text-white/70 transition-colors hover:border-hhp-gold hover:text-hhp-gold"
                 aria-label="Facebook"
               >
                 <Facebook className="h-4 w-4" />
@@ -107,13 +110,13 @@ const Footer = () => {
               <li>
                 <a
                   href="mailto:info@hhpasset.com"
-                  className="flex items-center gap-3 text-sm text-white/65 transition-colors hover:text-white"
+                  className="min-h-[44px] flex items-center gap-3 text-sm text-white/65 transition-colors hover:text-white"
                 >
                   <Mail className="h-4 w-4 flex-shrink-0 text-hhp-gold" />
                   info@hhpasset.com
                 </a>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-3 py-2">
                 <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-hhp-gold" />
                 {/* Canonical NAP. Must stay identical to the Google Business
                     Profile and the LocalBusiness structured data — all three

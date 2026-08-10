@@ -11,9 +11,6 @@ import { trackFormSubmission, trackContactFormInteraction, trackButtonClick, tra
 import ServiceAreaSection from '@/components/ServiceAreaSection';
 import LocalBusinessSchema from '@/components/LocalBusinessSchema';
 
-// Endpoint is configurable so it can be moved off a third-party domain without a
-// code change. Falls back to the current webhook so nothing breaks before the DNS
-// move lands.
 const CONTACT_EMAIL = 'info@hhpasset.com';
 
 const Contact = () => {
@@ -174,8 +171,10 @@ const Contact = () => {
         <div className="absolute inset-0 bg-hhp-navy/60"></div>
         <div className="relative z-10 container-premium">
           <div className="max-w-4xl mx-auto text-center fade-in px-4">
+            {/* Was the literal string "CONTACT"; the base layer no longer
+                force-uppercases headings, so the label carries its own casing. */}
             <h1 className="hero-title text-white mb-4 sm:mb-6 lg:mb-8 drop-shadow-lg">
-              CONTACT
+              Contact
             </h1>
             <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-white/90 mb-8 sm:mb-10 lg:mb-12 drop-shadow-md">
               Tell us about the property. We'll tell you what we'd do with it, and what it would cost.
@@ -348,7 +347,7 @@ const Contact = () => {
                     <h3 className="font-semibold text-hhp-navy mb-1">Email</h3>
                     <a
                       href={`mailto:${CONTACT_EMAIL}`}
-                      className="text-hhp-charcoal hover:text-hhp-navy underline-offset-4 hover:underline transition-colors"
+                      className="tap text-hhp-charcoal hover:text-hhp-navy underline-offset-4 hover:underline transition-colors"
                       onClick={() => trackButtonClick('email_link', 'contact_info')}
                     >
                       {CONTACT_EMAIL}

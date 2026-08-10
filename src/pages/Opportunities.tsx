@@ -188,7 +188,7 @@ const Opportunities = () => {
                         an application, so the label now matches both. */}
                     <Link
                       to="/contact"
-                      className="mt-5 inline-flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-[0.08em] text-hhp-navy transition-colors hover:text-hhp-gold"
+                      className="tap mt-5 inline-flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-[0.08em] text-hhp-navy transition-colors hover:text-hhp-gold"
                       onClick={() => {
                         trackButtonClick(`apply_${opportunity.id}`, 'opportunities_listing');
                         trackLinkClick(`Apply - ${opportunity.title}`, '/contact');
@@ -231,7 +231,7 @@ const Opportunities = () => {
               </Link>
               <a
                 href="mailto:careers@hhpasset.com"
-                className="text-sm text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline"
+                className="tap text-sm text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline"
                 onClick={() => trackLinkClick('Email Careers', 'mailto:careers@hhpasset.com')}
               >
                 careers@hhpasset.com

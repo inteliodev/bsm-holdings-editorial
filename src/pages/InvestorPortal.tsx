@@ -118,7 +118,7 @@ const InvestorPortal = () => {
                 <p className="mb-2 text-sm font-medium text-hhp-charcoal">Prefer to email?</p>
                 <a
                   href="mailto:investors@hhpasset.com"
-                  className="text-sm font-medium text-hhp-navy transition-colors hover:text-hhp-navy/80"
+                  className="tap text-sm font-medium text-hhp-navy transition-colors hover:text-hhp-navy/80"
                   onClick={() =>
                     trackButtonClick('email_investor_relations', 'investor_portal_page')
                   }
@@ -129,7 +129,7 @@ const InvestorPortal = () => {
 
               <Link
                 to="/"
-                className="inline-flex items-center text-sm text-hhp-charcoal transition-colors hover:text-hhp-navy"
+                className="tap inline-flex items-center text-sm text-hhp-charcoal transition-colors hover:text-hhp-navy"
                 onClick={() => trackLinkClick('Back to Home - Investor', '/')}
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
@@ -140,7 +140,7 @@ const InvestorPortal = () => {
                 <span className="mr-2">Need resident access?</span>
                 <Link
                   to="/resident-login"
-                  className="font-medium text-hhp-navy transition-colors hover:text-hhp-navy/80"
+                  className="tap font-medium text-hhp-navy transition-colors hover:text-hhp-navy/80"
                   onClick={() => {
                     trackLinkClick('Resident Login - Investor', '/resident-login');
                     trackButtonClick('resident_login_link', 'investor_portal_page');

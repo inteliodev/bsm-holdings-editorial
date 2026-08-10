@@ -176,6 +176,16 @@
       min-height: 48px;
       padding: 0.75rem 1rem;
     }
+
+    /* Opt-in touch target for inline text links that act as CTAs. The old
+       override block applied this to every anchor with a blanket selector,
+       which is why it also had to fight its own side effects; this is applied
+       deliberately where a link is a tap target rather than body-copy text. */
+    .tap {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -577,8 +587,9 @@
 .hhp-cluster {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  /* 44px so the collapsed marker is a valid touch target on a phone. */
+  width: 44px;
+  height: 44px;
   border-radius: 999px;
   background: hsl(var(--hhp-navy-deep) / 0.9);
   border: 1.5px solid hsl(var(--hhp-gold));

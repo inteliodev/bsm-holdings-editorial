@@ -251,7 +251,7 @@ const Technology = () => {
                     {/* CTA */}
                     <Link 
                       to={pillar.href}
-                      className="inline-flex items-center text-hhp-navy font-heading font-semibold tracking-[0.06em] uppercase hover:text-hhp-navy/80 transition-colors duration-300 group-hover:translate-x-2 group focus:outline-none focus:ring-2 focus:ring-hhp-navy focus:ring-offset-2 rounded"
+                      className="tap inline-flex items-center text-hhp-navy font-heading font-semibold tracking-[0.06em] uppercase hover:text-hhp-navy/80 transition-colors duration-300 group-hover:translate-x-2 group focus:outline-none focus:ring-2 focus:ring-hhp-navy focus:ring-offset-2 rounded"
                       onClick={() => {
                         trackButtonClick(`learn_more_${pillar.title.toLowerCase().replace(/\s+/g, '_')}`, 'technology_pillars');
                         trackLinkClick(`Learn More ${pillar.title}`, pillar.href);

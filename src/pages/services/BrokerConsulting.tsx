@@ -566,7 +566,7 @@ const BrokerConsulting = () => {
               </Link>
               <Link
                 to="/faq"
-                className="text-sm text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline"
+                className="tap text-sm text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline"
                 onClick={() => trackLinkClick('FAQ - Broker Consulting', '/faq')}
               >
                 Have more questions?

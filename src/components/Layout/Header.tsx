@@ -256,7 +256,7 @@ const Header = () => {
           {/* Logo - Clickable Home Link */}
           <Link 
             to="/" 
-            className="flex items-center flex-shrink-0"
+            className="flex min-h-[44px] flex-shrink-0 items-center"
             onClick={() => {
               trackLinkClick('HHP Logo', '/');
             }}

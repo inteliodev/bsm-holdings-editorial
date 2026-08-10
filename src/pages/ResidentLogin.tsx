@@ -66,7 +66,7 @@ const ResidentLogin = () => {
             <div className="mt-8 space-y-4 text-center">
               <Link
                 to="/"
-                className="inline-flex items-center text-sm text-hhp-charcoal transition-colors hover:text-hhp-navy"
+                className="tap inline-flex items-center text-sm text-hhp-charcoal transition-colors hover:text-hhp-navy"
                 onClick={() => trackLinkClick('Back to Home', '/')}
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
@@ -76,7 +76,7 @@ const ResidentLogin = () => {
                 <span className="mr-2">Need investor access?</span>
                 <Link
                   to="/investor-portal"
-                  className="font-medium text-hhp-navy transition-colors hover:text-hhp-navy/80"
+                  className="tap font-medium text-hhp-navy transition-colors hover:text-hhp-navy/80"
                   onClick={() => {
                     trackLinkClick('Investor Portal', '/investor-portal');
                     trackButtonClick('investor_portal_link', 'resident_login_page');
@@ -89,7 +89,7 @@ const ResidentLogin = () => {
                 <p>Need help? Contact us at</p>
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
-                  className="text-hhp-navy transition-colors hover:text-hhp-navy/80"
+                  className="tap text-hhp-navy transition-colors hover:text-hhp-navy/80"
                   onClick={() => trackButtonClick('email_support', 'resident_login_page')}
                 >
                   {CONTACT_EMAIL}
