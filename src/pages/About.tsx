@@ -4,6 +4,8 @@ import Layout from '@/components/Layout/Layout';
 import haydenImage from '@/assets/hayden-ashley.webp';
 import philImage from '@/assets/phil-ashley.webp';
 import hannahImage from '@/assets/hannah-fanning.webp';
+import marshellaImage from '@/assets/marshella-franklin.webp';
+import andrewImage from '@/assets/andrew-hoanzl.webp';
 import { Mail, ChevronDown, ChevronUp } from 'lucide-react';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 
@@ -66,33 +68,57 @@ const TEAM: Department[] = [
     ],
   },
   {
-    name: 'Administrative Services',
+    name: 'Accounting',
     members: [
       {
         id: 'hannah',
         name: 'Hannah Fanning',
-        title: 'Administrative Director',
+        title: 'Director, Accounting',
         email: 'hannah@hhpasset.com',
         image: hannahImage,
-        bio: [
-          "Hannah Fanning serves as Administrative Director at HHP, where she oversees firmwide administrative functions and supports consistent service execution across all portfolios. She provides structured coordination between ownership, residents, and third-party vendors, ensuring administrative accuracy and continuity.",
-          "With over a decade of experience in enterprise logistics and communications, Hannah brings disciplined organization, documentation control, and process reliability to HHP's day-to-day administrative framework.",
-          "Her leadership supports transparent reporting, efficient workflows, and client-focused service aligned with the institutional standards HHP maintains across its platform.",
-        ],
+        // Bio intentionally omitted. The previous one opened "Hannah Fanning
+        // serves as Administrative Director at HHP" and described firmwide
+        // administrative functions throughout — that title now belongs to
+        // Marshella, so publishing it beside "Director, Accounting" would have
+        // contradicted the card it sat in. Restore once a bio for the
+        // accounting role exists.
       },
     ],
   },
-  // Pending, and deliberately not published yet — each needs a title, and
-  // Hannah's move to Accounting has to land at the same time so that
-  // "Administrative Director" is not shown against two people at once:
-  //
-  //   Accounting         — Hannah Fanning, new title required
-  //   Administrative     — Marshella Franklin, Administrative Director
-  //                        (headshot ready: src/assets/marshella-franklin.webp)
-  //   Facility Services  — Andrew Hoanzl, title required
-  //                        (headshot ready: src/assets/andrew-hoanzl.webp)
-  //                      — Preston Ellis, title required, no headshot
-  //   Department TBC     — Valarie Ellis, title required, no headshot
+  {
+    name: 'Administrative Services',
+    members: [
+      {
+        id: 'marshella',
+        name: 'Marshella Franklin',
+        title: 'Administrative Director',
+        email: 'marshella@hhpasset.com',
+        image: marshellaImage,
+      },
+    ],
+  },
+  {
+    name: 'Facility Services',
+    members: [
+      {
+        id: 'preston',
+        name: 'Preston Ellis',
+        title: 'Director of Facility Services',
+        email: 'preston@hhpasset.com',
+        // No headshot yet — renders as name, title and email, with no
+        // placeholder portrait.
+      },
+      {
+        id: 'andrew',
+        name: 'Andrew Hoanzl',
+        title: 'Property Engineer',
+        email: 'andrew@hhpasset.com',
+        image: andrewImage,
+      },
+    ],
+  },
+  // Still pending: Valarie Ellis — department and title required. Her address
+  // follows the same firstname@hhpasset.com convention as everyone else.
 ];
 
 /**
@@ -287,7 +313,10 @@ const About = () => {
                         <span className="eyebrow">{department.name}</span>
                       </div>
 
-                      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+                      {/* items-start so a card without a headshot sizes to its
+                          own content instead of stretching to match a card that
+                          has one, which left a large empty panel beneath it. */}
+                      <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
                         {department.members.map((member) => (
                           <div
                             key={member.id}
