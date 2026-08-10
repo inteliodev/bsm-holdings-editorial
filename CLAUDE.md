@@ -258,6 +258,14 @@ property management focused on operational consistency…"*:
   Senior Housing and Affordable Housing use `operating`. **Never** give another
   class `operating` without a real asset behind it.
 
+  **`seeking` states criteria, never absence.** These are business-development
+  pages. Do not write "HHP does not currently operate X" or name the Pryor
+  portfolio as a limit on a class it has nothing to do with — an industrial
+  prospect does not care what we run in Pryor, and leading with what we lack
+  loses the business. Lead with the capability that shapes the criteria
+  ("the trades are ours, so response time is ours"), then list what we look
+  for. Pryor belongs on the two housing pages, where it is proof.
+
 Services render **open**, mapped from `SERVICE_ORDER`. They used to sit in a
 collapsed six-row accordion — the substance of the page hidden behind closed
 rows — built from six hand-copied JSX blocks. Do not put them back in an

@@ -194,7 +194,10 @@ previously said nothing specific to their class — every service description re
   portfolio with real figures; `kind: 'seeking'` states underwriting criteria
   instead. HHP operates only the three Section 202 communities in Pryor, so only
   Senior Housing and Affordable Housing use `operating`. Never give another class
-  `operating` without a real asset behind it.
+  `operating` without a real asset behind it — and never write `seeking` copy as
+  an admission of absence. These are business-development pages: lead with the
+  capability that shapes the criteria, then list what we look for. Pryor belongs
+  on the two housing pages, where it is proof.
 
 Services render **open**, mapped from `SERVICE_ORDER`. They previously sat in a
 collapsed six-row accordion — the substance of the page hidden behind closed rows

@@ -151,8 +151,8 @@ const Office = () => {
         kind: 'seeking',
         image: '/images/leasing-representation-image.jpg',
         imageAlt: 'Commercial office interior',
-        title: 'What we underwrite for in office',
-        body: 'HHP does not currently operate office assets — the managed portfolio is senior and affordable housing in Pryor, Oklahoma. We underwrite and advise on office, and these are the conditions under which we will take one on.',
+        title: 'The office assets we take on',
+        body: 'We underwrite from the expense side because we self-perform the trades and hold the accounting, which tends to produce a more defensible number than a purely market-derived one. That shapes the buildings we want. Here is what we look for.',
         points: [
           'A building where the operating line can be improved by operating it better, not only by re-leasing it',
           'Mechanical and life-safety systems we can assess before closing, not inherit',
@@ -164,7 +164,7 @@ const Office = () => {
       }}
 
       ctaTitle="Tell us about the building"
-      ctaBody="Send us the rent roll and the last twelve months of operating statements. We will tell you what we think it costs to run, and where we would expect to be wrong."
+      ctaBody="Send us the rent roll and the last twelve months of operating statements. We will tell you what we think it costs to run, and what we would change first."
     />
   );
 };

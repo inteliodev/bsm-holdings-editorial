@@ -180,8 +180,8 @@ const Multifamily = () => {
           kind: 'seeking',
           image: '/images/property-management-picture.webp',
           imageAlt: 'Multifamily community exterior',
-          title: 'What we underwrite for in multifamily',
-          body: 'HHP’s managed portfolio today is senior and affordable housing in Pryor, Oklahoma. We underwrite and advise on conventional multifamily, and these are the conditions under which we will take a community on.',
+          title: 'The communities we take on',
+          body: 'Turns and maintenance are performed by our own personnel, so a unit turn is scheduled rather than tendered — which is where vacancy days are actually won. That shapes the communities we want. Here is what we look for.',
           points: [
             'A community where turn time and response time can be improved by operating it differently',
             'Deferred maintenance we can scope before closing rather than discover in the first quarter',

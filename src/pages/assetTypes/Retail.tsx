@@ -151,8 +151,8 @@ const Retail = () => {
         kind: 'seeking',
         image: '/images/advisory-site-selection-image.webp',
         imageAlt: 'Retail trade area',
-        title: 'What we underwrite for in retail',
-        body: 'HHP does not currently operate retail centres — the managed portfolio is senior and affordable housing in Pryor, Oklahoma. We underwrite and advise on retail, and these are the conditions under which we will take a centre on.',
+        title: 'The centres we take on',
+        body: 'Lot, lighting, landscaping and janitorial are performed by our own personnel, so common-area condition is a scheduling decision rather than a vendor’s queue. That shapes the centres we want. Here is what we look for.',
         points: [
           'A centre where common-area condition is a solvable problem rather than a deferred capital event',
           'A rent roll we can read against tenant occupancy cost, not only against market rent',

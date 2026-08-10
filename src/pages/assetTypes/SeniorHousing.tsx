@@ -6,7 +6,7 @@ const SeniorHousing = () => {
       heroImage="/images/senior-housing-image.jpg"
       eyebrow="Asset Class"
       title="Senior Housing"
-      tagline="The class we operate ourselves, every day, in Pryor"
+      tagline="The class we operate ourselves, every day"
       heroButtonText="Talk to us about a community"
       mark="senior"
 

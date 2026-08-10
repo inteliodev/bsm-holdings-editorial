@@ -151,8 +151,8 @@ const Industrial = () => {
         kind: 'seeking',
         image: '/images/development-advisory-image.webp',
         imageAlt: 'Industrial facility and site',
-        title: 'What we underwrite for in industrial',
-        body: 'HHP does not currently operate industrial facilities — the managed portfolio is senior and affordable housing in Pryor, Oklahoma. We underwrite and advise on industrial, and these are the conditions under which we will take a facility on.',
+        title: 'The facilities we take on',
+        body: 'Electrical, plumbing, roofing and grounds are performed by our own personnel, so response time is a number we control rather than one we relay. In a class where downtime is the whole service, that shapes the facilities we want. Here is what we look for.',
         points: [
           'Specification we can verify on site — clear height, dock ratio, power and sprinkler class — before a number is committed',
           'A roof, slab and site drainage we can assess rather than inherit',
