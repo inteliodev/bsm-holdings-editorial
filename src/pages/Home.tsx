@@ -5,8 +5,11 @@ import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 import PlatformSection from '@/components/PlatformSection';
 import ServiceAreaSection from '@/components/ServiceAreaSection';
 import LocalBusinessSchema from '@/components/LocalBusinessSchema';
+import { useTimeOfDay } from '@/hooks/useTimeOfDay';
 
 const Home = () => {
+  const timeOfDay = useTimeOfDay();
+
   return (
     <Layout>
       <LocalBusinessSchema />
@@ -37,6 +40,9 @@ const Home = () => {
           and weights the darkness where the text and the fold actually sit.
         */}
         <div className="absolute inset-0 z-10 scrim-hero" aria-hidden="true" />
+        {/* Tint keyed to the real hour in Oklahoma, so the hero is lit the same
+            way the Portfolio map's campus is at that moment. */}
+        <div className={`absolute inset-0 z-10 scrim-tod scrim-tod-${timeOfDay}`} aria-hidden="true" />
         {/* Hero content */}
         <div className="absolute inset-0 z-20 flex items-center justify-center">
           <div className="container-premium text-center px-4 sm:px-6">

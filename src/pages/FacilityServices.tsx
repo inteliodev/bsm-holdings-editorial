@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle, Users, Shield, HardHat, Building2, Wrench, Tre
 import { Link } from 'react-router-dom';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import BuildingSection from '@/components/BuildingSection';
 
 const selfPerformedTrades = [
   {
@@ -456,6 +457,10 @@ const FacilityServices = () => {
           </div>
         </div>
       </section>
+
+      {/* The vertical-integration argument, told vertically. Also breaks up what
+          was a ~4-screen unbroken white section with no imagery. */}
+      <BuildingSection />
 
       {/* Mid-Page Split Section */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-0 min-h-[500px] md:min-h-[600px] py-12 sm:py-16 lg:py-20">

@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Mail, MapPin, Phone } from 'lucide-react';
 import type { Map as MapboxMap, Marker as MapboxMarker, Popup as MapboxPopup } from 'mapbox-gl';
 import Layout from '@/components/Layout/Layout';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
+import { currentTimeOfDay, useTimeOfDay } from '@/hooks/useTimeOfDay';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN || '';
@@ -114,6 +115,7 @@ const Portfolio = () => {
   const [hoveredProperty, setHoveredProperty] = useState<string | null>(null);
   const [detailOpen, setDetailOpen] = useState(false);
   const [mapReady, setMapReady] = useState(false);
+  const timeOfDay = useTimeOfDay();
 
   const stopOrbit = useCallback(() => {
     orbitRef.current.active = false;
@@ -200,12 +202,15 @@ const Portfolio = () => {
         // Standard exposes lighting and label groups as style config, so the
         // old regex walk over getStyle().layers is no longer needed.
         try {
-          // `dusk` washed this location out to a flat mauve — Pryor has almost
-          // no tall massing to catch low sun. `night` puts lit windows against
-          // a dark ground that sits with the brand navy, and lets the gold
-          // markers carry the eye. `monochrome` strips the residual map colour
-          // so gold is the only accent in the frame.
-          map.setConfigProperty('basemap', 'lightPreset', 'night');
+          // Lit to the real hour in Oklahoma. The Home hero carries a matching
+          // tint from the same hook, so the site and the campus are lit the same
+          // way at the same moment.
+          //
+          // (`dusk` alone washed this location out to a flat mauve — Pryor has
+          // almost no tall massing to catch low sun — which is why the gold
+          // building highlight below does the heavy lifting rather than the
+          // basemap colour.)
+          map.setConfigProperty('basemap', 'lightPreset', currentTimeOfDay());
           map.setConfigProperty('basemap', 'colorBuildingHighlight', '#C8952E');
           // Label clutter: house numbers and place names competed with the
           // markers at campus zoom.
@@ -385,6 +390,16 @@ const Portfolio = () => {
       clusterRef.current = null;
     };
   }, [openDetail, stopOrbit]);
+
+  // Re-light the map if a long-open tab crosses into a new part of the day.
+  useEffect(() => {
+    if (!mapReady) return;
+    try {
+      mapRef.current?.setConfigProperty('basemap', 'lightPreset', timeOfDay);
+    } catch {
+      /* Style not ready or config unsupported — cosmetic only. */
+    }
+  }, [timeOfDay, mapReady]);
 
   // Keep marker state in sync with whichever row is selected or hovered.
   useEffect(() => {
