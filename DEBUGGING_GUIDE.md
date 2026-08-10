@@ -187,6 +187,30 @@ unknown class and React does not care, so each rendered as *almost* correct:
 Grep for suspicious class names when something looks subtly inconsistent between
 two elements that should match.
 
+### The same trap with a *valid* class and an invalid value
+
+`border-white/12` shipped in **three** places — `SystemStack.tsx`,
+`BuildingSection.tsx` and `Portfolio.tsx`. `border-white` is real and `/12` looks
+reasonable, but **12 is not on Tailwind's default opacity scale** and it was not
+bracketed, so no rule was emitted. These hairlines then fell through to the
+global `* { @apply border-border }` in `index.css` — a near-white grey — on a
+navy ground. The result reads as "slightly too bright", which is exactly the kind
+of thing that survives review.
+
+Valid steps are 0, 5, 10, 15, 20, 25… Use `/10`, `/15`, or bracket the exact
+value as `/[0.12]`.
+
+This one is detectable in the build, which is how the third instance was found:
+
+```bash
+npm run build
+grep -ro "border-white/12" dist/assets/*.js   # present  = it shipped
+grep -o 'border-white\\/12' dist/assets/*.css # absent   = it compiled to nothing
+```
+
+Any class that appears in the JS but not the CSS is dead. That check generalises
+to every arbitrary Tailwind value.
+
 ---
 
 ## 🔗 **SEO: EVERY ROUTE SELF-CANONICALIZED TO THE HOMEPAGE (FIXED)**
@@ -279,6 +303,124 @@ Custom HTML markers previously caused drift on zoom; the built-in `mapboxgl.Mark
 ```bash
 npx tsc --noEmit -p tsconfig.app.json
 ```
+
+The same file did it again, and typecheck could **not** catch the second one:
+`tagline` and `heroButtonText` were declared, destructured, and supplied by all
+six asset-type pages — and rendered by neither. A `scrollToContact` helper was
+defined and never called. TypeScript is satisfied by a destructured variable that
+is simply never used, so nothing failed.
+
+Worse, the scroll target it aimed at (`#asset-contact`) only rendered when a page
+supplied `ctaImage` **and** `ctaTitle`, and no page did. So even once wired, the
+button would have scrolled to nothing.
+
+> When a prop exists on the interface, grep the component body for it before
+> assuming it renders. `grep -c "heroButtonText" AssetTypePage.tsx` returning 2
+> (interface + destructure, no usage) is the tell.
+
+---
+
+## ⚓ **`<Link to="#hash">` UPDATES THE URL AND SCROLLS NOWHERE**
+
+Two CTAs — `AssetTypes.tsx` and `Insights.tsx` — did nothing when clicked.
+
+React Router resolves `to="#asset-types"` to `<currentPath>#asset-types` and
+pushes it. It does **not** scroll to the anchor; that is browser behaviour for
+real fragment navigation, which a client-side push bypasses. And `ScrollToTop`
+only fires on `pathname` change, so a hash-only change moves nothing either.
+
+Both targets existed. Nothing was broken except the thing the user clicked.
+
+**Fix:** use a plain `<a href="#id">` and give the target
+`scroll-mt-[calc(var(--header-h)+1.5rem)]` so it clears the sticky header. Native
+fragment navigation honours `scroll-margin-top`; a JS `scrollIntoView` does not
+unless you compute the offset yourself.
+
+---
+
+## 📌 **`position: sticky` HAS NO TRAVEL IN A SINGLE-COLUMN GRID**
+
+All three scrollytelling diagrams were pinned on desktop and scrolled away on
+mobile, so the entire highlight-follows-scroll interaction was desktop-only —
+and it looked like a CSS bug when it was a containing-block one.
+
+A sticky element travels within its **containing block**. The markup was:
+
+```jsx
+<div className="grid grid-cols-1 lg:grid-cols-12">   {/* grid at ALL widths */}
+  <div className="lg:col-span-5">                     {/* diagram column */}
+    <div className="lg:sticky">…</div>
+```
+
+At `lg` the column is a grid item stretched to the full row height, so the inner
+wrapper has room to move. Below `lg` the grid is single-column: **each row is its
+own grid area**, the diagram's area is only as tall as the diagram, and sticky
+has nowhere to go.
+
+**Fix:** make the wrapper `lg:grid` rather than `grid`. Below `lg` the diagram
+becomes a plain block sibling of the step list, so its containing block is the
+tall wrapper containing both. At `lg` it becomes the grid item and needs
+`self-start` to stay content-height inside the stretched column.
+
+Two things that bite immediately afterwards:
+
+- The step list scrolls **underneath** the pinned bar, so it needs an opaque
+  background. `bg-white/95` was not enough — the copy read straight through the
+  diagram.
+- The diagram renders at roughly half width, and a `1.4px` stroke in a
+  `400`-unit viewBox goes sub-pixel there. The whole diagram greys out. Weight
+  the linework up under a `max-width` query.
+
+---
+
+## 🖱️ **A CLICK-OUTSIDE HANDLER THAT COULD NEVER FIRE**
+
+`Header.tsx` dropdowns only closed on the 200ms mouseleave timer or Escape.
+Clicking elsewhere on the page did nothing.
+
+```js
+if (servicesRef.current && !servicesRef.current.contains(target) &&
+    assetTypesRef.current && !assetTypesRef.current.contains(target)) {
+```
+
+`assetTypesRef` was never attached to an element, so `assetTypesRef.current` was
+permanently `null` and the whole condition was unreachable. The bug is the
+**`&&` over refs**: it requires every dropdown to exist before any of them can
+close.
+
+**Fix:** collect containers into one `dropdownRefs` map and close when the click
+is inside *none* of them:
+
+```js
+const inside = Object.values(dropdownRefs.current).some((el) => el?.contains(target));
+if (!inside) setActiveDropdown(null);
+```
+
+A ref that is declared but never attached is invisible at runtime and to the
+typechecker. Grep that every `useRef` is actually placed on an element.
+
+---
+
+## 🤖 **HEADLESS CHROME DEFAULTS TO `prefers-reduced-motion: reduce`**
+
+Worth knowing before debugging any of the scrollytelling sections.
+
+`useActiveStep` returns early under reduced motion, so `active` stays `0`
+forever. In a headless screenshot the diagram therefore always shows layer 01
+highlighted, no matter where the page is scrolled — which looks exactly like a
+broken scroll listener.
+
+Be explicit in both directions when driving a browser:
+
+```js
+await page.emulateMediaFeatures([
+  { name: 'prefers-reduced-motion', value: 'no-preference' },
+]);
+```
+
+The upside: the default is a free check that the section still reads correctly
+with step 1 permanently active, which is the state a real reduced-motion visitor
+and the prerender both get.
 
 ---
 

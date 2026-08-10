@@ -103,6 +103,7 @@ src/
     LocalBusinessSchema.tsx    # RealEstateAgent JSON-LD + areaServed
     SiteSchema.tsx             # Organization + WebSite + Breadcrumb + Service (all routes)
     AccessRequestForm.tsx      # Shared form for both portal pages
+    AssetTypePage.tsx          # Shared template for all 6 asset-type pages
   data/
     serviceArea.ts             # Canonical NAP + service-area cities (single source of truth)
   lib/
@@ -150,18 +151,54 @@ rather than a repeated trick:
 | Facility Services | `BuildingSection` | the asset |
 | Technology | `SystemStack` | the software |
 
-Two rules if you add another:
+Three rules if you add another:
 
 - **Use `useActiveStep`.** Do not reimplement tracking with an
   IntersectionObserver band — it fails at the ends of a list (see
-  `DEBUGGING_GUIDE.md`).
+  `DEBUGGING_GUIDE.md`). It returns `{ active, progress, setRef }`; `progress` is
+  the same measurement as a 0–1 fraction, for marks that fill continuously
+  rather than stepping.
 - **Scroll may change emphasis, never visibility.** Every layer and every word
   must be in the DOM at rest, or the section will not survive the prerender.
   Verify in `dist/`, not in the browser.
+- **Keep the wrapper `lg:grid`, not `grid`.** Sticky resolves against its
+  containing block, and in a single-column grid each row is its own area — so a
+  sticky diagram there has nowhere to travel and scrolls away before the steps
+  arrive. Below `lg` the diagram is a plain block sibling of the step list,
+  pinned under the header in an **opaque** bar; at `lg` it becomes the grid item
+  and `self-start` keeps it content-height. Linework is weighted up and the
+  in-diagram labels are hidden below `lg`, because at half width a 1.4px stroke
+  in a 400-unit viewBox renders sub-pixel.
 
 The Portfolio map's lighting and the Home hero tint both come from
 `useTimeOfDay`, keyed to the real clock in America/Chicago rather than the
 visitor's locale.
+
+## Asset type pages
+
+All six render from `src/components/AssetTypePage.tsx`. Change the template, not
+the individual pages, wherever possible.
+
+Section order: hero → market context (with a drawn `AssetMark` per class) → what
+we watch → services → the HHP advantage → proof → closing band. Grounds alternate
+deliberately.
+
+Two props carry the class-specific content, and both exist because the pages
+previously said nothing specific to their class — every service description read
+*"Comprehensive {type} property management focused on operational consistency…"*:
+
+- **`metrics`** — the figures that genuinely differ by class (clear height and
+  dock ratio for industrial, occupancy cost ratio and co-tenancy exposure for
+  retail, turn time for multifamily, load factor for office).
+- **`proof`** — **honest by construction.** `kind: 'operating'` states a real
+  portfolio with real figures; `kind: 'seeking'` states underwriting criteria
+  instead. HHP operates only the three Section 202 communities in Pryor, so only
+  Senior Housing and Affordable Housing use `operating`. Never give another class
+  `operating` without a real asset behind it.
+
+Services render **open**, mapped from `SERVICE_ORDER`. They previously sat in a
+collapsed six-row accordion — the substance of the page hidden behind closed rows
+— built from six hand-copied JSX blocks. Do not put them back in an accordion.
 
 ## Routing
 
@@ -292,7 +329,10 @@ Tracked but not yet addressed:
 - **`Insights.tsx` presents nine pieces of content that do not exist.** The eleven fake
   "Download PDF" / "Read More" link affordances were removed so the cards no longer
   advertise a click that goes nowhere, but the reports and articles themselves still
-  need writing before anything can be linked.
+  need writing before anything can be linked. (The parallel problem on the asset-type
+  pages — 18 teasers, all dated late 2024, each linking to `/insights` regardless of
+  title — is resolved: that band is now a `proof` section stating what HHP actually
+  operates or underwrites.)
 - **Nine service pages share a byte-identical "ABOUT US" paragraph**, and the lower half
   of each has no imagery. Extracting the repeated blocks (`AboutSplit`, `CareersBand`,
   `FaqCta`, `PageHero`, `Section`) into shared components would stop the duplication
@@ -300,9 +340,10 @@ Tracked but not yet addressed:
 - **The About hero photograph is a New York skyline** on an Oklahoma operator's site.
 - **`useSEO.ts` is imported by no page** (superseded by the prerender step) — remove or
   wire it up.
-- **Eight orphaned components** remain in `src/components/`: `BenefitsCards`, `IconGrid`,
-  `PremiumCTABanner`, `ProcessSteps`, `ProofPoints`, `ServiceCards`, and `ServicesSubNav`
-  (whose links point at `/management/*` routes deleted from `App.tsx`).
+- **Six orphaned components** remain in `src/components/`: `BenefitsCards`, `IconGrid`,
+  `PremiumCTABanner`, `ProcessSteps`, `ProofPoints`, and `ServiceCards`.
+  (`ServicesSubNav` was deleted — all six of its `/management/*` links pointed at
+  routes that no longer exist in `App.tsx`.)
 - **The portals collect access requests but there is no portal.** `InvestorPortal` still
   advertises a feature list for a product that does not exist yet — retained at the
   owner's explicit request.
