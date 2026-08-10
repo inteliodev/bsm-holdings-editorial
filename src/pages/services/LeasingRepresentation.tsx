@@ -48,8 +48,7 @@ const LeasingRepresentation = () => {
                 <img 
                   src="/images/leasing-chart.webp" 
                   alt="Our Vertically Integrated Approach"
-                  className="w-full max-w-5xl h-auto"
-                />
+                  className="w-full max-w-5xl h-auto" loading="lazy" decoding="async" width={2118} height={623} />
               </div>
             </div>
 
@@ -272,8 +271,7 @@ const LeasingRepresentation = () => {
           <img 
             src="/images/about-us-image.jpg" 
             alt="Leasing & Representation"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+            className="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" width={480} height={316} />
         </div>
         
         {/* RIGHT: Dark overlay with text and CTA */}

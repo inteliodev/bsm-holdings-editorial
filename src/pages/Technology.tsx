@@ -182,7 +182,7 @@ const Technology = () => {
               });
             }}
           >
-            <source src="/images/ai-machine-learning-hero.mp4" type="video/mp4" />
+            <source src="/images/technology-hero.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-hhp-navy/60 z-0"></div>
           <div className="relative z-10 container-premium">

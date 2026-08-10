@@ -149,8 +149,7 @@ const Brokerage = () => {
               <img 
                 src={commercialImage} 
                 alt="Commercial leasing property" 
-                className="w-full h-96 object-cover rounded-lg shadow-elegant hover-lift"
-              />
+                className="w-full h-96 object-cover rounded-lg shadow-elegant hover-lift" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>

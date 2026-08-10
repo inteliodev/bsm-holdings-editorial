@@ -3,7 +3,7 @@ import { useLocation, Link } from 'react-router-dom';
 import Layout from '@/components/Layout/Layout';
 import haydenImage from '@/assets/hayden-ashley.webp';
 import philImage from '@/assets/phil-ashley.webp';
-import hannahImage from '@/assets/hannah-fanning.png';
+import hannahImage from '@/assets/hannah-fanning.webp';
 import { Mail, ChevronDown, ChevronUp } from 'lucide-react';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 
@@ -156,8 +156,7 @@ const About = () => {
                     <img 
                       src={haydenImage} 
                       alt="Hayden Ashley, Managing Principal" 
-                      className="w-full h-72 sm:h-80 object-contain object-center rounded-lg mb-5"
-                    />
+                      className="w-full h-72 sm:h-80 object-contain object-center rounded-lg mb-5" loading="lazy" decoding="async" />
                     <h3 className="text-xl font-display font-semibold text-hhp-navy mb-1 text-center">Hayden Ashley</h3>
                     <h4 className="text-base font-medium text-hhp-navy mb-4 text-center italic">Managing Principal</h4>
                     
@@ -208,8 +207,7 @@ const About = () => {
                     <img 
                       src={philImage} 
                       alt="Phil Ashley, Director of Operations" 
-                      className="w-full h-72 sm:h-80 object-contain object-center rounded-lg mb-5"
-                    />
+                      className="w-full h-72 sm:h-80 object-contain object-center rounded-lg mb-5" loading="lazy" decoding="async" />
                     <h3 className="text-xl font-display font-semibold text-hhp-navy mb-1 text-center">Phil Ashley</h3>
                     <h4 className="text-base font-medium text-hhp-navy mb-4 text-center italic">Director of Operations</h4>
                     
@@ -257,8 +255,7 @@ const About = () => {
                     <img 
                       src={hannahImage} 
                       alt="Hannah Fanning, Director of Client Operations" 
-                      className="w-full h-72 sm:h-80 object-contain object-center rounded-lg mb-5"
-                    />
+                      className="w-full h-72 sm:h-80 object-contain object-center rounded-lg mb-5" loading="lazy" decoding="async" />
                     <h3 className="text-xl font-display font-semibold text-hhp-navy mb-1 text-center">Hannah Fanning</h3>
                     <h4 className="text-base font-medium text-hhp-navy mb-4 text-center italic">Administrative Director</h4>
                     

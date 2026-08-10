@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "build:norender": "vite build",
     "prerender": "node scripts/prerender.mjs",
-    "typecheck": "tsc --noEmit -p tsconfig.app.json"
+    "typecheck": "tsc --noEmit -p tsconfig.app.json",
+    "optimize:images": "node scripts/optimize-images.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -79,6 +80,7 @@
     "globals": "^15.15.0",
     "postcss": "^8.5.6",
     "puppeteer": "^25.5.0",
+    "sharp": "^0.35.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.38.0",

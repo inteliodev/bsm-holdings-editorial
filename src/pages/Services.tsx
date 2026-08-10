@@ -88,8 +88,7 @@ const Services = () => {
             <img 
               src="/images/vertically-integrated-approach-chart.webp" 
               alt="Our Vertically Integrated Approach" 
-              className="w-full h-auto object-contain"
-            />
+              className="w-full h-auto object-contain" loading="lazy" decoding="async" width={1279} height={380} />
           </div>
         </div>
       </section>

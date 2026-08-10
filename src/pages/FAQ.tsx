@@ -112,8 +112,7 @@ const FAQ = () => {
         <img 
           src="/images/investment-sales-capital-markets-hero.webp" 
           alt="FAQ"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+          className="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" width={1600} height={442} />
         <div className="absolute inset-0 bg-black/40"></div>
         <h1 className="relative z-10 text-5xl sm:text-6xl font-bold text-white text-center">
           FAQ

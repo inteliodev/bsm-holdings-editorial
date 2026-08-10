@@ -1,6 +1,15 @@
 /* Brandon Grotesque - Primary heading font (paid font, fallback to Montserrat) */
 /* If you have Brandon Grotesque license, add it here via Adobe Fonts or self-hosted */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+/*
+ * Fonts are loaded via <link> in index.html, not a CSS @import. An @import of a
+ * remote stylesheet is the slowest possible path: the browser must download and
+ * parse this file before it even discovers the font request, serialising two round
+ * trips into the critical path.
+ *
+ * Inter was declared as --font-body but never loaded, so all body copy silently fell
+ * back to system-ui — rendering in Segoe UI on Windows and SF on macOS. It is now
+ * actually fetched.
+ */
 
 @tailwind base;
 @tailwind components;

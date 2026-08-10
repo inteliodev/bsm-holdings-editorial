@@ -141,8 +141,7 @@ const FacilityServices = () => {
                 <img 
                   src="/images/facilities-management-chart.webp" 
                   alt="Our Vertically Integrated Approach" 
-                  className="w-full h-auto object-contain"
-                />
+                  className="w-full h-auto object-contain" loading="lazy" decoding="async" width={1291} height={326} />
               </div>
             </div>
 
@@ -465,8 +464,7 @@ const FacilityServices = () => {
           <img 
             src="/images/about-us-image.jpg" 
             alt="Facility Services"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+            className="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" width={480} height={316} />
         </div>
         
         {/* RIGHT: Dark overlay with text and CTA */}

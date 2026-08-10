@@ -48,8 +48,7 @@ const PropertyManagement = () => {
                 <img 
                   src="/images/property-management-chart.webp" 
                   alt="Our Vertically Integrated Approach"
-                  className="w-full max-w-5xl h-auto"
-                />
+                  className="w-full max-w-5xl h-auto" loading="lazy" decoding="async" width={2118} height={614} />
               </div>
             </div>
 
@@ -269,8 +268,7 @@ const PropertyManagement = () => {
           <img 
             src="/images/about-us-image.jpg" 
             alt="Property Management"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+            className="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" width={480} height={316} />
         </div>
         
         {/* RIGHT: Dark overlay with text and CTA */}

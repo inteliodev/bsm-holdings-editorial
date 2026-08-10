@@ -51,8 +51,7 @@ const FinancialServices = () => {
                 <img 
                   src="/images/financial-services-graph.webp" 
                   alt="Our Vertically Integrated Approach"
-                  className="w-full max-w-5xl h-auto"
-                />
+                  className="w-full max-w-5xl h-auto" loading="lazy" decoding="async" width={2114} height={626} />
               </div>
             </div>
 
@@ -243,8 +242,7 @@ const FinancialServices = () => {
           <img 
             src="/images/about-us-image.jpg" 
             alt="Financial Services"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+            className="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" width={480} height={316} />
         </div>
         
         {/* RIGHT: Dark overlay with text and CTA */}

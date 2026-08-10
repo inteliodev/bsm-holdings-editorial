@@ -50,8 +50,7 @@ const Home = () => {
                   alt="HHP Asset Management"
                   width={509}
                   height={177}
-                  className="h-18 sm:h-24 md:h-28 lg:h-32 xl:h-36 w-auto object-contain drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]"
-                />
+                  className="h-18 sm:h-24 md:h-28 lg:h-32 xl:h-36 w-auto object-contain drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]" loading="eager" decoding="async" fetchPriority="high" />
               </div>
               {/*
                 The page previously had no <h1> at all — the logo image and this

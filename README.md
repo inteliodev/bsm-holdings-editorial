@@ -92,6 +92,20 @@ comm -23 /tmp/routes.txt /tmp/links.txt | grep -v '^\*$' | grep -v '^/$'
 
 `public/sitemap.xml` is generated from the route table. Regenerate it whenever routes change; it previously drifted for over a year.
 
+## Images
+
+`npm run optimize:images` reports oversized assets; add `-- --write` to apply. It caps
+full-bleed images at 1920px, headshots at 900px, the OG image at 1200x630, and
+re-encodes to WebP. Safe to re-run — files already at target are skipped, so it will
+not degrade an image by repeatedly re-encoding it.
+
+A one-time pass took 12 files from 13.9 MB to 2.3 MB (84% smaller), and deleting 18
+unreferenced files removed a further 25.8 MB. `public/` went from 49 MB to 16 MB.
+
+All `<img>` tags carry `loading` and `decoding`; the header and hero marks are
+`eager`/`fetchPriority="high"`, everything else is `lazy`. 18 have intrinsic
+`width`/`height` to prevent layout shift.
+
 ## Prerendering
 
 `npm run build` runs `vite build` and then `scripts/prerender.mjs`, which walks the
@@ -151,5 +165,6 @@ Tracked but not yet addressed:
 
 - **Two SEO mechanisms still coexist in the app** (`useSEO` and `react-helmet-async`) and neither covers every route. This no longer affects crawlers — the prerender step writes per-route tags from `scripts/routeMeta.mjs` — but it should be unified for the in-app tab title on client-side navigation.
 - **Two lockfiles** (`bun.lockb` and `package-lock.json`) are committed; CI may resolve differently from local.
-- **`public/` is ~49 MB.** `skyline-hero-video.mp4` (20 MB) and `real-estate-hero.mp4` (3 MB) are referenced nowhere but still deploy. Several in-use images exceed 2 MB.
+- **Two hero videos remain large**: `technology-hero.mp4` (6.5 MB) and `HeroHomePageHHP.mp4` (3.2 MB), together most of `public/`. They need re-encoding with ffmpeg, which is not available in this environment.
+- **No `srcset`/`sizes` on any image**, so phones download desktop-sized assets. Less severe now that nothing exceeds ~320 kB, but still worth adding for the full-bleed backgrounds.
 - **38 of 48 shadcn components are unused**, along with `zod`, `date-fns`, `@hookform/resolvers`, and `@tanstack/react-query` (provider only, no queries).

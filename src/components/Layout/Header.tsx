@@ -228,8 +228,7 @@ const Header = () => {
               alt="HHP Asset Management"
               width={509}
               height={177}
-              className="h-8 sm:h-10 md:h-11 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-none transition-all duration-300"
-            />
+              className="h-8 sm:h-10 md:h-11 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-none transition-all duration-300" loading="eager" decoding="async" fetchPriority="high" />
           </Link>
 
           {/* Desktop Navigation */}

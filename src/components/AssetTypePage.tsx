@@ -344,8 +344,7 @@ const AssetTypePage = ({
             <img 
               src="/images/about-us-image.jpg" 
               alt={title}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+              className="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" width={480} height={316} />
           </div>
           
           {/* RIGHT: Dark overlay with text and CTA */}
