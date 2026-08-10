@@ -129,7 +129,7 @@ const CustomSolutions = () => {
             {/* Web & Platform Development */}
             <div className="bg-white rounded-xl p-8 shadow-lg">
               <div className="flex items-start mb-6">
-                <div className="w-16 h-16 bg-hhip-accent/10 rounded-xl flex items-center justify-center mr-6 flex-shrink-0">
+                <div className="w-16 h-16 bg-hhp-accent/10 rounded-xl flex items-center justify-center mr-6 flex-shrink-0">
                   <Globe className="h-8 w-8 text-hhp-navy" />
                 </div>
                 <div className="flex-grow">

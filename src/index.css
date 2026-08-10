@@ -1,220 +1,109 @@
-/* Brandon Grotesque - Primary heading font (paid font, fallback to Montserrat) */
-/* If you have Brandon Grotesque license, add it here via Adobe Fonts or self-hosted */
-/*
- * Fonts are loaded via <link> in index.html, not a CSS @import. An @import of a
- * remote stylesheet is the slowest possible path: the browser must download and
- * parse this file before it even discovers the font request, serialising two round
- * trips into the critical path.
+/**
+ * HHP Asset Management — design system.
  *
- * Inter was declared as --font-body but never loaded, so all body copy silently fell
- * back to system-ui — rendering in Segoe UI on Windows and SF on macOS. It is now
- * actually fetched.
+ * Fonts are self-hosted via @fontsource-variable (imported in main.tsx). They were
+ * previously fetched from Google Fonts; self-hosting removes the third-party origin
+ * from the critical path entirely and lets Vite hash and cache the woff2 alongside
+ * the rest of the bundle.
+ *
+ * Archivo replaces Brandon Grotesque, which led every font stack but was a paid face
+ * that was never licensed or loaded, so it always fell through to Montserrat.
+ * Montserrat is kept only as a fallback.
  */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* HHP Asset Management Design System - Premium Typography & Colors */
-
 @layer base {
   :root {
-    /* Typography Variables - Robinson Park Style */
-    --font-heading: "Brandon Grotesque", "Montserrat", sans-serif;
-    --font-body: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    
-    /* HHP Brand Colors - Exact navy blue matching logo */
-    --hhp-navy: 216 43% 14%;
-    --hhp-accent-blue: 199 89% 85%;
-    --hhp-charcoal: 0 0% 20%;
+    /* ── Typography ──────────────────────────────────────────────────────── */
+    --font-display: 'Archivo Variable', 'Montserrat', system-ui, sans-serif;
+    --font-body: 'Inter Variable', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    /* Alias kept so any straggling `var(--font-heading)` reference still resolves. */
+    --font-heading: var(--font-display);
+
+    /* ── Brand ───────────────────────────────────────────────────────────────
+       One navy. #0A2342 was already the de-facto brand navy — index.html's
+       theme-color, the Mapbox popups and the card shadows all used it — while
+       this token resolved to a lighter #14243A. The token now matches reality.
+
+       Gold is a first-class token. It previously existed only as raw #C8952E
+       hex inlined across four components, while the Tailwind `hhp-accent`
+       token still pointed at a pale sky blue the design had abandoned. */
+    --hhp-navy: 213 74% 15%;        /* #0A2342 */
+    --hhp-navy-deep: 213 74% 9%;    /* replaces the one-off #061829 */
+    --hhp-navy-soft: 213 45% 28%;
+    --hhp-gold: 40 63% 48%;         /* #C8952E */
+    --hhp-gold-soft: 40 63% 62%;
+    --hhp-charcoal: 214 15% 25%;    /* cooled slightly — pure grey read muddy beside navy */
     --hhp-white: 0 0% 100%;
-    
-    /* Base Design System Colors */
+    --surface: 220 14% 97%;         /* replaces bg-gray-50 and the one-off #f7f9fb */
+    --surface-sunken: 220 16% 94%;
+
+    /* ── shadcn base tokens ─────────────────────────────────────────────── */
     --background: 0 0% 100%;
-    --foreground: 0 0% 20%;
+    --foreground: 214 15% 25%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 20%;
+    --card-foreground: 214 15% 25%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 20%;
+    --popover-foreground: 214 15% 25%;
 
-    --primary: 216 43% 14%;
+    --primary: 213 74% 15%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 199 89% 85%;
-    --secondary-foreground: 216 43% 14%;
+    --secondary: 220 14% 97%;
+    --secondary-foreground: 213 74% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 214 10% 46%;
 
-    --accent: 199 89% 85%;
-    --accent-foreground: 216 43% 14%;
+    /* Accent is gold now. This single line re-colours ~47 `hhp-accent` usages
+       across 16 files — the icon chips on Facility Services, Property
+       Management and Platforms, and the rule on the asset-type template. */
+    --accent: 40 63% 48%;
+    --accent-foreground: 213 74% 15%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 72% 48%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 216 43% 14%;
+    --border: 220 13% 89%;
+    --input: 220 13% 89%;
+    --ring: 40 63% 48%;
 
-    --radius: 0.5rem;
+    --radius: 4px;
 
-    /* Premium shadows for depth */
-    --shadow-elegant: 0 10px 30px -10px hsl(216 43% 14% / 0.2);
-    --shadow-premium: 0 20px 60px -20px hsl(216 43% 14% / 0.15);
-    --shadow-subtle: 0 2px 8px -2px hsl(216 43% 14% / 0.1);
+    /* ── Elevation ───────────────────────────────────────────────────────────
+       Two-stop layered shadows: a tight contact shadow plus a wider ambient
+       one. A single large blur reads as a smudge at these sizes. */
+    --shadow-subtle: 0 1px 2px hsl(213 74% 15% / 0.06), 0 2px 8px -2px hsl(213 74% 15% / 0.08);
+    --shadow-elegant: 0 1px 2px hsl(213 74% 15% / 0.06), 0 8px 24px -8px hsl(213 74% 15% / 0.14);
+    --shadow-premium: 0 2px 4px hsl(213 74% 15% / 0.06), 0 24px 56px -20px hsl(213 74% 15% / 0.22);
+    --shadow-card: 0 1px 2px hsl(213 74% 15% / 0.05), 0 4px 16px -6px hsl(213 74% 15% / 0.10);
+    --shadow-card-hover: 0 2px 4px hsl(213 74% 15% / 0.07), 0 16px 40px -12px hsl(213 74% 15% / 0.20);
 
-    /* Smooth transitions */
-    --transition-elegant: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* ── Motion ─────────────────────────────────────────────────────────────
+       useScrollAnimation already eases on this curve; naming it keeps the rest
+       of the site on the same one. */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+    --duration-fast: 180ms;
+    --duration-base: 300ms;
+    --duration-slow: 600ms;
+    --transition-elegant: all var(--duration-base) var(--ease-standard);
+
+    /* Header height, so full-viewport panes (the Portfolio map) can subtract a
+       real value instead of the hardcoded 80px guess they used before. */
+    --header-h: 4rem;
   }
 
-  /* HHP Premium Typography System - Robinson Park Style */
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-    color: hsl(var(--hhp-navy));
-    line-height: 1.2;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .hero-title {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
+  /* Header is h-12 + py-2 on mobile, h-14 + py-3 from sm up. */
   @media (min-width: 640px) {
-    .hero-title {
-      font-size: 2.5rem;
-    }
+    :root { --header-h: 5rem; }
   }
 
-  @media (min-width: 1024px) {
-    .hero-title {
-      font-size: 3rem;
-    }
-  }
-
-  .section-title {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 600;
-    line-height: 1.3;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  @media (min-width: 640px) {
-    .section-title {
-      font-size: 1.75rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .section-title {
-      font-size: 2rem;
-    }
-  }
-
-  /* Body text typography - clean system font stack */
-  p, li, ul, ol {
-    font-family: var(--font-body);
-    color: hsl(var(--hhp-charcoal));
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-
-  @media (min-width: 640px) {
-    p, li, ul, ol {
-      font-size: 1.125rem;
-      line-height: 1.65;
-    }
-  }
-
-  /* Body element - clean system font for base text */
-  body {
-    font-family: var(--font-body);
-    color: #242424;
-    font-size: 16px;
-    line-height: 1.6;
-  }
-
-  @media (min-width: 640px) {
-    body {
-      font-size: 1.125rem;
-    }
-  }
-
-  /* Premium spacing system */
-  .section-spacing {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
-  @media (min-width: 768px) {
-    .section-spacing {
-      padding-top: 4rem;
-      padding-bottom: 4rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .section-spacing {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
-    }
-  }
-
-  .container-premium {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-
-  @media (min-width: 640px) {
-    .container-premium {
-      padding: 0 1rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .container-premium {
-      padding: 0 1.5rem;
-    }
-  }
-
-  /* Elegant animations */
-  .fade-in {
-    animation: fadeIn 0.8s ease-out;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .hover-lift {
-    transition: var(--transition-elegant);
-  }
-
-  .hover-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-premium);
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
@@ -222,568 +111,579 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
     overflow-x: hidden;
-  }
-  
-  /* Navigation Links - Robinson Park Style */
-  nav a, nav button {
-    font-family: var(--font-heading);
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-  
-  /* All Buttons - Robinson Park Style */
-  button {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-  
-  /* Page Title - Robinson Park Style */
-  .page-title {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-  
-  /* All Caps Labels - Robinson Park Style */
-  [class*="uppercase"], .uppercase {
-    font-family: var(--font-heading);
-    letter-spacing: 0.06em;
-  }
-
-  /* Premium component styles - Robinson Park Style */
-  .btn-hero {
-    @apply bg-primary text-primary-foreground rounded-lg font-medium;
-    @apply hover:bg-primary/90 transition-all duration-300;
-    box-shadow: var(--shadow-elegant);
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 0.9375rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    min-height: 48px;
-    min-width: 48px;
-    padding: 0.75rem 1.5rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: auto;
-    max-width: 300px;
-    margin-left: auto;
-    margin-right: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   @media (min-width: 640px) {
-    .btn-hero {
-      padding: 0.875rem 2rem;
-      font-size: 1rem;
-      min-height: 52px;
-      max-width: none;
-      margin-left: 0;
-      margin-right: 0;
+    body { font-size: 1.0625rem; }
+  }
+
+  /* ── Headings ─────────────────────────────────────────────────────────────
+     Uppercase was previously forced here on every h1–h6, plus every <button>,
+     every nav link, and anything matching [class*="uppercase"]. Caps destroy
+     word-shape, which capped the entire type scale — headlines could never be
+     set large, so `.section-title` topped out at 2rem. Caps are now opt-in via
+     .u-caps and .eyebrow, and display sizes come from the fluid clamp() scale
+     in tailwind.config.ts. */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: hsl(var(--hhp-navy));
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  p, li {
+    font-family: var(--font-body);
+    color: hsl(var(--hhp-charcoal));
+    line-height: 1.7;
+  }
+
+  p { text-wrap: pretty; }
+
+  @media (min-width: 640px) {
+    p, li { line-height: 1.65; }
+  }
+
+  /* 16px minimum so iOS does not zoom the viewport on focus. */
+  input, select, textarea {
+    font-size: 16px;
+  }
+
+  /* Long unbroken strings (URLs, IDs) must not force a horizontal scrollbar. */
+  body, p, li, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+
+  /* Touch targets. Retained from the old override block, which is otherwise
+     removed — this part was accessibility, not styling. */
+  @media (max-width: 767px) {
+    button,
+    a[role="button"],
+    input[type="button"],
+    input[type="submit"],
+    select {
+      min-height: 48px;
+      min-width: 48px;
+    }
+
+    input, select, textarea {
+      min-height: 48px;
+      padding: 0.75rem 1rem;
     }
   }
 
-  @media (min-width: 1024px) {
-    .btn-hero {
-      padding: 1rem 2.5rem;
-      font-size: 1.125rem;
-      min-height: 56px;
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
+  }
+}
+
+@layer components {
+  /* ── Layout primitives ──────────────────────────────────────────────────── */
+
+  /* Gutters were a flat 1rem at every width, which glued content to the edge
+     of a 1440px container on desktop. */
+  .container-premium {
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 3rem);
+  }
+
+  /* Used 58 times across the site, so this one value sets the vertical rhythm
+     nearly everywhere. Fluid, so the old !important breakpoint overrides are
+     no longer needed to keep it sane on small screens. */
+  .section-spacing {
+    padding-block: clamp(4rem, 8vw, 7rem);
+  }
+
+  .section-spacing-tight {
+    padding-block: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  /* ── Type ───────────────────────────────────────────────────────────────── */
+
+  /* Opt-in caps, for the places they genuinely read sharp: eyebrows, nav,
+     buttons, small labels. */
+  .u-caps {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* The canonical gold kicker. Consolidates three variants that coexisted: the
+     rule+label in PlatformSection, the pill in DisciplinesSection and
+     DashboardShowcase, and .section-tag-gold, which was defined and never used. */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-display);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: hsl(var(--hhp-gold));
+  }
+
+  .eyebrow::before {
+    content: '';
+    flex: none;
+    width: 1.5rem;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .eyebrow-bare::before { display: none; }
+
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.018em;
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  /* ── Buttons ────────────────────────────────────────────────────────────── */
+
+  .btn-hero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--radius);
+    background: hsl(var(--hhp-navy));
+    color: hsl(var(--hhp-white));
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: var(--shadow-elegant);
+    transition: var(--transition-elegant);
   }
 
   .btn-hero:hover {
+    background: hsl(var(--hhp-navy-deep));
     transform: translateY(-2px);
     box-shadow: var(--shadow-premium);
   }
 
   .btn-secondary {
-    @apply border-2 border-primary text-primary rounded-lg font-medium;
-    @apply hover:bg-primary hover:text-primary-foreground transition-all duration-300;
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 0.9375rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    min-height: 48px;
-    min-width: 48px;
-    padding: 0.75rem 1.5rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    padding: 0.875rem 1.75rem;
+    border: 1px solid hsl(var(--hhp-navy));
+    border-radius: var(--radius);
+    color: hsl(var(--hhp-navy));
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: var(--transition-elegant);
   }
 
-  @media (min-width: 640px) {
-    .btn-secondary {
-      padding: 0.875rem 2rem;
-      font-size: 1rem;
-      min-height: 52px;
-    }
+  .btn-secondary:hover {
+    background: hsl(var(--hhp-navy));
+    color: hsl(var(--hhp-white));
   }
 
-  @media (min-width: 1024px) {
-    .btn-secondary {
-      padding: 1rem 2.5rem;
-      font-size: 1.125rem;
-      min-height: 56px;
-    }
-  }
+  /* ── Cards ──────────────────────────────────────────────────────────────── */
 
   .premium-card {
-    @apply bg-white rounded-lg;
-    box-shadow: var(--shadow-elegant);
+    background: hsl(var(--hhp-white));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    padding: clamp(1.25rem, 3vw, 2.25rem);
+    box-shadow: var(--shadow-card);
     transition: var(--transition-elegant);
-    padding: 1rem;
-  }
-
-  @media (min-width: 640px) {
-    .premium-card {
-      padding: 1.5rem;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .premium-card {
-      padding: 2rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .premium-card {
-      padding: 2.5rem;
-    }
   }
 
   .premium-card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-premium);
+    box-shadow: var(--shadow-card-hover);
   }
 
   .team-box {
-    @apply bg-white rounded-lg p-4 border-2 border-hhp-navy;
-    box-shadow: var(--shadow-elegant);
+    background: hsl(var(--hhp-white));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    padding: clamp(1rem, 2.5vw, 2rem);
+    box-shadow: var(--shadow-card);
     transition: var(--transition-elegant);
   }
 
-  @media (min-width: 640px) {
-    .team-box {
-      @apply p-6;
-    }
+  /* Defined in the previous stylesheet and applied to nothing. It is the best
+     hover treatment on the site, so it becomes the canonical one. */
+  .platform-card-hover {
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--duration-base) var(--ease-out-expo),
+                box-shadow var(--duration-base) var(--ease-out-expo);
   }
 
-  @media (min-width: 1024px) {
-    .team-box {
-      @apply p-8;
-    }
+  .platform-card-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: hsl(var(--hhp-gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 400ms var(--ease-out-expo);
+    z-index: 2;
   }
 
-  .hero-headline {
-    font-family: var(--font-heading);
+  .platform-card-hover:hover::before { transform: scaleX(1); }
+
+  .platform-card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* ── Status badges ──────────────────────────────────────────────────────── */
+
+  .status-badge-live,
+  .status-badge-coming {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-family: var(--font-display);
+    font-size: 10px;
     font-weight: 700;
-    font-size: 3.5rem;
-    letter-spacing: 0.06em;
     text-transform: uppercase;
-    line-height: 1.1;
+    letter-spacing: 0.1em;
   }
 
-  @media (max-width: 768px) {
-    .hero-headline {
-      font-size: 2.5rem;
-    }
+  .status-badge-live {
+    background: hsl(142 70% 45% / 0.12);
+    color: hsl(142 66% 32%);
   }
 
-  @media (max-width: 480px) {
-    .hero-headline {
-      font-size: 2rem;
-    }
+  .status-badge-coming {
+    background: hsl(var(--hhp-gold) / 0.12);
+    color: hsl(var(--hhp-gold));
   }
 
-  .icon-accent {
-    color: hsl(var(--hhp-navy));
+  /* ── Misc ───────────────────────────────────────────────────────────────── */
+
+  .icon-accent { color: hsl(var(--hhp-navy)); }
+
+  .trust-badge-text { color: hsl(var(--hhp-white)); }
+
+  .hero-background { min-height: 50vh; }
+
+  .fade-in { animation: fadeIn 0.8s var(--ease-out-expo); }
+
+  .hover-lift { transition: var(--transition-elegant); }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
   }
 
-  /* Force trust badges to be white */
-  .trust-badge-text {
-    color: white !important;
+  /* ── Discipline cards ─────────────────────────────────────────────────────
+     The oversized numeral asked for EB Garamond, which was never loaded, so it
+     rendered as Georgia — the only serif on the site, by accident. */
+  .discipline-card {
+    position: relative;
+    overflow: hidden;
   }
 
-  /* Mobile-specific improvements (320px - 768px) */
-  @media (max-width: 767px) {
-    /* Prevent horizontal scrolling */
-    body {
-      overflow-x: hidden;
-    }
-
-    /* Ensure all interactive elements are touch-friendly - 48px minimum */
-    button, a[role="button"], input[type="button"], input[type="submit"], select {
-      min-height: 48px;
-      min-width: 48px;
-    }
-
-    /* CTA Button Mobile Sizing - Constrain width on mobile for buttons without explicit sizing */
-    .flex.flex-col > a:not([class*="max-w"]),
-    .flex.flex-col > button:not([class*="max-w"]) {
-      width: auto !important;
-      max-width: 300px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* Links should have adequate touch targets */
-    a:not([class*="block"]):not([class*="inline-block"]) {
-      min-height: 48px;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    /* Improve form elements on mobile */
-    input, select, textarea {
-      font-size: 16px; /* Prevents zoom on iOS */
-      min-height: 48px;
-      padding: 0.75rem 1rem;
-    }
-
-    /* Better spacing for mobile */
-    .space-y-6 > * + * {
-      margin-top: 1.5rem;
-    }
-
-    .space-y-8 > * + * {
-      margin-top: 2rem;
-    }
-
-    /* Responsive grid improvements */
-    .grid {
-      gap: 1rem;
-    }
-
-    /* Typography scaling for mobile */
-    .hero-title {
-      font-size: 1.75rem !important;
-      line-height: 1.3 !important;
-      margin-bottom: 1.5rem !important;
-    }
-
-    .section-title {
-      font-size: 1.5rem !important;
-      line-height: 1.4 !important;
-      margin-bottom: 1rem !important;
-    }
-
-    /* Improve paragraph readability on mobile */
-    p {
-      line-height: 1.7 !important;
-    }
-
-    /* Reduce padding on mobile */
-    .section-spacing {
-      padding-top: 2rem !important;
-      padding-bottom: 2rem !important;
-    }
-
-    .container-premium {
-      padding-left: 1rem !important;
-      padding-right: 1rem !important;
-    }
-
-    /* Ensure images are responsive */
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    /* Improve card text on mobile */
-    .premium-card h3 {
-      font-size: 1.125rem !important;
-      line-height: 1.4 !important;
-    }
-
-    /* Better button spacing on mobile */
-    .flex.flex-col.gap-3 > * + * {
-      margin-top: 0.75rem;
-    }
-
-    /* Ensure no text overflow */
-    * {
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-    }
-  }
-
-  /* Tablet optimizations (768px - 1024px) */
-  @media (min-width: 768px) and (max-width: 1023px) {
-    .grid {
-      gap: 1.5rem;
-    }
-
-    .hero-title {
-      font-size: 2.25rem !important;
-    }
-
-    .section-title {
-      font-size: 1.875rem !important;
-    }
-
-    .section-spacing {
-      padding-top: 3rem !important;
-      padding-bottom: 3rem !important;
-    }
-
-    .container-premium {
-      padding-left: 1.5rem !important;
-      padding-right: 1.5rem !important;
-    }
-  }
-
-  /* Desktop optimizations (1024px+) */
-  @media (min-width: 1024px) {
-    .grid {
-      gap: 2rem;
-    }
-  }
-
-  /* Mobile logo optimization - BALANCED SIZE AND PROPER ALIGNMENT */
-  @media (max-width: 768px) {
-    /* Mobile header layout - horizontal with proper alignment */
-    header .container-premium > div {
-      display: flex !important;
-      justify-content: space-between !important;
-      align-items: center !important;
-      padding: 1rem 0 !important;
-      height: auto !important;
-      min-height: 80px !important; /* Reasonable height */
-    }
-
-    /* Mobile logo - BALANCED SIZE */
-    header img {
-      height: 3.5rem !important; /* 56px - reasonable size */
-      max-width: 140px !important; /* Sweet spot width */
-      margin: 0 !important;
-    }
-
-    /* Mobile logo link - proper sizing */
-    header a[href="/"] {
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-      display: flex !important;
-      align-items: center !important;
-      min-height: 44px !important; /* Touch-friendly */
-      min-width: 44px !important;
-      padding: 0 !important;
-    }
-
-    /* Mobile menu button - vertically aligned */
-    header button[aria-label="Toggle mobile menu"] {
-      position: static !important;
-      margin: 0 !important;
-      min-height: 44px !important;
-      min-width: 44px !important;
-    }
-
-    /* Hide desktop navigation on mobile */
-    header nav.hidden.lg\\:flex {
-      display: none !important;
-    }
-
-    /* Reset mobile navigation positioning */
-    header .lg\\:hidden.absolute {
-      top: auto !important;
-    }
-  }
-
-  @media (max-width: 480px) {
-    /* Extra small mobile devices - slightly smaller */
-    header img {
-      height: 3rem !important; /* 48px */
-      max-width: 120px !important;
-    }
-  }
-
-  @media (min-width: 481px) and (max-width: 640px) {
-    /* Small mobile devices - balanced size */
-    header img {
-      height: 3.5rem !important; /* 56px */
-      max-width: 140px !important;
-    }
-  }
-
-  @media (min-width: 641px) and (max-width: 768px) {
-    /* Medium mobile devices - slightly larger */
-    header img {
-      height: 4rem !important; /* 64px */
-      max-width: 160px !important;
-    }
-  }
-
-  /* Hero section background control */
-  .hero-background {
-    min-height: 50vh;
-  }
-
-  @media (max-width: 768px) {
-    .hero-background {
-      min-height: 55vh;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .hero-background {
-      min-height: 60vh;
-    }
+  .discipline-card .card-number {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    font-family: var(--font-display);
+    font-size: 72px;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: hsl(var(--hhp-gold) / 0.10);
   }
 }
 
-/* Responsive Background Positioning for Multifamily Hero */
 @layer utilities {
-  .multifamily-hero-bg {
-    background-position: center right;
+  .text-hhp-gold { color: hsl(var(--hhp-gold)); }
+  .bg-hhp-gold { background-color: hsl(var(--hhp-gold)); }
+  .border-hhp-gold { border-color: hsl(var(--hhp-gold)); }
+
+  .section-tag-gold {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 600;
+    color: hsl(var(--hhp-gold));
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
   }
-  
+
+  .multifamily-hero-bg { background-position: center right; }
+
   @media (max-width: 768px) {
-    .multifamily-hero-bg {
-      background-position: center top;
-    }
+    .multifamily-hero-bg { background-position: center top; }
+  }
+
+  /* Scrims for text over photography. A flat overlay at uniform opacity mutes
+     the whole image; weighting the gradient keeps the picture legible while
+     still anchoring the text. */
+  .scrim-bottom {
+    background: linear-gradient(
+      to top,
+      hsl(var(--hhp-navy-deep) / 0.92) 0%,
+      hsl(var(--hhp-navy-deep) / 0.65) 28%,
+      hsl(var(--hhp-navy-deep) / 0.18) 60%,
+      hsl(var(--hhp-navy-deep) / 0.04) 100%
+    );
+  }
+
+  .scrim-hero {
+    background:
+      linear-gradient(to bottom,
+        hsl(var(--hhp-navy-deep) / 0.66) 0%,
+        hsl(var(--hhp-navy-deep) / 0.40) 34%,
+        hsl(var(--hhp-navy-deep) / 0.52) 68%,
+        hsl(var(--hhp-navy-deep) / 0.90) 100%),
+      radial-gradient(120% 80% at 50% 45%,
+        transparent 38%,
+        hsl(var(--hhp-navy-deep) / 0.38) 100%);
   }
 }
 
-/* ─── Repositioning Styles ─── */
-.text-hhp-gold { color: #C8952E; }
-.bg-hhp-gold { background-color: #C8952E; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-.section-tag-gold {
-  font-size: 11px;
+/* Travelling tick inside the Home hero's scroll cue. */
+@keyframes scrollCue {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(300%); }
+}
+
+/* ── Portfolio markers ────────────────────────────────────────────────────
+   Mapbox markers are DOM nodes owned by the map, not React, so they are styled
+   here. The default teardrop pin reads as a search result; this reads as a
+   surveyed point. */
+.hhp-marker {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.hhp-marker__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 1.5px solid hsl(var(--hhp-gold));
+  opacity: 0;
+  animation: pulse-ring 2.8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.hhp-marker__ring:nth-of-type(2) { animation-delay: 1.4s; }
+
+.hhp-marker__core {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: hsl(var(--hhp-gold));
+  box-shadow:
+    0 0 0 3px hsl(var(--hhp-navy-deep) / 0.55),
+    0 0 14px 2px hsl(var(--hhp-gold) / 0.7);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hhp-marker:hover .hhp-marker__core,
+.hhp-marker.is-active .hhp-marker__core {
+  transform: scale(1.5);
+}
+
+.hhp-marker.is-active .hhp-marker__core {
+  background: #fff;
+  box-shadow:
+    0 0 0 3px hsl(var(--hhp-gold)),
+    0 0 20px 4px hsl(var(--hhp-gold) / 0.85);
+}
+
+/* Label chip that rides under a fanned-out marker. */
+.hhp-marker__label {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: hsl(var(--hhp-navy-deep) / 0.88);
+  border: 1px solid hsl(var(--hhp-gold) / 0.3);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 9.5px;
   font-weight: 600;
-  color: #C8952E;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease;
 }
 
-.platform-card-hover {
-  transition: all 0.4s;
-  position: relative;
-  overflow: hidden;
-}
-.platform-card-hover::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: #C8952E;
-  transform: scaleX(0);
-  transition: transform 0.4s;
-  transform-origin: left;
-}
-.platform-card-hover:hover::before { transform: scaleX(1); }
-.platform-card-hover:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(10,35,66,0.08); }
+.hhp-marker.is-fanned .hhp-marker__label { opacity: 1; }
 
-.status-badge-live {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 4px 12px; border-radius: 100px;
-  font-size: 10px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.1em;
-  background: rgba(74,222,128,0.1); color: #16A34A;
-}
-.status-badge-coming {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 4px 12px; border-radius: 100px;
-  font-size: 10px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.1em;
-  background: rgba(200,149,46,0.1); color: #C8952E;
+/* Cluster badge shown while the three buildings are collapsed to one point. */
+.hhp-cluster {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: hsl(var(--hhp-navy-deep) / 0.9);
+  border: 1.5px solid hsl(var(--hhp-gold));
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 22px hsl(var(--hhp-gold) / 0.4);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.discipline-card {
-  position: relative;
-  overflow: hidden;
-}
-.discipline-card .card-number {
-  font-family: 'EB Garamond', Georgia, serif;
-  font-size: 72px;
-  font-weight: 500;
-  color: rgba(200,149,46,0.08);
-  position: absolute;
-  top: 16px;
-  right: 24px;
-}
+.hhp-cluster:hover { transform: scale(1.08); }
+
 /* ── Portfolio map ────────────────────────────────────────────────────────
-   The Mapbox popup is injected as raw HTML outside React, so it is styled
-   here rather than with utility classes. Previously it carried hardcoded
-   hex inline and sat outside the design system entirely. */
+   The Mapbox popup is injected as raw HTML outside React, so it is styled here
+   rather than with utility classes. */
 .hhp-popup .mapboxgl-popup-content {
-  background: #0A2342;
-  border: 1px solid rgba(200, 149, 46, 0.35);
-  border-radius: 4px;
+  background: hsl(var(--hhp-navy));
+  border: 1px solid hsl(var(--hhp-gold) / 0.35);
+  border-radius: var(--radius);
   padding: 20px 22px;
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 18px 48px hsl(213 74% 6% / 0.55);
 }
-.hhp-popup .mapboxgl-popup-tip { border-top-color: #0A2342; border-bottom-color: #0A2342; }
+
+.hhp-popup .mapboxgl-popup-tip {
+  border-top-color: hsl(var(--hhp-navy));
+  border-bottom-color: hsl(var(--hhp-navy));
+}
+
 .hhp-popup .mapboxgl-popup-close-button {
   background: transparent !important;
   border: 0 !important;
-  color: rgba(255, 255, 255, 0.5) !important;
+  color: hsl(0 0% 100% / 0.5) !important;
   font-size: 22px;
   line-height: 1;
   padding: 8px 12px 0 0 !important;
   right: 0;
   top: 2px;
 }
-.hhp-popup .mapboxgl-popup-close-button:hover { color: #C8952E !important; background: transparent !important; }
-/* The default focus ring painted a light box over the navy popup. Suppress it for
-   pointer input, keep an on-brand ring for keyboard users. */
+
+.hhp-popup .mapboxgl-popup-close-button:hover {
+  color: hsl(var(--hhp-gold)) !important;
+  background: transparent !important;
+}
+
+/* The default focus ring painted a light box over the navy popup. Suppress it
+   for pointer input, keep an on-brand ring for keyboard users. */
 .hhp-popup .mapboxgl-popup-close-button:focus { outline: none !important; }
+
 .hhp-popup .mapboxgl-popup-close-button:focus-visible {
-  outline: 2px solid #C8952E !important;
+  outline: 2px solid hsl(var(--hhp-gold)) !important;
   outline-offset: 2px;
   border-radius: 2px;
 }
 
 .hhp-popup-eyebrow {
   display: block;
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #C8952E;
+  color: hsl(var(--hhp-gold));
   margin-bottom: 8px;
 }
+
 .hhp-popup-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: 17px;
   font-weight: 600;
   color: #fff;
   margin: 0 0 4px;
-  letter-spacing: 0.04em;
+  letter-spacing: -0.01em;
 }
+
 .hhp-popup-address {
   font-size: 12.5px;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.6);
+  color: hsl(0 0% 100% / 0.6);
   margin: 0 0 16px;
 }
+
 .hhp-popup-stats {
   display: flex;
   gap: 28px;
   padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 1px solid hsl(0 0% 100% / 0.14);
 }
+
 .hhp-popup-stat {
   display: block;
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: 22px;
   font-weight: 600;
   color: #fff;
   line-height: 1.1;
 }
+
 .hhp-popup-label {
   display: block;
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: hsl(0 0% 100% / 0.5);
   margin-top: 4px;
 }
 
@@ -791,17 +691,26 @@
    Its stylesheet is injected into <head> at runtime, so it loads AFTER the
    bundled CSS and wins on equal specificity — hence !important here. */
 .mapboxgl-ctrl-group {
-  background: rgba(10, 35, 66, 0.92) !important;
-  border: 1px solid rgba(255, 255, 255, 0.16) !important;
-  border-radius: 3px !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+  background: hsl(var(--hhp-navy) / 0.92) !important;
+  border: 1px solid hsl(0 0% 100% / 0.16) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 6px 20px hsl(213 74% 6% / 0.4) !important;
 }
+
 .mapboxgl-ctrl-group button + button {
-  border-top: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-top: 1px solid hsl(0 0% 100% / 0.16) !important;
 }
-.mapboxgl-ctrl-group button:hover { background: rgba(200, 149, 46, 0.18) !important; }
-.mapboxgl-ctrl-group button .mapboxgl-ctrl-icon { filter: invert(1) !important; opacity: 0.85; }
+
+.mapboxgl-ctrl-group button:hover {
+  background: hsl(var(--hhp-gold) / 0.18) !important;
+}
+
+.mapboxgl-ctrl-group button .mapboxgl-ctrl-icon {
+  filter: invert(1) !important;
+  opacity: 0.85;
+}
+
 .mapboxgl-ctrl-attrib, .mapboxgl-ctrl-attrib a {
-  background: rgba(10, 35, 66, 0.7) !important;
-  color: rgba(255, 255, 255, 0.6) !important;
+  background: hsl(var(--hhp-navy) / 0.7) !important;
+  color: hsl(0 0% 100% / 0.6) !important;
 }

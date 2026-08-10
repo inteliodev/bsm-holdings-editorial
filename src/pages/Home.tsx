@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom';
-import { CheckCircle, Users, Zap, TrendingUp, ArrowRight, Building2, BarChart3, HeadphonesIcon, Bot, Target, DollarSign, FileText, Globe, Shield, Home as HomeIcon, ShoppingBag, Factory, Heart, Settings, MapPin, Handshake } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Layout from '@/components/Layout/Layout';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 import PlatformSection from '@/components/PlatformSection';
 import ServiceAreaSection from '@/components/ServiceAreaSection';
 import LocalBusinessSchema from '@/components/LocalBusinessSchema';
-import commercialImage from '@/assets/commercial-building.webp';
-import heroImage from '@/assets/hero-property.jpg';
 
 const Home = () => {
   return (
@@ -32,8 +30,13 @@ const Home = () => {
         >
           <source src="/images/HeroHomePageHHP.mp4" type="video/mp4" />
         </video>
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/40 z-10" aria-hidden="true" />
+        {/*
+          Layered scrim. A flat bg-black/40 dimmed the footage uniformly, which
+          muddied the middle of the frame while still leaving the top and bottom
+          edges too light for white type. This keeps the centre of the video open
+          and weights the darkness where the text and the fold actually sit.
+        */}
+        <div className="absolute inset-0 z-10 scrim-hero" aria-hidden="true" />
         {/* Hero content */}
         <div className="absolute inset-0 z-20 flex items-center justify-center">
           <div className="container-premium text-center px-4 sm:px-6">
@@ -63,13 +66,25 @@ const Home = () => {
                 the logo image and this line were the whole hero — which left the
                 most important page in the site with no top-level heading.
               */}
-              <h1 className="normal-case text-lg sm:text-xl lg:text-2xl xl:text-3xl font-body font-normal leading-relaxed sm:leading-tight text-white mb-4 sm:mb-5 px-2 -mt-1 tracking-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+              {/*
+                Asset management is the umbrella the rest of the firm sits
+                under, so it is what the hero leads with.
+              */}
+              <span className="eyebrow mb-5 text-white/85 drop-shadow-[0_1px_6px_rgba(0,0,0,0.7)]">
+                Asset Management
+              </span>
+              {/*
+                The brand line is the <h1>. It was previously set in the body
+                font at a maximum of 30px, which left the largest thing in the
+                hero as an image and gave the page no typographic voice at all.
+              */}
+              <h1 className="normal-case font-display font-semibold text-display-lg text-white mb-7 sm:mb-8 px-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]">
                 Vertically Integrated. Data Driven. Forward Thinking.
               </h1>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center items-center">
                 <Link
                   to="/services/property-management"
-                  className="bg-white text-hhp-navy px-4 py-2.5 sm:px-6 sm:py-3 rounded-none font-heading font-semibold tracking-[0.06em] uppercase hover:bg-white/90 transition-all duration-300 shadow-elegant min-h-[40px] sm:min-h-[48px] flex items-center justify-center text-xs sm:text-sm w-auto max-w-[240px] sm:max-w-none mx-auto sm:mx-0"
+                  className="inline-flex min-h-[52px] w-auto items-center justify-center rounded-none bg-white px-8 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.08em] text-hhp-navy shadow-elegant transition-all duration-300 hover:bg-hhp-gold hover:text-hhp-navy-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hhp-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
                   onClick={() => {
                     trackButtonClick('explore_services', 'home_hero');
                     trackLinkClick('Explore Services', '/services/property-management');
@@ -84,7 +99,7 @@ const Home = () => {
                 */}
                 <Link
                   to="/contact"
-                  className="border-2 border-white text-white px-4 py-2.5 sm:px-6 sm:py-3 rounded-none font-heading font-semibold tracking-[0.06em] uppercase hover:bg-white hover:text-hhp-navy transition-all duration-300 min-h-[40px] sm:min-h-[48px] flex items-center justify-center text-xs sm:text-sm w-auto max-w-[240px] sm:max-w-none mx-auto sm:mx-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
+                  className="inline-flex min-h-[52px] w-auto items-center justify-center rounded-none border border-white/70 px-8 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.08em] text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-hhp-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
                   onClick={() => {
                     trackButtonClick('contact_us', 'home_hero');
                     trackLinkClick('Contact Us', '/contact');
@@ -94,17 +109,32 @@ const Home = () => {
                 </Link>
                 <Link
                   to="/technology"
-                  className="border-2 border-white text-white px-4 py-2.5 sm:px-6 sm:py-3 rounded-none font-heading font-semibold tracking-[0.06em] uppercase hover:bg-white hover:text-hhp-navy transition-all duration-300 min-h-[40px] sm:min-h-[48px] flex items-center justify-center text-xs sm:text-sm w-auto max-w-[240px] sm:max-w-none mx-auto sm:mx-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
+                  className="group inline-flex min-h-[52px] items-center justify-center gap-2 font-display text-sm font-semibold uppercase tracking-[0.08em] text-white/85 transition-colors duration-300 hover:text-hhp-gold-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
                   onClick={() => {
                     trackButtonClick('explore_technology', 'home_hero');
                     trackLinkClick('Explore Technology', '/technology');
                   }}
                 >
                   Explore Technology
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Scroll cue — the hero fills the viewport with no indication that
+            anything follows it. */}
+        <div
+          className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-3"
+          aria-hidden="true"
+        >
+          <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/45">
+            Scroll
+          </span>
+          <span className="block h-12 w-px overflow-hidden bg-white/20">
+            <span className="block h-4 w-px animate-[scrollCue_2.4s_ease-in-out_infinite] bg-hhp-gold" />
+          </span>
         </div>
       </section>
 
@@ -117,7 +147,7 @@ const Home = () => {
       <section className="bg-white py-14 sm:py-20 lg:py-24">
         <div className="container-premium">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading text-hhp-navy mb-8 sm:mb-10 text-center tracking-[0.06em] uppercase">
+            <h2 className="section-title text-hhp-navy mb-8 sm:mb-10 text-center">
               Our approach
             </h2>
 
@@ -163,14 +193,14 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 sm:gap-6 lg:gap-8 mb-6 sm:mb-8 -mx-4 sm:mx-0">
             <Link
               to="/services/property-management"
-              className="premium-card hover:shadow-elegant hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden aspect-[4/5] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
+              className="platform-card-hover group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
               style={{ backgroundImage: 'url(/images/property-management-picture.webp)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
               onClick={() => {
                 trackButtonClick('property_management', 'core_services');
                 trackLinkClick('Property Management', '/services/property-management');
               }}
             >
-              <div className="absolute inset-0 bg-black/60 group-hover:bg-black/50 transition-all duration-300" />
+              <div className="absolute inset-0 scrim-bottom transition-opacity duration-500 group-hover:opacity-85" />
               <div className="relative z-10 flex flex-col items-start justify-end text-left p-4 sm:p-6 h-full">
                 <h3 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl mb-3 text-left">
                   Property Management
@@ -184,14 +214,14 @@ const Home = () => {
 
             <Link
               to="/services/financial-services"
-              className="premium-card hover:shadow-elegant hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
+              className="platform-card-hover group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
               style={{ backgroundImage: 'url(/images/financial-services-hero.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
               onClick={() => {
                 trackButtonClick('financial_services', 'core_services');
                 trackLinkClick('Financial Services', '/services/financial-services');
               }}
             >
-              <div className="absolute inset-0 bg-black/60 group-hover:bg-black/50 transition-all duration-300" />
+              <div className="absolute inset-0 scrim-bottom transition-opacity duration-500 group-hover:opacity-85" />
               <div className="relative z-10 flex flex-col items-start justify-end text-left p-4 sm:p-6 h-full">
                 <h3 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl mb-3 text-left">
                   Financial Services
@@ -205,14 +235,14 @@ const Home = () => {
 
             <Link
               to="/services/facility-services"
-              className="premium-card hover:shadow-elegant hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
+              className="platform-card-hover group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
               style={{ backgroundImage: 'url(/images/facilities-management-hero-image.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
               onClick={() => {
                 trackButtonClick('facility_services', 'core_services');
                 trackLinkClick('Facility Services', '/services/facility-services');
               }}
             >
-              <div className="absolute inset-0 bg-black/60 group-hover:bg-black/50 transition-all duration-300" />
+              <div className="absolute inset-0 scrim-bottom transition-opacity duration-500 group-hover:opacity-85" />
               <div className="relative z-10 flex flex-col items-start justify-end text-left p-4 sm:p-6 h-full">
                 <h3 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl mb-3 text-left">
                   Facility Services
@@ -240,14 +270,14 @@ const Home = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 sm:gap-6 lg:gap-8 mb-6 sm:mb-8 -mx-4 sm:mx-0">
             <Link 
               to="/asset-types/multifamily" 
-              className="premium-card hover:shadow-elegant hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
+              className="platform-card-hover group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
               style={{ backgroundImage: 'url(/images/multifamily-image-trendy.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
               onClick={() => {
                 trackButtonClick('multifamily', 'asset_types');
                 trackLinkClick('Multifamily', '/asset-types/multifamily');
               }}
             >
-              <div className="absolute inset-0 bg-black/60 group-hover:bg-black/50 transition-all duration-300" />
+              <div className="absolute inset-0 scrim-bottom transition-opacity duration-500 group-hover:opacity-85" />
               <div className="relative z-10 flex flex-col items-start justify-end text-left p-4 sm:p-6 h-full">
                 <h3 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl mb-3 text-left">
                   Multifamily
@@ -261,14 +291,14 @@ const Home = () => {
 
             <Link 
               to="/asset-types/hud-affordable" 
-              className="premium-card hover:shadow-elegant hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
+              className="platform-card-hover group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
               style={{ backgroundImage: 'url(/images/affordable-housing-image.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
               onClick={() => {
                 trackButtonClick('hud_affordable', 'asset_types');
                 trackLinkClick('Affordable Housing', '/asset-types/hud-affordable');
               }}
             >
-              <div className="absolute inset-0 bg-black/60 group-hover:bg-black/50 transition-all duration-300" />
+              <div className="absolute inset-0 scrim-bottom transition-opacity duration-500 group-hover:opacity-85" />
               <div className="relative z-10 flex flex-col items-start justify-end text-left p-4 sm:p-6 h-full">
                 <h3 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl mb-3 text-left">
                   Affordable Housing
@@ -282,14 +312,14 @@ const Home = () => {
 
             <Link 
               to="/asset-types/senior-housing" 
-              className="premium-card hover:shadow-elegant hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
+              className="platform-card-hover group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
               style={{ backgroundImage: 'url(/images/senior-housing-image.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
               onClick={() => {
                 trackButtonClick('senior_housing', 'asset_types');
                 trackLinkClick('Senior Housing', '/asset-types/senior-housing');
               }}
             >
-              <div className="absolute inset-0 bg-black/60 group-hover:bg-black/50 transition-all duration-300" />
+              <div className="absolute inset-0 scrim-bottom transition-opacity duration-500 group-hover:opacity-85" />
               <div className="relative z-10 flex flex-col items-start justify-end text-left p-4 sm:p-6 h-full">
                 <h3 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl mb-3 text-left">
                   Senior Housing

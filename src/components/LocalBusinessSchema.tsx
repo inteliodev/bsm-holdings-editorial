@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import {
   ORGANIZATION_NAME,
-  CONTACT_PHONE,
   CONTACT_EMAIL,
   OFFICE_ADDRESS,
   hasStreetAddress,
@@ -20,6 +19,12 @@ const SITE_URL = 'https://hhpasset.com';
  * `address` is omitted entirely until a real street address exists — publishing a
  * partial or invented PostalAddress would conflict with the Google Business Profile
  * and is worse than omitting the property.
+ *
+ * `telephone` is likewise omitted: the only number the site had was a personal
+ * cell, which has been removed. `telephone` is optional on this type, so leaving
+ * it out is valid — but if the Google Business Profile still lists a number, the
+ * profile and the markup now differ. Add a business line to serviceArea.ts to
+ * bring them back into agreement.
  */
 const LocalBusinessSchema = () => {
   const schema: Record<string, unknown> = {
@@ -27,7 +32,6 @@ const LocalBusinessSchema = () => {
     '@type': 'RealEstateAgent',
     name: ORGANIZATION_NAME,
     url: SITE_URL,
-    telephone: CONTACT_PHONE,
     email: CONTACT_EMAIL,
     image: `${SITE_URL}/images/hhp-social-share.png`,
     description:

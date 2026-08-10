@@ -310,7 +310,7 @@ const Technology = () => {
               {kpiCards.map((card, index) => {
                 const IconComponent = card.icon;
                 return (
-                  <div key={index} className="premium-card text-center p-6 sm:p-8 w-full min-h-[300px] sm:min-h-auto">
+                  <div key={index} className="premium-card text-center p-6 sm:p-8 w-full min-h-[300px]">
                     <div className="icon-accent mx-auto mb-6 w-16 h-16 flex items-center justify-center">
                       <IconComponent className="h-8 w-8" />
                     </div>

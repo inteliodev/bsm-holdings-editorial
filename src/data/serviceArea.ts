@@ -13,8 +13,15 @@
 export const ORGANIZATION_NAME = 'HHP Asset Management';
 export const LEGAL_ENTITY_NAME = 'HHP Facility Services, LLC';
 
-export const CONTACT_PHONE = '(918) 899-1650';
-export const CONTACT_PHONE_E164 = '+19188991650';
+/**
+ * No public phone number.
+ *
+ * The previous number was a personal cell and has been removed from the site,
+ * from the footer and from the LocalBusiness structured data. Email is the
+ * canonical contact channel. If a business line is added later, reintroduce it
+ * here so the footer, the Contact page and the structured data stay in sync —
+ * they must never carry the number independently.
+ */
 export const CONTACT_EMAIL = 'info@hhpasset.com';
 
 /**
@@ -76,7 +83,7 @@ export const SERVICE_AREA: Metro[] = [
   {
     name: 'Oklahoma City Metro',
     blurb:
-      'A second market we serve, with brokerage, asset management, and property management coverage.',
+      'A second market we serve, with asset management, property management, and brokerage coverage.',
     cities: [
       'Oklahoma City',
       'Edmond',

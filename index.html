@@ -7,13 +7,14 @@
     <meta name="description" content="Vertically integrated asset management in Tulsa and Oklahoma City. Property management, Facility Services, and accounting under one accountable firm — with line-item cost visibility for owners.">
     <meta name="author" content="HHP Asset Management" />
 
-    <!-- Fonts: preconnect so the handshake overlaps HTML parsing, then load. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
-    >
+    <!--
+      Fonts are self-hosted via @fontsource-variable and imported in src/main.tsx,
+      so Vite bundles and hashes the woff2 with the rest of the app. No Google
+      Fonts <link> here: that added a DNS + TLS handshake to a third-party origin
+      on the critical path, and shipped only four static weights per family where
+      the variable faces cover 100-900.
+    -->
+
     <!--
       No site-wide canonical here. A static canonical on index.html is served for every
       route under the SPA catch-all rewrite, which tells crawlers that all 61 URLs are

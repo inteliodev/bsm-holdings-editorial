@@ -1,426 +1,639 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Building2, ArrowRight, X, ChevronLeft, Home, Phone, Mail } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Mail, MapPin, Phone } from 'lucide-react';
+import type { Map as MapboxMap, Marker as MapboxMarker, Popup as MapboxPopup } from 'mapbox-gl';
 import Layout from '@/components/Layout/Layout';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN || '';
 
-// All current properties sit on one campus, so the map uses a single cluster marker.
-// Keep this as the one source of truth for the shared centre rather than repeating
-// the literal at every call site.
+// All current properties sit on one campus, so this is the one source of truth
+// for the shared centre rather than repeating the literal at every call site.
 const CAMPUS_CENTER: [number, number] = [-95.3078362685698, 36.29323680677572];
 const CAMPUS_ADDRESS = '901 SE 9th Street, Pryor, OK 74361';
+
+/** Above this zoom the three buildings separate; below it they read as one point. */
+const FAN_ZOOM = 16.6;
+const FAN_RADIUS_M = 24;
 
 const properties = [
   {
     id: 'mwm',
     name: 'Mayor Wallis Manor',
-    address: '901 SE 9th Street, Pryor, OK 74361',
+    short: 'MWM',
+    address: CAMPUS_ADDRESS,
     type: 'Senior Housing',
     units: 31,
     status: 'Active',
     built: '1991',
     beds: '1 BD',
     baths: '1 BA',
-    coords: CAMPUS_CENTER,
     phone: '(918) 825-1250',
     email: 'mwm@hhpasset.com',
-    description: 'A 31-unit HUD Section 202 senior housing community providing affordable, supportive housing for elderly residents in Pryor, Oklahoma.',
+    description:
+      'A 31-unit HUD Section 202 senior housing community providing affordable, supportive housing for elderly residents in Pryor, Oklahoma.',
   },
   {
     id: 'vv1',
     name: 'Venture Villa I',
-    address: '901 SE 9th Street, Pryor, OK 74361',
+    short: 'VV I',
+    address: CAMPUS_ADDRESS,
     type: 'Senior Housing',
     units: 24,
     status: 'Active',
     built: '1985',
     beds: '1 BD',
     baths: '1 BA',
-    coords: CAMPUS_CENTER,
     phone: '(918) 825-1250',
     email: 'mwm@hhpasset.com',
-    description: 'A 24-unit HUD Section 202 senior housing community located on the Pryor campus, serving elderly residents through the PRAC program.',
+    description:
+      'A 24-unit HUD Section 202 senior housing community located on the Pryor campus, serving elderly residents through the PRAC program.',
   },
   {
     id: 'vv2',
     name: 'Venture Villa II',
-    address: '901 SE 9th Street, Pryor, OK 74361',
+    short: 'VV II',
+    address: CAMPUS_ADDRESS,
     type: 'Senior Housing',
     units: 30,
     status: 'Active',
     built: '1995',
     beds: '1 BD',
     baths: '1 BA',
-    coords: CAMPUS_CENTER,
     phone: '(918) 825-1250',
     email: 'mwm@hhpasset.com',
-    description: 'A 30-unit HUD Section 202 senior housing community, the newest addition to the Pryor campus with modern amenities for senior residents.',
+    description:
+      'A 30-unit HUD Section 202 senior housing community, the newest addition to the Pryor campus with modern amenities for senior residents.',
   },
 ];
 
+type Property = (typeof properties)[number];
+
 const TOTAL_UNITS = properties.reduce((sum, p) => sum + p.units, 0);
+
+/**
+ * The three buildings share one street address and therefore one coordinate, so
+ * a marker per property would stack them into a single dot and "fly to
+ * property" would move the camera nowhere.
+ *
+ * Above FAN_ZOOM they are fanned onto a small ring so each is individually
+ * selectable. These are deliberate UI positions, not surveyed ones — which is
+ * why the collapsed cluster is the default and the overlay says plainly that
+ * all three sit at one address.
+ */
+function fanOffset(index: number, total: number): [number, number] {
+  const angle = (Math.PI * 2 * index) / total - Math.PI / 2;
+  const dLat = (FAN_RADIUS_M * Math.sin(angle)) / 111_320;
+  const dLng =
+    (FAN_RADIUS_M * Math.cos(angle)) /
+    (111_320 * Math.cos((CAMPUS_CENTER[1] * Math.PI) / 180));
+  return [CAMPUS_CENTER[0] + dLng, CAMPUS_CENTER[1] + dLat];
+}
+
+const Stat = ({ value, label }: { value: string | number; label: string }) => (
+  <div>
+    <div className="font-display text-3xl font-semibold leading-none tracking-tight text-hhp-navy">
+      {value}
+    </div>
+    <div className="mt-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-hhp-charcoal/55">
+      {label}
+    </div>
+  </div>
+);
 
 const Portfolio = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<any>(null);
-  const popupsRef = useRef<any[]>([]);
+  const mapRef = useRef<MapboxMap | null>(null);
+  const markersRef = useRef<Record<string, MapboxMarker>>({});
+  const clusterRef = useRef<MapboxMarker | null>(null);
+  const popupRef = useRef<MapboxPopup | null>(null);
+  const orbitRef = useRef({ raf: 0, active: false });
+
   const [selectedProperty, setSelectedProperty] = useState<string | null>(null);
+  const [hoveredProperty, setHoveredProperty] = useState<string | null>(null);
   const [detailOpen, setDetailOpen] = useState(false);
+  const [mapReady, setMapReady] = useState(false);
 
-  const flyToProperty = (property: typeof properties[0]) => {
-    if (!mapRef.current) return;
-    mapRef.current.flyTo({
-      center: property.coords,
-      zoom: 17,
-      duration: 1200,
-    });
-    // Open the popup for this property
-    popupsRef.current.forEach((p) => p.remove());
-    const mapboxgl = (window as any).mapboxgl;
-    if (mapboxgl) {
-      // Shares the .hhp-popup treatment with the campus popup below — this is the
-      // one users actually reach, since selecting a property card opens it.
-      const popup = new mapboxgl.Popup({
-        offset: 30,
-        closeButton: true,
-        maxWidth: '320px',
-        className: 'hhp-popup',
-      })
-        .setLngLat(property.coords)
-        .setHTML(
-          `<div class="hhp-popup-body">
-            <span class="hhp-popup-eyebrow">${property.type}</span>
-            <h3 class="hhp-popup-title">${property.name}</h3>
-            <p class="hhp-popup-address">${property.address}</p>
-            <div class="hhp-popup-stats">
-              <div><span class="hhp-popup-stat">${property.units}</span><span class="hhp-popup-label">Units</span></div>
-              <div><span class="hhp-popup-stat">${property.built}</span><span class="hhp-popup-label">Built</span></div>
-            </div>
-          </div>`
-        )
-        .addTo(mapRef.current);
-      popupsRef.current = [popup];
-    }
-    setSelectedProperty(property.id);
-  };
+  const stopOrbit = useCallback(() => {
+    orbitRef.current.active = false;
+    cancelAnimationFrame(orbitRef.current.raf);
+  }, []);
 
-  const openDetail = (property: typeof properties[0]) => {
-    setSelectedProperty(property.id);
-    setDetailOpen(true);
-    flyToProperty(property);
-  };
+  const flyToProperty = useCallback(
+    (property: Property) => {
+      const map = mapRef.current;
+      if (!map) return;
+      stopOrbit();
 
-  const closeDetail = () => {
+      const index = properties.findIndex((p) => p.id === property.id);
+      const target = fanOffset(index, properties.length);
+
+      map.flyTo({
+        center: target,
+        zoom: 18.2,
+        pitch: 62,
+        bearing: -24 + index * 18,
+        duration: 1600,
+      });
+    },
+    [stopOrbit],
+  );
+
+  const openDetail = useCallback(
+    (property: Property) => {
+      setSelectedProperty(property.id);
+      setDetailOpen(true);
+      flyToProperty(property);
+      trackButtonClick(`portfolio_property_${property.id}`, 'portfolio');
+    },
+    [flyToProperty],
+  );
+
+  const closeDetail = useCallback(() => {
     setDetailOpen(false);
     setSelectedProperty(null);
-    popupsRef.current.forEach((p) => p.remove());
-    if (mapRef.current) {
-      mapRef.current.flyTo({ center: CAMPUS_CENTER, zoom: 15, duration: 800 });
-    }
-  };
+    popupRef.current?.remove();
+    mapRef.current?.flyTo({
+      center: CAMPUS_CENTER,
+      zoom: 17.1,
+      pitch: 58,
+      bearing: -24,
+      duration: 1200,
+    });
+  }, []);
 
   useEffect(() => {
-    if (!document.getElementById('mapbox-css')) {
-      const link = document.createElement('link');
-      link.id = 'mapbox-css';
-      link.rel = 'stylesheet';
-      link.href = 'https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css';
-      document.head.appendChild(link);
-    }
+    // Without a token there is nothing to initialise. Guarding here also keeps
+    // the build-time prerender from constructing a WebGL map in headless Chrome.
+    if (!MAPBOX_TOKEN || !mapContainer.current) return;
 
-    const loadMap = () => {
-      if (!mapContainer.current || mapRef.current) return;
-      const mapboxgl = (window as any).mapboxgl;
-      if (!mapboxgl) return;
+    let cancelled = false;
+
+    (async () => {
+      const mapboxgl = (await import('mapbox-gl')).default;
+      if (cancelled || !mapContainer.current) return;
 
       mapboxgl.accessToken = MAPBOX_TOKEN;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
       const map = new mapboxgl.Map({
         container: mapContainer.current,
-        // Dark basemap. light-v11 rendered as near-white over a small-town street
-        // grid, which read as an empty page rather than a designed one. Dark sits
-        // with the navy brand and lets the gold marker carry the eye.
-        style: 'mapbox://styles/mapbox/dark-v11',
+        // Standard gives real-time sun position, lit 3D buildings and cast
+        // shadows. dark-v11 was a flat basemap that could only ever look stock.
+        style: 'mapbox://styles/mapbox/standard',
         center: CAMPUS_CENTER,
-        zoom: 14.2,
-        pitch: 45,
-        bearing: -18,
+        // Reduced motion skips the approach and opens at the final camera.
+        zoom: reduceMotion ? 17.1 : 13.2,
+        pitch: reduceMotion ? 58 : 10,
+        bearing: reduceMotion ? -24 : 0,
         antialias: true,
         attributionControl: true,
+        // Prevents the map from swallowing page scroll without disabling zoom
+        // outright — ctrl/⌘+scroll and two-finger drag still work.
+        cooperativeGestures: true,
       });
+      mapRef.current = map;
+      map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), 'top-right');
 
-      map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'top-right');
-      map.scrollZoom.disable(); // Don't hijack page scroll; zoom via the controls.
-
-      map.on('load', () => {
-        // Strip POI and transit clutter — competing labels are what made the
-        // original read busy and generic.
-        for (const layer of map.getStyle().layers ?? []) {
-          if (/poi-label|transit-label|airport-label/.test(layer.id)) {
-            map.setLayoutProperty(layer.id, 'visibility', 'none');
-          }
+      map.on('style.load', () => {
+        // Standard exposes lighting and label groups as style config, so the
+        // old regex walk over getStyle().layers is no longer needed.
+        try {
+          // `dusk` washed this location out to a flat mauve — Pryor has almost
+          // no tall massing to catch low sun. `night` puts lit windows against
+          // a dark ground that sits with the brand navy, and lets the gold
+          // markers carry the eye. `monochrome` strips the residual map colour
+          // so gold is the only accent in the frame.
+          map.setConfigProperty('basemap', 'lightPreset', 'night');
+          map.setConfigProperty('basemap', 'colorBuildingHighlight', '#C8952E');
+          // Label clutter: house numbers and place names competed with the
+          // markers at campus zoom.
+          map.setConfigProperty('basemap', 'showPointOfInterestLabels', false);
+          map.setConfigProperty('basemap', 'showTransitLabels', false);
+          map.setConfigProperty('basemap', 'showRoadLabels', false);
+          map.setConfigProperty('basemap', 'showPlaceLabels', false);
+        } catch {
+          /* Style spec without config support — cosmetic only, keep going. */
         }
 
-        // No 3D building extrusions here. Pryor has almost no tall structures, so
-        // they rendered as scattered blue patches rather than skyline — noise, not
-        // depth. The camera pitch alone carries the dimensionality.
+        if (!map.getSource('mapbox-dem')) {
+          map.addSource('mapbox-dem', {
+            type: 'raster-dem',
+            url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+            tileSize: 512,
+            maxzoom: 14,
+          });
+          map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.2 });
+        }
       });
 
-      // Built-in marker — eliminates CSS drift on zoom. Gold reads as the accent
-      // against the dark basemap; navy would disappear into it.
-      const marker = new mapboxgl.Marker({ color: '#C8952E', scale: 1.35 })
+      // ── Markers ────────────────────────────────────────────────────────
+      properties.forEach((property, index) => {
+        const el = document.createElement('div');
+        el.className = 'hhp-marker';
+        el.setAttribute('role', 'button');
+        el.setAttribute('tabindex', '0');
+        el.setAttribute('aria-label', `${property.name}, ${property.units} units`);
+        el.innerHTML =
+          '<span class="hhp-marker__ring"></span>' +
+          '<span class="hhp-marker__ring"></span>' +
+          '<span class="hhp-marker__core"></span>' +
+          `<span class="hhp-marker__label">${property.short}</span>`;
+
+        const activate = () => openDetail(property);
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          activate();
+        });
+        el.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            activate();
+          }
+        });
+        el.addEventListener('mouseenter', () => setHoveredProperty(property.id));
+        el.addEventListener('mouseleave', () => setHoveredProperty(null));
+
+        markersRef.current[property.id] = new mapboxgl.Marker({ element: el })
+          .setLngLat(fanOffset(index, properties.length))
+          .addTo(map);
+      });
+
+      const clusterEl = document.createElement('div');
+      clusterEl.className = 'hhp-cluster';
+      clusterEl.textContent = String(properties.length);
+      clusterEl.setAttribute('role', 'button');
+      clusterEl.setAttribute('tabindex', '0');
+      clusterEl.setAttribute(
+        'aria-label',
+        `${properties.length} properties at ${CAMPUS_ADDRESS}. Zoom in to view each.`,
+      );
+      const expand = () => {
+        stopOrbit();
+        map.flyTo({ center: CAMPUS_CENTER, zoom: 17.6, pitch: 60, duration: 1400 });
+      };
+      clusterEl.addEventListener('click', expand);
+      clusterEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          expand();
+        }
+      });
+      clusterRef.current = new mapboxgl.Marker({ element: clusterEl })
         .setLngLat(CAMPUS_CENTER)
         .addTo(map);
 
-      marker.getElement().style.cursor = 'pointer';
-      marker.getElement().addEventListener('click', () => {
-        popupsRef.current.forEach((p) => p.remove());
-        const popup = new mapboxgl.Popup({
-          offset: 30,
-          closeButton: true,
-          maxWidth: '320px',
-          className: 'hhp-popup',
-        })
-          .setLngLat(CAMPUS_CENTER)
-          .setHTML(
-            '<div class="hhp-popup-body">' +
-              '<span class="hhp-popup-eyebrow">Managed Portfolio</span>' +
-              '<h3 class="hhp-popup-title">HHP Asset Management</h3>' +
-              `<p class="hhp-popup-address">${CAMPUS_ADDRESS}</p>` +
-              '<div class="hhp-popup-stats">' +
-                `<div><span class="hhp-popup-stat">${properties.length}</span><span class="hhp-popup-label">Properties</span></div>` +
-                `<div><span class="hhp-popup-stat">${TOTAL_UNITS}</span><span class="hhp-popup-label">Units</span></div>` +
-              '</div>' +
-            '</div>'
-          )
-          .addTo(map);
-        popupsRef.current = [popup];
+      /** Collapse to one badge when zoomed out, fan apart when zoomed in. */
+      const syncMarkers = () => {
+        const fanned = map.getZoom() >= FAN_ZOOM;
+        Object.values(markersRef.current).forEach((m) => {
+          const el = m.getElement();
+          el.style.display = fanned ? '' : 'none';
+          el.classList.toggle('is-fanned', fanned);
+        });
+        const clusterEl2 = clusterRef.current?.getElement();
+        if (clusterEl2) clusterEl2.style.display = fanned ? 'none' : '';
+      };
+
+      map.on('zoom', syncMarkers);
+
+      /**
+       * Paint the campus footprint gold.
+       *
+       * Queried at CAMPUS_CENTER — the real surveyed coordinate — rather than
+       * at the fanned marker positions, which are a UI affordance and would
+       * highlight whatever arbitrary building happened to sit beneath them.
+       */
+      let highlighted = false;
+      const highlightCampus = () => {
+        if (highlighted) return;
+        try {
+          const p = map.project(CAMPUS_CENTER);
+          const box: [[number, number], [number, number]] = [
+            [p.x - 45, p.y - 45],
+            [p.x + 45, p.y + 45],
+          ];
+          const feats = map.queryRenderedFeatures(box, {
+            target: { featuresetId: 'buildings', importId: 'basemap' },
+          } as any);
+          feats.forEach((f: any) => map.setFeatureState(f, { highlight: true }));
+          if (feats.length) highlighted = true;
+        } catch {
+          /* Featureset querying unavailable on this style build — decorative. */
+        }
+      };
+      map.on('idle', highlightCampus);
+
+      map.on('load', () => {
+        if (cancelled) return;
+        setMapReady(true);
+        syncMarkers();
+
+        if (reduceMotion) return;
+
+        // Cinematic approach, then a slow idle orbit.
+        map.flyTo({
+          center: CAMPUS_CENTER,
+          zoom: 17.1,
+          pitch: 58,
+          bearing: -24,
+          duration: 4200,
+          essential: false,
+        });
+
+        map.once('moveend', () => {
+          if (cancelled) return;
+          orbitRef.current.active = true;
+          const step = () => {
+            if (!orbitRef.current.active || !mapRef.current) return;
+            mapRef.current.setBearing(mapRef.current.getBearing() + 0.016);
+            orbitRef.current.raf = requestAnimationFrame(step);
+          };
+          orbitRef.current.raf = requestAnimationFrame(step);
+        });
       });
 
-      mapRef.current = map;
-    };
+      // Any genuine user gesture ends the orbit. Checking originalEvent is what
+      // separates a real gesture from our own programmatic flyTo.
+      const endOrbitOnGesture = (e: { originalEvent?: unknown }) => {
+        if (e?.originalEvent) stopOrbit();
+      };
+      map.on('dragstart', endOrbitOnGesture);
+      map.on('rotatestart', endOrbitOnGesture);
 
-    if ((window as any).mapboxgl) {
-      loadMap();
-    } else {
-      const script = document.createElement('script');
-      script.src = 'https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js';
-      script.onload = loadMap;
-      document.head.appendChild(script);
-    }
+      // zoomstart/pitchstart also fire for programmatic camera moves and carry
+      // no originalEvent, so genuine input is detected at the DOM level instead.
+      const container = map.getContainer();
+      (['wheel', 'pointerdown', 'touchstart'] as const).forEach((evt) =>
+        container.addEventListener(evt, stopOrbit, { passive: true }),
+      );
+    })();
+
+    // Copied out so the cleanup closure does not read a ref that may have been
+    // reassigned by the time it runs.
+    const orbit = orbitRef.current;
 
     return () => {
-      if (mapRef.current) {
-        mapRef.current.remove();
-        mapRef.current = null;
-      }
+      cancelled = true;
+      cancelAnimationFrame(orbit.raf);
+      orbit.active = false;
+      popupRef.current?.remove();
+      mapRef.current?.remove();
+      mapRef.current = null;
+      markersRef.current = {};
+      clusterRef.current = null;
     };
-  }, []);
+  }, [openDetail, stopOrbit]);
+
+  // Keep marker state in sync with whichever row is selected or hovered.
+  useEffect(() => {
+    const active = selectedProperty ?? hoveredProperty;
+    Object.entries(markersRef.current).forEach(([id, marker]) => {
+      marker.getElement().classList.toggle('is-active', id === active);
+    });
+  }, [selectedProperty, hoveredProperty]);
 
   const selectedProp = properties.find((p) => p.id === selectedProperty);
 
   return (
     <Layout>
-      <div className="flex flex-col lg:flex-row" style={{ height: 'calc(100vh - 80px)' }}>
-        {/* Map */}
-        <div className="w-full lg:w-3/5 relative bg-gray-100 h-[400px] lg:h-full">
-          <div ref={mapContainer} className="absolute inset-0 w-full h-full" />
-          {/*
-            Without a Mapbox token the container just stays an empty grey box and the
-            token error surfaces from a script onload callback, so it never trips the
-            ErrorBoundary. Show the address instead of nothing.
-          */}
+      <div
+        className="flex flex-col lg:flex-row"
+        style={{ height: 'calc(100dvh - var(--header-h))' }}
+      >
+        {/* ── Map ───────────────────────────────────────────────────────── */}
+        <div className="relative h-[46vh] w-full bg-hhp-navy-deep lg:h-full lg:w-3/5">
+          <div ref={mapContainer} className="absolute inset-0 h-full w-full" />
+
+          {/* Vignette. Adds depth to a basemap that is otherwise a flat field,
+              and keeps the overlay panel legible wherever the camera lands. */}
+          <div
+            className="pointer-events-none absolute inset-0 z-[5]"
+            aria-hidden="true"
+            style={{
+              background:
+                'radial-gradient(125% 95% at 50% 42%, transparent 42%, hsl(var(--hhp-navy-deep) / 0.62) 100%)',
+            }}
+          />
+
+          {/* Designed loading state — the container used to sit as a grey box
+              until Mapbox finished initialising. */}
+          {MAPBOX_TOKEN && !mapReady && (
+            <div className="absolute inset-0 grid place-items-center bg-hhp-navy-deep">
+              <div className="text-center">
+                <div className="mx-auto mb-4 h-8 w-8 animate-spin rounded-full border-2 border-hhp-gold/25 border-t-hhp-gold" />
+                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/45">
+                  Loading portfolio map
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Without a token the container stays empty and Mapbox reports the
+              failure from a script callback, so it never trips the
+              ErrorBoundary. Show the address rather than nothing. */}
           {!MAPBOX_TOKEN && (
-            <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
-              <div>
-                <MapPin className="h-8 w-8 text-hhp-navy mx-auto mb-3" aria-hidden="true" />
-                <p className="font-semibold text-hhp-navy">{CAMPUS_ADDRESS}</p>
-                <p className="text-sm text-hhp-charcoal/70 mt-1">
+            <div className="absolute inset-0 grid place-items-center p-6">
+              <div className="max-w-sm border border-hhp-gold/25 bg-hhp-navy/70 p-8 text-center">
+                <MapPin className="mx-auto mb-4 h-7 w-7 text-hhp-gold" aria-hidden="true" />
+                <p className="font-display text-lg font-semibold text-white">{CAMPUS_ADDRESS}</p>
+                <p className="mt-2 text-sm text-white/55">
                   {properties.length} properties · {TOTAL_UNITS} units
                 </p>
               </div>
             </div>
           )}
-          {/* Results count overlay */}
-          {/* Reads as an overlay on the dark basemap rather than a white sticker. */}
-          <div className="absolute top-5 left-5 z-10 bg-hhp-navy/85 backdrop-blur-md rounded-sm shadow-xl border border-white/15 px-5 py-3">
-            <div className="text-[10px] font-heading font-bold uppercase tracking-[0.22em] mb-1.5" style={{ color: '#C8952E' }}>
-              Managed Portfolio
-            </div>
-            <div className="flex items-baseline gap-5 text-white">
-              <span className="text-sm font-semibold">
-                {properties.length} Properties
+
+          {/* Overlay. States the shared address plainly so the fanned markers
+              are never mistaken for surveyed positions. */}
+          <div className="pointer-events-none absolute left-5 top-5 z-10 border border-white/12 bg-hhp-navy/85 px-5 py-4 backdrop-blur-md">
+            <div className="eyebrow">Managed Portfolio</div>
+            <div className="mt-3 flex items-baseline gap-6 text-white">
+              <span className="font-display text-2xl font-semibold leading-none">
+                {properties.length}
+                <span className="ml-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/50">
+                  Properties
+                </span>
               </span>
-              <span className="text-sm font-semibold">{TOTAL_UNITS} Units</span>
+              <span className="font-display text-2xl font-semibold leading-none">
+                {TOTAL_UNITS}
+                <span className="ml-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/50">
+                  Units
+                </span>
+              </span>
             </div>
-            <div className="text-[11px] text-white/55 mt-1">Pryor, Oklahoma</div>
+            <p className="mt-2.5 max-w-[15rem] text-[11px] leading-relaxed text-white/50">
+              Three buildings at one address in Pryor, Oklahoma. Zoom in to select each.
+            </p>
           </div>
         </div>
 
-        {/* Right Panel */}
-        <div className="w-full lg:w-2/5 bg-white overflow-y-auto h-auto lg:h-full border-l border-gray-200 border-t-[3px] border-t-[#C8952E]">
-
-          {/* Detail View */}
+        {/* ── Panel ─────────────────────────────────────────────────────── */}
+        <div className="w-full overflow-y-auto border-t-2 border-t-hhp-gold bg-white lg:h-full lg:w-2/5 lg:border-l lg:border-l-border">
           {detailOpen && selectedProp ? (
-            <div className="animate-in">
-              {/* Back button */}
+            <div className="animate-fade-up">
               <button
                 onClick={closeDetail}
-                className="flex items-center gap-2 text-sm text-hhp-charcoal/60 hover:text-hhp-navy px-6 pt-5 pb-2 transition-colors"
+                className="flex items-center gap-2 px-6 pb-3 pt-6 text-sm text-hhp-charcoal/60 transition-colors hover:text-hhp-navy"
               >
-                <ChevronLeft className="w-4 h-4" /> Back to all properties
+                <ArrowLeft className="h-4 w-4" /> All properties
               </button>
 
-              {/* Property banner */}
-              <div className="bg-hhp-navy mx-6 rounded-lg p-6 mb-6" style={{ borderBottom: '3px solid #C8952E' }}>
-                <div className="flex items-center justify-between mb-2">
-                  <h2 className="font-heading font-bold text-white text-2xl tracking-wide uppercase">{selectedProp.name}</h2>
-                  <span className="flex items-center gap-1.5 text-xs font-semibold text-green-400">
-                    <span className="h-2 w-2 rounded-full bg-green-400 inline-block" />
-                    {selectedProp.status}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 text-white/70 text-lg">
-                  <MapPin className="w-3.5 h-3.5" />
+              <div className="border-b border-border px-6 pb-7">
+                <div className="eyebrow">{selectedProp.type}</div>
+                <h1 className="mt-4 font-display text-display-md text-hhp-navy">
+                  {selectedProp.name}
+                </h1>
+                <p className="mt-2 flex items-center gap-2 text-sm text-hhp-charcoal/60">
+                  <MapPin className="h-3.5 w-3.5 flex-shrink-0 text-hhp-gold" />
                   {selectedProp.address}
+                </p>
+
+                <div className="mt-7 grid grid-cols-4 gap-4 border-t border-border pt-6">
+                  <Stat value={selectedProp.units} label="Units" />
+                  <Stat value={selectedProp.built} label="Built" />
+                  <Stat value={selectedProp.beds.replace(' BD', '')} label="Beds" />
+                  <Stat value={selectedProp.baths.replace(' BA', '')} label="Baths" />
                 </div>
               </div>
 
-              {/* Overview */}
-              <div className="px-6 mb-6">
-                <h3 className="text-base font-semibold text-hhp-navy uppercase tracking-wider mb-3">Overview</h3>
-                <p className="text-base text-hhp-charcoal/70 leading-relaxed mb-6">{selectedProp.description}</p>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <span className="text-base text-hhp-charcoal/50 uppercase tracking-wider">Type</span>
-                    <p className="text-lg font-bold text-hhp-navy mt-1">{selectedProp.type}</p>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <span className="text-base text-hhp-charcoal/50 uppercase tracking-wider">Units</span>
-                    <p className="text-lg font-bold text-hhp-navy mt-1">{selectedProp.units}</p>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <span className="text-base text-hhp-charcoal/50 uppercase tracking-wider">Bedrooms</span>
-                    <p className="text-lg font-bold text-hhp-navy mt-1">{selectedProp.beds}</p>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <span className="text-base text-hhp-charcoal/50 uppercase tracking-wider">Bathrooms</span>
-                    <p className="text-lg font-bold text-hhp-navy mt-1">{selectedProp.baths}</p>
-                  </div>
-                </div>
+              <div className="border-b border-border px-6 py-7">
+                <h2 className="text-[10px] font-semibold uppercase tracking-[0.18em] text-hhp-charcoal/50">
+                  Overview
+                </h2>
+                <p className="mt-3 leading-relaxed text-hhp-charcoal/80">
+                  {selectedProp.description}
+                </p>
               </div>
 
-              {/* Contact */}
-              <div className="px-6 mb-6">
-                <h3 className="text-base font-semibold text-hhp-navy uppercase tracking-wider mb-3">Contact</h3>
-                <div className="space-y-3">
-                  <a href={`tel:${selectedProp.phone}`} className="flex items-center gap-3 text-lg font-medium text-hhp-charcoal hover:text-hhp-navy transition-colors">
-                    <Phone className="w-5 h-5 text-hhp-accent" />
+              <div className="border-b border-border px-6 py-7">
+                <h2 className="text-[10px] font-semibold uppercase tracking-[0.18em] text-hhp-charcoal/50">
+                  Contact
+                </h2>
+                <div className="mt-4 space-y-3">
+                  <a
+                    href={`tel:${selectedProp.phone}`}
+                    className="flex items-center gap-3 font-medium text-hhp-charcoal transition-colors hover:text-hhp-navy"
+                  >
+                    <Phone className="h-4 w-4 text-hhp-gold" />
                     {selectedProp.phone}
                   </a>
-                  <a href={`mailto:${selectedProp.email}`} className="flex items-center gap-3 text-lg font-medium text-hhp-charcoal hover:text-hhp-navy transition-colors">
-                    <Mail className="w-5 h-5 text-hhp-accent" />
+                  <a
+                    href={`mailto:${selectedProp.email}`}
+                    className="flex items-center gap-3 font-medium text-hhp-charcoal transition-colors hover:text-hhp-navy"
+                  >
+                    <Mail className="h-4 w-4 text-hhp-gold" />
                     {selectedProp.email}
                   </a>
                 </div>
               </div>
 
-              {/* CTA */}
-              <div className="px-6 pb-8">
-                <div className="flex flex-col gap-3">
-                  <Link
-                    to="/contact"
-                    className="bg-hhp-navy text-white px-6 py-4 rounded font-semibold text-lg hover:bg-hhp-navy/90 transition-colors text-center"
-                    onClick={() => { trackButtonClick('property_detail_contact', 'portfolio'); }}
-                  >
-                    Contact About This Property
-                  </Link>
-                  <Link
-                    to="/services/property-management"
-                    className="border border-hhp-navy text-hhp-navy px-6 py-4 rounded font-semibold text-lg hover:bg-hhp-navy hover:text-white transition-colors text-center"
-                    onClick={() => { trackButtonClick('property_detail_services', 'portfolio'); }}
-                  >
-                    Learn About Our Management
-                  </Link>
-                </div>
+              <div className="flex flex-col gap-3 px-6 py-7">
+                <Link
+                  to="/contact"
+                  className="btn-hero"
+                  onClick={() => trackButtonClick('property_detail_contact', 'portfolio')}
+                >
+                  Contact about this property
+                </Link>
+                <Link
+                  to="/services/property-management"
+                  className="btn-secondary"
+                  onClick={() => trackButtonClick('property_detail_services', 'portfolio')}
+                >
+                  Our management approach
+                </Link>
               </div>
             </div>
           ) : (
-            /* List View */
             <div>
-              <div className="p-6 pb-3">
-                {/* Was an <h2>, leaving the page with no <h1> at all. */}
-                <h1 className="font-heading text-xl font-bold text-hhp-navy tracking-wide uppercase mb-1">Managed Properties</h1>
-                <p className="text-base text-hhp-charcoal/50">({properties.length}) Results Found</p>
-              </div>
-
-              <div className="px-6 pb-6">
-                <div className="grid grid-cols-1 gap-4">
-                  {properties.map((property) => (
-                    <div
-                      key={property.id}
-                      onClick={() => openDetail(property)}
-                      className={`border-l-4 border-l-[#C8952E] border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-elegant transition-all duration-300 cursor-pointer ${
-                        selectedProperty === property.id ? 'border-[#C8952E]' : 'hover:border-[#C8952E]'
-                      }`}
-                    >
-                      {/* Navy header */}
-                      <div className="bg-hhp-navy px-4 py-3 flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <Building2 className="h-4 w-4 text-white/60" />
-                          <h3 className="font-heading font-bold text-white text-base tracking-wide uppercase">{property.name}</h3>
-                        </div>
-                        <span className="flex items-center gap-1 text-[10px] font-semibold text-green-400">
-                          <span className="h-1.5 w-1.5 rounded-full bg-green-400 inline-block" />
-                          {property.status}
-                        </span>
-                      </div>
-
-                      {/* Card body */}
-                      <div className="p-4 bg-white">
-                        <div className="flex items-start gap-2 mb-3">
-                          <MapPin className="h-3.5 w-3.5 text-hhp-accent flex-shrink-0 mt-0.5" />
-                          <span className="text-base text-hhp-charcoal">{property.address}</span>
-                        </div>
-                        <div className="flex gap-6 text-base">
-                          <div>
-                            <span className="text-hhp-charcoal/60 uppercase tracking-wider">Type</span>
-                            <p className="font-bold text-hhp-navy mt-0.5">{property.type}</p>
-                          </div>
-                          <div>
-                            <span className="text-hhp-charcoal/60 uppercase tracking-wider">Units</span>
-                            <p className="font-bold text-hhp-navy mt-0.5">{property.units}</p>
-                          </div>
-                          <div>
-                            <span className="text-hhp-charcoal/60 uppercase tracking-wider">Beds</span>
-                            <p className="font-bold text-hhp-navy mt-0.5">{property.beds}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+              <div className="border-b border-border px-6 pb-7 pt-7">
+                <div className="eyebrow">Managed Portfolio</div>
+                <h1 className="mt-4 font-display text-display-md text-hhp-navy">
+                  Managed properties
+                </h1>
+                <div className="mt-7 flex gap-10 border-t border-border pt-6">
+                  <Stat value={properties.length} label="Properties" />
+                  <Stat value={TOTAL_UNITS} label="Units" />
+                  <Stat value="Pryor, OK" label="Market" />
                 </div>
               </div>
 
-              {/* CTA */}
-              <div className="border-t border-gray-200 p-6">
-                <p className="font-heading text-lg text-hhp-navy mb-3 tracking-wide uppercase">Interested in adding your property?</p>
-                <div className="flex gap-3">
+              <ul>
+                {properties.map((property) => {
+                  const isActive = selectedProperty === property.id;
+                  return (
+                    <li key={property.id}>
+                      <button
+                        onClick={() => openDetail(property)}
+                        onMouseEnter={() => setHoveredProperty(property.id)}
+                        onMouseLeave={() => setHoveredProperty(null)}
+                        onFocus={() => setHoveredProperty(property.id)}
+                        onBlur={() => setHoveredProperty(null)}
+                        className={`group w-full border-b border-border border-l-2 px-6 py-6 text-left transition-colors ${
+                          isActive
+                            ? 'border-l-hhp-gold bg-surface'
+                            : 'border-l-transparent hover:border-l-hhp-gold hover:bg-surface'
+                        }`}
+                      >
+                        <div className="flex items-start justify-between gap-4">
+                          <h3 className="font-display text-lg font-semibold text-hhp-navy">
+                            {property.name}
+                          </h3>
+                          <span className="mt-1 flex flex-shrink-0 items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-emerald-600">
+                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                            {property.status}
+                          </span>
+                        </div>
+                        <p className="mt-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-hhp-charcoal/45">
+                          {property.type} · Built {property.built}
+                        </p>
+                        <div className="mt-4 flex items-baseline gap-6">
+                          <span className="font-display text-xl font-semibold text-hhp-navy">
+                            {property.units}
+                            <span className="ml-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-hhp-charcoal/45">
+                              Units
+                            </span>
+                          </span>
+                          <span className="text-sm text-hhp-charcoal/60">
+                            {property.beds} · {property.baths}
+                          </span>
+                          <ArrowRight className="ml-auto h-4 w-4 text-hhp-gold opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100" />
+                        </div>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+
+              <div className="px-6 py-8">
+                <h2 className="font-display text-lg font-semibold text-hhp-navy">
+                  Interested in adding your property?
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-hhp-charcoal/70">
+                  We manage, maintain and account for the assets we operate — under one firm.
+                </p>
+                <div className="mt-5 flex flex-wrap gap-3">
                   <Link
                     to="/contact"
-                    className="bg-hhp-navy text-white px-7 py-3.5 rounded font-semibold text-sm hover:bg-hhp-navy/90 transition-colors"
-                    onClick={() => { trackButtonClick('portfolio_cta_consultation', 'portfolio'); trackLinkClick('Request a Consultation', '/contact'); }}
+                    className="btn-hero"
+                    onClick={() => {
+                      trackButtonClick('portfolio_cta_consultation', 'portfolio');
+                      trackLinkClick('Request a Consultation', '/contact');
+                    }}
                   >
-                    Request a Consultation
+                    Request a consultation
                   </Link>
                   <Link
                     to="/services/property-management"
-                    className="border border-hhp-navy text-hhp-navy px-7 py-3.5 rounded font-semibold text-sm hover:bg-hhp-navy hover:text-white transition-colors"
-                    onClick={() => { trackButtonClick('portfolio_cta_services', 'portfolio'); trackLinkClick('Our Services', '/services/property-management'); }}
+                    className="btn-secondary"
+                    onClick={() => {
+                      trackButtonClick('portfolio_cta_services', 'portfolio');
+                      trackLinkClick('Our Services', '/services/property-management');
+                    }}
                   >
-                    Our Services
+                    Our services
                   </Link>
                 </div>
               </div>

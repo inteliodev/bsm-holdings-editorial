@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, Send } from 'lucide-react';
+import { Mail, Send } from 'lucide-react';
 import Layout from '@/components/Layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -18,7 +18,6 @@ const CONTACT_WEBHOOK_URL =
   'https://n8n.capitalaiadvisors.com/webhook/hhp-contact';
 
 const CONTACT_EMAIL = 'info@hhpasset.com';
-const CONTACT_PHONE = '(918) 899-1650';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -159,7 +158,7 @@ const Contact = () => {
       });
       toast({
         title: "We couldn't send your message",
-        description: `Please email ${CONTACT_EMAIL} or call ${CONTACT_PHONE} and we'll pick it up right away.`,
+        description: `Please email ${CONTACT_EMAIL} and we'll pick it up right away.`,
         variant: 'destructive',
       });
     }
@@ -358,23 +357,6 @@ const Contact = () => {
                       {CONTACT_EMAIL}
                     </a>
       
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="bg-hhp-navy/10 p-3 rounded-lg">
-                    <Phone className="h-6 w-6 text-hhp-navy" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-hhp-navy mb-1">Phone</h3>
-                    <a
-                      href="tel:+19188991650"
-                      className="text-hhp-charcoal hover:text-hhp-navy underline-offset-4 hover:underline transition-colors"
-                      onClick={() => trackButtonClick('phone_link', 'contact_info')}
-                    >
-                      {CONTACT_PHONE}
-                    </a>
-                
                   </div>
                 </div>
 

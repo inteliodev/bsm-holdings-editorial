@@ -79,7 +79,7 @@ const Opportunities = () => {
               </p>
               
               <p>
-                You'll get range rather than a narrow lane. Because brokerage, asset management, property management, and and Facility Services all sit under one roof, you'll see how a decision on one side lands on the other — not siloed into one function.
+                You'll get range rather than a narrow lane. Because asset management, property management, Facility Services and accounting all sit under one roof, you'll see how a decision on one side lands on the other — not siloed into one function.
               </p>
               
               <p>

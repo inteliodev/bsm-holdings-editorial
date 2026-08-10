@@ -66,7 +66,7 @@ const Brokerage = () => {
                     'Diligence support from our operating and Facility Services teams'
                   ].map((service, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <CheckCircle className="h-5 w-5 icon-hhp-accent mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 icon-accent mt-0.5 flex-shrink-0" />
                       <span className="text-hhp-charcoal">{service}</span>
                     </div>
                   ))}
@@ -133,7 +133,7 @@ const Brokerage = () => {
                     'Market trend analysis and insights'
                   ].map((service, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <CheckCircle className="h-5 w-5 icon-hhp-accent mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 icon-accent mt-0.5 flex-shrink-0" />
                       <span className="text-hhp-charcoal">{service}</span>
                     </div>
                   ))}
@@ -198,7 +198,7 @@ const Brokerage = () => {
                     'Portfolio stress testing'
                   ].map((service, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <CheckCircle className="h-5 w-5 icon-hhp-accent mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 icon-accent mt-0.5 flex-shrink-0" />
                       <span className="text-hhp-charcoal">{service}</span>
                     </div>
                   ))}
@@ -288,7 +288,7 @@ const Brokerage = () => {
                     'Real-time market data integration'
                   ].map((service, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <CheckCircle className="h-5 w-5 icon-hhp-accent mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 icon-accent mt-0.5 flex-shrink-0" />
                       <span className="text-hhp-charcoal">{service}</span>
                     </div>
                   ))}
