@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import Layout from '@/components/Layout/Layout';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 import PlatformSection from '@/components/PlatformSection';
+import CapabilityStack from '@/components/CapabilityStack';
 import ServiceAreaSection from '@/components/ServiceAreaSection';
 import LocalBusinessSchema from '@/components/LocalBusinessSchema';
 import { useTimeOfDay } from '@/hooks/useTimeOfDay';
@@ -339,6 +340,10 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* The disciplines, as a stack. Sits before PlatformSection so the
+          narrative runs: here is the firm, then here is the system that runs it. */}
+      <CapabilityStack />
 
       <PlatformSection />
 

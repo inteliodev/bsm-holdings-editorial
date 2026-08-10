@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useActiveStep } from '@/hooks/useActiveStep';
 
 /**
  * The building, in section.
@@ -61,30 +61,7 @@ const LAYERS: Layer[] = [
 ];
 
 const BuildingSection = () => {
-  const [active, setActive] = useState(0);
-  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // The entry closest to the middle of the viewport wins, so the diagram
-        // tracks reading position rather than whichever fired last.
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (!visible) return;
-        const index = stepRefs.current.indexOf(visible.target as HTMLDivElement);
-        if (index >= 0) setActive(index);
-      },
-      { rootMargin: '-45% 0px -45% 0px', threshold: [0, 0.5, 1] },
-    );
-
-    stepRefs.current.forEach((el) => el && observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+  const { active, setRef } = useActiveStep(LAYERS.length);
 
   const activeId = LAYERS[active]?.id;
   const cls = (id: string) => `bl ${activeId === id ? 'is-active' : ''}`;
@@ -199,9 +176,7 @@ const BuildingSection = () => {
               {LAYERS.map((layer, index) => (
                 <li key={layer.id}>
                   <div
-                    ref={(el) => {
-                      stepRefs.current[index] = el;
-                    }}
+                    ref={setRef(index)}
                     className={`border-b border-white/12 py-9 transition-opacity duration-500 lg:py-14 ${
                       active === index ? 'opacity-100' : 'opacity-55'
                     }`}

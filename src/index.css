@@ -567,6 +567,22 @@
   fill: hsl(var(--hhp-gold));
 }
 
+/* Light-ground variant, for the capability stack on Home. Same grammar as the
+   building cutaway so the two read as a pair, inverted for a white section. */
+.bl-light {
+  stroke: hsl(var(--hhp-navy) / 0.20);
+}
+
+.bl-light.is-active {
+  stroke: hsl(var(--hhp-navy));
+  fill: hsl(var(--hhp-gold) / 0.14);
+}
+
+.bl-light.is-active circle,
+.bl-light.is-active .bl-solid {
+  fill: hsl(var(--hhp-gold));
+}
+
 @media (prefers-reduced-motion: reduce) {
   .bl { transition: none; }
 }
