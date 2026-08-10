@@ -92,6 +92,42 @@ comm -23 /tmp/routes.txt /tmp/links.txt | grep -v '^\*$' | grep -v '^/$'
 
 `public/sitemap.xml` is generated from the route table. Regenerate it whenever routes change; it previously drifted for over a year.
 
+## Prerendering
+
+`npm run build` runs `vite build` and then `scripts/prerender.mjs`, which walks the
+route table with headless Chrome and writes real HTML to `dist/<route>/index.html`.
+
+This exists because the app is a client-rendered SPA behind a catch-all rewrite: every
+URL used to serve the same empty `<div id="root">`. Googlebot renders JavaScript on a
+delayed second pass, but Bing, LinkedIn, Slack, X and LLM crawlers do not — they saw a
+blank page for every route.
+
+Vercel serves the static files directly; the catch-all rewrite only applies when no
+file matches, so deep links get prerendered HTML while client-side navigation is
+unaffected.
+
+- **Per-route SEO lives in `scripts/routeMeta.mjs`** — title, description, canonical,
+  OG and Twitter tags, plus `noindex` on the two portal routes. Add an entry there
+  whenever you add a route; a missing entry means that route keeps the generic tags
+  from `index.html`.
+- **The route list is parsed from `src/App.tsx`**, so it cannot drift from the router.
+- **The build fails if any route fails to prerender.** That is deliberate — a silently
+  un-prerendered deploy looks fine and is invisibly broken for crawlers. Use
+  `npm run build:norender` to ship without it.
+- **Chrome is cached in `.cache/puppeteer`** via `.puppeteerrc.cjs`, so Vercel's build
+  cache covers it. Build-time only; nothing ships to the client.
+
+Verify a deploy with:
+
+```bash
+curl -s https://hhpasset.com/services/facility-services | grep -o '<title>[^<]*</title>'
+# must differ from the homepage title, and body content must be present without JS
+```
+
+Note the app mounts with `createRoot`, not `hydrateRoot`, so React discards the
+prerendered DOM and re-renders on load. Content is present for crawlers; there is no
+hydration-mismatch class of bug to worry about.
+
 ## Deployment
 
 Deployed via Vercel with SPA routing configured in `vercel.json`.
@@ -113,8 +149,7 @@ The legacy rasters in `public/images/` are unreferenced and should not be used �
 
 Tracked but not yet addressed:
 
-- **No prerendering.** The app is a client-rendered SPA, so every URL serves an empty shell to anything that does not execute JavaScript — social scrapers and AI crawlers included. This is the largest remaining SEO gap.
-- **Most pages set no title or description.** Only ~15 of 31 page files use `useSEO` or `Helmet`; the rest inherit the generic one from `index.html`. Two mechanisms coexist and should be unified on `react-helmet-async`.
+- **Two SEO mechanisms still coexist in the app** (`useSEO` and `react-helmet-async`) and neither covers every route. This no longer affects crawlers — the prerender step writes per-route tags from `scripts/routeMeta.mjs` — but it should be unified for the in-app tab title on client-side navigation.
 - **Two lockfiles** (`bun.lockb` and `package-lock.json`) are committed; CI may resolve differently from local.
 - **`public/` is ~49 MB.** `skyline-hero-video.mp4` (20 MB) and `real-estate-hero.mp4` (3 MB) are referenced nowhere but still deploy. Several in-use images exceed 2 MB.
 - **38 of 48 shadcn components are unused**, along with `zod`, `date-fns`, `@hookform/resolvers`, and `@tanstack/react-query` (provider only, no queries).

@@ -28,3 +28,6 @@ dist-ssr
 *.sw?
 .vercel
 .env*
+
+# Puppeteer browser download (build-time only, see .puppeteerrc.cjs)
+.cache
