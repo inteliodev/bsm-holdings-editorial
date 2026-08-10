@@ -44,15 +44,31 @@ const Header = () => {
     { name: 'Properties', href: '/portfolio' }
   ];
 
-  // Contact as primary CTA
+  // Contact as primary CTA. Set in sentence case now that the base layer no
+  // longer force-uppercases every element — the label carries its own casing.
   const contactCTA = {
-    name: 'CONTACT',
+    name: 'Contact',
     href: '/contact',
     isPrimary: true
   };
 
   // Check if current path matches dropdown items
   const isServicesActive = location.pathname.startsWith('/services') || location.pathname.startsWith('/asset-types');
+
+  /**
+   * Home's hero is `position: fixed; inset: 0`, so it already covers the area
+   * behind the header. Letting the header go transparent there lets the video
+   * run full-bleed to the top of the viewport; it solidifies on scroll.
+   *
+   * This works without any layout change precisely because the hero is fixed —
+   * the header keeps its place in normal flow either way.
+   */
+  const isHome = location.pathname === '/';
+  const isTransparent = isHome && !isSticky && !isMobileMenuOpen;
+
+  const navLinkClass = isTransparent
+    ? 'text-white/85 hover:text-white'
+    : 'text-hhp-charcoal hover:text-hhp-navy';
 
   // Sticky header effect (throttled with rAF)
   useEffect(() => {
@@ -188,6 +204,16 @@ const Header = () => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  // Lock body scroll behind the mobile sheet.
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [isMobileMenuOpen]);
+
   // Cleanup timeout on unmount
   useEffect(() => {
     return () => {
@@ -205,11 +231,28 @@ const Header = () => {
   };
 
   return (
-    <header className={`bg-white shadow-subtle relative z-50 transition-all duration-300 ${
-      isSticky ? 'sticky top-0 py-2' : 'py-2 sm:py-3'
-    }`}>
+    /*
+      Sticky at all times. It previously switched from `relative` to `sticky`
+      past 20px of scroll, which made the header visibly jump as it detached.
+      Only the surface changes now, not the positioning.
+    */
+    <header
+      className={`sticky top-0 z-50 py-2 sm:py-3 border-b transition-[background-color,border-color,box-shadow] duration-300 ${
+        isTransparent
+          ? 'bg-transparent border-transparent'
+          : isMobileMenuOpen
+            ? // No backdrop-filter while the sheet is open: a non-none
+              // backdrop-filter makes this element a containing block for
+              // fixed-position descendants, which would anchor the sheet and
+              // its overlay to the header box instead of the viewport.
+              'bg-white border-border'
+            : 'bg-white/85 backdrop-blur-md border-border shadow-subtle'
+      }`}
+    >
       <div className="w-full">
-        <div className="flex items-center justify-between transition-all duration-300 h-12 md:h-14 pl-4 sm:pl-6 lg:pl-8 xl:pl-12 pr-4 sm:pr-6 lg:pr-8 xl:pr-12">
+        {/* relative z-50 so the bar keeps painting above the z-40 mobile sheet,
+            which is a later sibling inside this same header. */}
+        <div className="relative z-50 flex h-12 items-center justify-between pl-4 pr-4 transition-all duration-300 sm:pl-6 sm:pr-6 md:h-14 lg:pl-8 lg:pr-8 xl:pl-12 xl:pr-12">
           {/* Logo - Clickable Home Link */}
           <Link 
             to="/" 
@@ -223,12 +266,23 @@ const Header = () => {
               a tight artboard, so it fills the header band without built-in padding.
               4 kB and sharp at any pixel density, vs. 107 kB for the raster.
             */}
+            {/* Apparel White is a genuinely solid #FFFFFF mark, so it holds up
+                over the hero video; Primary Cropped is the navy mark for the
+                solid header. */}
             <img
-              src="/brand/vector/HHP_Logo_Primary_Cropped.svg"
+              src={
+                isTransparent
+                  ? '/brand/vector/HHP_Logo_Apparel_White.svg'
+                  : '/brand/vector/HHP_Logo_Primary_Cropped.svg'
+              }
               alt="HHP Asset Management"
               width={509}
               height={177}
-              className="h-8 sm:h-10 md:h-11 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-none transition-all duration-300" loading="eager" decoding="async" fetchPriority="high" />
+              className="h-8 sm:h-10 md:h-11 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-none transition-all duration-300"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -245,11 +299,13 @@ const Header = () => {
                     onMouseEnter={() => handleDropdownEnter(item.name)}
                     onMouseLeave={handleDropdownLeave}
                   >
-                    <button 
-                      className={`flex items-center gap-1 transition-colors duration-200 font-medium text-xs sm:text-sm leading-tight px-1 sm:px-2 py-1 ${
-                        (item.name === 'Services' && isServicesActive)
-                          ? 'text-hhp-navy border-b-2 border-hhp-navy' 
-                          : 'text-hhp-charcoal hover:text-hhp-navy'
+                    <button
+                      className={`group relative flex items-center gap-1 px-1 py-1 text-sm font-medium leading-tight transition-colors duration-200 sm:px-2 ${
+                        item.name === 'Services' && isServicesActive
+                          ? isTransparent
+                            ? 'text-white'
+                            : 'text-hhp-navy'
+                          : navLinkClass
                       }`}
                       onClick={() => {
                         // Navigate to main page for Services and Asset Types
@@ -265,17 +321,27 @@ const Header = () => {
                       aria-controls={`${item.name.toLowerCase().replace(' ', '-')}-menu`}
                     >
                       <span>{item.name}</span>
-                      <ChevronDown 
+                      <ChevronDown
                         className={`h-3.5 w-3.5 transition-transform duration-200 ${
                           activeDropdown === item.name ? 'rotate-180' : ''
-                        }`} 
+                        }`}
+                      />
+                      {/* Gold underline that wipes in, replacing a hard 2px
+                          border that snapped on and off. */}
+                      <span
+                        aria-hidden="true"
+                        className={`absolute -bottom-0.5 left-1 right-1 h-0.5 origin-left bg-hhp-gold transition-transform duration-300 ease-out-expo sm:left-2 sm:right-2 ${
+                          item.name === 'Services' && isServicesActive
+                            ? 'scale-x-100'
+                            : 'scale-x-0 group-hover:scale-x-100'
+                        }`}
                       />
                     </button>
                     
                     {activeDropdown === item.name && (
                       <div 
                         id={`${item.name.toLowerCase().replace(' ', '-')}-menu`}
-                        className="absolute top-full left-0 mt-2 w-auto min-w-max bg-white rounded-lg shadow-premium py-2 sm:py-3 z-50 border border-gray-200"
+                        className="absolute left-0 top-full z-50 mt-3 w-auto min-w-max rounded border border-border bg-white/95 py-2 shadow-premium backdrop-blur-md animate-in fade-in slide-in-from-top-1 duration-200 sm:py-3"
                         role="menu"
                         aria-label={`${item.name} submenu`}
                         onMouseEnter={() => handleDropdownEnter(item.name)}
@@ -288,7 +354,7 @@ const Header = () => {
                             <Link
                               key={subItem.name}
                               to={subItem.href}
-                              className="block px-3 py-2 text-hhp-charcoal hover:text-hhp-navy hover:bg-gray-50 transition-colors duration-200 group min-h-[36px] flex items-center leading-tight"
+                              className="group flex min-h-[38px] items-center border-l-2 border-transparent px-4 py-2 leading-tight text-hhp-charcoal transition-colors duration-200 hover:border-hhp-gold hover:bg-surface hover:text-hhp-navy"
                               role="menuitem"
                               tabIndex={0}
                               onClick={() => {
@@ -308,8 +374,12 @@ const Header = () => {
                 ) : (
                   <Link
                     to={item.href}
-                    className={`text-hhp-charcoal hover:text-hhp-navy transition-colors duration-200 font-medium text-xs sm:text-sm leading-tight px-1 sm:px-2 py-1 ${
-                      location.pathname === item.href ? 'text-hhp-navy border-b-2 border-hhp-navy' : ''
+                    className={`group relative inline-flex px-1 py-1 text-sm font-medium leading-tight transition-colors duration-200 sm:px-2 ${
+                      location.pathname === item.href
+                        ? isTransparent
+                          ? 'text-white'
+                          : 'text-hhp-navy'
+                        : navLinkClass
                     }`}
                     onClick={() => {
                       trackNavigationClick(item.name);
@@ -317,6 +387,14 @@ const Header = () => {
                     }}
                   >
                     {item.name}
+                    <span
+                      aria-hidden="true"
+                      className={`absolute -bottom-0.5 left-1 right-1 h-0.5 origin-left bg-hhp-gold transition-transform duration-300 ease-out-expo sm:left-2 sm:right-2 ${
+                        location.pathname === item.href
+                          ? 'scale-x-100'
+                          : 'scale-x-0 group-hover:scale-x-100'
+                      }`}
+                    />
                   </Link>
                 )}
               </div>
@@ -325,7 +403,11 @@ const Header = () => {
             {/* Contact CTA */}
             <Link
               to={contactCTA.href}
-              className="bg-hhp-navy text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded font-medium hover:bg-hhp-navy/90 transition-colors duration-200 min-h-[40px] flex items-center justify-center text-xs sm:text-sm leading-tight"
+              className={`flex min-h-[40px] items-center justify-center rounded px-4 py-2 text-sm font-semibold leading-tight transition-colors duration-200 sm:px-5 ${
+                isTransparent
+                  ? 'bg-white text-hhp-navy hover:bg-hhp-gold hover:text-hhp-navy-deep'
+                  : 'bg-hhp-navy text-white hover:bg-hhp-navy-deep'
+              }`}
               onClick={() => {
                 trackButtonClick('contact_cta', 'header');
                 trackLinkClick('CONTACT', contactCTA.href);
@@ -335,10 +417,14 @@ const Header = () => {
             </Link>
 
             {/* Utility Links */}
-            <div className="flex items-center space-x-2 sm:space-x-3 ml-4 sm:ml-6 pl-4 sm:pl-6 border-l border-gray-300">
+            <div
+              className={`ml-4 flex items-center space-x-2 border-l pl-4 sm:ml-6 sm:space-x-3 sm:pl-6 ${
+                isTransparent ? 'border-white/25' : 'border-border'
+              }`}
+            >
               <Link 
                 to="/resident-login" 
-                className="text-hhp-charcoal hover:text-hhp-navy text-xs sm:text-sm font-medium transition-colors duration-200 leading-tight px-1 sm:px-2 py-1"
+                className={`px-1 py-1 text-xs font-medium leading-tight transition-colors duration-200 sm:px-2 sm:text-sm ${navLinkClass}`}
                 onClick={() => {
                   trackButtonClick('resident_login', 'header');
                   trackLinkClick('Resident Login', '/resident-login');
@@ -348,7 +434,7 @@ const Header = () => {
               </Link>
               <Link 
                 to="/investor-portal" 
-                className="text-hhp-charcoal hover:text-hhp-navy text-xs sm:text-sm font-medium transition-colors duration-200 leading-tight px-1 sm:px-2 py-1"
+                className={`px-1 py-1 text-xs font-medium leading-tight transition-colors duration-200 sm:px-2 sm:text-sm ${navLinkClass}`}
                 onClick={() => {
                   trackButtonClick('investor_portal', 'header');
                   trackLinkClick('Investor Portal', '/investor-portal');
@@ -361,7 +447,11 @@ const Header = () => {
 
           {/* Mobile/Tablet menu button */}
           <button
-            className="lg:hidden p-3 rounded-lg text-hhp-charcoal hover:text-hhp-navy hover:bg-gray-100 transition-colors duration-200 min-h-[48px] min-w-[48px] flex items-center justify-center"
+            className={`flex min-h-[48px] min-w-[48px] items-center justify-center rounded p-3 transition-colors duration-200 lg:hidden ${
+              isTransparent
+                ? 'text-white hover:bg-white/10'
+                : 'text-hhp-charcoal hover:bg-surface hover:text-hhp-navy'
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-expanded={isMobileMenuOpen}
             aria-label="Toggle mobile menu"
@@ -370,10 +460,22 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation — an overlay sheet rather than a push-down panel,
+            so the page behind is dimmed and the menu owns the viewport. Sits at
+            z-40 beneath the sticky z-50 header, which keeps the close button
+            visible. */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-premium border-t border-gray-200">
-            <div className="container-premium py-4">
+          <>
+            <div
+              className="fixed inset-0 z-40 bg-hhp-navy-deep/60 backdrop-blur-sm animate-in fade-in duration-200 lg:hidden"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-hidden="true"
+            />
+            <div className="fixed inset-x-0 top-0 z-40 max-h-[100dvh] overflow-y-auto bg-white pb-10 shadow-premium animate-in slide-in-from-top-4 fade-in duration-300 lg:hidden">
+              <div
+                className="container-premium"
+                style={{ paddingTop: 'calc(var(--header-h) + 0.5rem)' }}
+              >
               {/* Main Navigation Items */}
               {navigation.map((item) => (
                 <div key={item.name}>
@@ -468,8 +570,9 @@ const Header = () => {
                   Investor Portal
                 </Link>
               </div>
+              </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </header>
