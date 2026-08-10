@@ -84,8 +84,12 @@ const Home = () => {
                 font at a maximum of 30px, which left the largest thing in the
                 hero as an image and gave the page no typographic voice at all.
               */}
+              {/* Two lines, and "Data Driven." dropped — three sentences wrapped
+                  unpredictably across breakpoints and diluted the claim. */}
               <h1 className="normal-case font-display font-semibold text-display-lg text-white mb-7 sm:mb-8 px-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]">
-                Vertically Integrated. Data Driven. Forward Thinking.
+                Vertically Integrated.
+                <br />
+                Forward Thinking.
               </h1>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center items-center">
                 <Link
