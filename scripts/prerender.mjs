@@ -92,11 +92,55 @@ const routes = await getRoutes();
 const server = serveDist();
 await new Promise((r) => server.listen(PORT, r));
 
-const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-dev-shm-usage'] });
+/**
+ * Launch Chrome.
+ *
+ * Puppeteer's own Chrome download does not run on Vercel's build image: the
+ * binary is there but the system libraries it links against are not, so it dies
+ * with `libnspr4.so: cannot open shared object file` (exit code 127). That broke
+ * every production deploy from the moment prerendering was introduced — Vite
+ * succeeded, this step exited 1, and the site silently stopped updating.
+ *
+ * @sparticuz/chromium ships a Chromium built for exactly this kind of
+ * serverless/CI container, so it is used when running on CI and the normal
+ * local Chrome is used otherwise.
+ */
+async function launchBrowser() {
+  const onCI = Boolean(process.env.VERCEL || process.env.CI);
+
+  if (onCI) {
+    try {
+      const { default: chromium } = await import('@sparticuz/chromium');
+      return await puppeteer.launch({
+        args: [...chromium.args, '--no-sandbox', '--disable-dev-shm-usage'],
+        executablePath: await chromium.executablePath(),
+        headless: true,
+      });
+    } catch (err) {
+      console.error(`  CI Chromium unavailable — ${err.message}`);
+    }
+  }
+
+  return puppeteer.launch({ args: ['--no-sandbox', '--disable-dev-shm-usage'] });
+}
+
+let browser = null;
+try {
+  browser = await launchBrowser();
+} catch (err) {
+  // Deliberately not fatal. Prerendering is an SEO enhancement; the app is a
+  // working SPA without it. Failing the build here means the site cannot ship
+  // at all, which is strictly worse than shipping without prerendered HTML.
+  console.error('\n!! Could not launch Chrome, skipping prerender.');
+  console.error(`!! ${err.message}`);
+  console.error('!! The build continues and the SPA still deploys, but routes');
+  console.error('!! will not have per-route static HTML or SEO tags.\n');
+}
+
 let ok = 0;
 const failed = [];
 
-for (const route of routes) {
+for (const route of browser ? routes : []) {
   const page = await browser.newPage();
   try {
     await page.setViewport({ width: 1280, height: 900 });
@@ -126,7 +170,7 @@ for (const route of routes) {
   }
 }
 
-await browser.close();
+if (browser) await browser.close();
 server.close();
 
 /**
@@ -167,8 +211,18 @@ await writeFile(
   'utf8',
 );
 
-console.log(`\nPrerendered ${ok}/${routes.length} routes.`);
-console.log(`Sitemap: ${indexable.length} indexable URLs (${routes.length - indexable.length} noindex excluded).`);
+console.log(
+  browser
+    ? `\nPrerendered ${ok}/${routes.length} routes.`
+    : `\nPrerender skipped — no browser available.`,
+);
+console.log(
+  `Sitemap: ${indexable.length} indexable URLs (${routes.length - indexable.length} noindex excluded).`,
+);
+
+// Individual route failures are still fatal when the browser did start: that
+// means a page threw, which is a real regression worth blocking on. A missing
+// browser is not, and is reported above.
 if (failed.length) {
   console.error('Failed routes:\n' + failed.map((f) => '  ' + f).join('\n'));
   process.exit(1);
