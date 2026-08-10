@@ -237,7 +237,37 @@ mayorwallis.com says 1995. Flagged in a comment on the record, not guessed at.
 three-letter lockup: at 16px it is an illegible smear.
 
 ### Reusable Page Templates
-`src/components/AssetTypePage.tsx` is a shared template used by all 6 asset type detail pages. When modifying asset type pages, update the template rather than individual pages when possible.
+`src/components/AssetTypePage.tsx` is a shared template used by all 6 asset type
+detail pages. Change the template, not the individual pages, wherever possible.
+
+Section order: hero → market context (with a drawn `AssetMark` per class) →
+**what we watch** → services → the HHP advantage → **proof** → closing band.
+Grounds alternate deliberately; keep that if you add a section.
+
+Two props carry the weight, and both exist because the pages previously said
+nothing class-specific — every service description was *"Comprehensive {type}
+property management focused on operational consistency…"*:
+
+- **`metrics`** — the figures that genuinely differ by class (clear height and
+  dock ratio for industrial, occupancy cost ratio and co-tenancy exposure for
+  retail, turn time for multifamily, load factor for office). This is what makes
+  a page about its asset class rather than about HHP.
+- **`proof`** — **honest by construction.** `kind: 'operating'` states a real
+  portfolio with real figures; `kind: 'seeking'` states underwriting criteria
+  instead. HHP operates only the three Section 202 communities in Pryor, so only
+  Senior Housing and Affordable Housing use `operating`. **Never** give another
+  class `operating` without a real asset behind it.
+
+Services render **open**, mapped from `SERVICE_ORDER`. They used to sit in a
+collapsed six-row accordion — the substance of the page hidden behind closed
+rows — built from six hand-copied JSX blocks. Do not put them back in an
+accordion.
+
+There is no `insights` prop. It rendered three article teasers per page, 18 in
+total, all dated late 2024, each linking to `/insights` regardless of its title —
+the same broken promise as the old fake portal logins. `showAboutUs`,
+`useModernLayout` and the `ctaImage`/`ctaTitle` band are also gone; that band was
+conditional on props no page ever supplied, so it never rendered.
 
 ### Lead capture
 Three surfaces submit leads: the contact form, and the two portal access-request
