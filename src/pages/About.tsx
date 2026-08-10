@@ -7,6 +7,42 @@ import hannahImage from '@/assets/hannah-fanning.webp';
 import { Mail, ChevronDown, ChevronUp } from 'lucide-react';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 
+/**
+ * Operating principles.
+ *
+ * Previously four copy-pasted grey boxes. Lifted into data so the layout is
+ * defined once, and so a fourth entry with only a lead line does not need its
+ * own markup shape.
+ *
+ * The first principle was headed "Brokerage-First Strategy" and opened "Our
+ * brokerage foundation ensures...". CLAUDE.md is explicit that asset management
+ * is the umbrella and that brokerage is a supporting capability, never a
+ * headline, so the framing is corrected here. No claim was added or removed —
+ * the underwriting and market-work substance is unchanged.
+ */
+const OPERATING_PRINCIPLES = [
+  {
+    title: 'Underwriting Discipline',
+    lead: 'Every transaction begins with careful market work and disciplined underwriting.',
+    body: 'Acquisitions, dispositions and leasing decisions are grounded in rigorous analysis — not momentum or market noise.',
+  },
+  {
+    title: 'Operator-Led Execution',
+    lead: 'Decisions are made by operators who have managed real assets — not spreadsheets.',
+    body: 'Long-term performance always outweighs short-term optics.',
+  },
+  {
+    title: 'Data-Driven Decision Making',
+    lead: 'Proprietary platforms augment human expertise with real-time insight, automated compliance, and performance monitoring.',
+    body: 'Improving speed and accuracy without sacrificing judgment.',
+  },
+  {
+    title: 'Long-Term Asset Alignment',
+    lead: 'We succeed only when properties perform, tenants thrive, and owners achieve outcomes measured in years — not quarters.',
+    body: null,
+  },
+];
+
 const About = () => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState<'people' | 'story' | 'approach'>('people');
@@ -36,26 +72,37 @@ const About = () => {
   return (
     <Layout>
       {/* Split Hero Section - Robinson Park Style */}
-      <section className="h-[400px] sm:h-[500px] md:h-[600px] flex flex-col md:flex-row">
+      <section className="flex flex-col md:h-[600px] md:flex-row">
         {/* LEFT SIDE - Text & Navy Background */}
-        <div className="w-full md:w-[45%] lg:w-[40%] bg-hhp-navy flex items-center justify-start px-6 sm:px-8 lg:px-12 py-12 md:py-0">
+        <div className="flex w-full items-center justify-start bg-hhp-navy px-6 py-14 sm:px-8 md:w-[45%] md:py-0 lg:w-[40%] lg:px-12">
           <div className="max-w-md">
-            <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl font-heading font-bold tracking-[0.06em] uppercase mb-4 sm:mb-6">
-              ABOUT US
-            </h1>
-            <p className="text-white/80 text-base sm:text-lg leading-relaxed">
-              A vertically integrated commercial real estate firm delivering disciplined brokerage, property management, and advisory services.
+            <span className="eyebrow eyebrow-bare text-hhp-gold-soft">About</span>
+            <h1 className="hero-title mb-5 mt-4 text-white">About Us</h1>
+            {/*
+              Previously "delivering disciplined brokerage, property management,
+              and advisory services" — a brokerage-first enumeration in which
+              asset management did not appear at all. Reworded to match the
+              language already used in the meta description and the
+              LocalBusiness structured data.
+            */}
+            <p className="text-base leading-relaxed text-white/75 sm:text-lg">
+              A vertically integrated asset management firm. Property management, Facility
+              Services and accounting under one accountable roof, supported by in-house
+              brokerage and advisory.
             </p>
           </div>
         </div>
-        
-        {/* RIGHT SIDE - Background Image */}
-        <div 
-          className="hidden md:block w-full md:w-[55%] lg:w-[60%] bg-cover bg-center bg-no-repeat"
-          style={{backgroundImage: 'url(/images/cool-real-estate-about-us-image.jpg)'}}
+
+        {/* RIGHT SIDE - Background Image.
+            Was `hidden md:block`, so on a phone this hero was a flat navy
+            rectangle with no imagery at all. */}
+        <div
+          className="relative min-h-[260px] w-full flex-1 bg-cover bg-center bg-no-repeat sm:min-h-[320px] md:min-h-0 md:w-[55%] lg:w-[60%]"
+          style={{ backgroundImage: 'url(/images/cool-real-estate-about-us-image.jpg)' }}
+          role="img"
+          aria-label="HHP-managed commercial property"
         >
-          {/* Optional: Gradient overlay for better text contrast if needed */}
-          <div className="w-full h-full bg-gradient-to-r from-black/10 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-hhp-navy/30 to-transparent" />
         </div>
       </section>
 
@@ -152,11 +199,13 @@ const About = () => {
                 {/* Team Grid - 3 Column Layout */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 max-w-7xl mx-auto">
                   {/* Hayden Ashley */}
-                  <div className="flex flex-col bg-white rounded-lg p-4 sm:p-6">
+                  {/* The portrait runs edge to edge; every other direct child is
+                      inset, which avoids restructuring the card's internals. */}
+                  <div className="platform-card-hover flex flex-col overflow-hidden border border-border bg-white pb-6 [&>*:not(img)]:px-6 [&>h3]:mt-6">
                     <img 
                       src={haydenImage} 
                       alt="Hayden Ashley, Managing Principal" 
-                      className="w-full h-72 sm:h-80 object-contain object-center rounded-lg mb-5" loading="lazy" decoding="async" />
+                      className="aspect-[4/5] w-full bg-surface object-cover object-top" loading="lazy" decoding="async" />
                     <h3 className="text-xl font-display font-semibold text-hhp-navy mb-1 text-center">Hayden Ashley</h3>
                     <h4 className="text-base font-medium text-hhp-navy mb-4 text-center italic">Managing Principal</h4>
                     
@@ -203,11 +252,13 @@ const About = () => {
                   </div>
 
                   {/* Phil Ashley */}
-                  <div className="flex flex-col bg-white rounded-lg p-4 sm:p-6">
+                  {/* The portrait runs edge to edge; every other direct child is
+                      inset, which avoids restructuring the card's internals. */}
+                  <div className="platform-card-hover flex flex-col overflow-hidden border border-border bg-white pb-6 [&>*:not(img)]:px-6 [&>h3]:mt-6">
                     <img 
                       src={philImage} 
                       alt="Phil Ashley, Director of Operations" 
-                      className="w-full h-72 sm:h-80 object-contain object-center rounded-lg mb-5" loading="lazy" decoding="async" />
+                      className="aspect-[4/5] w-full bg-surface object-cover object-top" loading="lazy" decoding="async" />
                     <h3 className="text-xl font-display font-semibold text-hhp-navy mb-1 text-center">Phil Ashley</h3>
                     <h4 className="text-base font-medium text-hhp-navy mb-4 text-center italic">Director of Operations</h4>
                     
@@ -251,11 +302,13 @@ const About = () => {
                   </div>
 
                   {/* Hannah Fanning */}
-                  <div className="flex flex-col bg-white rounded-lg p-4 sm:p-6">
+                  {/* The portrait runs edge to edge; every other direct child is
+                      inset, which avoids restructuring the card's internals. */}
+                  <div className="platform-card-hover flex flex-col overflow-hidden border border-border bg-white pb-6 [&>*:not(img)]:px-6 [&>h3]:mt-6">
                     <img 
                       src={hannahImage} 
-                      alt="Hannah Fanning, Director of Client Operations" 
-                      className="w-full h-72 sm:h-80 object-contain object-center rounded-lg mb-5" loading="lazy" decoding="async" />
+                      alt="Hannah Fanning, Administrative Director" 
+                      className="aspect-[4/5] w-full bg-surface object-cover object-top" loading="lazy" decoding="async" />
                     <h3 className="text-xl font-display font-semibold text-hhp-navy mb-1 text-center">Hannah Fanning</h3>
                     <h4 className="text-base font-medium text-hhp-navy mb-4 text-center italic">Administrative Director</h4>
                     
@@ -325,45 +378,49 @@ const About = () => {
             {/* Tab 3: Our Approach */}
             {activeTab === 'approach' && (
               <div className="fade-in animate-in fade-in duration-300">
-                <h2 className="section-title text-hhp-navy mb-8 text-center">How We Operate</h2>
-                <div className="max-w-[720px] mx-auto space-y-8 md:space-y-12">
-                  <div className="bg-[#f7f9fb] border-t-[3px] border-hhp-navy p-6 md:p-8">
-                    <h3 className="text-xl font-display font-semibold text-hhp-navy mb-3">Brokerage-First Strategy</h3>
-                    <p className="text-base font-semibold leading-relaxed text-hhp-charcoal mb-3">
-                      Every transaction begins with careful market work and disciplined underwriting.
-                    </p>
-                    <p className="text-base leading-relaxed text-hhp-charcoal">
-                      Our brokerage foundation ensures acquisitions, dispositions, and leasing decisions are grounded in rigorous analysis—not momentum or market noise.
-                    </p>
-                  </div>
-                  <div className="bg-[#f7f9fb] border-t-[3px] border-hhp-navy p-6 md:p-8">
-                    <h3 className="text-xl font-display font-semibold text-hhp-navy mb-3">Operator-Led Execution</h3>
-                    <p className="text-base font-semibold leading-relaxed text-hhp-charcoal mb-3">
-                      Decisions are made by operators who have managed real assets—not spreadsheets.
-                    </p>
-                    <p className="text-base leading-relaxed text-hhp-charcoal">
-                      Long-term performance always outweighs short-term optics.
-                    </p>
-                  </div>
-                  <div className="bg-[#f7f9fb] border-t-[3px] border-hhp-navy p-6 md:p-8">
-                    <h3 className="text-xl font-display font-semibold text-hhp-navy mb-3">Data-Driven Decision Making</h3>
-                    <p className="text-base font-semibold leading-relaxed text-hhp-charcoal mb-3">
-                      Proprietary platforms augment human expertise with real-time insight, automated compliance, and performance monitoring.
-                    </p>
-                    <p className="text-base leading-relaxed text-hhp-charcoal">
-                      Improving speed and accuracy without sacrificing judgment.
-                    </p>
-                  </div>
-                  <div className="bg-[#f7f9fb] border-t-[3px] border-hhp-navy p-6 md:p-8">
-                    <h3 className="text-xl font-display font-semibold text-hhp-navy mb-3">Long-Term Asset Alignment</h3>
-                    <p className="text-base font-semibold leading-relaxed text-hhp-charcoal mb-3">
-                      We succeed only when properties perform, tenants thrive, and owners achieve outcomes measured in years—not quarters.
-                    </p>
-                  </div>
-                  <p className="text-base leading-relaxed text-hhp-charcoal text-center mt-10 md:mt-12 font-medium">
-                    This approach governs every engagement, regardless of asset size, market, or service line.
-                  </p>
+                <div className="mx-auto max-w-3xl text-center">
+                  <span className="eyebrow eyebrow-bare">Operating Principles</span>
+                  <h2 className="section-title mt-5 text-hhp-navy">How We Operate</h2>
                 </div>
+
+                {/* Numbered editorial rows rather than four identical grey
+                    boxes. Same language as PlatformSection: oversized gold
+                    numeral, hairline rules, no card chrome. */}
+                <ol className="mx-auto mt-12 max-w-5xl border-t border-border md:mt-16">
+                  {OPERATING_PRINCIPLES.map((principle, index) => (
+                    <li
+                      key={principle.title}
+                      className="group grid grid-cols-1 gap-x-10 gap-y-3 border-b border-border py-9 transition-colors duration-300 hover:bg-surface/70 md:grid-cols-12 md:py-11"
+                    >
+                      <div className="flex items-start gap-5 md:col-span-4">
+                        <span
+                          aria-hidden="true"
+                          className="font-display text-4xl font-semibold leading-none tracking-tight text-hhp-gold/30 transition-colors duration-300 group-hover:text-hhp-gold"
+                        >
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <h3 className="pt-1 font-display text-xl font-semibold text-hhp-navy">
+                          {principle.title}
+                        </h3>
+                      </div>
+                      <div className="md:col-span-8">
+                        <p className="text-lg font-medium leading-relaxed text-hhp-navy">
+                          {principle.lead}
+                        </p>
+                        {principle.body && (
+                          <p className="mt-3 leading-relaxed text-hhp-charcoal/80">
+                            {principle.body}
+                          </p>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+
+                <p className="mx-auto mt-12 max-w-3xl border-l-2 border-hhp-gold pl-6 text-lg leading-relaxed text-hhp-navy">
+                  This approach governs every engagement, regardless of asset size, market, or
+                  service line.
+                </p>
               </div>
             )}
           </div>
