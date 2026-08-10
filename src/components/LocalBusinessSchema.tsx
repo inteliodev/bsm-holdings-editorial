@@ -30,6 +30,9 @@ const LocalBusinessSchema = () => {
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'RealEstateAgent',
+    // Same @id as the Organization node emitted site-wide by SiteSchema, so the
+    // two merge into one entity instead of competing as two.
+    '@id': `${SITE_URL}/#organization`,
     name: ORGANIZATION_NAME,
     url: SITE_URL,
     email: CONTACT_EMAIL,

@@ -129,7 +129,46 @@ for (const route of routes) {
 await browser.close();
 server.close();
 
+/**
+ * Sitemap, generated from the same route table that drives the prerender.
+ *
+ * It was previously a hand-maintained file in public/, which meant it could
+ * silently fall out of step with the router — exactly the kind of drift the
+ * route table exists to prevent. Routes flagged `noindex` in ROUTE_META are
+ * excluded, so the sitemap never advertises a page we ask crawlers to skip.
+ */
+const indexable = routes.filter((r) => !ROUTE_META[r]?.noindex);
+const today = new Date().toISOString().split('T')[0];
+
+const priorityFor = (route) => {
+  if (route === '/') return '1.0';
+  if (route.split('/').length === 2) return '0.8';
+  return '0.6';
+};
+
+const body = indexable
+  .map(
+    (route) =>
+      `  <url>\n` +
+      `    <loc>${SITE_URL}${route === '/' ? '/' : route}</loc>\n` +
+      `    <lastmod>${today}</lastmod>\n` +
+      `    <changefreq>${route === '/' ? 'weekly' : 'monthly'}</changefreq>\n` +
+      `    <priority>${priorityFor(route)}</priority>\n` +
+      `  </url>`,
+  )
+  .join('\n');
+
+await writeFile(
+  join(DIST, 'sitemap.xml'),
+  `<?xml version="1.0" encoding="UTF-8"?>\n` +
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+    `${body}\n` +
+    `</urlset>\n`,
+  'utf8',
+);
+
 console.log(`\nPrerendered ${ok}/${routes.length} routes.`);
+console.log(`Sitemap: ${indexable.length} indexable URLs (${routes.length - indexable.length} noindex excluded).`);
 if (failed.length) {
   console.error('Failed routes:\n' + failed.map((f) => '  ' + f).join('\n'));
   process.exit(1);
