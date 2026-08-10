@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BarChart3, FileText, TrendingUp, CheckCircle, ArrowRight, Calendar, Users, Building, DollarSign } from 'lucide-react';
+import { BarChart3, FileText, TrendingUp, CheckCircle, Building, DollarSign } from 'lucide-react';
 import Layout from '@/components/Layout/Layout';
 import { useToast } from '@/hooks/use-toast';
 import { trackFormSubmission, trackConversion } from '@/utils/analytics';
@@ -126,7 +126,7 @@ const Insights = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Q4 2025 Market Report */}
-              <div className="premium-card hover-lift">
+              <div className="premium-card">
                 <div className="flex items-center space-x-3 mb-4">
                   <BarChart3 className="h-8 w-8 icon-accent" />
                   <div>
@@ -137,14 +137,10 @@ const Insights = () => {
                 <p className="text-hhp-charcoal mb-4">
                   Comprehensive analysis of multifamily, office, industrial, and retail markets, including year-end performance and outlook entering 2026.
                 </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-hhp-navy font-heading font-semibold tracking-[0.06em] uppercase">Download PDF</span>
-                  <ArrowRight className="h-4 w-4 text-hhp-navy" />
-                </div>
               </div>
 
               {/* Real Estate Operations & Strategy */}
-              <div className="premium-card hover-lift">
+              <div className="premium-card">
                 <div className="flex items-center space-x-3 mb-4">
                   <TrendingUp className="h-8 w-8 icon-accent" />
                   <div>
@@ -155,14 +151,10 @@ const Insights = () => {
                 <p className="text-hhp-charcoal mb-4">
                   An examination of how modern operating systems, analytics, and workflow automation are improving execution, reporting, and decision-making across commercial real estate portfolios.
                 </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-hhp-navy font-heading font-semibold tracking-[0.06em] uppercase">Read More</span>
-                  <ArrowRight className="h-4 w-4 text-hhp-navy" />
-                </div>
               </div>
 
               {/* Capital Markets Outlook */}
-              <div className="premium-card hover-lift">
+              <div className="premium-card">
                 <div className="flex items-center space-x-3 mb-4">
                   <DollarSign className="h-8 w-8 icon-accent" />
                   <div>
@@ -173,10 +165,6 @@ const Insights = () => {
                 <p className="text-hhp-charcoal mb-4">
                   Debt and equity market conditions, interest-rate trends, lender behavior, and financing strategies heading into 2026.
                 </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-hhp-navy font-heading font-semibold tracking-[0.06em] uppercase">View Report</span>
-                  <ArrowRight className="h-4 w-4 text-hhp-navy" />
-                </div>
               </div>
             </div>
           </div>
@@ -208,10 +196,6 @@ const Insights = () => {
                   <p className="text-hhp-charcoal">
                     How revenue management practices, expense controls, and compliance enhancements supported improved performance across a multifamily portfolio.
                   </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-hhp-navy font-heading font-semibold tracking-[0.06em] uppercase">Read Full Case Study</span>
-                    <ArrowRight className="h-4 w-4 text-hhp-navy" />
-                  </div>
                 </div>
               </div>
 
@@ -228,10 +212,6 @@ const Insights = () => {
                   <p className="text-hhp-charcoal">
                     How proactive leasing, tenant engagement, and renewal planning helped stabilize occupancy and reduce turnover in a Class A office property.
                   </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-hhp-navy font-heading font-semibold tracking-[0.06em] uppercase">Read Full Case Study</span>
-                    <ArrowRight className="h-4 w-4 text-hhp-navy" />
-                  </div>
                 </div>
               </div>
 
@@ -248,10 +228,6 @@ const Insights = () => {
                   <p className="text-hhp-charcoal">
                     How strategic positioning, targeted buyer outreach, and efficient underwriting supported a successful disposition of an industrial portfolio.
                   </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-hhp-navy font-heading font-semibold tracking-[0.06em] uppercase">Read Full Case Study</span>
-                    <ArrowRight className="h-4 w-4 text-hhp-navy" />
-                  </div>
                 </div>
               </div>
 
@@ -268,10 +244,6 @@ const Insights = () => {
                   <p className="text-hhp-charcoal">
                     How standardized compliance processes and improved reporting practices supported strong regulatory outcomes while reducing administrative burden.
                   </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-hhp-navy font-heading font-semibold tracking-[0.06em] uppercase">Read Full Case Study</span>
-                    <ArrowRight className="h-4 w-4 text-hhp-navy" />
-                  </div>
                 </div>
               </div>
             </div>
@@ -292,7 +264,7 @@ const Insights = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* A Modern Real Estate Operating Model */}
-              <div className="premium-card hover-lift">
+              <div className="premium-card">
                 <div className="flex items-center space-x-3 mb-4">
                   <FileText className="h-8 w-8 icon-accent" />
                   <div>
@@ -302,14 +274,10 @@ const Insights = () => {
                 <p className="text-hhp-charcoal mb-4">
                   How disciplined strategy, integrated services, and data-informed decision-making are reshaping commercial real estate ownership and management.
                 </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-hhp-navy font-heading font-semibold tracking-[0.06em] uppercase">Read Article</span>
-                  <ArrowRight className="h-4 w-4 text-hhp-navy" />
-                </div>
               </div>
 
               {/* Leasing Strategy in a Normalized Market */}
-              <div className="premium-card hover-lift">
+              <div className="premium-card">
                 <div className="flex items-center space-x-3 mb-4">
                   <TrendingUp className="h-8 w-8 icon-accent" />
                   <div>
@@ -319,14 +287,10 @@ const Insights = () => {
                 <p className="text-hhp-charcoal mb-4">
                   Understanding tenant behavior, renewal dynamics, and pricing strategy as leasing markets stabilize post-volatility.
                 </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-hhp-navy font-heading font-semibold tracking-[0.06em] uppercase">Read Article</span>
-                  <ArrowRight className="h-4 w-4 text-hhp-navy" />
-                </div>
               </div>
 
               {/* Managing Risk in HUD Housing */}
-              <div className="premium-card hover-lift">
+              <div className="premium-card">
                 <div className="flex items-center space-x-3 mb-4">
                   <CheckCircle className="h-8 w-8 icon-accent" />
                   <div>
@@ -336,14 +300,10 @@ const Insights = () => {
                 <p className="text-hhp-charcoal mb-4">
                   Best practices for compliance, audits, and operational controls in affordable housing portfolios.
                 </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-hhp-navy font-heading font-semibold tracking-[0.06em] uppercase">Read Article</span>
-                  <ArrowRight className="h-4 w-4 text-hhp-navy" />
-                </div>
               </div>
 
               {/* The Future of Real Estate Operations */}
-              <div className="premium-card hover-lift">
+              <div className="premium-card">
                 <div className="flex items-center space-x-3 mb-4">
                   <BarChart3 className="h-8 w-8 icon-accent" />
                   <div>
@@ -353,10 +313,6 @@ const Insights = () => {
                 <p className="text-hhp-charcoal mb-4">
                   Operational trends, reporting standards, and execution models defining the next phase of commercial real estate management.
                 </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-hhp-navy font-heading font-semibold tracking-[0.06em] uppercase">Read Article</span>
-                  <ArrowRight className="h-4 w-4 text-hhp-navy" />
-                </div>
               </div>
             </div>
           </div>

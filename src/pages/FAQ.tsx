@@ -1,14 +1,24 @@
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { ArrowRight } from 'lucide-react';
 import Layout from '@/components/Layout/Layout';
-import { trackButtonClick } from '@/utils/analytics';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 
+/**
+ * This page hand-rolled its own accordion — open/closed state, a literal "+"
+ * glyph rotated 45deg, and a `max-h-[1000px] -> max-h-0` height transition.
+ * That hack animates to a fixed cap regardless of content, so short answers
+ * pause before opening and anything taller than 1000px is clipped. The site
+ * already ships a tested Radix accordion which Technology uses correctly, so
+ * the same component now behaves the same way on both pages.
+ */
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggleAccordion = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-    trackButtonClick(`faq_accordion_${index}`, 'faq_page');
-  };
 
   const faqItems = [
     {
@@ -107,58 +117,116 @@ const FAQ = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative h-[400px] sm:h-[500px] flex items-center justify-center">
-        <img 
-          src="/images/investment-sales-capital-markets-hero.webp" 
-          alt="FAQ"
-          className="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" width={1600} height={442} />
-        <div className="absolute inset-0 bg-black/40"></div>
-        <h1 className="relative z-10 text-5xl sm:text-6xl font-bold text-white text-center">
-          FAQ
-        </h1>
+      {/*
+        FAQPage structured data. This is the one page where a search engine
+        expects it, and it was the only schema the site was missing on a page
+        that plainly qualifies.
+      */}
+      <Helmet>
+        <title>Frequently Asked Questions — HHP Asset Management</title>
+        <meta
+          name="description"
+          content="Answers on property management, Facility Services, financial reporting, brokerage and working with HHP Asset Management in Oklahoma."
+        />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: faqItems.map((item) => ({
+              '@type': 'Question',
+              name: item.question,
+              acceptedAnswer: { '@type': 'Answer', text: item.answer },
+            })),
+          })}
+        </script>
+      </Helmet>
+
+      {/* Hero. Was off-system: a bg-black/40 overlay where every other hero uses
+          the navy scrim, a raw text-5xl h1 in the body font, and alt="FAQ" on a
+          decorative background image. */}
+      <section className="relative flex min-h-[420px] items-center justify-center sm:min-h-[500px]">
+        <img
+          src="/images/investment-sales-capital-markets-hero.webp"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="eager"
+          decoding="async"
+          width={1600}
+          height={442}
+        />
+        <div className="absolute inset-0 scrim-hero" />
+        <div className="container-premium relative z-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="eyebrow mb-5 text-white/85">Questions</span>
+            <h1 className="hero-title mb-5 text-white">Frequently asked questions</h1>
+            <p className="text-base leading-relaxed text-white/80 sm:text-lg">
+              How we work, what we self-perform, and what owners can expect.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* FAQ Accordion Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
+      <section className="section-spacing bg-white">
         <div className="container-premium">
-          <div className="max-w-3xl mx-auto">
-            {faqItems.map((item, index) => (
-              <div 
-                key={index} 
-                className="border border-gray-300 mb-4 last:mb-0"
-              >
-                <button 
-                  className="w-full flex items-center justify-between p-6 hover:bg-gray-50 transition-colors duration-300"
-                  onClick={() => toggleAccordion(index)}
-                  aria-expanded={openIndex === index}
-                  aria-controls={`faq-answer-${index}`}
-                >
-                  <h3 className="text-lg font-semibold text-left text-hhp-navy pr-4">
+          <div className="mx-auto max-w-3xl">
+            <Accordion
+              type="single"
+              collapsible
+              className="w-full border-t border-border"
+              onValueChange={(value) => {
+                if (value) trackButtonClick(`faq_accordion_${value}`, 'faq_page');
+              }}
+            >
+              {faqItems.map((item, index) => (
+                <AccordionItem key={index} value={`item-${index}`} className="border-b border-border">
+                  <AccordionTrigger className="py-6 text-left font-display text-lg font-semibold text-hhp-navy hover:no-underline">
                     {item.question}
-                  </h3>
-                  <span 
-                    className={`text-2xl text-gray-600 flex-shrink-0 transition-transform duration-300 ${
-                      openIndex === index ? 'rotate-45' : ''
-                    }`}
-                  >
-                    +
-                  </span>
-                </button>
-                <div 
-                  id={`faq-answer-${index}`}
-                  className={`overflow-hidden transition-all duration-300 ${
-                    openIndex === index ? 'max-h-[1000px]' : 'max-h-0'
-                  }`}
-                >
-                  <div className="px-6 pb-6 bg-gray-50 border-t border-gray-300">
-                    <p className="text-gray-700 leading-relaxed pt-4">
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-7 pt-0">
+                    <p className="border-l-2 border-hhp-gold pl-5 leading-relaxed text-hhp-charcoal/85">
                       {item.answer}
                     </p>
-                  </div>
-                </div>
-              </div>
-            ))}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/* Closing CTA. The page previously ended when the last answer collapsed —
+          no CTA, no related links, nothing. */}
+      <section className="section-spacing bg-hhp-navy text-white">
+        <div className="container-premium">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="eyebrow mb-5 justify-center text-hhp-gold">Still deciding?</span>
+            <h2 className="section-title text-white">Ask us directly</h2>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
+              If your question isn't answered here, tell us about the asset and we'll give you a
+              straight answer.
+            </p>
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+              <Link
+                to="/contact"
+                className="group inline-flex min-h-[52px] items-center justify-center gap-2 rounded bg-white px-8 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.08em] text-hhp-navy transition-colors hover:bg-hhp-gold hover:text-hhp-navy-deep"
+                onClick={() => {
+                  trackButtonClick('faq_cta_contact', 'faq_page');
+                  trackLinkClick('Contact us - FAQ', '/contact');
+                }}
+              >
+                Contact us
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                to="/services/property-management"
+                className="text-sm text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline"
+                onClick={() => trackLinkClick('Services - FAQ', '/services/property-management')}
+              >
+                Explore our services
+              </Link>
+            </div>
           </div>
         </div>
       </section>
