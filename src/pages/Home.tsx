@@ -5,6 +5,8 @@ import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 import CapabilityStack from '@/components/CapabilityStack';
 import ServiceAreaSection from '@/components/ServiceAreaSection';
 import LocalBusinessSchema from '@/components/LocalBusinessSchema';
+import { ASSET_CLASSES } from '@/data/assetTypes';
+import { SERVICES } from '@/data/capabilities';
 import { useTimeOfDay } from '@/hooks/useTimeOfDay';
 
 const Home = () => {
@@ -148,8 +150,16 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Spacer so content starts below viewport — hero stays fixed behind */}
-      <div className="relative z-0 h-screen min-h-[600px] w-full" aria-hidden="true" />
+      {/* Spacer so content starts below viewport — hero stays fixed behind.
+          `pointer-events-none` is load-bearing, not tidying: the hero is
+          `fixed inset-0 z-0` and this sits later in DOM order at the same
+          z-index, so it painted on top of the hero and swallowed the clicks on
+          all three hero CTAs. They looked and hovered like links and did
+          nothing. The spacer only needs to occupy height. */}
+      <div
+        className="pointer-events-none relative z-0 h-screen min-h-[600px] w-full"
+        aria-hidden="true"
+      />
 
       {/* Content that scrolls up over the fixed hero */}
       <div className="relative z-30">
@@ -188,157 +198,151 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Core Services Section */}
+      {/* Services Section
+
+          All six, in the same order as the header's Services menu, mapped from
+          src/data/capabilities.ts. This was three hand-written cards — Property
+          Management, Financial Services and Facility Services — so the homepage
+          named half the services menu and left asset management, brokerage and
+          technology with no presence at all.
+
+          Deliberately the same card grammar as the asset classes band below, so
+          the two read as a pair: what we do, then what we do it to. */}
       <section className="bg-white pt-12 pb-8 sm:pt-16 sm:pb-10 lg:pt-20 lg:pb-12">
         <div className="container-premium">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            {/* Framed as capabilities beneath the asset management umbrella rather
-                than as separate business lines. */}
-            <h2 className="section-title text-hhp-navy mb-4 sm:mb-6">What Asset Management Includes</h2>
+          <div className="text-center mb-8 sm:mb-12 lg:mb-14">
+            <span className="eyebrow mb-5 justify-center">Services</span>
+            <h2 className="section-title text-hhp-navy mb-4 sm:mb-6">
+              What asset management includes
+            </h2>
             <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-hhp-charcoal max-w-3xl mx-auto px-4">
-              Three capabilities under one accountable firm. Each is staffed and operated by HHP, not contracted out.
+              Six capabilities under one accountable firm. Each is staffed and
+              operated by HHP, not contracted out.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 sm:gap-6 lg:gap-8 mb-6 sm:mb-8 -mx-4 sm:mx-0">
-            <Link
-              to="/services/property-management"
-              className="platform-card-hover group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
-              style={{ backgroundImage: 'url(/images/property-management-picture.webp)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
-              onClick={() => {
-                trackButtonClick('property_management', 'core_services');
-                trackLinkClick('Property Management', '/services/property-management');
-              }}
-            >
-              <div className="absolute inset-0 scrim-bottom transition-opacity duration-500 group-hover:opacity-85" />
-              <div className="relative z-10 flex flex-col items-start justify-end text-left p-4 sm:p-6 h-full">
-                <h3 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl mb-3 text-left">
-                  Property Management
-                </h3>
-                <div className="flex items-center text-white font-medium group-hover:translate-x-2 transition-transform duration-300 text-base sm:text-lg text-left">
-                  <span>Explore Service</span>
-                  <ArrowRight className="h-4 w-4 ml-2" />
-                </div>
-              </div>
-            </Link>
 
-            <Link
-              to="/services/financial-services"
-              className="platform-card-hover group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
-              style={{ backgroundImage: 'url(/images/financial-services-hero.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
-              onClick={() => {
-                trackButtonClick('financial_services', 'core_services');
-                trackLinkClick('Financial Services', '/services/financial-services');
-              }}
-            >
-              <div className="absolute inset-0 scrim-bottom transition-opacity duration-500 group-hover:opacity-85" />
-              <div className="relative z-10 flex flex-col items-start justify-end text-left p-4 sm:p-6 h-full">
-                <h3 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl mb-3 text-left">
-                  Financial Services
-                </h3>
-                <div className="flex items-center text-white font-medium group-hover:translate-x-2 transition-transform duration-300 text-base sm:text-lg text-left">
-                  <span>Explore Service</span>
-                  <ArrowRight className="h-4 w-4 ml-2" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 sm:gap-5 lg:gap-6 -mx-4 sm:mx-0">
+            {SERVICES.map((service) => (
+              <Link
+                key={service.id}
+                to={service.href}
+                className="platform-card-hover group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[420px] sm:min-h-[440px] lg:min-h-[460px] flex flex-col p-0 w-full"
+                style={{
+                  backgroundImage: `url(${service.image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                }}
+                onClick={() => {
+                  trackButtonClick(service.id, 'core_services');
+                  trackLinkClick(service.name, service.href);
+                }}
+              >
+                <div className="absolute inset-0 scrim-bottom transition-opacity duration-500 group-hover:opacity-85" />
+                <div className="relative z-10 flex flex-col items-start justify-end text-left p-4 sm:p-5 h-full">
+                  <h3 className="text-white font-semibold text-xl sm:text-2xl mb-2 text-left">
+                    {service.name}
+                  </h3>
+                  <p className="text-white/85 text-sm leading-relaxed mb-3 text-left">
+                    {service.hook}
+                  </p>
+                  <div className="flex items-center text-white font-medium group-hover:translate-x-2 transition-transform duration-300 text-base text-left">
+                    <span>Explore Service</span>
+                    <ArrowRight className="h-4 w-4 ml-2" />
+                  </div>
                 </div>
-              </div>
-            </Link>
-
-            <Link
-              to="/services/facility-services"
-              className="platform-card-hover group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
-              style={{ backgroundImage: 'url(/images/facilities-management-hero-image.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
-              onClick={() => {
-                trackButtonClick('facility_services', 'core_services');
-                trackLinkClick('Facility Services', '/services/facility-services');
-              }}
-            >
-              <div className="absolute inset-0 scrim-bottom transition-opacity duration-500 group-hover:opacity-85" />
-              <div className="relative z-10 flex flex-col items-start justify-end text-left p-4 sm:p-6 h-full">
-                <h3 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl mb-3 text-left">
-                  Facility Services
-                </h3>
-                <div className="flex items-center text-white font-medium group-hover:translate-x-2 transition-transform duration-300 text-base sm:text-lg text-left">
-                  <span>Explore Service</span>
-                  <ArrowRight className="h-4 w-4 ml-2" />
-                </div>
-              </div>
-            </Link>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Asset Types Section */}
+      {/* Asset Classes Section
+
+          One listing of all six, mapped from src/data/assetTypes.ts. This was
+          three image cards subtitled "across housing asset classes", which read
+          as the whole offer — office, retail and industrial had no path from
+          Home at all. It was then briefly two blocks, a management set above a
+          brokerage set, which said the six classes twice on one screen.
+
+          The two tracks now live in the intro sentence rather than in the
+          structure. Keep it that way: splitting the grid puts retail and
+          industrial visibly outside a set, which reads as an exclusion. They
+          have full management pages behind these links like every other class.
+          /asset-types is where the tracks get room to be explained. */}
       <section className="bg-surface pt-12 pb-8 sm:pt-16 sm:pb-10 lg:pt-20 lg:pb-12">
         <div className="container-premium">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h2 className="section-title text-hhp-navy mb-4 sm:mb-6">Asset Types We Serve</h2>
-            <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-hhp-navy max-w-3xl mx-auto px-4">
-              Specialized management across housing asset classes where disciplined, data-driven operations make the biggest impact.
+          <div className="text-center mb-8 sm:mb-12 lg:mb-14">
+            <span className="eyebrow mb-5 justify-center">Asset Classes</span>
+            <h2 className="section-title text-hhp-navy mb-4 sm:mb-6">
+              The classes we work in
+            </h2>
+            <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-hhp-charcoal max-w-3xl mx-auto px-4">
+              Our operation is built around multifamily, affordable housing, senior
+              housing and office. Brokerage and advisory run across all six.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 sm:gap-6 lg:gap-8 mb-6 sm:mb-8 -mx-4 sm:mx-0">
-            <Link 
-              to="/asset-types/multifamily" 
-              className="platform-card-hover group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
-              style={{ backgroundImage: 'url(/images/multifamily-image-trendy.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
-              onClick={() => {
-                trackButtonClick('multifamily', 'asset_types');
-                trackLinkClick('Multifamily', '/asset-types/multifamily');
-              }}
-            >
-              <div className="absolute inset-0 scrim-bottom transition-opacity duration-500 group-hover:opacity-85" />
-              <div className="relative z-10 flex flex-col items-start justify-end text-left p-4 sm:p-6 h-full">
-                <h3 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl mb-3 text-left">
-                  Multifamily
-                </h3>
-                <div className="flex items-center text-white font-medium group-hover:translate-x-2 transition-transform duration-300 text-base sm:text-lg text-left">
-                  <span>Learn More</span>
-                  <ArrowRight className="h-4 w-4 ml-2" />
-                </div>
-              </div>
-            </Link>
 
-            <Link 
-              to="/asset-types/hud-affordable" 
-              className="platform-card-hover group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
-              style={{ backgroundImage: 'url(/images/affordable-housing-image.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
-              onClick={() => {
-                trackButtonClick('hud_affordable', 'asset_types');
-                trackLinkClick('Affordable Housing', '/asset-types/hud-affordable');
-              }}
-            >
-              <div className="absolute inset-0 scrim-bottom transition-opacity duration-500 group-hover:opacity-85" />
-              <div className="relative z-10 flex flex-col items-start justify-end text-left p-4 sm:p-6 h-full">
-                <h3 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl mb-3 text-left">
-                  Affordable Housing
-                </h3>
-                <div className="flex items-center text-white font-medium group-hover:translate-x-2 transition-transform duration-300 text-base sm:text-lg text-left">
-                  <span>Learn More</span>
-                  <ArrowRight className="h-4 w-4 ml-2" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 sm:gap-5 lg:gap-6 -mx-4 sm:mx-0">
+            {ASSET_CLASSES.map((assetClass) => (
+              <Link
+                key={assetClass.slug}
+                to={assetClass.href}
+                className="platform-card-hover group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[420px] sm:min-h-[440px] lg:min-h-[460px] flex flex-col p-0 w-full"
+                style={{
+                  backgroundImage: `url(${assetClass.image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                }}
+                onClick={() => {
+                  trackButtonClick(assetClass.slug.replace(/-/g, '_'), 'asset_types');
+                  trackLinkClick(assetClass.label, assetClass.href);
+                }}
+              >
+                <div className="absolute inset-0 scrim-bottom transition-opacity duration-500 group-hover:opacity-85" />
+                <div className="relative z-10 flex flex-col items-start justify-end text-left p-4 sm:p-5 h-full">
+                  <h3 className="text-white font-semibold text-xl sm:text-2xl mb-2 text-left">
+                    {assetClass.label}
+                  </h3>
+                  {/* Rendered at rest. The previous index hid this copy behind a
+                      hover overlay, so it did not exist on any touch device. */}
+                  <p className="text-white/85 text-sm leading-relaxed mb-3 text-left">
+                    {assetClass.hook}
+                  </p>
+                  <div className="flex items-center text-white font-medium group-hover:translate-x-2 transition-transform duration-300 text-base text-left">
+                    <span>Learn More</span>
+                    <ArrowRight className="h-4 w-4 ml-2" />
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            ))}
+          </div>
 
-            <Link 
-              to="/asset-types/senior-housing" 
-              className="platform-card-hover group relative overflow-hidden aspect-[3/4] sm:aspect-auto min-h-[500px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px] flex flex-col p-0 w-full"
-              style={{ backgroundImage: 'url(/images/senior-housing-image.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
+          {/* Centred to sit under the centred heading, now that the section is
+              one grid rather than two left-aligned track blocks. */}
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
+            <Link
+              to="/asset-types"
+              className="tap group inline-flex items-center gap-2 font-display font-semibold text-hhp-navy transition-colors hover:text-hhp-gold"
               onClick={() => {
-                trackButtonClick('senior_housing', 'asset_types');
-                trackLinkClick('Senior Housing', '/asset-types/senior-housing');
+                trackButtonClick('all_asset_types', 'asset_types');
+                trackLinkClick('See all asset classes', '/asset-types');
               }}
             >
-              <div className="absolute inset-0 scrim-bottom transition-opacity duration-500 group-hover:opacity-85" />
-              <div className="relative z-10 flex flex-col items-start justify-end text-left p-4 sm:p-6 h-full">
-                <h3 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl mb-3 text-left">
-                  Senior Housing
-                </h3>
-                <div className="flex items-center text-white font-medium group-hover:translate-x-2 transition-transform duration-300 text-base sm:text-lg text-left">
-                  <span>Learn More</span>
-                  <ArrowRight className="h-4 w-4 ml-2" />
-                </div>
-              </div>
+              See all asset classes
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+            <Link
+              to="/brokerage"
+              className="tap group inline-flex items-center gap-2 font-display font-semibold text-hhp-navy transition-colors hover:text-hhp-gold"
+              onClick={() => {
+                trackButtonClick('brokerage', 'asset_types');
+                trackLinkClick('Brokerage and advisory', '/brokerage');
+              }}
+            >
+              Brokerage and advisory
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </div>
         </div>

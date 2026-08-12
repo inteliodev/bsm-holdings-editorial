@@ -7,6 +7,7 @@ import {
   hasStreetAddress,
   ALL_SERVED_CITIES,
 } from '@/data/serviceArea';
+import { ASSET_SEGMENT_LABELS } from '@/data/assetTypes';
 
 const SITE_URL = 'https://hhpasset.com';
 const ORG_ID = `${SITE_URL}/#organization`;
@@ -26,6 +27,7 @@ const SITE_ID = `${SITE_URL}/#website`;
 /** Human labels for path segments, so breadcrumbs read properly. */
 const SEGMENT_LABELS: Record<string, string> = {
   services: 'Services',
+  'asset-management': 'Asset Management',
   'property-management': 'Property Management',
   'facility-services': 'Facility Services',
   'financial-services': 'Financial Services',
@@ -34,13 +36,11 @@ const SEGMENT_LABELS: Record<string, string> = {
   'advisory-site-selection': 'Advisory & Site Selection',
   'development-advisory': 'Development Advisory',
   'broker-consulting': 'Consulting & Strategic Advisory',
-  'asset-types': 'Asset Types',
-  multifamily: 'Multifamily',
-  'hud-affordable': 'HUD & Affordable Housing',
-  office: 'Office',
-  retail: 'Retail',
-  industrial: 'Industrial',
-  'senior-housing': 'Senior Housing',
+  'asset-types': 'Asset Classes',
+  // The six class labels come from the data module. Spelled out here, they
+  // drifted: this map said "HUD & Affordable Housing" while the page it
+  // described was headed "Affordable Housing".
+  ...ASSET_SEGMENT_LABELS,
   technology: 'Technology',
   platforms: 'Platforms',
   'advisory-analytics': 'Advisory & Analytics',

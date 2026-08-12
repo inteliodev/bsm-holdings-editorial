@@ -21,7 +21,7 @@ Site copy carries hard constraints (no AI branding, no SaaS-vendor voice). **Rea
 - **React 18** with **TypeScript**
 - **Vite** with SWC plugin
 - **Tailwind CSS** + **shadcn/ui**
-- **React Router v6** (30 routes)
+- **React Router v6** (31 routes)
 - **TanStack React Query**
 - **Supabase** (database & auth)
 - Deployed on **Vercel**
@@ -104,8 +104,11 @@ src/
     SiteSchema.tsx             # Organization + WebSite + Breadcrumb + Service (all routes)
     AccessRequestForm.tsx      # Shared form for both portal pages
     AssetTypePage.tsx          # Shared template for all 6 asset-type pages
+    AssetMark.tsx              # The 6 drawn asset-class line marks
   data/
     serviceArea.ts             # Canonical NAP + service-area cities (single source of truth)
+    assetTypes.ts              # The 6 asset classes — labels, images, marks, tracks
+    capabilities.ts            # The 6 services — CapabilityStack + Asset Management page
   lib/
     leads.ts                   # submitLead() — webhook + Supabase, used by all three forms
   hooks/
@@ -174,6 +177,49 @@ The Portfolio map's lighting and the Home hero tint both come from
 `useTimeOfDay`, keyed to the real clock in America/Chicago rather than the
 visitor's locale.
 
+## Information architecture
+
+The header splits on **capability vs sector** — Services is what we do, Asset
+Classes is what we do it to. Four tabs: About · Services · Asset Classes ·
+Properties.
+
+Two data modules are the single source of truth, and both exist because the same
+things were being hand-written on four or five surfaces at once:
+
+- **`src/data/capabilities.ts`** — the six services, in header-menu order.
+  `SERVICES` is the master list; `CAPABILITIES` derives from it by filtering
+  brokerage out (it is deliberately not a layer in `CapabilityStack`), and
+  `REPORTING_CAPABILITIES` drops asset management as well, for the Asset
+  Management page's "what reports into it" grid.
+- **`src/data/assetTypes.ts`** — the six asset classes. The same six were once
+  labelled five different ways: the header said "Industrial & Logistics", the
+  index said that *and* "Senior Housing & Healthcare", the detail pages' own
+  `<h1>`s said "Industrial" and "Senior Housing", the breadcrumb schema said
+  "HUD & Affordable Housing", and the prerender meta said "Industrial &
+  Logistics Management".
+
+`track` on an asset class is a **presentation split, not a portfolio claim**. It
+records which set a class leads in on `/asset-types`; it does not say what HHP
+holds or is willing to manage. All six have full management pages. Never write
+copy off it that reads as absence — no "we manage four asset classes", no "we do
+not manage retail". The only claim about assets actually operated is
+`proof.kind: 'operating'`, and only Senior Housing and Affordable Housing carry
+it.
+
+Home lists both sets as 3×2 card grids on alternating grounds: services, then
+asset classes. The asset classes band is **one grid of six** — it was briefly
+split into a management set above a brokerage set, which said the six classes
+twice on one screen and put retail and industrial visibly outside a group. The
+two tracks live in that section's intro sentence instead. `/asset-types` is
+where they get room to be explained.
+
+`/services/asset-management` is the umbrella's own page. It did not exist: asset
+management is the firm's whole positioning and the only destination the site had
+for it was `/about`. It is built in the current design language — `scrim-hero`,
+`eyebrow`, `section-title`, sections rendered open — not the older services-page
+pattern of a flat navy wash and a collapsed accordion. Prefer its shape when
+rebuilding the others.
+
 ## Asset type pages
 
 All six render from `src/components/AssetTypePage.tsx`. Change the template, not
@@ -204,7 +250,7 @@ collapsed six-row accordion — the substance of the page hidden behind closed r
 
 ## Routing
 
-30 routes, all reachable from the header, footer, or a hub page. Verify after any routing change — this should print nothing:
+31 routes, all reachable from the header, footer, or a hub page. Verify after any routing change — this should print nothing:
 
 ```bash
 grep -oE 'path="[^"]+"' src/App.tsx | sed 's/path="//;s/"//' | sort -u > /tmp/routes.txt
@@ -338,7 +384,18 @@ Tracked but not yet addressed:
 - **Nine service pages share a byte-identical "ABOUT US" paragraph**, and the lower half
   of each has no imagery. Extracting the repeated blocks (`AboutSplit`, `CareersBand`,
   `FaqCta`, `PageHero`, `Section`) into shared components would stop the duplication
-  drifting and make per-page imagery a one-line change.
+  drifting and make per-page imagery a one-line change. Those pages also still carry the
+  retired design language — flat `bg-hhp-navy/60` hero washes, uppercase letter-spaced
+  `<h2>`, six-row accordions. `src/pages/services/AssetManagement.tsx` is the shape to
+  rebuild them toward.
+- **`scripts/routeMeta.mjs` keeps its own asset-class labels** ("Industrial & Logistics
+  Management"), so search results can disagree with the site. It is plain ESM run by
+  Node at prerender time and cannot import the `.ts` data module without a loader, so
+  aligning it means duplicating the labels there by hand.
+- **The footer files "Asset Classes" inside the "Capabilities" column**, mixing a sector
+  into a list of capabilities. It wants its own column.
+- **`FAQ.tsx` and `Insights.tsx` still enumerate the asset classes as prose**, so they
+  are outside `src/data/assetTypes.ts` and can drift from it.
 - **The About hero photograph is a New York skyline** on an Oklahoma operator's site.
 - **`useSEO.ts` is imported by no page** (superseded by the prerender step) — remove or
   wire it up.

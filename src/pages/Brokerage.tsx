@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Building, TrendingUp, DollarSign, BarChart3, CheckCircle, ArrowRight, Target, Users, Zap } from 'lucide-react';
 import Layout from '@/components/Layout/Layout';
+import { ASSET_CLASSES, assetClassSentence } from '@/data/assetTypes';
 import commercialImage from '@/assets/commercial-building.webp';
 
 const Brokerage = () => {
@@ -14,7 +15,9 @@ const Brokerage = () => {
               Brokerage Services — Backed by In-House Underwriting
             </h1>
             <p className="text-xl leading-relaxed text-white/90 mb-12">
-              Sales, leasing, and capital markets across multifamily, office, industrial, retail, mixed-use, and senior housing. We underwrite in-house, match buyers against live market data, and optimize every transaction.
+              Sales, leasing, and capital markets across {assetClassSentence()}. We
+              underwrite in-house, match buyers against live market data, and
+              optimize every transaction.
             </p>
             <Link to="/contact" className="bg-white text-hhp-navy px-8 py-4 rounded-lg font-medium hover:bg-white/90 transition-all duration-300 shadow-elegant">
               Schedule Consultation
@@ -37,20 +40,25 @@ const Brokerage = () => {
                 Investment sales across the major asset classes, underwritten in house. Because we also operate buildings, our expense assumptions come from what the work actually costs us — which is what holds up under a buyer's diligence.
               </p>
 
+              {/* The canonical six, from the data module, each linked to its own
+                  page. This list was previously five hand-written buckets that
+                  agreed with no other surface on the site — it added "mixed-use"
+                  and "specialized assets", dropped affordable housing entirely,
+                  and none of the entries went anywhere. */}
               <div className="space-y-4">
                 <h3 className="text-lg font-display font-semibold text-hhp-navy mb-4">Asset Classes:</h3>
                 <div className="grid grid-cols-1 gap-3">
-                  {[
-                    'Multifamily',
-                    'Office buildings and portfolios',
-                    'Industrial and warehouse properties',
-                    'Retail and mixed-use developments',
-                    'Senior housing and specialized assets'
-                  ].map((service, index) => (
-                    <div key={index} className="flex items-start space-x-3">
+                  {ASSET_CLASSES.map((assetClass) => (
+                    <Link
+                      key={assetClass.slug}
+                      to={assetClass.href}
+                      className="tap group flex items-start space-x-3"
+                    >
                       <CheckCircle className="h-5 w-5 icon-accent mt-0.5 flex-shrink-0" />
-                      <span className="text-hhp-charcoal">{service}</span>
-                    </div>
+                      <span className="text-hhp-charcoal transition-colors duration-200 group-hover:text-hhp-navy group-hover:underline">
+                        {assetClass.label}
+                      </span>
+                    </Link>
                   ))}
                 </div>
               </div>

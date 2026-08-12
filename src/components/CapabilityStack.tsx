@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useActiveStep } from '@/hooks/useActiveStep';
+import { CAPABILITIES } from '@/data/capabilities';
 
 /**
  * The firm, in section.
@@ -19,15 +20,11 @@ import { useActiveStep } from '@/hooks/useActiveStep';
  * Brokerage is deliberately not a layer here. It is a supporting capability, not
  * a peer discipline, and putting it in the stack would restate exactly the
  * hierarchy the repositioning removed.
+ *
+ * The layer copy lives in src/data/capabilities.ts, shared with the Asset
+ * Management page. The `id` of each capability keys into SLABS below, so a new
+ * layer needs geometry here as well as an entry there.
  */
-
-type Capability = {
-  id: string;
-  name: string;
-  role: string;
-  body: string;
-  href: string;
-};
 
 type Slab = { x: number; y: number; w: number; h: number };
 
@@ -71,44 +68,6 @@ const SPINE_X = 195;
    silhouette and read as misalignment. Both clear the widest layer's edge. */
 const TAB_X = 104;
 const LABEL_X = 126;
-
-const CAPABILITIES: Capability[] = [
-  {
-    id: 'am',
-    name: 'Asset Management',
-    role: 'The umbrella',
-    body: 'Strategy, underwriting and owner reporting for the asset as a whole. Everything below reports into it, which is why there is one set of numbers rather than four vendors’ versions of them.',
-    href: '/about',
-  },
-  {
-    id: 'pm',
-    name: 'Property Management',
-    role: 'Operations',
-    body: 'Day-to-day operations, leasing administration, compliance and resident experience — staffed by HHP personnel, not a call centre.',
-    href: '/services/property-management',
-  },
-  {
-    id: 'fs',
-    name: 'Facility Services',
-    role: 'Self-performed trades',
-    body: 'Construction, roofing, HVAC, plumbing, electrical, lawncare and janitorial, performed by our own personnel. No subcontractor markup on self-performed work, and specialty vendors only where licensing requires it.',
-    href: '/services/facility-services',
-  },
-  {
-    id: 'fin',
-    name: 'Financial Services',
-    role: 'Accounting',
-    body: 'Accounting, financial analysis and reporting in house. Because the people doing the work and the people reporting the cost sit in the same firm, owners get line-item visibility instead of a month-end lag.',
-    href: '/services/financial-services',
-  },
-  {
-    id: 'tech',
-    name: 'Technology',
-    role: 'The foundation',
-    body: 'The operating and reporting systems are built and maintained by HHP rather than licensed. That is what makes real-time cost reporting possible at all — the data comes from our own work orders.',
-    href: '/technology',
-  },
-];
 
 const CapabilityStack = () => {
   const { active, progress, setRef } = useActiveStep(CAPABILITIES.length);

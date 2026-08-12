@@ -57,6 +57,11 @@ export const ROUTE_META = {
     description:
       'Asset management, property management, Facility Services, financial services, and brokerage advisory — delivered by one accountable firm.',
   },
+  '/services/asset-management': {
+    title: t('Asset Management'),
+    description:
+      'The umbrella capability: business plan, underwriting, capital planning and owner reporting, with property management, the trades and accounting reporting into it.',
+  },
   '/services/property-management': {
     title: t('Property Management'),
     description:

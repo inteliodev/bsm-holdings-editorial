@@ -5,6 +5,13 @@ import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 
 const Services = () => {
   const services = [
+    // Asset management leads: it is the umbrella the rest report into, and this
+    // grid is where the Services tab lands when the label itself is clicked.
+    {
+      title: "Asset Management",
+      image: "/images/asset-management-image.jpg",
+      href: "/services/asset-management"
+    },
     {
       title: "Property Management",
       image: "/images/property-management-picture.webp",

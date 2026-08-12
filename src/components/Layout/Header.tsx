@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ChevronDown, Menu, X, ChevronRight } from 'lucide-react';
+import { ASSET_CLASSES } from '@/data/assetTypes';
 import { trackNavigationClick, trackLinkClick, trackButtonClick } from '@/utils/analytics';
 
 const Header = () => {
@@ -19,16 +20,24 @@ const Header = () => {
   const navigate = useNavigate();
 
   /**
-   * Asset management is the positioning; "Services" is the nav label because it
-   * is what visitors look for. Technology sits inside it rather than being a
-   * top-level tab — a "Technology" tab reads as selling software, which is the
+   * The two dropdowns split on capability vs sector: Services is what we do,
+   * Asset Classes is what we do it to. That is the only split that does not
+   * repeat itself.
+   *
+   * A previous pass gave asset management and brokerage a tab each, to carry the
+   * two tracks in the nav. Both tracks are about the same six classes, so both
+   * dropdowns listed them and the header said everything twice. The tracks are
+   * still on Home and on /asset-types, where there is room to explain them.
+   *
+   * Services leads with Asset Management because it is the umbrella — the same
+   * order CapabilityStack uses. Technology stays inside it rather than being a
+   * top-level tab: a "Technology" tab reads as selling software, which is the
    * opposite of how HHP positions. Brokerage sits there too, as a supporting
    * capability rather than a headline.
    *
-   * Asset types have their own tab. They were four rows of a flat nine-item
-   * Services menu that mixed capabilities with sectors, and only three of the
-   * six were listed — office, retail and industrial had no path from the header
-   * at all. The footer already treated Asset Types as a top-level destination.
+   * Class names come from the data module. They were hand-written here and in
+   * four other places, which is how the header ended up saying "Industrial &
+   * Logistics" while the page it linked to said "Industrial".
    */
   const navigation = [
     { name: 'About', href: '/about' },
@@ -36,6 +45,7 @@ const Header = () => {
       name: 'Services',
       href: '/services',
       submenu: [
+        { name: 'Asset Management', href: '/services/asset-management' },
         { name: 'Property Management', href: '/services/property-management' },
         { name: 'Facility Services', href: '/services/facility-services' },
         { name: 'Financial Services', href: '/services/financial-services' },
@@ -44,17 +54,15 @@ const Header = () => {
       ]
     },
     {
-      name: 'Asset Types',
+      name: 'Asset Classes',
       href: '/asset-types',
       submenu: [
-        { name: 'Multifamily', href: '/asset-types/multifamily' },
-        { name: 'Affordable Housing', href: '/asset-types/hud-affordable' },
-        { name: 'Senior Housing', href: '/asset-types/senior-housing' },
-        { name: 'Office', href: '/asset-types/office' },
-        { name: 'Retail', href: '/asset-types/retail' },
-        { name: 'Industrial & Logistics', href: '/asset-types/industrial' },
+        ...ASSET_CLASSES.map((assetClass) => ({
+          name: assetClass.label,
+          href: assetClass.href,
+        })),
         { name: 'divider', href: '' },
-        { name: 'All Asset Types', href: '/asset-types' }
+        { name: 'All Asset Classes', href: '/asset-types' }
       ]
     },
     { name: 'Properties', href: '/portfolio' }
@@ -69,13 +77,13 @@ const Header = () => {
   };
 
   /**
-   * Which dropdown tab the current route belongs to. `/asset-types` used to
-   * light up Services; now each tab owns its own prefixes. Services keeps the
-   * routes that live outside `/services` but are Services entries.
+   * Which dropdown tab the current route belongs to. Each tab owns its own
+   * prefixes. Services keeps the routes that live outside `/services` but are
+   * Services entries — `/technology` and `/brokerage`.
    */
   const isDropdownActive = (name: string) => {
     const path = location.pathname;
-    if (name === 'Asset Types') return path.startsWith('/asset-types');
+    if (name === 'Asset Classes') return path.startsWith('/asset-types');
     if (name === 'Services') {
       return (
         path.startsWith('/services') ||
@@ -146,7 +154,7 @@ const Header = () => {
     setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
   };
 
-  // Handle main button click (for Services and Asset Types)
+  // Handle main button click (for the three tabs that own a landing page)
   const handleMainButtonClick = (dropdownName: string, href: string) => {
     // Navigate to the main page
     navigate(href);
@@ -325,7 +333,11 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6 sm:gap-8 ml-auto mr-0" role="menubar">
+          {/* Gaps tighten at lg and open back up at xl. `sm:gap-8` on a nav that
+              only exists at `lg` and up was a flat gap-8 in practice, which left
+              no headroom — a five-tab arrangement pushed the utility links past
+              the right edge at 1024px. Kept responsive at four tabs. */}
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-8 ml-auto mr-0" role="menubar">
             {navigation.map((item) => (
               <div key={item.name} className="relative">
                 {item.submenu ? (
@@ -457,7 +469,7 @@ const Header = () => {
 
             {/* Utility Links */}
             <div
-              className={`ml-4 flex items-center space-x-2 border-l pl-4 sm:ml-6 sm:space-x-3 sm:pl-6 ${
+              className={`ml-2 flex items-center space-x-1 border-l pl-2 xl:ml-6 xl:space-x-3 xl:pl-6 ${
                 isTransparent ? 'border-white/25' : 'border-border'
               }`}
             >

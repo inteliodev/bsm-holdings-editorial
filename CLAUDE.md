@@ -18,7 +18,9 @@ The site positions HHP as **Vertically Integrated. Data Driven. Forward Thinking
 2. **Do not write in SaaS/tech-vendor voice.** Copy like "our platform automates routine workflows and surfaces actionable insights" is explicitly rejected. HHP is the operator — lead with people, crews, and accountability; technology is a supporting fact, not the subject.
 3. **Vertical integration is the core claim, and it extends to the software.** Property management, every facility service trade, and accounting are in-house — and so are the asset management and operating systems, which HHP builds and maintains rather than licenses.
 
-4. **Asset management is the umbrella, and it leads.** HHP presents as an asset management firm. Property management, facility services, and financial services are capabilities *beneath* that umbrella, not peer business lines. **Brokerage is a supporting capability, not a headline** — it appears as one nav entry and as a credibility point ("we underwrite from the expense side because we operate the buildings"), never as a co-equal pillar. Do not reintroduce brokerage-first enumerations like "Brokerage, asset management, property management, and…".
+4. **Asset management is the umbrella, and it leads.** HHP presents as an asset management firm. Property management, facility services, and financial services are capabilities *beneath* that umbrella, not peer business lines. Its own page is `/services/asset-management`, and it is the first entry in the Services menu for that reason. **Brokerage is a supporting capability, not a headline** — it appears as one nav entry and as a credibility point ("we underwrite from the expense side because we operate the buildings"), never as a co-equal pillar. Do not reintroduce brokerage-first enumerations like "Brokerage, asset management, property management, and…".
+
+   A pass once gave brokerage its own top-level tab, to carry the two tracks (see *Asset classes* below) in the nav. It was reverted: both tracks are about the same six classes, so both dropdowns listed them and the header said everything twice. The tracks belong on Home and `/asset-types`, where there is room to explain them; the nav splits on capability vs sector instead.
 
 5. **Do not use the word "crew."** Say *self-performed*, *in house*, *our own personnel*, or name the trade. The register is formal and precise — an institutional operator, not a jobsite.
 4. **Cost control is the payoff.** Self-performing means true line-item cost visibility, no subcontractor markup on self-performed work, and real-time cost reporting to owners instead of a month-end lag. Tie technology claims back to this.
@@ -116,21 +118,52 @@ Renamed routes keep their old path pointing at the same component rather than re
 ### Header navigation
 The `navigation` array at the top of `src/components/Layout/Header.tsx` is the
 only source of truth for the header. Four tabs: **About · Services · Asset
-Types · Properties**, plus the Contact CTA and the two portal utility links.
+Classes · Properties**, plus the Contact CTA and the two portal utility links.
 
-Services holds the five capabilities (Property Management, Facility Services,
-Financial Services, Brokerage & Advisory, Technology). **Asset Types is its own
-tab** listing all six types — it used to be four rows of a flat nine-item
-Services menu that mixed capabilities with sectors, and office, retail and
-industrial had no path from the header at all. The footer already treated Asset
-Types as a top-level destination.
+**The two dropdowns split on capability vs sector** — Services is what we do,
+Asset Classes is what we do it to. That is the only split that does not repeat
+itself; see rule 4 for the two-tab arrangement that did.
+
+- **Services** — six capabilities, Asset Management first because it is the
+  umbrella (same order as `CapabilityStack`): Asset Management, Property
+  Management, Facility Services, Financial Services, Brokerage & Advisory,
+  Technology. Technology stays inside it: a "Technology" tab reads as selling
+  software, which is the opposite of how HHP positions.
+- **Asset Classes** → `/asset-types`, listing all six of `ASSET_CLASSES` plus
+  "All Asset Classes". Labels are mapped from `src/data/assetTypes.ts` — do not
+  hand-write them here; that is how the header ended up saying "Industrial &
+  Logistics" while the page it linked to said "Industrial".
 
 Both dropdown tabs have a landing page, so clicking the label navigates and the
 chevron (mobile) expands. `isDropdownActive()` decides which tab lights up;
 Services owns `/technology` and `/brokerage` as well as `/services`. Dropdown
-containers register into one `dropdownRefs` map — click-outside needs *every*
-container, and the earlier two-ref version ANDed a ref that was never attached,
-so the menu could only be closed by the hover timer or Escape.
+containers register into one `dropdownRefs` map keyed by tab name — click-outside
+needs *every* container, and the earlier two-ref version ANDed a ref that was
+never attached, so the menu could only be closed by the hover timer or Escape.
+
+Nav gaps are `gap-4 xl:gap-8` and the utility group tightens to `ml-2 pl-2` below
+`xl`. `sm:gap-8` on a nav that only exists at `lg` and up was a flat `gap-8` in
+practice, which left no headroom — a five-tab arrangement pushed the portal links
+past the right edge at 1024px.
+
+### Capability pages
+`src/data/capabilities.ts` holds the five layers, in stack order, shared by
+`CapabilityStack` (the scrollytelling section on Home) and
+`src/pages/services/AssetManagement.tsx`, which lists the four that report into
+it via `REPORTING_CAPABILITIES`. Each `id` keys into `CapabilityStack`'s `SLABS`
+geometry, so a new layer needs an entry in both places.
+
+`/services/asset-management` is new and is the umbrella's page. It did not exist:
+asset management is the firm's whole positioning, and the only destination the
+site had for it was `/about`. It is built in the current design language —
+`scrim-hero`, `eyebrow`, `section-title`, sections rendered open — rather than
+the older services-page pattern of a flat navy wash and a collapsed accordion.
+**Do not convert it to an accordion**, and prefer this shape over
+`PropertyManagement.tsx`/`FinancialServices.tsx` when rebuilding the others.
+
+Note the older services pages still carry the retired language (`bg-hhp-navy/60`
+hero washes, uppercase letter-spaced `<h2>`, six-row accordions, the "ABOUT US"
+split panel). They have not been rebuilt yet.
 
 ### Marketing Sections
 Home and Technology compose several standalone section components. When updating positioning copy, these are usually the files to touch:
@@ -235,6 +268,40 @@ mayorwallis.com says 1995. Flagged in a comment on the record, not guessed at.
 `public/favicon.svg` is the master — a single **H** from the brand letterform on
 `#0A2342`. The PNGs are rasterised from it. Do not regenerate them from the
 three-letter lockup: at 16px it is an illegible smear.
+
+### Asset classes: the two tracks
+`src/data/assetTypes.ts` is the single source of truth for the six class names.
+The same six things were previously labelled five different ways across the
+header, the index page, the detail pages' own `<h1>`s, the breadcrumb schema and
+the prerender meta. Consumers today: `Header.tsx`, `Home.tsx`, `AssetTypes.tsx`,
+`Brokerage.tsx`, `SiteSchema.tsx`. Change a label there, never in a component.
+
+`track` splits the six for presentation:
+
+- `management` (Multifamily, Affordable Housing, Senior Housing, Office) — the
+  classes the operation is built around, shown as image cards.
+- `advisory` (Retail, Industrial) — brokerage and advisory lead.
+
+**`track` is not a portfolio claim and not a limit.** All six have full
+management pages, and every surface that lists the management four also lists all
+six under brokerage — that repetition is deliberate, because a four-card set
+followed by a two-card set reads as a boundary. Never write copy off this field
+that reads as absence: no "we manage four asset classes", no "we do not manage
+retail". Same rule as `proof.kind: 'seeking'`.
+
+The only claim about assets HHP actually operates is `proof.kind: 'operating'`,
+and only Senior Housing and Affordable Housing carry it. The Pryor campus belongs
+in those two `proof` blocks and nowhere else — on an index card it reads as the
+extent of the portfolio rather than an example of it.
+
+`src/components/AssetMark.tsx` holds the six drawn line marks. It was extracted
+from `AssetTypePage` so the index and Home could use them for the brokerage
+track; six more photographs there would have read as a stock-image wall.
+
+`src/pages/AssetTypes.tsx` is the index: hero → two-track intro → management
+cards → all six under brokerage → closing band. Hook copy renders **at rest**.
+The previous version hid it behind `group-hover:opacity-100`, so on a touch
+device the page was six photographs and nothing else.
 
 ### Reusable Page Templates
 `src/components/AssetTypePage.tsx` is a shared template used by all 6 asset type

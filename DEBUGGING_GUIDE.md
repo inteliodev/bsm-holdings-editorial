@@ -152,6 +152,68 @@ wrong place, walk its ancestors looking for these properties first.
 
 ---
 
+## 🖱️ **A TRANSPARENT SPACER SWALLOWED EVERY HOME HERO CTA (FIXED)**
+
+### Symptom
+All three buttons in the Home hero — Explore Services, Contact Us, Explore
+Technology — did nothing when clicked. They rendered correctly, hovered
+correctly, showed the right `href` in the status bar, and were correct `<Link>`
+elements pointing at real routes. Types and build were clean. Nothing errored.
+
+Only one of them was reported as broken, because nobody had tried the others.
+
+### Root cause
+Home's hero is `position: fixed; inset: 0; z-index: 0`, with the page content
+scrolling over it. Directly after it in the DOM sits a full-viewport spacer whose
+only job is to push the content down:
+
+```jsx
+<section className="fixed inset-0 ... z-0">   {/* hero, with the CTAs */}
+<div className="relative z-0 h-screen ..." aria-hidden="true" />  {/* spacer */}
+```
+
+**Both are `z-index: 0` in the same stacking context, so the later sibling wins.**
+The spacer painted on top of the entire hero and took every click. It is
+transparent, so there was nothing to see — the buttons were visible *through* an
+invisible sheet covering them.
+
+### Fix
+The spacer is `aria-hidden` and purely a layout device, so it should never
+receive pointer events at all:
+
+```jsx
+<div className="pointer-events-none relative z-0 h-screen ..." aria-hidden="true" />
+```
+
+Deliberately **not** fixed by changing z-indexes. That stacking context is
+load-bearing — `Footer.tsx` carries `relative z-30` because of it, and Home's
+scrolling content depends on painting over the fixed hero. Raising the hero would
+have risked reintroducing the invisible-footer bug.
+
+### How to detect this class of bug
+A screenshot will not catch it and neither will a link audit — the markup is
+correct. Hit-test the element's own centre point instead:
+
+```js
+// in the browser console, or via Playwright's browser_evaluate
+[...document.querySelectorAll('a, button')].filter(el => {
+  const r = el.getBoundingClientRect();
+  if (!r.width || !r.height) return false;
+  const hit = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+  return hit && el !== hit && !el.contains(hit);   // something else is on top
+});
+```
+
+Anything this returns is unclickable regardless of how it looks. Worth running
+over any page that layers a `fixed` element under scrolling content.
+
+### Worth remembering
+`z-index: 0` is not "no z-index" — it creates a stacking context and competes on
+DOM order. Two siblings at `z-0` are decided by which comes last, so an overlay
+you never intended can be created by an element with no visual presence at all.
+
+---
+
 ## 📱 **DELETING THE `!important` BLOCK REMOVED TOUCH TARGETS**
 
 The ~220-line mobile override block in `index.css` was mostly harmful — it reset

@@ -13,10 +13,13 @@ const COMPANY_LINKS = [
 ];
 
 const SERVICE_LINKS = [
+  { to: '/services/asset-management', label: 'Asset Management' },
   { to: '/services/property-management', label: 'Property Management' },
   { to: '/services/facility-services', label: 'Facility Services' },
   { to: '/services/financial-services', label: 'Financial Services' },
-  { to: '/asset-types', label: 'Asset Types' },
+  // "Asset Classes", matching the page and the header tab. This column still
+  // mixes a sector into a capability list, which is a separate problem.
+  { to: '/asset-types', label: 'Asset Classes' },
   { to: '/technology', label: 'Technology' },
   { to: '/brokerage', label: 'Brokerage' },
 ];

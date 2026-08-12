@@ -24,6 +24,7 @@ const Portfolio = lazy(() => import("./pages/Portfolio"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // New Service Pages
+const AssetManagement = lazy(() => import("./pages/services/AssetManagement"));
 const PropertyManagement = lazy(() => import("./pages/services/PropertyManagement"));
 const LeasingRepresentation = lazy(() => import("./pages/services/LeasingRepresentation"));
 const InvestmentCapitalMarkets = lazy(() => import("./pages/services/InvestmentCapitalMarkets"));
@@ -74,6 +75,7 @@ const App = () => (
               <Route path="/" element={<Home />} />
 
               {/* Services Routes */}
+              <Route path="/services/asset-management" element={<AssetManagement />} />
               <Route path="/services/property-management" element={<PropertyManagement />} />
               <Route path="/services/leasing-representation" element={<LeasingRepresentation />} />
               <Route path="/services/investment-capital-markets" element={<InvestmentCapitalMarkets />} />
