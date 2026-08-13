@@ -163,8 +163,84 @@ const Home = () => {
 
       {/* Content that scrolls up over the fixed hero */}
       <div className="relative z-30">
-      {/* Our Approach Section */}
+
+      {/* Who We Are Section
+
+          The first thing after the hero. Home previously opened straight into
+          "Our approach" — how the firm operates — without ever saying what the
+          firm is, so a visitor met the argument before the subject.
+
+          This is identity; the section below is method. Keep them distinct: what
+          we are and where we came from here, how we run an asset there.
+
+          Every claim is sourced from /about (the operator-first origin, the
+          fragmented-model problem, the fiduciary standard) or from
+          src/data/serviceArea.ts. Do not add figures here without a real source —
+          firm-level statistics are exactly what this site has had to strip out
+          before. */}
       <section className="bg-white py-14 sm:py-20 lg:py-24">
+        <div className="container-premium">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <span className="eyebrow mb-5">Who We Are</span>
+              <h2 className="section-title text-hhp-navy">
+                An operator before a service provider
+              </h2>
+            </div>
+
+            <div className="lg:col-span-7">
+              <p className="text-xl sm:text-2xl font-heading leading-snug text-hhp-navy">
+                HHP Asset Management is a vertically integrated real estate
+                operating company in Oklahoma, working across the Tulsa and
+                Oklahoma City metros.
+              </p>
+
+              <div className="mt-7 space-y-5 text-lg leading-relaxed text-hhp-charcoal">
+                <p>
+                  We began by managing our own portfolio, before managing anyone
+                  else&apos;s. The firm is still built that way. Property
+                  management, every facility trade and the accounting are
+                  performed by our own personnel — the trades through HHP
+                  Facility Services, LLC — and the operating and reporting
+                  systems are built and maintained in house rather than licensed.
+                </p>
+                <p>
+                  The conventional model divides management, maintenance,
+                  accounting and advisory across separate firms. Each answers to
+                  someone else, and the owner is left holding the coordination
+                  risk and the only complete view of the asset. Holding those
+                  functions ourselves is what lets one firm answer for the
+                  result — and what makes cost visible at the line item rather
+                  than inside a vendor invoice.
+                </p>
+              </div>
+
+              <blockquote className="mt-8 border-l-2 border-hhp-gold pl-6 sm:pl-8">
+                <p className="font-heading text-lg sm:text-xl leading-snug text-hhp-navy">
+                  Every service operates under a single standard: treat every
+                  asset as if we own it.
+                </p>
+              </blockquote>
+
+              <Link
+                to="/about"
+                className="tap group mt-8 inline-flex items-center gap-2 font-display font-semibold text-hhp-navy transition-colors hover:text-hhp-gold"
+                onClick={() => {
+                  trackButtonClick('about_hhp', 'who_we_are');
+                  trackLinkClick('More about the firm', '/about');
+                }}
+              >
+                More about the firm
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Approach Section — grounds alternate from here down:
+          white (who we are) → surface → white (services) → surface (classes). */}
+      <section className="bg-surface py-14 sm:py-20 lg:py-24">
         <div className="container-premium">
           <div className="max-w-4xl mx-auto">
             <h2 className="section-title text-hhp-navy mb-8 sm:mb-10 text-center">

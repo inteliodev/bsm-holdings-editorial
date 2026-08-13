@@ -206,12 +206,24 @@ not manage retail". The only claim about assets actually operated is
 `proof.kind: 'operating'`, and only Senior Housing and Affordable Housing carry
 it.
 
-Home lists both sets as 3×2 card grids on alternating grounds: services, then
-asset classes. The asset classes band is **one grid of six** — it was briefly
-split into a management set above a brokerage set, which said the six classes
-twice on one screen and put retail and industrial visibly outside a group. The
-two tracks live in that section's intro sentence instead. `/asset-types` is
-where they get room to be explained.
+Home runs: **who we are → our approach → services → asset classes →
+`CapabilityStack` → service area**, on strictly alternating white/surface
+grounds. Keep the alternation if you add a section.
+
+The first two are deliberately distinct and should stay that way — *who we are*
+is identity (what the firm is, the operator-first origin, what is held in
+house), *our approach* is method (how an asset is run). Home previously opened
+straight into the approach, so a visitor met the argument before the subject.
+Every claim in the identity section is sourced from `/about` or
+`src/data/serviceArea.ts`; do not add firm-level figures there without a real
+source.
+
+Services and asset classes are both 3×2 card grids mapped from their data
+modules. The asset classes band is **one grid of six** — it was briefly split
+into a management set above a brokerage set, which said the six classes twice on
+one screen and put retail and industrial visibly outside a group. The two tracks
+live in that section's intro sentence instead. `/asset-types` is where they get
+room to be explained.
 
 `/services/asset-management` is the umbrella's own page. It did not exist: asset
 management is the firm's whole positioning and the only destination the site had

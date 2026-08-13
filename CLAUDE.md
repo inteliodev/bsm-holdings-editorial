@@ -172,8 +172,27 @@ Home and Technology compose several standalone section components. When updating
 - `src/components/DisciplinesSection.tsx` — three disciplines (Asset Management, Property Management, Facility Services). Rendered on Technology, not Home.
 - `src/pages/FacilityServices.tsx` — self-performed trades grid (data lives in the `selfPerformedTrades` array at the top of the file), cost-control and in-house-technology sections
 
+### Home page order
+**Who we are → our approach → services → asset classes → `CapabilityStack` →
+service area**, on strictly alternating white/surface grounds. Keep the
+alternation if you add a section.
+
+The first two are distinct on purpose: *who we are* is identity (what the firm
+is, the operator-first origin, what is held in house), *our approach* is method
+(how an asset is run). Home used to open on the approach, so a visitor met the
+argument before the subject. Claims in the identity section are sourced from
+`/about` and `src/data/serviceArea.ts` — do not add firm-level figures there
+without a real source.
+
 ### Homepage Stacking Context (known gotcha)
 The Home hero is `position: fixed; z-index: 0` with content scrolling over it, so **any sibling that must appear above the hero needs an explicit stacking context**. A `position: fixed` element paints above static content regardless of z-index, which previously left the footer invisible on Home. `Footer.tsx` carries `relative z-30` for this reason — do not remove it. Home's own scrolling content uses the same `relative z-30` wrapper.
+
+The full-viewport scroll spacer directly after the hero carries
+`pointer-events-none`, and that is load-bearing. It is `relative z-0` and the
+hero is `fixed inset-0 z-0`, so as the later sibling it painted over the hero and
+swallowed the clicks on all three hero CTAs — they rendered and hovered
+correctly and did nothing. See `DEBUGGING_GUIDE.md`. Fix layering problems there
+with pointer events, not by changing these z-indexes.
 
 ### Scrollytelling sections (the house pattern)
 Three sections share one interaction — a sticky diagram beside scrolling steps,
