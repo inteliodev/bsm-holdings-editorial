@@ -25,7 +25,7 @@ const MAX_WIDTH = 1920;
 const PORTRAIT_MAX = 900;
 const QUALITY = 78;
 // Open Graph images are specified at 1200x630 and must stay PNG/JPEG.
-const OG_IMAGE = 'hhp-social-share.png';
+const OG_IMAGE = 'bsm-social-share.png';
 
 const PORTRAITS = /(-ashley|fanning|pollard|headshot)/i;
 const TARGETS = [join(ROOT, 'public/images'), join(ROOT, 'src/assets')];
