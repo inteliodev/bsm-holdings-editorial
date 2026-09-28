@@ -332,7 +332,7 @@ const Brokerage = () => {
             Ready to Transform Your Portfolio?
           </h2>
           <p className="text-xl leading-relaxed text-white/90 mb-12 max-w-3xl mx-auto">
-            Experience the future of commercial real estate brokerage with vertically integrated execution and disciplined execution.
+            Commercial real estate brokerage with disciplined execution.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">

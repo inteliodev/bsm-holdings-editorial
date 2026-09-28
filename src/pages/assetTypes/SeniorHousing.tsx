@@ -117,7 +117,7 @@ const SeniorHousing = () => {
         tenantRepresentation: 'Resident & Family Engagement',
       }}
       servicesTitle="Integrated services for senior housing"
-      servicesSubtitle="Six capabilities under one firm — the same structure we run our own communities on."
+      servicesSubtitle="Six capabilities — the same structure we run our own communities on."
 
       technologyTitle="The BSM Holdings advantage for senior housing"
       technologyAdvantages={[

@@ -80,7 +80,7 @@ const AssetTypes = () => {
                   Our asset management operation is built around multifamily,
                   affordable housing, senior housing and office — the classes where
                   we run leasing, the facility trades and the accounting ourselves,
-                  under one firm and one system of record.
+                  with a clear system of record.
                 </p>
                 <p>
                   Brokerage and advisory run wider, across all six. We underwrite
@@ -100,8 +100,8 @@ const AssetTypes = () => {
               The classes our operation is built around
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-hhp-charcoal">
-              Property management, every facility trade and the accounting sit under
-              one roof, so one firm answers for how the asset performs.
+              Property management, facility trades, and accounting are coordinated
+              with clear accountability for how the asset performs.
             </p>
 
             <div className="mt-10 grid grid-cols-1 gap-0 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6 -mx-4 sm:mx-0">

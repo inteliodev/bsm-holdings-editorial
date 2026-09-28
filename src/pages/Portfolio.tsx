@@ -92,10 +92,10 @@ const Portfolio = () => {
         <div className="container-premium flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="font-display text-lg font-semibold text-hhp-navy">
-              Looking for property management?
+              Looking for a Property Manager?
             </h2>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-hhp-charcoal/70">
-              We manage residential properties across Oklahoma — clear owner reporting and direct resident support.
+              We manage residential properties in the Oklahoma City metro — clear owner reporting and direct resident support.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -103,11 +103,11 @@ const Portfolio = () => {
               to="/contact"
               className="btn-hero"
               onClick={() => {
-                trackButtonClick('portfolio_cta_consultation', 'portfolio');
-                trackLinkClick('Request a Consultation', '/contact');
+                trackButtonClick('portfolio_cta_discuss', 'portfolio');
+                trackLinkClick('Discuss Your Property', '/contact');
               }}
             >
-              Request a consultation
+              Discuss Your Property
             </Link>
             <Link
               to="/services/property-management"

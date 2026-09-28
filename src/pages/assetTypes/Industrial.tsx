@@ -116,7 +116,7 @@ const Industrial = () => {
         tenantRepresentation: 'Tenant & Stakeholder Relations',
       }}
       servicesTitle="Integrated services for industrial"
-      servicesSubtitle="Six capabilities under one firm, so no part of the facility is somebody else's responsibility."
+      servicesSubtitle="Six capabilities, so no part of the facility is somebody else's responsibility."
 
       technologyTitle="The BSM Holdings advantage for industrial"
       technologyAdvantages={[

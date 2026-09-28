@@ -23,27 +23,27 @@ import { RESIDENT_PORTAL_URL } from '@/lib/site';
 const HOW_WE_MANAGE = [
   {
     step: '01',
-    title: 'Onboard',
+    title: 'Getting Started',
     description:
-      'Intake the asset, confirm lease and financial baselines, and set owner reporting preferences.',
+      'We review your property, current leases, and goals. Then we agree on rent targets, make-ready needs, and how you want to stay informed.',
   },
   {
     step: '02',
-    title: 'Operate',
+    title: 'Daily Management',
     description:
-      'Leasing, resident care, maintenance, and compliance run day to day under one accountable team.',
+      'Leasing, rent collection, resident communication, and maintenance coordination run day to day so you are not chasing after-hours calls.',
   },
   {
     step: '03',
-    title: 'Report',
+    title: 'Owner Reporting',
     description:
-      'Owners see occupancy, collections, budget variances, and open items as they change — with clear notes.',
+      'You receive clear updates on occupancy, collections, expenses, and open maintenance — with notes on what changed and what is next.',
   },
   {
     step: '04',
-    title: 'Improve',
+    title: 'Ongoing Planning',
     description:
-      'We close the loop: what moved, what is next, and where cost or response time can get better.',
+      'Renewals, make-ready, and repair priorities are planned ahead so vacancies and surprises are less likely to catch you off guard.',
   },
 ];
 
@@ -52,7 +52,7 @@ const WHATS_INCLUDED = [
     value: 'leasing',
     icon: KeyRound,
     title: 'Leasing',
-    lead: 'Fill vacancies with qualified residents and keep lease terms enforceable.',
+    lead: 'Fill vacancies with qualified residents and keep lease terms clear.',
     items: [
       'Marketing and showing coordination',
       'Application screening and lease prep',
@@ -76,7 +76,7 @@ const WHATS_INCLUDED = [
     value: 'maintenance',
     icon: Wrench,
     title: 'Maintenance & facility trades',
-    lead: 'Work performed in-house through BSM Holdings Facility Services, LLC where it improves cost or speed.',
+    lead: 'Repairs coordinated under your approval rules. When it fits, work can run through BSM Holdings Facility Services, LLC.',
     items: [
       'Preventative maintenance planning',
       'Work-order intake and completion',
@@ -88,7 +88,7 @@ const WHATS_INCLUDED = [
     value: 'compliance',
     icon: Shield,
     title: 'Compliance',
-    lead: 'Operational and regulatory risk handled before it becomes an owner problem.',
+    lead: 'Fair housing, lease, and basic regulatory follow-through handled as part of day-to-day management.',
     items: [
       'Insurance coordination and compliance tracking',
       'Safety and condition monitoring',
@@ -100,7 +100,7 @@ const WHATS_INCLUDED = [
     value: 'accounting',
     icon: FileText,
     title: 'Accounting',
-    lead: 'Cost visible at the line item, with reporting owners can act on.',
+    lead: 'Rent collection and owner statements you can read without decoding a spreadsheet.',
     items: [
       'Rent collection and receivables monitoring',
       'Monthly owner financial reporting',
@@ -134,20 +134,19 @@ const PropertyManagement = () => {
               Property Management
             </h1>
             <p className="text-lg leading-relaxed text-white/90 sm:text-xl">
-              Residential property management across the Oklahoma City metro —
-              leasing, operations, maintenance, compliance, and accounting under
-              one firm.
+              Day-to-day management for residential rentals in the Oklahoma City
+              metro: leasing, residents, maintenance, and owner reporting.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/contact"
                 className="inline-flex min-h-[52px] items-center justify-center bg-white px-8 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.08em] text-hhp-navy transition-all duration-300 hover:bg-hhp-gold hover:text-hhp-navy-deep"
                 onClick={() => {
-                  trackButtonClick('discuss_with_us', 'pm_hero');
-                  trackLinkClick('Discuss with us', '/contact');
+                  trackButtonClick('discuss_your_property', 'pm_hero');
+                  trackLinkClick('Discuss Your Property', '/contact');
                 }}
               >
-                Discuss with us
+                Discuss Your Property
               </Link>
               <a
                 href={RESIDENT_PORTAL_URL}
@@ -171,19 +170,19 @@ const PropertyManagement = () => {
         <div className="container-premium">
           <div className="mx-auto max-w-3xl">
             <h2 className="section-title mb-6 text-hhp-navy">
-              Management built the way we run our own assets
+              Day-to-Day Management. Clear Owner Reporting.
             </h2>
             <div className="space-y-5 text-lg leading-relaxed text-hhp-charcoal">
               <p>
-                Effective property management is consistency and accountability
-                over time — not volume for its own sake. We manage with an
-                owner&apos;s mindset: resident needs, expense control, capital
-                preservation, and risk, weighed against long-term performance.
+                If you own rental property in the Oklahoma City metro, BSM Holdings
+                can handle the work that comes with it: marketing and leasing,
+                resident screening and communication, rent collection, maintenance
+                coordination, and monthly owner reporting.
               </p>
               <p>
-                Property management, facility trades, and accounting stay
-                in-house. Trades run through BSM Holdings Facility Services,
-                LLC. One firm answers for the result.
+                You get a direct point of contact and statements you can actually
+                read — without chasing vendors or guessing what happened at the
+                property.
               </p>
             </div>
           </div>
@@ -197,7 +196,8 @@ const PropertyManagement = () => {
             <span className="eyebrow mb-5 justify-center">Process</span>
             <h2 className="section-title text-hhp-navy">How we manage</h2>
             <p className="mt-5 text-lg leading-relaxed text-hhp-charcoal">
-              Onboard → operate → report → improve. The same loop on every asset.
+              Getting started, daily management, owner reporting, and ongoing
+              planning — the same loop on every property.
             </p>
           </div>
           <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -228,9 +228,8 @@ const PropertyManagement = () => {
             <span className="eyebrow mb-5">Scope</span>
             <h2 className="section-title text-hhp-navy">What&apos;s included</h2>
             <p className="mt-5 text-lg leading-relaxed text-hhp-charcoal">
-              Leasing, resident care, maintenance and facility trades,
-              compliance, and accounting — under one firm and one reporting
-              system.
+              Leasing, resident care, maintenance, compliance, and accounting —
+              the day-to-day work of owning a rental.
             </p>
           </div>
 
@@ -292,10 +291,10 @@ const PropertyManagement = () => {
                 className="tap group mt-8 inline-flex items-center gap-2 font-display font-semibold text-hhp-navy transition-colors hover:text-brand"
                 onClick={() => {
                   trackButtonClick('discuss_reporting', 'pm_reporting');
-                  trackLinkClick('Discuss with us', '/contact');
+                  trackLinkClick('Discuss Your Property', '/contact');
                 }}
               >
-                Discuss with us
+                Discuss Your Property
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
@@ -328,14 +327,15 @@ const PropertyManagement = () => {
         <div className="container-premium">
           <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
             <div className="lg:col-span-8">
-              <span className="eyebrow mb-5 text-white/80">In-house trades</span>
+              <span className="eyebrow mb-5 text-white/80">Facility Services</span>
               <h2 className="section-title text-white">
                 BSM Holdings Facility Services, LLC
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-white/90">
-                Facility trades stay inside the firm. That means faster
-                response, cost visible at the line item, and one team
-                accountable for the work — not a stack of outside vendors.
+                When the work fits, maintenance and facility trades can run through
+                BSM Holdings Facility Services, LLC. That keeps response times
+                tighter and costs visible at the line item — instead of a stack of
+                separate vendors for every repair.
               </p>
             </div>
             <div className="lg:col-span-4 lg:text-right">
@@ -355,12 +355,12 @@ const PropertyManagement = () => {
         </div>
       </section>
 
-      {/* Owners vs Residents */}
+      {/* For Owners and Residents */}
       <section className="bg-white py-12 sm:py-16 lg:py-20">
         <div className="container-premium">
           <div className="mx-auto mb-10 max-w-3xl text-center">
             <span className="eyebrow mb-5 justify-center">Who you are</span>
-            <h2 className="section-title text-hhp-navy">Owners and residents</h2>
+            <h2 className="section-title text-hhp-navy">For Owners and Residents</h2>
             <p className="mt-5 text-lg leading-relaxed text-hhp-charcoal">
               Different needs, clear paths. Owners work with us directly;
               residents use the portal for day-to-day access.
@@ -368,7 +368,6 @@ const PropertyManagement = () => {
           </div>
 
           <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
-            {/* Owners */}
             <div className="flex flex-col border border-border bg-surface p-7 sm:p-9">
               <div className="mb-5 flex h-12 w-12 items-center justify-center bg-brand/10 text-brand">
                 <Building2 className="h-6 w-6" aria-hidden="true" />
@@ -377,23 +376,22 @@ const PropertyManagement = () => {
                 Owners
               </h3>
               <p className="mt-4 flex-1 text-base leading-relaxed text-hhp-charcoal">
-                Reporting, leasing strategy, maintenance oversight, and
-                accounting under one accountable team. Talk with us about how we
-                would manage your asset.
+                Tell us about your rental — location, current leases, and what is
+                not working. We will explain how we would manage it and what
+                reporting looks like.
               </p>
               <Link
                 to="/contact"
                 className="btn-hero mt-8 inline-flex w-fit"
                 onClick={() => {
                   trackButtonClick('discuss_owners', 'pm_owners_residents');
-                  trackLinkClick('Discuss with us', '/contact');
+                  trackLinkClick('Discuss Your Property', '/contact');
                 }}
               >
-                Discuss with us
+                Discuss Your Property
               </Link>
             </div>
 
-            {/* Residents */}
             <div className="flex flex-col border border-border bg-surface p-7 sm:p-9">
               <div className="mb-5 flex h-12 w-12 items-center justify-center bg-brand/10 text-brand">
                 <Home className="h-6 w-6" aria-hidden="true" />
@@ -435,10 +433,10 @@ const PropertyManagement = () => {
               </div>
               <ul className="space-y-3 text-hhp-charcoal">
                 {[
-                  'Private owners',
-                  'Partnerships and boards',
-                  'Owner-users with investment components',
-                  'Assets that need hands-on oversight',
+                  'Private owners of single-family homes and small multifamily',
+                  'Out-of-town owners who need local day-to-day coverage',
+                  'Owners tired of self-managing rentals',
+                  'Partnerships that want hands-on oversight',
                 ].map((item) => (
                   <li key={item} className="flex items-start">
                     <span className="mt-[0.65rem] mr-3 inline-block h-px w-4 shrink-0 bg-brand" />
@@ -457,9 +455,9 @@ const PropertyManagement = () => {
               <ul className="space-y-3 text-hhp-charcoal">
                 {[
                   'Selective portfolio size',
-                  'Direct accountability',
-                  'No call-center model',
-                  'In-house facility trades and accounting',
+                  'Direct accountability — no call-center model',
+                  'In-house facility trades when the work fits',
+                  'Plain-language owner reporting',
                 ].map((item) => (
                   <li key={item} className="flex items-start">
                     <span className="mt-[0.65rem] mr-3 inline-block h-px w-4 shrink-0 bg-brand" />
@@ -472,17 +470,17 @@ const PropertyManagement = () => {
         </div>
       </section>
 
-      {/* Bottom CTA */}
+      {/* Looking for a Property Manager? */}
       <section className="bg-white py-12 sm:py-16">
         <div className="container-premium">
           <div className="mx-auto flex max-w-4xl flex-col items-start justify-between gap-6 border border-border p-8 sm:flex-row sm:items-center sm:p-10">
             <div>
               <h3 className="font-display text-2xl font-semibold text-hhp-navy sm:text-3xl">
-                Ready to talk about your asset?
+                Looking for a Property Manager?
               </h3>
               <p className="mt-2 text-base leading-relaxed text-hhp-charcoal">
-                No pitch deck theater — a direct conversation about how we would
-                manage the property.
+                Tell us about the property. We will explain how we would manage it
+                and what reporting looks like — a direct conversation, not a pitch.
               </p>
             </div>
             <Link
@@ -490,10 +488,10 @@ const PropertyManagement = () => {
               className="btn-hero shrink-0"
               onClick={() => {
                 trackButtonClick('discuss_bottom', 'pm_bottom_cta');
-                trackLinkClick('Discuss with us', '/contact');
+                trackLinkClick('Discuss Your Property', '/contact');
               }}
             >
-              Discuss with us
+              Discuss Your Property
             </Link>
           </div>
         </div>

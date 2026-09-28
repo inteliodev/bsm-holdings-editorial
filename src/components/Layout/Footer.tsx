@@ -50,7 +50,7 @@ const Footer = () => {
               className="h-14 w-auto object-contain sm:h-16"
             />
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/55">
-              Residential property management across Oklahoma.
+              Residential property management in the Oklahoma City metro.
             </p>
 
           </div>
@@ -106,7 +106,7 @@ const Footer = () => {
                   <br />
                   {OFFICE_ADDRESS.state}
                   <span className="mt-2 block text-white/40">
-                    Residential property management across Oklahoma
+                    Residential property management in the Oklahoma City metro
                   </span>
                 </address>
               </li>

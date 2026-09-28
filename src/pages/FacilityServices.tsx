@@ -136,12 +136,12 @@ const FacilityServices = () => {
             {/* Service Approach Chart */}
             <div className="mb-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading text-center mb-8 sm:mb-12 text-hhp-navy tracking-[0.06em] uppercase">
-                OUR VERTICALLY INTEGRATED APPROACH
+                HOW WE WORK
               </h2>
               <div className="w-full">
                 <img 
                   src="/images/facilities-management-chart.webp" 
-                  alt="Our Vertically Integrated Approach" 
+                  alt="How we work" 
                   className="w-full h-auto object-contain" loading="lazy" decoding="async" width={1291} height={326} />
               </div>
             </div>
@@ -481,7 +481,7 @@ const FacilityServices = () => {
             <p className="text-lg text-white mb-10 leading-relaxed">
               BSM Holdings delivers the full lifecycle of commercial real estate services—from 
               acquisitions and development to management, leasing, sales, and strategic 
-              advisory—through a vertically integrated platform designed to operate, not just 
+              advisory—through an operating approach designed to manage, not just 
               advise. Proprietary technology supports disciplined underwriting, consistent 
               execution, and long-term asset alignment across every engagement.
             </p>

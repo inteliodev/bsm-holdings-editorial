@@ -44,7 +44,7 @@ const TEAM: Department[] = [
         email: 'ty@bsmholdings.com',
         image: tyImage,
         bio: [
-          "Ty McClellan is Principal of BSM Holdings, a residential property management firm serving Oklahoma.",
+          "Ty McClellan is Principal of BSM Holdings, a residential property management firm serving the Oklahoma City metro.",
           "Ty works directly with owners and residents — clear reporting, responsive maintenance coordination, and straightforward communication.",
         ],
       },
@@ -67,23 +67,23 @@ const TEAM: Department[] = [
  */
 const OPERATING_PRINCIPLES = [
   {
-    title: 'Underwriting Discipline',
-    lead: 'Every transaction begins with careful market work and disciplined underwriting.',
-    body: 'Acquisitions, dispositions and leasing decisions are grounded in rigorous analysis — not momentum or market noise.',
+    title: 'Clear Communication',
+    lead: 'Owners and residents hear from a real person — not a call center script.',
+    body: 'Questions get straight answers. Updates cover what changed and what happens next.',
   },
   {
-    title: 'Operator-Led Execution',
-    lead: 'Decisions are made by operators who have managed real assets — not spreadsheets.',
-    body: 'Long-term performance always outweighs short-term optics.',
+    title: 'Hands-On Management',
+    lead: 'Leasing, rent collection, maintenance, and reporting stay with the same team.',
+    body: 'Day-to-day work is handled locally in the Oklahoma City metro.',
   },
   {
-    title: 'Data-Driven Decision Making',
-    lead: 'Proprietary platforms augment human expertise with real-time insight, automated compliance, and performance monitoring.',
-    body: 'Improving speed and accuracy without sacrificing judgment.',
+    title: 'Readable Reporting',
+    lead: 'Monthly statements and notes owners can act on without decoding a spreadsheet.',
+    body: 'Occupancy, collections, expenses, and open items are easy to follow.',
   },
   {
-    title: 'Long-Term Asset Alignment',
-    lead: 'We succeed only when properties perform, tenants thrive, and owners achieve outcomes measured in years — not quarters.',
+    title: 'Long-Term Stewardship',
+    lead: 'We succeed when homes stay occupied, residents are treated fairly, and owners understand the results.',
     body: null,
   },
 ];
@@ -131,8 +131,8 @@ const About = () => {
               LocalBusiness structured data.
             */}
             <p className="text-base leading-relaxed text-white/75 sm:text-lg">
-              Residential property management across Oklahoma — clear owner reporting and
-              direct resident support.
+              Residential property management in the Oklahoma City metro — clear owner
+              reporting and direct resident support.
             </p>
           </div>
         </div>
@@ -144,7 +144,7 @@ const About = () => {
           className="relative min-h-[260px] w-full flex-1 bg-cover bg-center bg-no-repeat sm:min-h-[320px] md:min-h-0 md:w-[55%] lg:w-[60%]"
           style={{ backgroundImage: 'url(/images/cool-real-estate-about-us-image.jpg)' }}
           role="img"
-          aria-label="BSM-managed commercial property"
+          aria-label="BSM-managed residential property"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-hhp-navy/30 to-transparent" />
         </div>
@@ -336,20 +336,21 @@ const About = () => {
                 <h2 className="section-title text-hhp-navy mb-6 text-center">Why BSM Holdings</h2>
                 <div className="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed text-hhp-charcoal">
                   <p>
-                    BSM Holdings is a real estate operating company in the Oklahoma
-                    City metro. Property management, facility trades, and accounting
-                    stay in-house — trades through BSM Holdings Facility Services,
-                    LLC — with systems we build and maintain ourselves.
+                    BSM Holdings manages single-family homes, duplexes, townhomes,
+                    and apartments throughout the Oklahoma City metro. Our team
+                    handles daily operations, supports residents, and keeps owners
+                    informed about their properties.
                   </p>
                   <p>
-                    That keeps cost visible at the line item and gives owners a
-                    single team for the full operating result.
+                    We focus on the work that keeps rental properties running:
+                    finding tenants, collecting rent, coordinating repairs, and
+                    maintaining accurate financial records. When the work fits,
+                    facility trades can run through BSM Holdings Facility Services,
+                    LLC.
                   </p>
                   <p>
-                    Today we manage single-family homes, duplexes, triplexes,
-                    townhomes, and apartments across the Oklahoma City metro —
-                    with clear owner reporting and direct resident support, not
-                    a call center.
+                    Owners have a direct point of contact — clear reporting and
+                    resident support, not a call center.
                   </p>
                 </div>
               </div>
@@ -361,14 +362,13 @@ const About = () => {
                 <div className="mx-auto max-w-3xl text-center">
                   <span className="eyebrow eyebrow-bare">Our Approach</span>
                   <h2 className="section-title mt-5 text-hhp-navy">
-                    Strategy through accounting under one reporting system
+                    Day-to-day management with clear reporting
                   </h2>
                   <p className="mt-6 text-lg leading-relaxed text-hhp-charcoal">
-                    Strategy, leasing, operations, maintenance, compliance, and
-                    accounting sit under one firm and one reporting system. Owners
-                    see occupancy, collections, budget variances, and open items
-                    as they change, with clear notes on what moved and what&apos;s
-                    next.
+                    Leasing, operations, maintenance, and accounting are handled by
+                    the same team. Owners see occupancy, collections, budget
+                    variances, and open items as they change, with clear notes on
+                    what moved and what&apos;s next.
                   </p>
                 </div>
 
@@ -429,7 +429,7 @@ const About = () => {
         <div className="container-premium text-center">
           <h2 className="section-title text-white mb-4">Join Our Team</h2>
           <p className="text-lg md:text-xl leading-relaxed text-white/90 max-w-3xl mx-auto mb-10">
-            We're building the next-generation real estate services firm — one that combines institutional standards with entrepreneurial ambition. If you're driven to transform real estate with analytics, compliance expertise, and hands-on execution, we want to hear from you.
+            Interested in residential property management work in the Oklahoma City metro? If you like hands-on operations, clear communication, and taking care of homes and the people who live in them, we want to hear from you.
           </p>
           <Link
             to="/opportunities"

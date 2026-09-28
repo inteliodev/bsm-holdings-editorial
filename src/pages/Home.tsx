@@ -80,54 +80,32 @@ const Home = () => {
               <span className="eyebrow mb-5 text-white/85 drop-shadow-[0_1px_6px_rgba(0,0,0,0.7)]">
                 Property Management
               </span>
-              {/*
-                The brand line is the <h1>. It was previously set in the body
-                font at a maximum of 30px, which left the largest thing in the
-                hero as an image and gave the page no typographic voice at all.
-              */}
-              {/* Two lines, and "Data Driven." dropped — three sentences wrapped
-                  unpredictably across breakpoints and diluted the claim. */}
-              <h1 className="normal-case font-display font-semibold text-display-lg text-white mb-7 sm:mb-8 px-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]">
-                Vertically Integrated.
-                <br />
-                Forward Thinking.
+              <h1 className="normal-case font-display font-semibold text-display-lg text-white mb-5 sm:mb-6 px-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]">
+                Residential Property Management in Oklahoma City
               </h1>
+              <p className="mx-auto mb-7 max-w-2xl text-base leading-relaxed text-white/90 sm:mb-8 sm:text-lg drop-shadow-[0_1px_6px_rgba(0,0,0,0.55)]">
+                We handle leasing, rent collection, maintenance, and financial reporting for rental property owners throughout the Oklahoma City metro.
+              </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center items-center">
                 <Link
-                  to="/services/property-management"
+                  to="/contact"
                   className="inline-flex min-h-[52px] w-auto items-center justify-center rounded-none bg-white px-8 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.08em] text-hhp-navy shadow-elegant transition-all duration-300 hover:bg-hhp-gold hover:text-hhp-navy-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hhp-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
                   onClick={() => {
-                    trackButtonClick('explore_property_management', 'home_hero');
-                    trackLinkClick('Property Management', '/services/property-management');
+                    trackButtonClick('discuss_your_property', 'home_hero');
+                    trackLinkClick('Discuss Your Property', '/contact');
                   }}
                 >
-                  Property Management
-                </Link>
-                {/*
-                  Secondary treatment. All three CTAs were previously identical solid
-                  white buttons, so nothing indicated a primary action. "Explore
-                  Services" above stays solid; these two are outlined.
-                */}
-                <Link
-                  to="/contact"
-                  className="inline-flex min-h-[52px] w-auto items-center justify-center rounded-none border border-white/70 px-8 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.08em] text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-hhp-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
-                  onClick={() => {
-                    trackButtonClick('contact_us', 'home_hero');
-                    trackLinkClick('Contact Us', '/contact');
-                  }}
-                >
-                  Contact Us
+                  Discuss Your Property
                 </Link>
                 <Link
                   to="/portfolio"
-                  className="group inline-flex min-h-[52px] items-center justify-center gap-2 font-display text-sm font-semibold uppercase tracking-[0.08em] text-white/85 transition-colors duration-300 hover:text-hhp-gold-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
+                  className="inline-flex min-h-[52px] w-auto items-center justify-center rounded-none border border-white/70 px-8 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.08em] text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-hhp-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
                   onClick={() => {
-                    trackButtonClick('browse_properties', 'home_hero');
-                    trackLinkClick('Browse Properties', '/portfolio');
+                    trackButtonClick('view_available_rentals', 'home_hero');
+                    trackLinkClick('View Available Rentals', '/portfolio');
                   }}
                 >
-                  Browse Properties
-                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  View Available Rentals
                 </Link>
               </div>
             </div>
@@ -163,15 +141,7 @@ const Home = () => {
       {/* Content that scrolls up over the fixed hero */}
       <div className="relative z-30">
 
-      {/* Who We Are Section
-
-          The first thing after the hero. Identity first; "Our approach" below is
-          method. Keep them distinct.
-
-          Every claim is sourced from /about (what is held in house) or from
-          src/data/serviceArea.ts. Do not add figures here without a real source —
-          firm-level statistics are exactly what this site has had to strip out
-          before. */}
+      {/* Who We Are + Our Approach — combined for a cleaner post-hero section. */}
       <section className="bg-white py-14 sm:py-20 lg:py-24">
         <div className="container-premium">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
@@ -184,14 +154,10 @@ const Home = () => {
             <div className="lg:col-span-7">
               <div className="space-y-5 text-lg leading-relaxed text-hhp-charcoal">
                 <p>
-                  BSM Holdings is a real estate operating company in the Oklahoma
-                  City metro. Property management, facility trades, and accounting
-                  stay in-house — trades through BSM Holdings Facility Services,
-                  LLC — with systems we build and maintain ourselves.
+                  BSM Holdings manages single-family homes, duplexes, townhomes, and apartments throughout the Oklahoma City metro. Our team handles daily operations, supports residents, and keeps owners informed about their properties.
                 </p>
                 <p>
-                  That keeps cost visible at the line item and gives owners a
-                  single team for the full operating result.
+                  We focus on the work that keeps rental properties running: finding tenants, collecting rent, coordinating repairs, and maintaining accurate financial records. Owners have a direct point of contact for questions and updates.
                 </p>
               </div>
 
@@ -211,28 +177,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Our Approach Section — grounds alternate from here down:
-          white (who we are) → surface → white (services) → surface (classes). */}
-      <section className="bg-surface py-14 sm:py-20 lg:py-24">
-        <div className="container-premium">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="section-title text-hhp-navy mb-8 sm:mb-10 text-center">
-              Our approach
-            </h2>
-
-            <div className="max-w-3xl mx-auto space-y-6 text-lg sm:text-xl leading-relaxed text-hhp-charcoal">
-              <p>
-                Owners get one team for day-to-day management — leasing and
-                renewals, resident communication, maintenance coordination through
-                in-house trades where it helps, rent collection, and clear owner
-                reporting. Decisions stay grounded in what&apos;s happening at the
-                property, not handed off across separate vendors.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Property Management focus — single section, not a multi-service menu */}
       <section className="bg-white pt-12 pb-8 sm:pt-16 sm:pb-10 lg:pt-20 lg:pb-12">
         <div className="container-premium">
@@ -240,36 +184,31 @@ const Home = () => {
             <div className="lg:col-span-5">
               <span className="eyebrow mb-5">Property Management</span>
               <h2 className="section-title text-hhp-navy mb-5">
-                Residential property management across Oklahoma
+                Management for Your Rental Property
               </h2>
-              <p className="text-lg leading-relaxed text-hhp-charcoal mb-4">
-                Day-to-day operations, leasing, maintenance coordination, and owner
-                reporting. One accountable team for the homes we manage.
-              </p>
-              <p className="text-base leading-relaxed text-hhp-charcoal/80 mb-8">
-                Single-family, duplexes, triplexes, townhomes, and apartments across
-                the Oklahoma City metro and surrounding communities.
+              <p className="text-lg leading-relaxed text-hhp-charcoal mb-8">
+                From leasing and renewals to maintenance and monthly reporting, we manage the day-to-day responsibilities of owning rental property.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
-                  to="/services/property-management"
+                  to="/contact"
                   className="btn-hero"
                   onClick={() => {
                     trackButtonClick('pm_focus_cta', 'home_pm');
+                    trackLinkClick('Discuss Your Property', '/contact');
+                  }}
+                >
+                  Discuss Your Property
+                </Link>
+                <Link
+                  to="/services/property-management"
+                  className="btn-secondary"
+                  onClick={() => {
+                    trackButtonClick('pm_focus_how', 'home_pm');
                     trackLinkClick('How we manage', '/services/property-management');
                   }}
                 >
                   How we manage
-                </Link>
-                <Link
-                  to="/portfolio"
-                  className="btn-secondary"
-                  onClick={() => {
-                    trackButtonClick('pm_focus_properties', 'home_pm');
-                    trackLinkClick('View properties', '/portfolio');
-                  }}
-                >
-                  View properties
                 </Link>
               </div>
             </div>
@@ -294,7 +233,7 @@ const Home = () => {
           <div className="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <span className="eyebrow mb-4">Featured</span>
-              <h2 className="section-title text-hhp-navy">Available and featured homes</h2>
+              <h2 className="section-title text-hhp-navy">Available Rentals</h2>
             </div>
             <Link
               to="/portfolio"
@@ -314,7 +253,9 @@ const Home = () => {
         </div>
       </section>
 
-            <ServiceAreaSection />
+            <ServiceAreaSection
+              intro="We manage residential properties in Oklahoma City, Edmond, Norman, Moore, Yukon, and surrounding communities."
+            />
 
       </div>
     </Layout>

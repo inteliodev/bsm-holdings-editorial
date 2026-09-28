@@ -42,12 +42,12 @@ const AdvisorySiteSelection = () => {
             {/* Service Approach Chart */}
             <div className="mb-8">
               <h2 className="section-title text-hhp-navy mb-6">
-                OUR VERTICALLY INTEGRATED APPROACH
+                HOW WE WORK
               </h2>
               <div className="flex justify-center">
                 <img 
                   src="/images/site-selection-chart.webp" 
-                  alt="Our Vertically Integrated Approach"
+                  alt="How we work"
                   className="w-full max-w-5xl h-auto" loading="lazy" decoding="async" width={2141} height={646} />
               </div>
             </div>
@@ -277,7 +277,7 @@ const AdvisorySiteSelection = () => {
             <p className="text-lg text-white mb-10 leading-relaxed">
               BSM Holdings delivers the full lifecycle of commercial real estate services—from 
               acquisitions and development to management, leasing, sales, and strategic 
-              advisory—through a vertically integrated platform designed to operate, not just 
+              advisory—through an operating approach designed to manage, not just 
               advise. Proprietary technology supports disciplined underwriting, consistent 
               execution, and long-term asset alignment across every engagement.
             </p>

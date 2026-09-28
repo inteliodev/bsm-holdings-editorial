@@ -38,7 +38,7 @@ const LocalBusinessSchema = () => {
     email: CONTACT_EMAIL,
     image: `${SITE_URL}/brand/bsm-logo.png`,
     description:
-      'BSM Holdings manages residential property across Oklahoma — clear owner reporting and direct resident support.',
+      'BSM Holdings manages residential property in the Oklahoma City metro — leasing, maintenance, rent collection, and clear owner reporting.',
     areaServed: ALL_SERVED_CITIES.map((city) => ({
       '@type': 'City',
       name: `${city}, OK`,

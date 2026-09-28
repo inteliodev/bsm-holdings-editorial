@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BarChart3, FileText, TrendingUp, CheckCircle, Building, DollarSign } from 'lucide-react';
+import { BarChart3, FileText, CheckCircle, Building } from 'lucide-react';
 import Layout from '@/components/Layout/Layout';
 import { useToast } from '@/hooks/use-toast';
 import { trackFormSubmission, trackConversion } from '@/utils/analytics';
@@ -90,7 +90,7 @@ const Insights = () => {
         <div className="relative z-10 container-premium">
           <div className="max-w-4xl mx-auto text-center fade-in">
             <h1 className="hero-title text-white mb-4 drop-shadow-lg">
-              Insights & Intelligence
+              Insights
             </h1>
           </div>
         </div>
@@ -101,10 +101,10 @@ const Insights = () => {
         <div className="container-premium">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-xl leading-relaxed text-hhp-charcoal mb-4">
-              Market analysis, case studies, and perspectives from an operator-led real estate firm.
+              Practical notes for rental property owners in the Oklahoma City metro — leasing, maintenance, and owner reporting.
             </p>
             <p className="text-xl leading-relaxed text-hhp-charcoal mb-8">
-              Stay ahead with data-driven insights and grounded market commentary across the asset classes we operate.
+              Subscribe for occasional updates. We will not invent market reports or case studies we have not published.
             </p>
             {/* Plain anchor — <Link to="#hash"> updates the URL without
                 scrolling, so this button did nothing. */}
@@ -115,205 +115,52 @@ const Insights = () => {
         </div>
       </section>
 
-      {/* Market Reports */}
+      {/* Topics */}
       <section className="bg-white section-spacing">
         <div className="container-premium">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="section-title text-hhp-navy mb-6">Market Reports</h2>
-              <p className="text-xl leading-relaxed text-hhp-charcoal max-w-4xl mx-auto">
-                In-depth market analysis covering fundamentals, capital markets, and asset-level performance across major property types.
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="section-title text-hhp-navy mb-6">Topics we cover</h2>
+              <p className="text-xl leading-relaxed text-hhp-charcoal max-w-3xl mx-auto">
+                Owner-focused residential property management — not capital markets commentary or commercial brokerage research.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Q4 2025 Market Report */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="premium-card">
                 <div className="flex items-center space-x-3 mb-4">
                   <BarChart3 className="h-8 w-8 icon-accent" />
-                  <div>
-                    <h3 className="text-lg font-display font-semibold text-hhp-navy">Q4 2025 Market Report</h3>
-                    <p className="text-sm text-hhp-charcoal">December 2025</p>
-                  </div>
+                  <h3 className="text-lg font-display font-semibold text-hhp-navy">Leasing & renewals</h3>
                 </div>
-                <p className="text-hhp-charcoal mb-4">
-                  Comprehensive analysis of multifamily, office, industrial, and retail markets, including year-end performance and outlook entering 2026.
+                <p className="text-hhp-charcoal">
+                  How we price, market, and renew residential leases so owners are not surprised by vacant months.
                 </p>
               </div>
-
-              {/* Real Estate Operations & Strategy */}
               <div className="premium-card">
                 <div className="flex items-center space-x-3 mb-4">
-                  <TrendingUp className="h-8 w-8 icon-accent" />
-                  <div>
-                    <h3 className="text-lg font-display font-semibold text-hhp-navy">Real Estate Operations & Strategy</h3>
-                    <p className="text-sm text-hhp-charcoal">November 2025</p>
-                  </div>
+                  <Building className="h-8 w-8 icon-accent" />
+                  <h3 className="text-lg font-display font-semibold text-hhp-navy">Maintenance & turns</h3>
                 </div>
-                <p className="text-hhp-charcoal mb-4">
-                  An examination of how modern operating systems, analytics, and workflow automation are improving execution, reporting, and decision-making across commercial real estate portfolios.
+                <p className="text-hhp-charcoal">
+                  Coordinating repairs, make-ready, and resident requests under clear owner approval rules.
                 </p>
               </div>
-
-              {/* Capital Markets Outlook */}
-              <div className="premium-card">
-                <div className="flex items-center space-x-3 mb-4">
-                  <DollarSign className="h-8 w-8 icon-accent" />
-                  <div>
-                    <h3 className="text-lg font-display font-semibold text-hhp-navy">Capital Markets Outlook</h3>
-                    <p className="text-sm text-hhp-charcoal">October 2025</p>
-                  </div>
-                </div>
-                <p className="text-hhp-charcoal mb-4">
-                  Debt and equity market conditions, interest-rate trends, lender behavior, and financing strategies heading into 2026.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Case Studies */}
-      <section className="bg-surface section-spacing">
-        <div className="container-premium">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="section-title text-hhp-navy mb-6">Case Studies</h2>
-              <p className="text-xl leading-relaxed text-hhp-charcoal max-w-4xl mx-auto">
-                Real-world examples demonstrating disciplined execution, operational expertise, and consistent outcomes across diverse portfolios.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Multifamily Portfolio Optimization */}
-              <div className="premium-card">
-                <div className="flex items-center space-x-3 mb-6">
-                  <Building className="h-10 w-10 icon-accent" />
-                  <div>
-                    <h3 className="text-xl font-display font-semibold text-hhp-navy">Multifamily Portfolio Optimization</h3>
-                    <p className="text-hhp-charcoal">Operational Improvement Initiative</p>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <p className="text-hhp-charcoal">
-                    How revenue management practices, expense controls, and compliance enhancements supported improved performance across a multifamily portfolio.
-                  </p>
-                </div>
-              </div>
-
-              {/* Office Leasing Strategy */}
-              <div className="premium-card">
-                <div className="flex items-center space-x-3 mb-6">
-                  <TrendingUp className="h-10 w-10 icon-accent" />
-                  <div>
-                    <h3 className="text-xl font-display font-semibold text-hhp-navy">Office Leasing Strategy</h3>
-                    <p className="text-hhp-charcoal">Leasing & Retention Execution</p>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <p className="text-hhp-charcoal">
-                    How proactive leasing, tenant engagement, and renewal planning helped stabilize occupancy and reduce turnover in a Class A office property.
-                  </p>
-                </div>
-              </div>
-
-              {/* Capital Markets Execution */}
-              <div className="premium-card">
-                <div className="flex items-center space-x-3 mb-6">
-                  <DollarSign className="h-10 w-10 icon-accent" />
-                  <div>
-                    <h3 className="text-xl font-display font-semibold text-hhp-navy">Capital Markets Execution</h3>
-                    <p className="text-hhp-charcoal">Industrial Portfolio Disposition</p>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <p className="text-hhp-charcoal">
-                    How strategic positioning, targeted buyer outreach, and efficient underwriting supported a successful disposition of an industrial portfolio.
-                  </p>
-                </div>
-              </div>
-
-              {/* HUD Compliance & Oversight */}
-              <div className="premium-card">
-                <div className="flex items-center space-x-3 mb-6">
-                  <CheckCircle className="h-10 w-10 icon-accent" />
-                  <div>
-                    <h3 className="text-xl font-display font-semibold text-hhp-navy">HUD Compliance & Oversight</h3>
-                    <p className="text-hhp-charcoal">Affordable Housing Operations</p>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <p className="text-hhp-charcoal">
-                    How standardized compliance processes and improved reporting practices supported strong regulatory outcomes while reducing administrative burden.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Thought Leadership */}
-      <section className="bg-white section-spacing">
-        <div className="container-premium">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="section-title text-hhp-navy mb-6">Thought Leadership</h2>
-              <p className="text-xl leading-relaxed text-hhp-charcoal max-w-4xl mx-auto">
-                Perspectives from our leadership team on market conditions, operations, compliance, and the future of commercial real estate.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* A Modern Real Estate Operating Model */}
               <div className="premium-card">
                 <div className="flex items-center space-x-3 mb-4">
                   <FileText className="h-8 w-8 icon-accent" />
-                  <div>
-                    <h3 className="text-lg font-display font-semibold text-hhp-navy">A Modern Real Estate Operating Model</h3>
-                  </div>
+                  <h3 className="text-lg font-display font-semibold text-hhp-navy">Owner reporting</h3>
                 </div>
-                <p className="text-hhp-charcoal mb-4">
-                  How disciplined strategy, integrated services, and data-informed decision-making are reshaping commercial real estate ownership and management.
+                <p className="text-hhp-charcoal">
+                  Occupancy, collections, expenses, and open items — explained in plain language.
                 </p>
               </div>
-
-              {/* Leasing Strategy in a Normalized Market */}
-              <div className="premium-card">
-                <div className="flex items-center space-x-3 mb-4">
-                  <TrendingUp className="h-8 w-8 icon-accent" />
-                  <div>
-                    <h3 className="text-lg font-display font-semibold text-hhp-navy">Leasing Strategy in a Normalized Market</h3>
-                  </div>
-                </div>
-                <p className="text-hhp-charcoal mb-4">
-                  Understanding tenant behavior, renewal dynamics, and pricing strategy as leasing markets stabilize post-volatility.
-                </p>
-              </div>
-
-              {/* Managing Risk in HUD Housing */}
               <div className="premium-card">
                 <div className="flex items-center space-x-3 mb-4">
                   <CheckCircle className="h-8 w-8 icon-accent" />
-                  <div>
-                    <h3 className="text-lg font-display font-semibold text-hhp-navy">Managing Risk in HUD Housing</h3>
-                  </div>
+                  <h3 className="text-lg font-display font-semibold text-hhp-navy">Resident experience</h3>
                 </div>
-                <p className="text-hhp-charcoal mb-4">
-                  Best practices for compliance, audits, and operational controls in affordable housing portfolios.
-                </p>
-              </div>
-
-              {/* The Future of Real Estate Operations */}
-              <div className="premium-card">
-                <div className="flex items-center space-x-3 mb-4">
-                  <BarChart3 className="h-8 w-8 icon-accent" />
-                  <div>
-                    <h3 className="text-lg font-display font-semibold text-hhp-navy">The Future of Real Estate Operations</h3>
-                  </div>
-                </div>
-                <p className="text-hhp-charcoal mb-4">
-                  Operational trends, reporting standards, and execution models defining the next phase of commercial real estate management.
+                <p className="text-hhp-charcoal">
+                  Portal access, communication, and fair treatment that keeps good residents longer.
                 </p>
               </div>
             </div>
@@ -328,9 +175,9 @@ const Insights = () => {
       >
         <div className="container-premium">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="section-title text-hhp-navy mb-6">Stay Ahead with Our Insights</h2>
+            <h2 className="section-title text-hhp-navy mb-6">Stay informed</h2>
             <p className="text-xl leading-relaxed text-hhp-charcoal mb-12">
-              Subscribe to our monthly newsletter for market reports, case studies, and commentary on real estate operations, capital markets, and portfolio strategy.
+              Subscribe for occasional updates on residential property management in the Oklahoma City metro.
             </p>
             
             <div className="bg-white p-8 rounded-lg shadow-elegant">

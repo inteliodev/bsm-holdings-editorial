@@ -145,7 +145,7 @@ const Multifamily = () => {
           tenantRepresentation: 'Resident & Community Relations',
         }}
         servicesTitle="Integrated services for multifamily"
-        servicesSubtitle="Six capabilities under one firm, so no part of the community is somebody else's responsibility."
+        servicesSubtitle="Six capabilities, so no part of the community is somebody else's responsibility."
 
         technologyTitle="The BSM Holdings advantage for multifamily"
         technologyAdvantages={[

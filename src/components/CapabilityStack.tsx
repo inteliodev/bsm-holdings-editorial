@@ -15,7 +15,7 @@ import { CAPABILITIES } from '@/data/capabilities';
  * else reports into. The operating disciplines are the floors beneath it.
  * Technology is the foundation slab, because the systems are built in house and
  * everything above stands on them — and a spine runs the full height, because
- * the whole argument is that one firm is accountable end to end.
+ * the whole argument is that the team is accountable end to end.
  *
  * Brokerage is deliberately not a layer here. It is a supporting capability, not
  * a peer discipline, and putting it in the stack would restate exactly the
@@ -88,7 +88,7 @@ const CapabilityStack = () => {
         <div className="mx-auto mb-16 max-w-3xl text-center">
           {/* "Built In House" belongs to SystemStack on /technology now. */}
           <span className="eyebrow mb-5 justify-center">Capabilities</span>
-          <h2 className="section-title text-hhp-navy">One firm, top to bottom</h2>
+          <h2 className="section-title text-hhp-navy">End-to-end accountability</h2>
           <p className="mt-6 text-lg leading-relaxed text-hhp-charcoal">
             Most owners assemble this from four vendors who each answer to someone else. We hold
             every layer, including the software.

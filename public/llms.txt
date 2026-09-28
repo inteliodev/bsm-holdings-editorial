@@ -1,25 +1,23 @@
 # BSM Holdings
 
-> BSM Holdings provides residential property management across Oklahoma, with clear owner reporting and direct resident support.
+> BSM Holdings provides residential property management in the Oklahoma City metro, with clear owner reporting and direct resident support.
 
-BSM Holdings manages single-family homes, duplexes, triplexes, townhomes, and apartments across the Oklahoma City metro.
+BSM Holdings manages single-family homes, duplexes, townhomes, and apartments throughout the Oklahoma City metro.
 
 - Contact: ty@bsmholdings.com
-- Service area: Oklahoma City metro
+- Service area: Oklahoma City metro (Oklahoma City, Edmond, Norman, Moore, Yukon, and surrounding communities)
 
 ## Services
 
-- **Property management** — leasing administration, resident support, maintenance coordination, and day-to-day operations.
-- **Properties** — browse the communities and homes managed by BSM Holdings.
-- **Technology** — operating systems, reporting, and integrations built around property operations.
+- **Property management** — leasing, rent collection, maintenance coordination, and financial reporting for rental property owners.
+- **Properties** — browse available rentals managed by BSM Holdings.
 
 ## Key pages
 
-- [Home](https://bsmholdings.com/): company positioning and overview.
-- [About](https://bsmholdings.com/about): the team and operating approach.
+- [Home](https://bsmholdings.com/): residential property management overview.
+- [About](https://bsmholdings.com/about): the team and how we work.
 - [Property Management](https://bsmholdings.com/services/property-management)
-- [Properties](https://bsmholdings.com/portfolio): managed properties.
-- [Technology](https://bsmholdings.com/technology): operating systems and reporting.
+- [Properties](https://bsmholdings.com/portfolio): available rentals.
 - [FAQ](https://bsmholdings.com/faq): answers for owners and residents.
 - [Careers](https://bsmholdings.com/opportunities)
 - [Contact](https://bsmholdings.com/contact)
@@ -27,5 +25,5 @@ BSM Holdings manages single-family homes, duplexes, triplexes, townhomes, and ap
 ## Brand and naming
 
 - The company name is **BSM Holdings**.
-- BSM Holdings is a residential property management company serving Oklahoma.
+- BSM Holdings is a residential property management company serving the Oklahoma City metro.
 - Resident Login links directly to the external resident portal.

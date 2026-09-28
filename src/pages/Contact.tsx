@@ -28,15 +28,11 @@ const Contact = () => {
   const { toast } = useToast();
 
   const inquiryTypes = [
-    'Brokerage Services',
-    'Management Services',
-    'Technology Platform',
-    'Investment Sales',
-    'Leasing Services',
-    'Capital Markets',
-    'Valuations & Advisory',
-    'SaaS Licensing',
-    'General Inquiry'
+    'Property Management for Owners',
+    'Available Rentals / Leasing',
+    'Resident Question',
+    'Maintenance Coordination',
+    'General Inquiry',
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -142,7 +138,7 @@ const Contact = () => {
               Contact
             </h1>
             <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-white/90 mb-8 sm:mb-10 lg:mb-12 drop-shadow-md">
-              Tell us about the property. We'll tell you what we'd do with it, and what it would cost.
+              Tell us about your rental property. We&apos;ll explain how we would manage it and what reporting looks like.
             </p>
           </div>
         </div>
@@ -269,7 +265,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full min-h-[120px] text-base"
-                    placeholder="Tell us about your real estate needs..."
+                    placeholder="Tell us about your rental property or question..."
                   />
                 </div>
 

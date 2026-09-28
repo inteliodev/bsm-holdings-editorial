@@ -12,7 +12,7 @@ const HudAffordable = () => {
 
       marketText="In assisted housing the regulatory file and the building are the same asset. A missed recertification window, an unresolved income discrepancy or a unit that will not pass inspection does not produce an administrative note — it puts the subsidy that funds the property in question. That is a different risk profile from conventional multifamily, and it rewards operators who treat compliance as a continuous operating discipline rather than a reporting exercise performed twice a year. It also punishes deferred maintenance harder, because the inspection standard is external and it does not negotiate."
       valuePropositionTitle="Where BSM Holdings fits"
-      valueProposition="We operate HUD-assisted housing directly. Compliance administration, the maintenance that keeps units inspection-ready and the accounting that reconciles the subsidy all sit inside one firm, which is what allows a discrepancy to be found in the month it occurs rather than at audit."
+      valueProposition="We operate HUD-assisted housing directly. Compliance administration, the maintenance that keeps units inspection-ready and the accounting that reconciles the subsidy are handled by the same team, which is what allows a discrepancy to be found in the month it occurs rather than at audit."
 
       metricsIntro="Assisted housing is held to an external standard on a fixed calendar. These are the figures we carry continuously."
       metrics={[
@@ -117,7 +117,7 @@ const HudAffordable = () => {
         tenantRepresentation: 'Tenant & Stakeholder Representation',
       }}
       servicesTitle="Integrated services for affordable housing"
-      servicesSubtitle="Six capabilities under one firm — the same structure we run our own HUD-assisted communities on."
+      servicesSubtitle="Six capabilities — the same structure we run our own HUD-assisted communities on."
 
       technologyTitle="The BSM Holdings advantage for affordable housing"
       technologyAdvantages={[

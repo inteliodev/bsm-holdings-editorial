@@ -219,7 +219,7 @@ const BrokerConsulting = () => {
             <p className="text-lg text-white mb-10 leading-relaxed">
               BSM Holdings delivers the full lifecycle of commercial real estate services—from 
               acquisitions and development to management, leasing, sales, and strategic 
-              advisory—through a vertically integrated platform designed to operate, not just 
+              advisory—through an operating approach designed to manage, not just 
               advise. Proprietary technology supports disciplined underwriting, consistent 
               execution, and long-term asset alignment across every engagement.
             </p>

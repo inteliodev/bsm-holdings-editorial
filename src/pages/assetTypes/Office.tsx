@@ -12,7 +12,7 @@ const Office = () => {
 
       marketText="Office is the class where a good rent roll can hide a bad building. Tenants renew on how the space runs — whether the air handler holds temperature through an August afternoon, whether a service request is closed the same day, whether the CAM reconciliation arrives without surprises. Those are operating questions, and they are settled long before a renewal is negotiated. Owners are carrying longer decision cycles, closer scrutiny of building performance and tenants who compare buildings on experience rather than asking rent."
       valuePropositionTitle="Where BSM Holdings fits"
-      valueProposition="We operate office assets rather than advise on them from a distance. Property management, the facility trades and the accounting sit in one firm, so the people closing a work order and the people reporting its cost answer to the same principal. That is what makes an operating number defensible when an owner asks what changed and why."
+      valueProposition="We operate office assets rather than advise on them from a distance. Property management, the facility trades and the accounting are coordinated, so the people closing a work order and the people reporting its cost answer to the same principal. That is what makes an operating number defensible when an owner asks what changed and why."
 
       metricsIntro="Office assets fail slowly and in the expense line. These are the figures we hold against every building we operate."
       metrics={[
@@ -116,7 +116,7 @@ const Office = () => {
         tenantRepresentation: 'Tenant & Stakeholder Relations',
       }}
       servicesTitle="Integrated services for office"
-      servicesSubtitle="Six capabilities under one firm, so no part of the building is somebody else's responsibility."
+      servicesSubtitle="Six capabilities, so no part of the building is somebody else's responsibility."
 
       technologyTitle="The BSM Holdings advantage for office"
       technologyAdvantages={[

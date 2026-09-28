@@ -79,22 +79,22 @@ const Services = () => {
               Comprehensive Real Estate Services, Reimagined
             </h2>
             <p className="text-xl leading-relaxed text-hhp-charcoal">
-              BSM Holdings delivers the full lifecycle of commercial real estate services — from acquisitions and development to management, leasing, sales, and strategic advisory — all under one roof.
+              BSM Holdings delivers the full lifecycle of commercial real estate services — from acquisitions and development to management, leasing, sales, and strategic advisory — with clear accountability.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Vertically Integrated Approach Image */}
+      {/* How we work image */}
       <section className="bg-white py-8 sm:py-12">
         <div className="container-premium">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading text-center mb-8 sm:mb-12 text-hhp-navy tracking-[0.06em] uppercase">
-            OUR VERTICALLY INTEGRATED APPROACH
+            HOW WE WORK
           </h2>
           <div className="w-full">
             <img 
               src="/images/vertically-integrated-approach-chart.webp" 
-              alt="Our Vertically Integrated Approach" 
+              alt="How we work" 
               className="w-full h-auto object-contain" loading="lazy" decoding="async" width={1279} height={380} />
           </div>
         </div>

@@ -416,7 +416,7 @@ const AssetTypePage = ({
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
             {ctaBody ||
-              'Property management, every facility trade and the accounting sit under one roof, so one firm answers for the result.'}
+              'Property management, every facility trade and the accounting sit with clear accountability for the result.'}
           </p>
 
           <div className="mt-11 flex flex-col items-center justify-center gap-4 sm:flex-row">

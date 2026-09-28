@@ -24,7 +24,7 @@ interface ServiceAreaSectionProps {
 const ServiceAreaSection = ({
   background = 'gray',
   heading = 'Areas we serve',
-  intro = 'BSM Holdings concentrates on the Oklahoma City metro — markets we can serve directly with in-house operations and facility trades.',
+  intro = 'We manage residential properties in Oklahoma City, Edmond, Norman, Moore, Yukon, and surrounding communities.',
 }: ServiceAreaSectionProps) => {
   return (
     <section className={`${background === 'gray' ? 'bg-surface' : 'bg-white'} section-spacing`}>

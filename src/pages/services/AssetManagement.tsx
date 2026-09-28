@@ -106,7 +106,7 @@ const AssetManagement = () => {
                   </p>
                   <p>
                     BSM Holdings holds that view instead. Strategy, leasing, operations,
-                    maintenance, compliance and accounting are directed by one firm
+                    maintenance, compliance and accounting are directed by the same team
                     and reported through one system, so a question about
                     performance has one place to go and one answer waiting.
                   </p>
