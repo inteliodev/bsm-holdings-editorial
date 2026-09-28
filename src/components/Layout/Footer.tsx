@@ -13,15 +13,7 @@ const COMPANY_LINKS = [
 ];
 
 const SERVICE_LINKS = [
-  { to: '/services/asset-management', label: 'Asset Management' },
   { to: '/services/property-management', label: 'Property Management' },
-  { to: '/services/facility-services', label: 'Facility Services' },
-  { to: '/services/financial-services', label: 'Financial Services' },
-  // "Asset Classes", matching the page and the header tab. This column still
-  // mixes a sector into a capability list, which is a separate problem.
-  { to: '/asset-types', label: 'Asset Classes' },
-  { to: '/technology', label: 'Technology' },
-  { to: '/brokerage', label: 'Brokerage' },
 ];
 
 // 44px minimum touch target. The old global `!important` block force-fed every
@@ -76,9 +68,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Capabilities */}
+          {/* Focus */}
           <div className="lg:col-span-3">
-            <h2 className={columnHeading}>Capabilities</h2>
+            <h2 className={columnHeading}>Focus</h2>
             <ul className="space-y-1">
               {SERVICE_LINKS.map((link) => (
                 <li key={link.to}>

@@ -901,3 +901,151 @@
   background: hsl(var(--hhp-navy) / 0.7) !important;
   color: hsl(0 0% 100% / 0.6) !important;
 }
+
+
+/* ── Listing card system (ported from bsm-holdings layout) ─────────────── */
+:root {
+  --bsm-brand: #0060c8;
+  --bsm-brand-deep: #061e4a;
+  --bsm-brand-bright: #1a7ae8;
+  --bsm-brand-hover: #004fa8;
+  --bsm-silver: #c8cdd4;
+  --bsm-silver-deep: #a8b0bc;
+  --bsm-silver-bright: #e8ecf1;
+  --bsm-shadow-card: 0 4px 20px rgba(6, 30, 74, 0.07);
+  --bsm-shadow-elevated: 0 16px 40px rgba(6, 30, 74, 0.14);
+  --bsm-shadow-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18), 0 4px 14px rgba(6, 30, 74, 0.22);
+}
+
+.focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--bsm-brand-bright);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--bsm-silver) 55%, transparent);
+}
+
+.header-glass {
+  background: color-mix(in srgb, #ffffff 82%, transparent);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+}
+
+.btn-chrome {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.7rem 1.55rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #fff;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 42%),
+    linear-gradient(180deg, var(--bsm-brand-bright) 0%, var(--bsm-brand) 48%, var(--bsm-brand-hover) 100%);
+  border: 1px solid color-mix(in srgb, var(--bsm-silver-bright) 35%, var(--bsm-brand));
+  box-shadow: var(--bsm-shadow-bevel), 0 0 22px rgba(0, 96, 200, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.25s ease, filter 0.2s ease;
+}
+.btn-chrome::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.28) 48%,
+    transparent 62%
+  );
+  background-size: 220% 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease, background-position 0.5s ease;
+}
+.btn-chrome:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 8px 22px rgba(6, 30, 74, 0.28),
+    0 0 32px rgba(0, 96, 200, 0.4);
+}
+.btn-chrome:hover::after {
+  opacity: 1;
+  background-position: 100% 0;
+}
+.btn-chrome:active {
+  transform: translateY(0);
+  filter: brightness(0.97);
+}
+
+.bevel-frame {
+  position: relative;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--bsm-silver-deep) 55%, hsl(var(--border)));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1px 0 rgba(6, 30, 74, 0.06),
+    0 0 0 1px color-mix(in srgb, var(--bsm-brand) 8%, transparent),
+    var(--bsm-shadow-card);
+  transition: border-color 0.3s ease, box-shadow 0.35s ease, transform 0.3s ease;
+}
+.bevel-frame:hover {
+  border-color: color-mix(in srgb, var(--bsm-brand) 45%, var(--bsm-silver));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 0 0 1px color-mix(in srgb, var(--bsm-brand) 22%, transparent),
+    0 0 0 3px color-mix(in srgb, var(--bsm-silver) 35%, transparent),
+    var(--bsm-shadow-elevated);
+  transform: translateY(-3px);
+}
+.bevel-frame::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(200, 205, 212, 0.35) 0%,
+    transparent 28%,
+    transparent 72%,
+    rgba(0, 96, 200, 0.08) 100%
+  );
+  opacity: 0.55;
+  z-index: 1;
+}
+
+.card-shine {
+  position: relative;
+}
+.card-shine::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--bsm-silver) 40%, transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 2;
+}
+.card-shine:hover::after {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-chrome:hover,
+  .bevel-frame:hover {
+    transform: none;
+  }
+}

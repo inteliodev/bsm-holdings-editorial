@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ChevronDown, Menu, X, ChevronRight } from 'lucide-react';
-import { ASSET_CLASSES } from '@/data/assetTypes';
 import { trackNavigationClick, trackLinkClick, trackButtonClick } from '@/utils/analytics';
 
 const Header = () => {
@@ -20,78 +19,25 @@ const Header = () => {
   const navigate = useNavigate();
 
   /**
-   * The two dropdowns split on capability vs sector: Services is what we do,
-   * Asset Classes is what we do it to. That is the only split that does not
-   * repeat itself.
-   *
-   * A previous pass gave asset management and brokerage a tab each, to carry the
-   * two tracks in the nav. Both tracks are about the same six classes, so both
-   * dropdowns listed them and the header said everything twice. The tracks are
-   * still on Home and on /asset-types, where there is room to explain them.
-   *
-   * Services leads with Asset Management because it is the umbrella — the same
-   * order CapabilityStack uses. Technology stays inside it rather than being a
-   * top-level tab: a "Technology" tab reads as selling software, which is the
-   * opposite of how BSM Holdings positions. Brokerage sits there too, as a supporting
-   * capability rather than a headline.
-   *
-   * Class names come from the data module. They were hand-written here and in
-   * four other places, which is how the header ended up saying "Industrial &
-   * Logistics" while the page it linked to said "Industrial".
+   * Single Property Management focus — no multi-service or asset-class menus.
+   * About · Property Management · Properties, plus Contact CTA.
    */
-  const navigation = [
+  const navigation: Array<{
+    name: string;
+    href: string;
+    submenu?: Array<{ name: string; href: string }>;
+  }> = [
     { name: 'About', href: '/about' },
-    {
-      name: 'Services',
-      href: '/services',
-      submenu: [
-        { name: 'Asset Management', href: '/services/asset-management' },
-        { name: 'Property Management', href: '/services/property-management' },
-        { name: 'Facility Services', href: '/services/facility-services' },
-        { name: 'Financial Services', href: '/services/financial-services' },
-        { name: 'Brokerage & Advisory', href: '/brokerage' },
-        { name: 'Technology', href: '/technology' }
-      ]
-    },
-    {
-      name: 'Asset Classes',
-      href: '/asset-types',
-      submenu: [
-        ...ASSET_CLASSES.map((assetClass) => ({
-          name: assetClass.label,
-          href: assetClass.href,
-        })),
-        { name: 'divider', href: '' },
-        { name: 'All Asset Classes', href: '/asset-types' }
-      ]
-    },
-    { name: 'Properties', href: '/portfolio' }
+    { name: 'Property Management', href: '/services/property-management' },
+    { name: 'Properties', href: '/portfolio' },
   ];
 
-  // Contact as primary CTA. Set in sentence case now that the base layer no
+    // Contact as primary CTA. Set in sentence case now that the base layer no
   // longer force-uppercases every element — the label carries its own casing.
   const contactCTA = {
     name: 'Contact',
     href: '/contact',
     isPrimary: true
-  };
-
-  /**
-   * Which dropdown tab the current route belongs to. Each tab owns its own
-   * prefixes. Services keeps the routes that live outside `/services` but are
-   * Services entries — `/technology` and `/brokerage`.
-   */
-  const isDropdownActive = (name: string) => {
-    const path = location.pathname;
-    if (name === 'Asset Classes') return path.startsWith('/asset-types');
-    if (name === 'Services') {
-      return (
-        path.startsWith('/services') ||
-        path.startsWith('/technology') ||
-        path.startsWith('/brokerage')
-      );
-    }
-    return false;
   };
 
   /**
@@ -108,6 +54,8 @@ const Header = () => {
   const navLinkClass = isTransparent
     ? 'text-white/85 hover:text-white'
     : 'text-hhp-charcoal hover:text-hhp-navy';
+
+  const isDropdownActive = (_name: string) => false;
 
   // Sticky header effect (throttled with rAF)
   useEffect(() => {
