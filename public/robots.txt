@@ -1,4 +1,4 @@
-# HHP Asset Management
+# BSM Holdings
 
 # Search crawlers
 User-agent: Googlebot
@@ -25,7 +25,7 @@ Allow: /
 
 # Answer engines. These are already covered by the wildcard below, but naming
 # them makes the intent explicit and keeps access if a default ever changes.
-# HHP wants to be citable in AI answers, so these are deliberately allowed.
+# BSM Holdings is deliberately available to answer engines.
 User-agent: GPTBot
 Allow: /
 
@@ -63,6 +63,6 @@ User-agent: *
 Allow: /
 
 # A plain-language summary of the business for answer engines lives at
-# https://hhpasset.com/llms.txt
+# https://bsmholdings.com/llms.txt
 
-Sitemap: https://hhpasset.com/sitemap.xml
+Sitemap: https://bsmholdings.com/sitemap.xml

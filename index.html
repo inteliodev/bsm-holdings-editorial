@@ -4,67 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BSM Holdings — Residential Property Management in Oklahoma</title>
-    <meta name="description" content="BSM Holdings manages single-family homes, duplexes, triplexes, townhomes, and apartments across Oklahoma — clear owner reporting and direct resident support.">
+    <meta name="description" content="BSM Holdings provides residential property management across Oklahoma with clear owner reporting and direct resident support." />
     <meta name="author" content="BSM Holdings" />
 
-    <!--
-      Fonts are self-hosted via @fontsource-variable and imported in src/main.tsx,
-      so Vite bundles and hashes the woff2 with the rest of the app. No Google
-      Fonts <link> here: that added a DNS + TLS handshake to a third-party origin
-      on the critical path, and shipped only four static weights per family where
-      the variable faces cover 100-900.
-    -->
+    <!-- Fonts are self-hosted via @fontsource-variable and imported in src/main.tsx. -->
 
-    <!--
-      No site-wide canonical here. A static canonical on index.html is served for every
-      route under the SPA catch-all rewrite, which tells crawlers that all 61 URLs are
-      duplicates of the homepage. Canonicals are emitted per-route by the page components.
-    -->
-
+    <!-- Per-route canonical and SEO tags are emitted by the prerender step. -->
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://bsmholdings.com/brand/bsm-logo.png">
+    <meta property="og:site_name" content="BSM Holdings" />
+    <meta property="og:url" content="https://bsmholdings.com/" />
+    <meta property="og:title" content="BSM Holdings — Residential Property Management in Oklahoma" />
+    <meta property="og:description" content="BSM Holdings provides residential property management across Oklahoma with clear owner reporting and direct resident support." />
+    <meta property="og:image" content="https://bsmholdings.com/images/bsm-social-share.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://bsmholdings.com/brand/bsm-logo.png">
-    
-  
-  
-  
-  <!--
-    Favicons.
+    <meta name="twitter:title" content="BSM Holdings — Residential Property Management in Oklahoma" />
+    <meta name="twitter:description" content="BSM Holdings provides residential property management across Oklahoma with clear owner reporting and direct resident support." />
+    <meta name="twitter:image" content="https://bsmholdings.com/images/bsm-social-share.png" />
 
-    The mark is a single H, not the three-letter lockup. The lockup scaled to
-    16px was an illegible smear: three thin serif letters with the artwork
-    filling only ~9% of the canvas. The PNGs were also #0060C8, a royal blue,
-    rather than the brand navy #061E4A — so the tab did not match the site.
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=8" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=8" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/images/favicon-64x64.png?v=8" />
+    <link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128x128.png?v=8" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png?v=8" />
+    <link rel="icon" type="image/png" sizes="256x256" href="/images/favicon-256x256.png?v=8" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512x512.png?v=8" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png?v=8" />
+    <link rel="manifest" href="/manifest.json?v=8" />
 
-    favicon.svg is the master and is preferred by modern browsers at any size;
-    the PNGs are rasterised from it for older ones.
-  -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=7">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=6">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7">
-  <link rel="icon" type="image/png" sizes="64x64" href="/images/favicon-64x64.png?v=7">
-  <link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128x128.png?v=7">
-  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png?v=7">
-  <link rel="icon" type="image/png" sizes="256x256" href="/images/favicon-256x256.png?v=7">
-  <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512x512.png?v=7">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png?v=7">
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=6">
-  <link rel="manifest" href="/manifest.json?v=6">
-  
-  <!-- Additional meta tags for mobile sharing -->
-  <meta name="theme-color" content="#061E4A">
-  <meta name="msapplication-TileColor" content="#061E4A">
-  <meta name="msapplication-TileImage" content="/images/favicon-192x192.png?v=7">
-  <meta property="og:title" content="BSM Holdings — Residential Property Management in Oklahoma">
-  <meta name="twitter:title" content="BSM Holdings — Residential Property Management in Oklahoma">
-  <meta property="og:description" content="BSM Holdings manages residential property across Oklahoma — clear owner reporting and direct resident support.">
-  <meta name="twitter:description" content="BSM Holdings manages residential property across Oklahoma — clear owner reporting and direct resident support.">
-  <script>
-  </script>
-</head>
+    <meta name="theme-color" content="#0060C8" />
+    <meta name="msapplication-TileColor" content="#0060C8" />
+    <meta name="msapplication-TileImage" content="/images/favicon-192x192.png?v=8" />
+  </head>
 
   <body>
     <div id="root"></div>

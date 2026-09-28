@@ -12,7 +12,7 @@
 
 export const SITE_NAME = 'BSM Holdings';
 export const SITE_URL = 'https://bsmholdings.com';
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/brand/bsm-logo.png`;
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/images/bsm-social-share.png`;
 
 const t = (title) => `${title} | ${SITE_NAME}`;
 
