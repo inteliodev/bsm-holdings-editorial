@@ -278,11 +278,11 @@ const PropertyManagement = () => {
               ABOUT US
             </h2>
             <p className="text-lg text-white mb-10 leading-relaxed">
-              BSM Holdings delivers the full lifecycle of commercial real estate services—from 
-              acquisitions and development to management, leasing, sales, and strategic 
-              advisory—through a vertically integrated platform designed to operate, not just 
-              advise. Proprietary technology supports disciplined underwriting, consistent 
-              execution, and long-term asset alignment across every engagement.
+              BSM Holdings focuses on residential property management — leasing, maintenance
+              coordination, resident support, and clear owner reporting — through a vertically
+              integrated platform designed to operate, not just advise. Proprietary technology
+              supports consistent execution and long-term asset alignment across every home we
+              manage.
             </p>
             <div className="pt-8 border-t border-gray-500">
               <h3 className="text-2xl sm:text-3xl font-bold mb-8 tracking-widest text-white">

@@ -23,7 +23,7 @@ const Portfolio = () => {
         />
       </Helmet>
 
-      <section className="relative overflow-hidden border-b border-white/10 bg-hhp-navy-deep">
+      <section className="relative overflow-hidden border-b border-white/10 bg-brand-deep">
         {heroShot && (
           <div className="pointer-events-none absolute inset-0 opacity-35">
             <img
@@ -32,7 +32,7 @@ const Portfolio = () => {
               className="h-full w-full object-cover object-center"
               aria-hidden
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-hhp-navy-deep via-hhp-navy-deep/88 to-hhp-navy-deep/40" />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand via-brand/85 to-brand-deep/50" />
           </div>
         )}
         <div
@@ -62,30 +62,6 @@ const Portfolio = () => {
           style={{ clipPath: 'polygon(0 100%, 100% 0, 100% 100%)' }}
           aria-hidden
         />
-      </section>
-
-      <section className="border-b border-border bg-white">
-        <div className="container-premium flex flex-col gap-4 py-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-[4px] bg-brand text-xs font-bold text-white">
-              Pets
-            </span>
-            <div>
-              <p className="font-display text-sm font-bold text-brand-deep">
-                Pet policy varies by home
-              </p>
-              <p className="mt-0.5 text-sm text-listing-muted">
-                Filter for pet-friendly listings, or ask {site.principal.shortName} about a specific property.
-              </p>
-            </div>
-          </div>
-          <a
-            href={`mailto:${site.principal.email}?subject=Pet%20policy%20question`}
-            className="inline-flex min-h-[40px] items-center justify-center rounded-[4px] border border-brand/30 px-4 text-sm font-bold text-brand-deep transition hover:border-brand hover:bg-surface focus-ring"
-          >
-            Ask about pets
-          </a>
-        </div>
       </section>
 
       {featured.length > 0 && (

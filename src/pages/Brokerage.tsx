@@ -237,7 +237,7 @@ const Brokerage = () => {
                   <div className="text-center">
                     <div className="text-2xl font-display font-bold text-hhp-navy mb-2">Regional</div>
                     <div className="text-hhp-charcoal">
-                      Lender and buyer relationships across the Tulsa and Oklahoma City metros
+                      Lender and buyer relationships across the Oklahoma City metro
                     </div>
                   </div>
                 </div>

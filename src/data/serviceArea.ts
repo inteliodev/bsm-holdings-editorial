@@ -52,14 +52,6 @@ export const SERVICE_AREA: Metro[] = [
       'Midwest City',
     ],
   },
-  {
-    name: 'Tulsa Metro (select)',
-    blurb:
-      'Select residential properties in the Tulsa metro.',
-    cities: [
-      'Tulsa',
-    ],
-  },
 ];
 
 /** Flat list for `areaServed` in structured data. */

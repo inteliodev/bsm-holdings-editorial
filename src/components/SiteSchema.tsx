@@ -106,7 +106,7 @@ const SiteSchema = () => {
    * Service schema for the capability pages, derived from the path rather than
    * added by hand to each one. Answer engines use this to associate a named
    * service with a provider and a service area, which is exactly the shape of
-   * the question "who does property management in Tulsa".
+   * the question "who does property management in Oklahoma City".
    */
   const isServicePage =
     pathname.startsWith('/services/') || pathname === '/brokerage' || pathname === '/technology';

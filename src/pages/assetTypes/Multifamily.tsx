@@ -186,7 +186,7 @@ const Multifamily = () => {
             'A community where turn time and response time can be improved by operating it differently',
             'Deferred maintenance we can scope before closing rather than discover in the first quarter',
             'An ownership that wants controllable expense reported separately from taxes, insurance and debt service',
-            'Proximity to our Tulsa and Oklahoma City personnel, so turns and maintenance are ours rather than dispatched',
+            'Proximity to our Oklahoma City personnel, so turns and maintenance are ours rather than dispatched',
           ],
           href: '/contact',
           hrefLabel: 'Start a conversation',

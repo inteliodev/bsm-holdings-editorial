@@ -190,8 +190,8 @@ const Home = () => {
             <div className="lg:col-span-7">
               <p className="text-xl sm:text-2xl font-heading leading-snug text-hhp-navy">
                 BSM Holdings is a vertically integrated real estate
-                operating company in Oklahoma, working across the Tulsa and
-                Oklahoma City metros.
+                operating company in Oklahoma, working across the
+                Oklahoma City metro.
               </p>
 
               <div className="mt-7 space-y-5 text-lg leading-relaxed text-hhp-charcoal">
@@ -284,8 +284,7 @@ const Home = () => {
               </h2>
               <p className="text-lg leading-relaxed text-hhp-charcoal mb-4">
                 Day-to-day operations, leasing, maintenance coordination, and owner
-                reporting — staffed by BSM Holdings, led by Ty. One accountable team
-                for the homes we manage.
+                reporting. One accountable team for the homes we manage.
               </p>
               <p className="text-base leading-relaxed text-hhp-charcoal/80 mb-8">
                 Single-family, duplexes, triplexes, townhomes, and apartments across

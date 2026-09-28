@@ -51,11 +51,11 @@
     --popover: 0 0% 100%;
     --popover-foreground: 214 15% 25%;
 
-    --primary: 219 85% 16%;
+    --primary: 211 100% 39%;          /* #0060C8 logo / royal blue — interactive UI */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 14% 97%;
-    --secondary-foreground: 219 85% 16%;
+    --secondary-foreground: 211 100% 39%;
 
     --muted: 220 14% 96%;
     --muted-foreground: 214 10% 46%;
@@ -295,7 +295,7 @@
     min-height: 48px;
     padding: 0.875rem 1.75rem;
     border-radius: var(--radius);
-    background: hsl(var(--hhp-navy));
+    background: hsl(var(--accent)); /* #0060C8 logo blue */
     color: hsl(var(--hhp-white));
     font-family: var(--font-display);
     font-size: 0.875rem;
@@ -307,7 +307,7 @@
   }
 
   .btn-hero:hover {
-    background: hsl(var(--hhp-navy-deep));
+    background: hsl(var(--hhp-navy-soft)); /* #004FA8 */
     transform: translateY(-2px);
     box-shadow: var(--shadow-premium);
   }
@@ -319,9 +319,9 @@
     gap: 0.5rem;
     min-height: 48px;
     padding: 0.875rem 1.75rem;
-    border: 1px solid hsl(var(--hhp-navy));
+    border: 1px solid hsl(var(--accent));
     border-radius: var(--radius);
-    color: hsl(var(--hhp-navy));
+    color: hsl(var(--accent));
     font-family: var(--font-display);
     font-size: 0.875rem;
     font-weight: 600;
@@ -331,7 +331,7 @@
   }
 
   .btn-secondary:hover {
-    background: hsl(var(--hhp-navy));
+    background: hsl(var(--accent));
     color: hsl(var(--hhp-white));
   }
 
@@ -480,23 +480,24 @@
   .scrim-bottom {
     background: linear-gradient(
       to top,
-      hsl(var(--hhp-navy-deep) / 0.92) 0%,
-      hsl(var(--hhp-navy-deep) / 0.65) 28%,
-      hsl(var(--hhp-navy-deep) / 0.18) 60%,
-      hsl(var(--hhp-navy-deep) / 0.04) 100%
+      hsl(var(--hhp-navy-deep) / 0.88) 0%,
+      hsl(var(--accent) / 0.45) 28%,
+      hsl(var(--accent) / 0.12) 60%,
+      hsl(var(--accent) / 0.02) 100%
     );
   }
 
   .scrim-hero {
+    /* Header/hero fade weighted toward logo blue (#0060C8), navy used sparingly at the fold */
     background:
       linear-gradient(to bottom,
-        hsl(var(--hhp-navy-deep) / 0.66) 0%,
-        hsl(var(--hhp-navy-deep) / 0.40) 34%,
-        hsl(var(--hhp-navy-deep) / 0.52) 68%,
-        hsl(var(--hhp-navy-deep) / 0.90) 100%),
+        hsl(var(--accent) / 0.55) 0%,
+        hsl(var(--accent) / 0.28) 34%,
+        hsl(var(--hhp-navy-deep) / 0.42) 68%,
+        hsl(var(--hhp-navy-deep) / 0.88) 100%),
       radial-gradient(120% 80% at 50% 45%,
         transparent 38%,
-        hsl(var(--hhp-navy-deep) / 0.38) 100%);
+        hsl(var(--accent) / 0.28) 100%);
     transition: background 2s var(--ease-standard);
   }
 

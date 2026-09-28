@@ -157,7 +157,7 @@ const Office = () => {
           'A building where the operating line can be improved by operating it better, not only by re-leasing it',
           'Mechanical and life-safety systems we can assess before closing, not inherit',
           'An ownership that wants line-item cost reporting rather than a management fee and a quarterly summary',
-          'Proximity to our Tulsa and Oklahoma City personnel, so the trades are ours rather than dispatched',
+          'Proximity to our Oklahoma City personnel, so the trades are ours rather than dispatched',
         ],
         href: '/contact',
         hrefLabel: 'Start a conversation',

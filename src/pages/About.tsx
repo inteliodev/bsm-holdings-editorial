@@ -132,7 +132,7 @@ const About = () => {
             */}
             <p className="text-base leading-relaxed text-white/75 sm:text-lg">
               Residential property management across Oklahoma — clear owner reporting and
-              direct resident support, led by Ty McClellan.
+              direct resident support.
             </p>
           </div>
         </div>

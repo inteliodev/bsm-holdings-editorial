@@ -157,7 +157,7 @@ const Industrial = () => {
           'Specification we can verify on site — clear height, dock ratio, power and sprinkler class — before a number is committed',
           'A roof, slab and site drainage we can assess rather than inherit',
           'A tenant whose operation we understand well enough to set the preventive schedule around it',
-          'Proximity to our Tulsa and Oklahoma City personnel, so response time is ours rather than a vendor’s',
+          'Proximity to our Oklahoma City personnel, so response time is ours rather than a vendor’s',
         ],
         href: '/contact',
         hrefLabel: 'Start a conversation',

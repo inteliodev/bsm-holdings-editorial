@@ -157,7 +157,7 @@ const Retail = () => {
           'A centre where common-area condition is a solvable problem rather than a deferred capital event',
           'A rent roll we can read against tenant occupancy cost, not only against market rent',
           'Co-tenancy and exclusivity language we can review before closing',
-          'Proximity to our Tulsa and Oklahoma City personnel, so lot, lighting and janitorial are ours rather than dispatched',
+          'Proximity to our Oklahoma City personnel, so lot, lighting and janitorial are ours rather than dispatched',
         ],
         href: '/contact',
         hrefLabel: 'Start a conversation',

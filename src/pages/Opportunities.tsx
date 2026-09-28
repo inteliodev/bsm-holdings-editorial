@@ -9,7 +9,7 @@ const OPPORTUNITIES = [
     id: 1,
     title: 'Property Management - Operations',
     department: 'Operations',
-    location: 'Tulsa, OK / Multiple Oklahoma locations',
+    location: 'Oklahoma City, OK / Multiple Oklahoma locations',
     description:
       'Lead day-to-day operations for commercial properties. Direct accountability for financial performance, tenant relations, and asset preservation.',
   },
@@ -17,7 +17,7 @@ const OPPORTUNITIES = [
     id: 2,
     title: 'Leasing & Representation - Brokerage',
     department: 'Brokerage',
-    location: 'Tulsa, OK / Oklahoma City, OK',
+    location: 'Oklahoma City, OK',
     description:
       'Represent owners and tenants in commercial leasing transactions. Focus on long-term asset value, not just deal volume.',
   },
@@ -33,7 +33,7 @@ const OPPORTUNITIES = [
     id: 4,
     title: 'Technology Implementation - Systems',
     department: 'Technology',
-    location: 'Tulsa, OK / Remote',
+    location: 'Oklahoma City, OK / Remote',
     description:
       'Deploy and maintain proprietary data platforms and systems. Work directly with operations and brokerage teams to solve real problems.',
   },
@@ -41,7 +41,7 @@ const OPPORTUNITIES = [
     id: 5,
     title: 'Advisory Services - Consulting',
     department: 'Advisory',
-    location: 'Tulsa, OK',
+    location: 'Oklahoma City, OK',
     description:
       'Advise owners and boards on complex real estate decisions. Site selection, portfolio optimization, and strategic planning.',
   },
@@ -49,7 +49,7 @@ const OPPORTUNITIES = [
     id: 6,
     title: 'Broker Support - Compliance',
     department: 'Operations',
-    location: 'Tulsa, OK',
+    location: 'Oklahoma City, OK',
     description:
       'Provide Broker of Record services and compliance oversight for independent brokerages. Regulatory excellence and operational support.',
   },
@@ -151,7 +151,7 @@ const Opportunities = () => {
                   aria-pressed={department === dept}
                   className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
                     department === dept
-                      ? 'border-hhp-navy bg-brand text-white'
+                      ? 'border-brand bg-brand text-white'
                       : 'border-border bg-white text-hhp-charcoal hover:border-hhp-gold hover:text-hhp-navy'
                   }`}
                 >
