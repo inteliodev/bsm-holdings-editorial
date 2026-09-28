@@ -18,7 +18,7 @@ const Platforms = () => {
               Proprietary Platforms Transforming Real Estate
             </h1>
             <p className="text-xl leading-relaxed text-white/90 mb-8 drop-shadow-md">
-              From acquisitions to tenant retention, HHP's purpose-built systems accelerate
+              From acquisitions to tenant retention, BSM Holdings' purpose-built systems accelerate
               decision-making, remove manual steps, and keep operating cost visible
               across every asset class.
             </p>
@@ -45,7 +45,7 @@ const Platforms = () => {
             <h2 className="section-title text-hhp-navy mb-8 text-center">Overview</h2>
             <div className="prose prose-lg mx-auto text-hhp-charcoal">
               <p className="text-lg leading-relaxed mb-6">
-                Unlike traditional firms that rely on static reports or generic SaaS tools, HHP has 
+                Unlike traditional firms that rely on static reports or generic SaaS tools, BSM Holdings has 
                 engineered vertical-specific platforms built on proprietary and market data. Each
                 platform is embedded into daily operations, producing real-time, predictive, and
                 prescriptive insights that give clients an edge.

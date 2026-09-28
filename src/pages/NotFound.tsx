@@ -12,7 +12,7 @@ const SUGGESTED = [
   { to: '/services/property-management', label: 'Property Management' },
   { to: '/services/facility-services', label: 'Facility Services' },
   { to: '/portfolio', label: 'Properties' },
-  { to: '/about', label: 'About HHP' },
+  { to: '/about', label: 'About BSM Holdings' },
 ];
 
 const NotFound = () => {

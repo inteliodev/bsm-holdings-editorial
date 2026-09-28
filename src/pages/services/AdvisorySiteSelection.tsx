@@ -34,7 +34,7 @@ const AdvisorySiteSelection = () => {
                   Real estate decisions often involve competing objectives, incomplete information, and meaningful capital commitments.
                 </p>
                 <p>
-                  HHP serves as an independent advisor, helping clients frame decisions clearly, evaluate options objectively, and understand the operational and financial implications before capital is committed.
+                  BSM Holdings serves as an independent advisor, helping clients frame decisions clearly, evaluate options objectively, and understand the operational and financial implications before capital is committed.
                 </p>
               </div>
             </div>
@@ -275,7 +275,7 @@ const AdvisorySiteSelection = () => {
               ABOUT US
             </h2>
             <p className="text-lg text-white mb-10 leading-relaxed">
-              HHP delivers the full lifecycle of commercial real estate services—from 
+              BSM Holdings delivers the full lifecycle of commercial real estate services—from 
               acquisitions and development to management, leasing, sales, and strategic 
               advisory—through a vertically integrated platform designed to operate, not just 
               advise. Proprietary technology supports disciplined underwriting, consistent 

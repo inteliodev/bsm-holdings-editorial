@@ -71,7 +71,7 @@ const Insights = () => {
       });
       toast({
         title: "We couldn't complete your subscription",
-        description: 'Please try again, or email info@hhpasset.com to be added.',
+        description: 'Please try again, or email ty@bsmholdings.com to be added.',
         variant: 'destructive',
       });
     }

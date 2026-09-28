@@ -9,7 +9,7 @@ import {
 } from '@/data/serviceArea';
 import { ASSET_SEGMENT_LABELS } from '@/data/assetTypes';
 
-const SITE_URL = 'https://hhpasset.com';
+const SITE_URL = 'https://bsmholdings.com';
 const ORG_ID = `${SITE_URL}/#organization`;
 const SITE_ID = `${SITE_URL}/#website`;
 
@@ -72,16 +72,12 @@ const SiteSchema = () => {
       email: CONTACT_EMAIL,
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_URL}/brand/vector/HHP_Logo_Primary.svg`,
+        url: `${SITE_URL}/brand/vector/BSM_Logo.png`,
       },
-      image: `${SITE_URL}/images/hhp-social-share.png`,
+      image: `${SITE_URL}/brand/bsm-logo.png`,
       description:
-        'Vertically integrated asset management in Oklahoma. Property management, Facility Services, and accounting under one accountable firm, supported by in-house brokerage and advisory.',
+        'BSM Holdings manages residential property across Oklahoma — clear owner reporting and direct resident support.',
       areaServed: ALL_SERVED_CITIES.map((city) => ({ '@type': 'City', name: `${city}, OK` })),
-      sameAs: [
-        'https://www.linkedin.com/company/hhpasset',
-        'https://www.facebook.com/share/1JLHp25e3N/?mibextid=wwXIfr',
-      ],
       ...(hasStreetAddress()
         ? {
             address: {

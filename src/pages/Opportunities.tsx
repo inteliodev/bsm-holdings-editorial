@@ -86,24 +86,24 @@ const Opportunities = () => {
             <span className="eyebrow mb-5 text-white/85">Careers</span>
             <h1 className="hero-title mb-5 text-white">Opportunities</h1>
             <p className="text-lg leading-relaxed text-white/80 sm:text-xl">
-              Join HHP Asset Management
+              Join BSM Holdings
             </p>
           </div>
         </div>
       </section>
 
-      {/* Why Join HHP */}
+      {/* Why Join BSM Holdings */}
       <section className="section-spacing bg-white">
         <div className="container-premium">
           <div className="mx-auto max-w-5xl">
-            <span className="eyebrow">Why Join HHP</span>
+            <span className="eyebrow">Why Join BSM Holdings</span>
             <h2 className="section-title mt-5 text-hhp-navy">An operator-led firm</h2>
 
             {/* Two columns rather than one long stack — the copy is unchanged,
                 it simply no longer reads as a single wall. */}
             <div className="mt-10 gap-x-14 border-t border-border pt-10 text-lg leading-relaxed text-hhp-charcoal md:columns-2 [&>p]:mb-6 [&>p]:break-inside-avoid">
               <p>
-                HHP is an operator-led firm. Our leadership team has managed assets, closed
+                BSM Holdings is an operator-led firm. Our leadership team has managed assets, closed
                 transactions, and solved real problems in commercial real estate. We don't just
                 talk about execution — we build it into everything we do.
               </p>
@@ -230,11 +230,11 @@ const Opportunities = () => {
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <a
-                href="mailto:careers@hhpasset.com"
+                href="mailto:careers@bsmholdings.com"
                 className="tap text-sm text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline"
-                onClick={() => trackLinkClick('Email Careers', 'mailto:careers@hhpasset.com')}
+                onClick={() => trackLinkClick('Email Careers', 'mailto:careers@bsmholdings.com')}
               >
-                careers@hhpasset.com
+                careers@bsmholdings.com
               </a>
             </div>
           </div>

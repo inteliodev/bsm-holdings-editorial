@@ -79,7 +79,7 @@ const Services = () => {
               Comprehensive Real Estate Services, Reimagined
             </h2>
             <p className="text-xl leading-relaxed text-hhp-charcoal">
-              HHP delivers the full lifecycle of commercial real estate services — from acquisitions and development to management, leasing, sales, and strategic advisory — all under one roof.
+              BSM Holdings delivers the full lifecycle of commercial real estate services — from acquisitions and development to management, leasing, sales, and strategic advisory — all under one roof.
             </p>
           </div>
         </div>

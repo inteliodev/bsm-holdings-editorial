@@ -41,7 +41,7 @@ Two changes, both in `scripts/prerender.mjs`:
 A green `git push` is not a deploy. Compare the live bundle to the local one:
 
 ```bash
-curl -s https://hhpasset.com/ | grep -o 'assets/index-[A-Za-z0-9_-]*\.js'
+curl -s https://bsmholdings.com/ | grep -o 'assets/index-[A-Za-z0-9_-]*\.js'
 ls dist/assets/index-*.js
 # different hash = the live site is not your build
 npx vercel ls | head -5
@@ -83,13 +83,13 @@ where **nothing** is.
 
 ## 🖼️ **FAVICONS ARE NOT LOGOS SCALED DOWN**
 
-The favicons were the full three-letter HHP lockup exported at each size. At
+The favicons were the full three-letter BSM Holdings lockup exported at each size. At
 16px it was an illegible smear: three thin serif letters, with the artwork
-occupying only ~9% of the canvas. They were also `#09275D`, a royal blue, not
-the brand navy `#0A2342` — so the browser tab did not match the site.
+occupying only ~9% of the canvas. They were also `#0060C8`, a royal blue, not
+the brand navy `#061E4A` — so the browser tab did not match the site.
 
 `public/favicon.svg` is now the master: a **single H** from the real brand
-letterform, cropped tight and set large on `#0A2342`. One letter survives 16px;
+letterform, cropped tight and set large on `#061E4A`. One letter survives 16px;
 three never will. The PNGs are rasterised from that SVG so every size agrees.
 
 Check a favicon by rendering it at 16px and looking at it, not by opening the
@@ -117,11 +117,11 @@ returned **byte-identical** output — both were `index.html`.
 Assert on content type or content, never on status:
 
 ```bash
-curl -s -o /dev/null -w "%{content_type}\n" https://hhpasset.com/llms.txt
+curl -s -o /dev/null -w "%{content_type}\n" https://bsmholdings.com/llms.txt
 # text/plain  = real file
 # text/html   = SPA fallback, the file is not there
 
-curl -s https://hhpasset.com/definitely-not-real-xyz | head -c 60
+curl -s https://bsmholdings.com/definitely-not-real-xyz | head -c 60
 # compare against the file you are testing
 ```
 
@@ -281,7 +281,7 @@ to every arbitrary Tailwind value.
 No page other than `/` could rank. Search Console treated the whole site as duplicates.
 
 ### Root cause
-`index.html` carried a hardcoded `<link rel="canonical" href="https://hhpasset.com/">`. Under the SPA catch-all rewrite in `vercel.json`, that same HTML is served for **every** URL — so all 61 routes declared themselves duplicates of the homepage. Only three files overrode it via `Helmet`.
+`index.html` carried a hardcoded `<link rel="canonical" href="https://bsmholdings.com/">`. Under the SPA catch-all rewrite in `vercel.json`, that same HTML is served for **every** URL — so all 61 routes declared themselves duplicates of the homepage. Only three files overrode it via `Helmet`.
 
 ### Fix
 Removed the static tag. Canonicals are emitted per route by page components. **Never put a canonical, `og:url`, or any URL-specific tag in `index.html` on an SPA with a catch-all rewrite** — it is served everywhere.
@@ -334,7 +334,7 @@ grep -rhoE '/images/[A-Za-z0-9._ -]+\.(png|jpg|jpeg|webp|svg|mp4)' src | sort -u
 ```
 
 ### Not every "white" logo is usable on dark
-`HHP Logo White Letters.png` is a **hollow outline** (white fill, thin navy stroke) sitting on a 1024² canvas where the mark occupies ~⅓ of the frame — it renders small and washed. The full-lockup PNGs have **opaque white backgrounds** (0% alpha), so `brightness-0 invert` turns them into solid white plates. Check alpha before assuming transparency:
+`BSM Holdings Logo White Letters.png` is a **hollow outline** (white fill, thin navy stroke) sitting on a 1024² canvas where the mark occupies ~⅓ of the frame — it renders small and washed. The full-lockup PNGs have **opaque white backgrounds** (0% alpha), so `brightness-0 invert` turns them into solid white plates. Check alpha before assuming transparency:
 
 ```javascript
 // draw to canvas, then count pixels with data[i+3] < 16

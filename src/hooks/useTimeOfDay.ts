@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 export type TimeOfDay = 'dawn' | 'day' | 'dusk' | 'night';
 
 /**
- * Time of day in HHP's actual market, not the visitor's.
+ * Time of day in BSM Holdings' actual market, not the visitor's.
  *
  * The Portfolio map is lit by Mapbox's `lightPreset`, and the Home hero carries
  * a gradient scrim. Driving both from the real clock in Oklahoma means the site

@@ -1,13 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import Layout from '@/components/Layout/Layout';
-import haydenImage from '@/assets/hayden-ashley.webp';
-import philImage from '@/assets/phil-ashley.webp';
-import hannahImage from '@/assets/hannah-fanning.webp';
-import marshellaImage from '@/assets/marshella-franklin.webp';
-import andrewImage from '@/assets/andrew-hoanzl.webp';
 import { Mail, ChevronDown, ChevronUp } from 'lucide-react';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
+
+const tyImage = '/brand/ty-headshot.png';
 
 /**
  * The team, grouped by department.
@@ -38,94 +35,18 @@ type Department = {
 
 const TEAM: Department[] = [
   {
-    name: 'Executive Team',
+    name: 'Leadership',
     members: [
       {
-        id: 'hayden',
-        name: 'Hayden Ashley',
-        title: 'Managing Principal',
-        email: 'hayden@hhpasset.com',
-        image: haydenImage,
+        id: 'ty',
+        name: 'Ty McClellan',
+        title: 'Principal',
+        email: 'ty@bsmholdings.com',
+        image: tyImage,
         bio: [
-          "Hayden Ashley serves as Managing Principal of HHP, where he leads firm strategy, regional growth, and platform development across brokerage, property management, and advisory services.",
-          "An operator by background, Hayden oversees HHP's vertically integrated execution model and the development of technology-enabled systems that strengthen underwriting discipline, operational consistency, and long-term asset performance.",
-          "Hayden's experience spans institutional real estate, Big Four accounting, and enterprise operations. He has worked with two of the world's largest commercial real estate firms—Newmark and Colliers—and began his career auditing Fortune 500 companies at Ernst & Young. Across brokerage, advisory, and ownership-oriented roles, he has been involved in over $2.0 billion in real estate transactions.",
-          "This foundation informs HHP's disciplined, fiduciary approach and its focus on aligned incentives across the full asset lifecycle.",
+          "Ty McClellan is Principal of BSM Holdings, a residential property management firm serving Oklahoma.",
+          "Ty works directly with owners and residents — clear reporting, responsive maintenance coordination, and straightforward communication.",
         ],
-      },
-      {
-        id: 'phil',
-        name: 'Phil Ashley',
-        title: 'Director of Operations',
-        email: 'phil@hhpasset.com',
-        image: philImage,
-        bio: [
-          "Phil Ashley serves as Director of Operations, bringing two decades of investment property and facilities expertise to HHP's enterprise-level service delivery. In addition to his real estate operations background, Phil founded and operated one of the largest commercial cleaning companies in Oklahoma, giving him deep, hands-on experience in large-scale facilities management, vendor oversight, and service execution.",
-          "His background spans the complete asset lifecycle—from acquisition and performance optimization to value-add execution—across all major asset classes. This dual perspective across property operations and facilities services enables disciplined execution at both the asset and building-services level.",
-          "Phil combines technical expertise with rigorous operational leadership, ensuring consistent performance across portfolios and markets. His systematic approach to property operations, vendor management, and owner communication makes him a critical strategic resource for the owners HHP works with.",
-        ],
-      },
-    ],
-  },
-  {
-    name: 'Accounting',
-    members: [
-      {
-        id: 'hannah',
-        name: 'Hannah Fanning',
-        title: 'Director, Accounting',
-        email: 'hannah@hhpasset.com',
-        image: hannahImage,
-        // Bio intentionally omitted. The previous one opened "Hannah Fanning
-        // serves as Administrative Director at HHP" and described firmwide
-        // administrative functions throughout — that title now belongs to
-        // Marshella, so publishing it beside "Director, Accounting" would have
-        // contradicted the card it sat in. Restore once a bio for the
-        // accounting role exists.
-      },
-    ],
-  },
-  {
-    name: 'Property Management',
-    members: [
-      {
-        id: 'valarie',
-        name: 'Valarie Ellis',
-        title: 'Property Manager',
-        email: 'valarie@hhpasset.com',
-        // No headshot yet.
-      },
-    ],
-  },
-  {
-    name: 'Administrative Services',
-    members: [
-      {
-        id: 'marshella',
-        name: 'Marshella Franklin',
-        title: 'Administrative Director',
-        email: 'marshella@hhpasset.com',
-        image: marshellaImage,
-      },
-    ],
-  },
-  {
-    name: 'Facility Services',
-    members: [
-      {
-        id: 'preston',
-        name: 'Preston Ellis',
-        title: 'Director of Facility Services',
-        email: 'preston@hhpasset.com',
-        // No headshot yet — renders as name, title and email, with no
-        // placeholder portrait.
-      },
-      {
-        id: 'andrew',
-        name: 'Andrew Hoanzl',
-        title: 'Property Engineer',
-        email: 'andrew@hhpasset.com',
-        image: andrewImage,
       },
     ],
   },
@@ -210,9 +131,8 @@ const About = () => {
               LocalBusiness structured data.
             */}
             <p className="text-base leading-relaxed text-white/75 sm:text-lg">
-              A vertically integrated asset management firm. Property management, Facility
-              Services and accounting under one accountable roof, supported by in-house
-              brokerage and advisory.
+              Residential property management across Oklahoma — clear owner reporting and
+              direct resident support, led by Ty McClellan.
             </p>
           </div>
         </div>
@@ -224,7 +144,7 @@ const About = () => {
           className="relative min-h-[260px] w-full flex-1 bg-cover bg-center bg-no-repeat sm:min-h-[320px] md:min-h-0 md:w-[55%] lg:w-[60%]"
           style={{ backgroundImage: 'url(/images/cool-real-estate-about-us-image.jpg)' }}
           role="img"
-          aria-label="HHP-managed commercial property"
+          aria-label="BSM-managed commercial property"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-hhp-navy/30 to-transparent" />
         </div>
@@ -234,7 +154,7 @@ const About = () => {
       <section className="bg-white py-12 lg:py-16">
         <div className="container-premium">
           {/* Tab Navigation */}
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 border-b border-border pb-4" role="tablist" aria-label="About HHP sections">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 border-b border-border pb-4" role="tablist" aria-label="About BSM Holdings sections">
             <button
               onClick={() => handleTabChange('people')}
               onKeyDown={(e) => {
@@ -276,7 +196,7 @@ const About = () => {
               aria-controls="panel-story"
               role="tab"
             >
-              Why HHP Was Built
+              Why BSM Holdings
               {activeTab === 'story' && (
                 <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-hhp-navy transform transition-all duration-300" />
               )}
@@ -413,10 +333,10 @@ const About = () => {
             {/* Tab 2: Our Story */}
             {activeTab === 'story' && (
               <div className="fade-in animate-in fade-in duration-300">
-                <h2 className="section-title text-hhp-navy mb-6 text-center">Why HHP Was Built</h2>
+                <h2 className="section-title text-hhp-navy mb-6 text-center">Why BSM Holdings</h2>
                 <div className="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed text-hhp-charcoal">
                   <p>
-                    HHP was founded in response to a fundamental flaw in the traditional real estate services model. Management, maintenance, accounting, and advisory are typically divided across separate firms, creating fragmented accountability, misaligned incentives, and execution gaps that directly erode asset performance. The owner is left holding the coordination risk.
+                    BSM Holdings was built to give Oklahoma owners and residents a clearer property management experience — direct communication with Ty and the BSM team, not a call center.
                   </p>
                   <p>
                     We began as an operator-first firm—managing our own portfolio long before serving institutional clients. That experience reinforced a simple truth: durable real estate value is created through long-term ownership thinking, not transaction-driven decision-making.
@@ -425,7 +345,7 @@ const About = () => {
                     Our evolution into a vertically integrated platform was deliberate. By aligning brokerage, asset management, and advisory services under one operating framework, we remove friction from the ownership lifecycle. Decisions are made faster, execution is tighter, and accountability is clear. Every service we provide—from acquisitions through ongoing management—operates under a single fiduciary standard: treat every asset as if we own it.
                   </p>
                   <p>
-                    Today, HHP combines boutique-level attention with the discipline of a much larger shop. Our growth has been disciplined, grounded in operator credibility, and supported by proprietary technology that strengthens decision-making without replacing human judgment. Clients engage HHP not as a collection of service lines, but as a long-term operating partner.
+                    Today, BSM Holdings manages single-family homes, duplexes, triplexes, townhomes, and apartments across Oklahoma with a focus on clear owner reporting and responsive resident support.
                   </p>
                 </div>
               </div>

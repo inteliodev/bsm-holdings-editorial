@@ -15,7 +15,7 @@ import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
  *
  * Now the services are laid out open, from an array. Two sections were added
  * because nothing on the page was specific to the asset class: `metrics` (the
- * numbers that actually differ by class) and `proof` (what HHP operates or
+ * numbers that actually differ by class) and `proof` (what BSM Holdings operates or
  * underwrites in that class). The old "Insights" band was three fabricated
  * article teasers per page — 18 in total, all dated late 2024, every one
  * linking to /insights regardless of its title — and is gone.
@@ -77,7 +77,7 @@ interface AssetTypePageProps {
   technologySubtitle?: string;
 
   /**
-   * What HHP actually operates or underwrites in this class. Honest by
+   * What BSM Holdings actually operates or underwrites in this class. Honest by
    * construction: `operating` states a real portfolio, `seeking` states the
    * criteria instead. Never claim an asset the firm does not hold.
    */
@@ -194,7 +194,7 @@ const AssetTypePage = ({
                   <AssetMark mark={mark} />
                 </div>
                 <h3 className="font-display text-xl font-semibold text-hhp-navy">
-                  {valuePropositionTitle || 'Where HHP fits'}
+                  {valuePropositionTitle || 'Where BSM Holdings fits'}
                 </h3>
                 <p className="mt-4 leading-relaxed text-hhp-charcoal">{valueProposition}</p>
               </div>
@@ -294,14 +294,14 @@ const AssetTypePage = ({
         </div>
       </section>
 
-      {/* ── The HHP advantage ────────────────────────────────────────────── */}
+      {/* ── The BSM Holdings advantage ────────────────────────────────────────────── */}
       {technologyAdvantages && technologyAdvantages.length > 0 && (
         <section className="section-spacing bg-white">
           <div className="container-premium">
             <div className="mx-auto mb-14 max-w-3xl text-center">
-              <span className="eyebrow mb-5 justify-center">Why HHP</span>
+              <span className="eyebrow mb-5 justify-center">Why BSM Holdings</span>
               <h2 className="section-title text-hhp-navy">
-                {technologyTitle || `The HHP advantage for ${title}`}
+                {technologyTitle || `The BSM Holdings advantage for ${title}`}
               </h2>
               {technologySubtitle && (
                 <p className="mt-6 text-lg leading-relaxed text-hhp-charcoal">

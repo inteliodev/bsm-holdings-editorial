@@ -220,18 +220,12 @@ const Brokerage = () => {
             
             <div>
               <div className="premium-card">
-                {/*
-                  The "$2B+ Transactions Facilitated" figure here was presented as a
-                  firm track record. It is real, but it belongs to Hayden Ashley
-                  personally across prior roles — see the bio on /about — so it is
-                  attributed to the individual rather than to HHP.
-                */}
                 <h3 className="text-xl font-display font-semibold text-hhp-navy mb-6 text-center">Capital Markets Experience</h3>
                 <div className="space-y-6">
                   <div className="text-center">
-                    <div className="text-2xl font-display font-bold text-hhp-navy mb-2">$2B+</div>
+                    <div className="text-2xl font-display font-bold text-hhp-navy mb-2">Owner-Aligned</div>
                     <div className="text-hhp-charcoal">
-                      In transactions closed by our Managing Principal across prior institutional roles
+                      Advisory grounded in property operations and long-term ownership outcomes
                     </div>
                   </div>
                   <div className="text-center">

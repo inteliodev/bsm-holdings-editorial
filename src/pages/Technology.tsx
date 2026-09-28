@@ -184,27 +184,27 @@ const Technology = () => {
     <>
       {/* SEO Meta Tags */}
       <Helmet>
-        <title>HHP Asset Management | Technology</title>
+        <title>BSM Holdings | Technology</title>
         <meta 
           name="description" 
-          content="The asset management and operating systems HHP builds and maintains in house — so owners see line-item cost as it happens, not a month-end summary." 
+          content="The asset management and operating systems BSM Holdings builds and maintains in house — so owners see line-item cost as it happens, not a month-end summary." 
         />
         <meta 
           name="keywords" 
           content="real estate technology, proprietary platforms, property management software, real estate analytics, owner dashboards, custom solutions"
         />
-        <meta property="og:title" content="HHP Asset Management | Technology" />
-        <meta property="og:description" content="The asset management and operating systems HHP builds and maintains in house — so owners see line-item cost as it happens, not a month-end summary." />
+        <meta property="og:title" content="BSM Holdings | Technology" />
+        <meta property="og:description" content="The asset management and operating systems BSM Holdings builds and maintains in house — so owners see line-item cost as it happens, not a month-end summary." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://hhpasset.com/technology" />
-        <meta property="og:image" content="https://hhpasset.com/images/hhp-social-share.png" />
-        <link rel="canonical" href="https://hhpasset.com/technology" />
+        <meta property="og:url" content="https://bsmholdings.com/technology" />
+        <meta property="og:image" content="https://bsmholdings.com/brand/bsm-logo.png" />
+        <link rel="canonical" href="https://bsmholdings.com/technology" />
         
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="HHP Asset Management | Technology" />
-        <meta name="twitter:description" content="Explore HHP's Technology: Proprietary Platforms, Advisory & Analytics, and Custom Solutions." />
-        <meta name="twitter:image" content="https://hhpasset.com/images/hhp-social-share.png" />
+        <meta name="twitter:title" content="BSM Holdings | Technology" />
+        <meta name="twitter:description" content="Explore BSM Holdings' Technology: Proprietary Platforms, Advisory & Analytics, and Custom Solutions." />
+        <meta name="twitter:image" content="https://bsmholdings.com/brand/bsm-logo.png" />
       </Helmet>
 
       <Layout>
@@ -251,7 +251,7 @@ const Technology = () => {
               <h1 className="hero-title mb-6 text-white">Technology, built in house</h1>
               <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/70">
                 The operating and reporting systems behind every property we manage — built and
-                maintained by HHP, not licensed.
+                maintained by BSM Holdings, not licensed.
               </p>
               {/* Three facts, stated as a spec strip. The hero was a single word
                   and a paragraph, with nothing to hold the eye. */}

@@ -111,7 +111,7 @@ const CapabilityStack = () => {
               viewBox="0 0 400 510"
               className="mx-auto max-h-[34vh] w-full max-w-[180px] lg:max-h-none lg:max-w-[380px]"
               role="img"
-              aria-label="Diagram of HHP's capabilities as a single vertical stack, from asset management down to the technology that supports it"
+              aria-label="Diagram of BSM Holdings' capabilities as a single vertical stack, from asset management down to the technology that supports it"
             >
               {/* Read-progress rail. Always present; the gold segment grows. */}
               <line

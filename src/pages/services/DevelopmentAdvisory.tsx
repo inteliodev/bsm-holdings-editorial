@@ -47,7 +47,7 @@ const DevelopmentAdvisory = () => {
                 Development projects carry layered risk — market, entitlement, financial, and execution-related.
               </p>
               <p className="text-lg leading-relaxed">
-                HHP acts as an advisor and coordinator, helping clients understand feasibility, evaluate alternatives, and navigate complexity with discipline and clarity.
+                BSM Holdings acts as an advisor and coordinator, helping clients understand feasibility, evaluate alternatives, and navigate complexity with discipline and clarity.
               </p>
               <p className="text-lg leading-relaxed mt-6 font-semibold text-hhp-navy">
                 We advise and support — we do not speculate or self-develop.
@@ -282,7 +282,7 @@ const DevelopmentAdvisory = () => {
               ABOUT US
             </h2>
             <p className="text-lg text-white mb-10 leading-relaxed">
-              HHP delivers the full lifecycle of commercial real estate services—from 
+              BSM Holdings delivers the full lifecycle of commercial real estate services—from 
               acquisitions and development to management, leasing, sales, and strategic 
               advisory—through a vertically integrated platform designed to operate, not just 
               advise. Proprietary technology supports disciplined underwriting, consistent 

@@ -11,7 +11,7 @@ const Industrial = () => {
       mark="industrial"
 
       marketText="Industrial tenants do not experience a building the way an office tenant does. They experience it as throughput. A dock leveller out of service, a sprinkler system that will not certify, a truck court that floods in a spring storm — each of those is not a maintenance ticket, it is a day of their operation. Which is why industrial leases are renewed or lost on response time and infrastructure reliability far more often than on rate, and why the physical specification of the building sets a ceiling on who can ever occupy it."
-      valuePropositionTitle="Where HHP fits"
+      valuePropositionTitle="Where BSM Holdings fits"
       valueProposition="We self-perform the trades that keep a facility running — electrical, plumbing, roofing, general contracting and grounds — so a failure is dispatched from inside the firm rather than bid out after the tenant has already lost the morning. Specialty vendors are engaged only where licensing requires it."
 
       metricsIntro="Industrial assets are underwritten on specification and held on reliability. These are what we check and what we track."
@@ -118,7 +118,7 @@ const Industrial = () => {
       servicesTitle="Integrated services for industrial"
       servicesSubtitle="Six capabilities under one firm, so no part of the facility is somebody else's responsibility."
 
-      technologyTitle="The HHP advantage for industrial"
+      technologyTitle="The BSM Holdings advantage for industrial"
       technologyAdvantages={[
         {
           title: 'Self-performed trades, so uptime is ours to control',
@@ -138,7 +138,7 @@ const Industrial = () => {
         {
           title: 'Reporting without the month-end lag',
           description:
-            'Operating data reaches owners as it lands. The systems producing it are built and maintained by HHP, so what is reported changes when the way we operate changes.',
+            'Operating data reaches owners as it lands. The systems producing it are built and maintained by BSM Holdings, so what is reported changes when the way we operate changes.',
         },
         {
           title: 'One firm accountable',

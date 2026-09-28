@@ -78,7 +78,7 @@ function applyMeta(html, route) {
   html = upsertHead(html, /<meta property="og:description"[^>]*>/, `<meta property="og:description" content="${desc}">`);
   html = upsertHead(html, /<meta property="og:url"[^>]*>/, `<meta property="og:url" content="${url}">`);
   html = upsertHead(html, /<meta property="og:image"[^>]*>/, `<meta property="og:image" content="${image}">`);
-  html = upsertHead(html, /<meta property="og:site_name"[^>]*>/, `<meta property="og:site_name" content="HHP Asset Management">`);
+  html = upsertHead(html, /<meta property="og:site_name"[^>]*>/, `<meta property="og:site_name" content="BSM Holdings">`);
   html = upsertHead(html, /<meta name="twitter:title"[^>]*>/, `<meta name="twitter:title" content="${title}">`);
   html = upsertHead(html, /<meta name="twitter:description"[^>]*>/, `<meta name="twitter:description" content="${desc}">`);
   html = upsertHead(html, /<meta name="twitter:image"[^>]*>/, `<meta name="twitter:image" content="${image}">`);

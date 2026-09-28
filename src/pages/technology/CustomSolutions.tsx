@@ -18,7 +18,7 @@ const CustomSolutions = () => {
               Technology That Adapts to You
             </h1>
             <p className="text-xl leading-relaxed text-white/90 mb-8 drop-shadow-md">
-              Every client has unique goals. HHP designs and deploys bespoke data and automation solutions
+              Every client has unique goals. BSM Holdings designs and deploys bespoke data and automation solutions
               that embed into your operations — unlocking efficiency, compliance, and growth.
             </p>
             
@@ -44,7 +44,7 @@ const CustomSolutions = () => {
             <h2 className="section-title text-hhp-navy mb-8 text-center">Overview</h2>
             <div className="prose prose-lg mx-auto text-hhp-charcoal">
               <p className="text-lg leading-relaxed mb-6">
-                Not every problem is solved by an off-the-shelf tool. That's why HHP offers tailored 
+                Not every problem is solved by an off-the-shelf tool. That's why BSM Holdings offers tailored 
                 technology solutions, combining our in-house development expertise with real estate 
                 domain mastery. From automating HUD compliance to building investor dashboards, our 
                 team delivers scalable, secure, and client-specific systems.

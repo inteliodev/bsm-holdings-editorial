@@ -19,10 +19,10 @@ const InvestorPortal = () => {
   return (
     <Layout>
       <Helmet>
-        <title>Investor Portal - HHP Asset Management</title>
+        <title>Investor Portal - BSM Holdings</title>
         <meta
           name="description"
-          content="Request access to the HHP investor portal for portfolio performance, financial reports, market insights, transaction history, and investment documentation."
+          content="Request access to the BSM Holdings investor portal for portfolio performance, financial reports, market insights, transaction history, and investment documentation."
         />
       </Helmet>
 
@@ -117,13 +117,13 @@ const InvestorPortal = () => {
               <div className="rounded-lg bg-white p-4 shadow-elegant">
                 <p className="mb-2 text-sm font-medium text-hhp-charcoal">Prefer to email?</p>
                 <a
-                  href="mailto:investors@hhpasset.com"
+                  href="mailto:ty@bsmholdings.com"
                   className="tap text-sm font-medium text-hhp-navy transition-colors hover:text-hhp-navy/80"
                   onClick={() =>
                     trackButtonClick('email_investor_relations', 'investor_portal_page')
                   }
                 >
-                  investors@hhpasset.com
+                  ty@bsmholdings.com
                 </a>
               </div>
 

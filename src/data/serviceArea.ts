@@ -1,47 +1,34 @@
 /**
  * Service area and canonical NAP (name / address / phone).
  *
- * This is the single source of truth for where HHP operates. It feeds the visible
- * Service Area section, the footer, and the LocalBusiness structured data, so those
- * three can never drift apart — mismatched NAP is the most common local-ranking
- * problem, and the site previously had no address at all.
- *
- * These city names are public claims about where HHP works. Remove any market we do
- * not actually serve rather than leaving it in for search coverage.
+ * BSM Holdings — rebranded template. No invented street address or phone.
+ * Email is the canonical contact channel.
  */
 
-export const ORGANIZATION_NAME = 'HHP Asset Management';
-export const LEGAL_ENTITY_NAME = 'HHP Facility Services, LLC';
+export const ORGANIZATION_NAME = 'BSM Holdings';
+export const LEGAL_ENTITY_NAME = 'BSM Holdings, LLC';
 
 /**
- * No public phone number.
- *
- * The previous number was a personal cell and has been removed from the site,
- * from the footer and from the LocalBusiness structured data. Email is the
- * canonical contact channel. If a business line is added later, reintroduce it
- * here so the footer, the Contact page and the structured data stay in sync —
- * they must never carry the number independently.
+ * No public phone number. Do not invent one.
  */
-export const CONTACT_EMAIL = 'info@hhpasset.com';
+export const CONTACT_EMAIL = 'ty@bsmholdings.com';
 
 /**
- * Canonical NAP address.
- *
- * This exact string must match the Google Business Profile character for character —
- * inconsistent NAP is the most common cause of weak local ranking. Change it here
- * only, never in a component: the footer, the Service Area section, and the
- * LocalBusiness structured data all read from this object.
+ * No published street address yet — do not invent one.
+ * hasStreetAddress() stays false until a real address is confirmed.
  */
 export const OFFICE_ADDRESS = {
-  street: '1617 S. Cincinnati Ave, Suite B',
-  city: 'Tulsa',
+  street: '',
+  city: 'Oklahoma City',
   state: 'OK',
-  postalCode: '74119',
+  postalCode: '',
   country: 'US',
 };
 
-/** Single-line form for display and for matching against the business profile. */
-export const OFFICE_ADDRESS_LINE = `${OFFICE_ADDRESS.street}, ${OFFICE_ADDRESS.city}, ${OFFICE_ADDRESS.state} ${OFFICE_ADDRESS.postalCode}`;
+/** Single-line form for display. */
+export const OFFICE_ADDRESS_LINE = OFFICE_ADDRESS.street
+  ? `${OFFICE_ADDRESS.street}, ${OFFICE_ADDRESS.city}, ${OFFICE_ADDRESS.state} ${OFFICE_ADDRESS.postalCode}`
+  : `${OFFICE_ADDRESS.city} metro & surrounding communities, ${OFFICE_ADDRESS.state}`;
 
 export const hasStreetAddress = () => Boolean(OFFICE_ADDRESS.street && OFFICE_ADDRESS.postalCode);
 
@@ -53,47 +40,24 @@ export type Metro = {
 
 export const SERVICE_AREA: Metro[] = [
   {
-    name: 'Tulsa Metro',
-    blurb:
-      'Our home market, served directly by our own Facility Services teams and on-site staff.',
-    cities: [
-      // Named directly by HHP.
-      'Tulsa',
-      'Broken Arrow',
-      'Jenks',
-      'Owasso',
-      'Bixby',
-      'Sand Springs',
-      'Glenpool',
-      'Claremore',
-      'Pryor',
-      // Surrounding communities — remove any we do not actually serve.
-      'Sapulpa',
-      'Catoosa',
-      'Coweta',
-      'Skiatook',
-      'Collinsville',
-      'Verdigris',
-      'Inola',
-      'Wagoner',
-      'Bartlesville',
-      'Muskogee',
-    ],
-  },
-  {
     name: 'Oklahoma City Metro',
     blurb:
-      'A second market we serve, with asset management, property management, and brokerage coverage.',
+      'Our primary market — residential property management across the Oklahoma City metro.',
     cities: [
       'Oklahoma City',
       'Edmond',
       'Norman',
       'Moore',
       'Yukon',
-      'Mustang',
       'Midwest City',
-      'Del City',
-      'Bethany',
+    ],
+  },
+  {
+    name: 'Tulsa Metro (select)',
+    blurb:
+      'Select residential properties in the Tulsa metro.',
+    cities: [
+      'Tulsa',
     ],
   },
 ];

@@ -10,42 +10,42 @@
  * Keep descriptions under ~155 characters and make every title distinct.
  */
 
-export const SITE_NAME = 'HHP Asset Management';
-export const SITE_URL = 'https://hhpasset.com';
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/images/hhp-social-share.png`;
+export const SITE_NAME = 'BSM Holdings';
+export const SITE_URL = 'https://bsmholdings.com';
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/brand/bsm-logo.png`;
 
 const t = (title) => `${title} | ${SITE_NAME}`;
 
 export const ROUTE_META = {
   '/': {
-    title: 'HHP Asset Management — Vertically Integrated Asset Management in Oklahoma',
+    title: 'BSM Holdings — Vertically Integrated Asset Management in Oklahoma',
     description:
-      'Vertically integrated asset management in Tulsa and Oklahoma City. Property management, Facility Services, and accounting under one accountable firm.',
+      'BSM Holdings manages residential property across Oklahoma — clear owner reporting and direct resident support.',
   },
   '/about': {
     title: t('About'),
     description:
-      'Who we are and why HHP was built: one firm accountable for management, maintenance, accounting, and advisory instead of four vendors coordinating.',
+      'Who we are and why BSM Holdings was built: one firm accountable for management, maintenance, accounting, and advisory instead of four vendors coordinating.',
   },
   '/contact': {
     title: t('Contact'),
     description:
-      'Talk to HHP Asset Management about your property. Offices at 1617 S. Cincinnati Ave, Tulsa, Oklahoma. Serving the Tulsa and Oklahoma City metros.',
+      'Talk to BSM Holdings about your property. Offices at 1617 S. Cincinnati Ave, Tulsa, Oklahoma. Serving the Tulsa and Oklahoma City metros.',
   },
   '/portfolio': {
     title: t('Properties'),
     description:
-      'Properties under HHP Asset Management, including HUD Section 202 senior housing communities in Pryor, Oklahoma.',
+      'Properties under BSM Holdings, including HUD Section 202 senior housing communities in Pryor, Oklahoma.',
   },
   '/opportunities': {
     title: t('Careers'),
     description:
-      'Open roles at HHP Asset Management. Brokerage, asset management, property management, and Facility Services under one roof.',
+      'Open roles at BSM Holdings. Brokerage, asset management, property management, and Facility Services under one roof.',
   },
   '/faq': {
     title: t('Frequently Asked Questions'),
     description:
-      'Common questions about HHP Asset Management: management scope, reporting, compliance, Facility Services, and how engagements begin.',
+      'Common questions about BSM Holdings: management scope, reporting, compliance, Facility Services, and how engagements begin.',
   },
   '/insights': {
     title: t('Insights'),
@@ -70,7 +70,7 @@ export const ROUTE_META = {
   '/services/facility-services': {
     title: t('Facility Services'),
     description:
-      'Construction, roofing, HVAC, plumbing, electrical, lawncare, and janitorial performed in house through HHP Facility Services, LLC.',
+      'Construction, roofing, HVAC, plumbing, electrical, lawncare, and janitorial performed in house through BSM Holdings, LLC.',
   },
   '/services/financial-services': {
     title: t('Financial Services'),
@@ -110,7 +110,7 @@ export const ROUTE_META = {
   '/asset-types': {
     title: t('Asset Types'),
     description:
-      'How HHP approaches multifamily, affordable housing, office, retail, industrial, and senior housing across Oklahoma.',
+      'How BSM Holdings approaches multifamily, affordable housing, office, retail, industrial, and senior housing across Oklahoma.',
   },
   '/asset-types/multifamily': {
     title: t('Multifamily Management'),
@@ -145,12 +145,12 @@ export const ROUTE_META = {
   '/technology': {
     title: t('Technology'),
     description:
-      'The asset management and operating systems HHP builds and maintains in house, so owners see line-item cost as it is recorded.',
+      'The asset management and operating systems BSM Holdings builds and maintains in house, so owners see line-item cost as it is recorded.',
   },
   '/technology/platforms': {
     title: t('Proprietary Platforms'),
     description:
-      'The systems behind HHP operations: accounting, compliance, work orders and dispatch, security, communications, and owner reporting.',
+      'The systems behind BSM Holdings operations: accounting, compliance, work orders and dispatch, security, communications, and owner reporting.',
   },
   '/technology/advisory-analytics': {
     title: t('Advisory & Analytics'),
@@ -164,12 +164,12 @@ export const ROUTE_META = {
   },
   '/resident-login': {
     title: t('Resident Login'),
-    description: 'Resident portal access for communities managed by HHP Asset Management.',
+    description: 'Resident portal access for communities managed by BSM Holdings.',
     noindex: true,
   },
   '/investor-portal': {
     title: t('Investor Portal'),
-    description: 'Owner and investor portal access for HHP Asset Management clients.',
+    description: 'Owner and investor portal access for BSM Holdings clients.',
     noindex: true,
   },
 };

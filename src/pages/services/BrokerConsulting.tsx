@@ -30,7 +30,7 @@ const BrokerConsulting = () => {
             <div>
               <h2 className="section-title text-hhp-navy mb-6">Consulting Services</h2>
               <p className="text-lg leading-relaxed text-hhp-charcoal mb-6">
-                HHP provides consulting services for owners, boards, and stakeholders facing operational, governance, or transition-related challenges.
+                BSM Holdings provides consulting services for owners, boards, and stakeholders facing operational, governance, or transition-related challenges.
               </p>
               <p className="text-lg leading-relaxed text-hhp-charcoal mb-8">
                 Our consulting engagements are targeted, defined in scope, and designed to deliver clarity in complex situations.
@@ -217,7 +217,7 @@ const BrokerConsulting = () => {
               ABOUT US
             </h2>
             <p className="text-lg text-white mb-10 leading-relaxed">
-              HHP delivers the full lifecycle of commercial real estate services—from 
+              BSM Holdings delivers the full lifecycle of commercial real estate services—from 
               acquisitions and development to management, leasing, sales, and strategic 
               advisory—through a vertically integrated platform designed to operate, not just 
               advise. Proprietary technology supports disciplined underwriting, consistent 
@@ -250,7 +250,7 @@ const BrokerConsulting = () => {
             <div>
               <h2 className="section-title text-hhp-navy mb-6">Broker of Record Services</h2>
               <p className="text-lg leading-relaxed text-hhp-charcoal mb-6">
-                HHP provides Broker of Record services in Oklahoma for independent commercial brokerages and teams seeking licensed supervision, compliance oversight, and operational support.
+                BSM Holdings provides Broker of Record services in Oklahoma for independent commercial brokerages and teams seeking licensed supervision, compliance oversight, and operational support.
               </p>
               <p className="text-lg leading-relaxed text-hhp-charcoal mb-8">
                 Our role is to provide regulatory coverage and professional governance while allowing firms to maintain autonomy and focus on their core business.
@@ -428,7 +428,7 @@ const BrokerConsulting = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-display font-semibold text-hhp-navy mb-4">Why HHP for Broker of Record Services</h3>
+                  <h3 className="text-xl font-display font-semibold text-hhp-navy mb-4">Why BSM Holdings for Broker of Record Services</h3>
                   <p className="text-lg leading-relaxed text-hhp-charcoal">
                     We understand brokerage operations from the inside. Our approach provides oversight without micromanagement, allowing firms to operate efficiently while remaining compliant and protected.
                   </p>

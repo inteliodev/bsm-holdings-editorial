@@ -271,7 +271,7 @@ const InvestmentCapitalMarkets = () => {
               ABOUT US
             </h2>
             <p className="text-lg text-white mb-10 leading-relaxed">
-              HHP delivers the full lifecycle of commercial real estate services—from 
+              BSM Holdings delivers the full lifecycle of commercial real estate services—from 
               acquisitions and development to management, leasing, sales, and strategic 
               advisory—through a vertically integrated platform designed to operate, not just 
               advise. Proprietary technology supports disciplined underwriting, consistent 

@@ -8,7 +8,7 @@ const Multifamily = () => {
           /services/multifamily, which is not a registered route — the catch-all
           rewrite made it look like a 200 while resolving to NotFound. */}
       <Helmet>
-        <title>Multifamily Property Management & Investment Services | HHP Asset Management</title>
+        <title>Multifamily Property Management & Investment Services | BSM Holdings</title>
         <meta
           name="description"
           content="Operator-led multifamily property management, underwriting and advisory. Self-performed trades, line-item cost visibility, and reporting without the month-end lag."
@@ -17,18 +17,18 @@ const Multifamily = () => {
           name="keywords"
           content="multifamily property management, apartment management, multifamily investment, unit turns, NOI optimization, self-performed maintenance"
         />
-        <meta property="og:title" content="Multifamily Property Management Services | HHP Asset Management" />
+        <meta property="og:title" content="Multifamily Property Management Services | BSM Holdings" />
         <meta property="og:description" content="Operator-led multifamily management with self-performed trades and line-item cost visibility." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://hhpasset.com/asset-types/multifamily" />
-        <meta property="og:image" content="https://hhpasset.com/images/multifamily-image-trendy.jpg" />
-        <link rel="canonical" href="https://hhpasset.com/asset-types/multifamily" />
+        <meta property="og:url" content="https://bsmholdings.com/asset-types/multifamily" />
+        <meta property="og:image" content="https://bsmholdings.com/images/multifamily-image-trendy.jpg" />
+        <link rel="canonical" href="https://bsmholdings.com/asset-types/multifamily" />
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Multifamily Property Management Services | HHP Asset Management" />
+        <meta name="twitter:title" content="Multifamily Property Management Services | BSM Holdings" />
         <meta name="twitter:description" content="Operator-led multifamily management with self-performed trades and line-item cost visibility." />
-        <meta name="twitter:image" content="https://hhpasset.com/images/multifamily-image-trendy.jpg" />
+        <meta name="twitter:image" content="https://bsmholdings.com/images/multifamily-image-trendy.jpg" />
       </Helmet>
 
       <AssetTypePage
@@ -40,7 +40,7 @@ const Multifamily = () => {
         mark="multifamily"
 
         marketText="Multifamily is decided in the gap between one resident moving out and the next moving in. Every day a unit sits is revenue that cannot be recovered later in the year, and the length of that gap is set by whether the paint, flooring and punch work can be scheduled immediately or has to be bid. The same is true of a work order: response time is the single thing residents cite most in renewal decisions, and it is entirely an operating variable. Rate matters, but rate is a market condition. Turn time is a choice."
-        valuePropositionTitle="Where HHP fits"
+        valuePropositionTitle="Where BSM Holdings fits"
         valueProposition="Turns and maintenance are performed by our own personnel, so a unit turn is scheduled rather than tendered. That compresses the vacancy gap and means the cost of the turn reports as labor hours and materials rather than a contractor invoice with margin already priced in."
 
         metricsIntro="Multifamily performance is an operating result, not a market one. These are the figures we hold against every community."
@@ -80,7 +80,7 @@ const Multifamily = () => {
         services={{
           propertyManagement: {
             description:
-              'On-site operation by HHP personnel, with maintenance and turns performed in house rather than dispatched to a rotating set of contractors.',
+              'On-site operation by BSM Holdings personnel, with maintenance and turns performed in house rather than dispatched to a rotating set of contractors.',
             services: [
               'Day-to-day property and on-site staff oversight',
               'Resident relations and service request coordination',
@@ -147,7 +147,7 @@ const Multifamily = () => {
         servicesTitle="Integrated services for multifamily"
         servicesSubtitle="Six capabilities under one firm, so no part of the community is somebody else's responsibility."
 
-        technologyTitle="The HHP advantage for multifamily"
+        technologyTitle="The BSM Holdings advantage for multifamily"
         technologyAdvantages={[
           {
             title: 'Turns performed, not tendered',
@@ -157,7 +157,7 @@ const Multifamily = () => {
           {
             title: 'Same-day response as an operating standard',
             description:
-              'Work orders route directly to HHP Facility Services and, in most cases, are resolved the same day. Response time is the number residents remember at renewal.',
+              'Work orders route directly to BSM Holdings and, in most cases, are resolved the same day. Response time is the number residents remember at renewal.',
           },
           {
             title: 'Cost visible at the line item',
@@ -167,7 +167,7 @@ const Multifamily = () => {
           {
             title: 'Reporting without the month-end lag',
             description:
-              'Occupancy, delinquency and expense variance reach owners as they land. The systems producing that reporting are built and maintained by HHP.',
+              'Occupancy, delinquency and expense variance reach owners as they land. The systems producing that reporting are built and maintained by BSM Holdings.',
           },
           {
             title: 'One firm accountable',

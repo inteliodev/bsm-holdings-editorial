@@ -11,7 +11,7 @@ const Office = () => {
       mark="office"
 
       marketText="Office is the class where a good rent roll can hide a bad building. Tenants renew on how the space runs — whether the air handler holds temperature through an August afternoon, whether a service request is closed the same day, whether the CAM reconciliation arrives without surprises. Those are operating questions, and they are settled long before a renewal is negotiated. Owners are carrying longer decision cycles, closer scrutiny of building performance and tenants who compare buildings on experience rather than asking rent."
-      valuePropositionTitle="Where HHP fits"
+      valuePropositionTitle="Where BSM Holdings fits"
       valueProposition="We operate office assets rather than advise on them from a distance. Property management, the facility trades and the accounting sit in one firm, so the people closing a work order and the people reporting its cost answer to the same principal. That is what makes an operating number defensible when an owner asks what changed and why."
 
       metricsIntro="Office assets fail slowly and in the expense line. These are the figures we hold against every building we operate."
@@ -51,7 +51,7 @@ const Office = () => {
       services={{
         propertyManagement: {
           description:
-            'On-site operation of the building by HHP personnel — the same people every week, who know which unit runs hot and which tenant calls at 4pm on a Friday.',
+            'On-site operation of the building by BSM Holdings personnel — the same people every week, who know which unit runs hot and which tenant calls at 4pm on a Friday.',
           services: [
             'Day-to-day building operations and on-site oversight',
             'Tenant relations and service request coordination',
@@ -118,7 +118,7 @@ const Office = () => {
       servicesTitle="Integrated services for office"
       servicesSubtitle="Six capabilities under one firm, so no part of the building is somebody else's responsibility."
 
-      technologyTitle="The HHP advantage for office"
+      technologyTitle="The BSM Holdings advantage for office"
       technologyAdvantages={[
         {
           title: 'Self-performed building services',
@@ -133,7 +133,7 @@ const Office = () => {
         {
           title: 'Reporting without the month-end lag',
           description:
-            'Operating data reaches owners as it lands rather than in a summary assembled weeks later. The systems that produce it are built and maintained by HHP, so the reporting changes when the way we operate changes.',
+            'Operating data reaches owners as it lands rather than in a summary assembled weeks later. The systems that produce it are built and maintained by BSM Holdings, so the reporting changes when the way we operate changes.',
         },
         {
           title: 'Operations and leasing in one conversation',

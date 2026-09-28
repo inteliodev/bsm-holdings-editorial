@@ -11,7 +11,7 @@ const Retail = () => {
       mark="retail"
 
       marketText="Retail rewards operators who understand that the rent roll is a chain, not a list. One inline vacancy next to an anchor changes the traffic pattern for everyone around it, and a co-tenancy clause can turn a single departure into a rent reduction across half the centre. The parking lot, the lighting and the condition of the common area are not cosmetics — they are what a customer decides on before they decide what to buy, and what a tenant points to when a renewal comes up."
-      valuePropositionTitle="Where HHP fits"
+      valuePropositionTitle="Where BSM Holdings fits"
       valueProposition="We hold the centre's operations and its trades in one firm. Lot repairs, lighting, landscaping and janitorial are performed by our own personnel, so common-area condition is a decision we make rather than a vendor's schedule we wait on — and its cost reports as labor and materials rather than an invoice with margin priced in."
 
       metricsIntro="Retail performance shows up in the tenant's numbers before it shows up in yours. These are what we hold against a centre."
@@ -51,7 +51,7 @@ const Retail = () => {
       services={{
         propertyManagement: {
           description:
-            'Day-to-day operation of the centre by HHP personnel, with the common area treated as the asset it is rather than an expense line to be minimised.',
+            'Day-to-day operation of the centre by BSM Holdings personnel, with the common area treated as the asset it is rather than an expense line to be minimised.',
           services: [
             'Day-to-day centre operations and oversight',
             'Tenant relations and service request coordination',
@@ -118,7 +118,7 @@ const Retail = () => {
       servicesTitle="Integrated services for retail"
       servicesSubtitle="Six capabilities under one firm, so no part of the centre is somebody else's responsibility."
 
-      technologyTitle="The HHP advantage for retail"
+      technologyTitle="The BSM Holdings advantage for retail"
       technologyAdvantages={[
         {
           title: 'Common area maintained, not just budgeted',

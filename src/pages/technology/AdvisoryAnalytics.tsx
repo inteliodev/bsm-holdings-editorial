@@ -18,7 +18,7 @@ const AdvisoryAnalytics = () => {
               From Data to Direction
             </h1>
             <p className="text-xl leading-relaxed text-white/90 mb-8 drop-shadow-md">
-              HHP integrates advisory expertise with proprietary analytics to unlock clarity, 
+              BSM Holdings integrates advisory expertise with proprietary analytics to unlock clarity, 
               optimize portfolios, and guide smarter investment decisions.
             </p>
             

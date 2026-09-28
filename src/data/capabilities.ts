@@ -47,7 +47,7 @@ export const SERVICES: Capability[] = [
     id: 'pm',
     name: 'Property Management',
     role: 'Operations',
-    body: 'Day-to-day operations, leasing administration, compliance and resident experience — staffed by HHP personnel, not a call centre.',
+    body: 'Day-to-day operations, leasing administration, compliance and resident experience — staffed by BSM Holdings personnel, not a call centre.',
     hook: 'Day-to-day operations, leasing and compliance, staffed by our own personnel.',
     href: '/services/property-management',
     image: '/images/property-management-picture.webp',
@@ -83,13 +83,13 @@ export const SERVICES: Capability[] = [
     id: 'tech',
     name: 'Technology',
     role: 'The foundation',
-    body: 'The operating and reporting systems are built and maintained by HHP rather than licensed. That is what makes real-time cost reporting possible at all — the data comes from our own work orders.',
+    body: 'The operating and reporting systems are built and maintained by BSM Holdings rather than licensed. That is what makes real-time cost reporting possible at all — the data comes from our own work orders.',
     hook: 'The operating and reporting systems, built in house rather than licensed.',
     href: '/technology',
     // Not `platforms-hero.jpg` or `advisory-analytics-hero.jpg`, which are both
     // glowing neural-net / particle-field renders. That is the AI-vendor visual
     // language the repositioning removed, and putting it on the homepage as one
-    // of six service cards reinstates it louder than any copy would. HHP is the
+    // of six service cards reinstates it louder than any copy would. BSM Holdings is the
     // operator; the systems are a supporting fact.
     image: '/images/custom-solutions.jpg',
   },

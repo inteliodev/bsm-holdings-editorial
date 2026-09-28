@@ -85,8 +85,8 @@ const properties: Property[] = [
     beds: '1 BD',
     baths: '1 BA',
     sqft: '~560',
-    phone: '(918) 825-1250',
-    email: 'mwm@hhpasset.com',
+    phone: '',
+    email: 'ty@bsmholdings.com',
     website: CAMPUS_WEBSITE,
     description:
       'A 31-unit HUD Section 202 senior housing community providing affordable, supportive housing for elderly residents in Pryor, Oklahoma.',
@@ -105,8 +105,8 @@ const properties: Property[] = [
     beds: '1 BD',
     baths: '1 BA',
     sqft: '~560–700',
-    phone: '(918) 825-1250',
-    email: 'mwm@hhpasset.com',
+    phone: '',
+    email: 'ty@bsmholdings.com',
     website: CAMPUS_WEBSITE,
     description:
       'A 24-unit HUD Section 202 senior housing community located on the Pryor campus, serving elderly residents through the PRAC program.',
@@ -123,8 +123,8 @@ const properties: Property[] = [
     beds: '1 BD',
     baths: '1 BA',
     sqft: '~560',
-    phone: '(918) 825-1250',
-    email: 'mwm@hhpasset.com',
+    phone: '',
+    email: 'ty@bsmholdings.com',
     website: CAMPUS_WEBSITE,
     description:
       'A 30-unit HUD Section 202 senior housing community, the newest addition to the Pryor campus with modern amenities for senior residents.',
@@ -669,6 +669,7 @@ const Portfolio = () => {
                   Contact
                 </h2>
                 <div className="mt-4 space-y-3">
+                  {selectedProp.phone ? (
                   <a
                     href={`tel:${selectedProp.phone}`}
                     className="flex items-center gap-3 font-medium text-hhp-charcoal transition-colors hover:text-hhp-navy"
@@ -676,6 +677,7 @@ const Portfolio = () => {
                     <Phone className="h-4 w-4 text-hhp-gold" />
                     {selectedProp.phone}
                   </a>
+                ) : null}
                   <a
                     href={`mailto:${selectedProp.email}`}
                     className="flex items-center gap-3 font-medium text-hhp-charcoal transition-colors hover:text-hhp-navy"

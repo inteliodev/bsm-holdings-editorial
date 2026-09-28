@@ -57,8 +57,8 @@ const Home = () => {
                   1024² canvas, which is why it read small and washed over the video.
                 */}
                 <img
-                  src="/brand/vector/HHP_Logo_Apparel_White.svg"
-                  alt="HHP Asset Management"
+                  src="/brand/vector/BSM_Logo.png"
+                  alt="BSM Holdings"
                   width={509}
                   height={177}
                   className="h-18 sm:h-24 md:h-28 lg:h-32 xl:h-36 w-auto object-contain drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]" loading="eager" decoding="async" fetchPriority="high" />
@@ -67,7 +67,7 @@ const Home = () => {
                 The page previously had no <h1> at all — the logo image and this
                 tagline were the whole hero, and the first heading in the document was
                 the <h2> "Our approach" further down. The tagline alone also never
-                said what HHP does or who for.
+                said what BSM Holdings does or who for.
               */}
               {/*
                 The brand line is the <h1>. The page previously had no h1 at all —
@@ -190,7 +190,7 @@ const Home = () => {
 
             <div className="lg:col-span-7">
               <p className="text-xl sm:text-2xl font-heading leading-snug text-hhp-navy">
-                HHP Asset Management is a vertically integrated real estate
+                BSM Holdings is a vertically integrated real estate
                 operating company in Oklahoma, working across the Tulsa and
                 Oklahoma City metros.
               </p>
@@ -200,7 +200,7 @@ const Home = () => {
                   We began by managing our own portfolio, before managing anyone
                   else&apos;s. The firm is still built that way. Property
                   management, every facility trade and the accounting are
-                  performed by our own personnel — the trades through HHP
+                  performed by our own personnel — the trades through BSM Holdings
                   Facility Services, LLC — and the operating and reporting
                   systems are built and maintained in house rather than licensed.
                 </p>
@@ -255,7 +255,7 @@ const Home = () => {
 
             <div className="max-w-3xl mx-auto space-y-6 text-lg sm:text-xl leading-relaxed text-hhp-charcoal">
               <p>
-                HHP manages the asset, not simply the building. Strategy, leasing,
+                BSM Holdings manages the asset, not simply the building. Strategy, leasing,
                 operations, maintenance, compliance, and accounting are directed by one
                 firm and reported through one system — so responsibility for performance
                 sits in a single place rather than across four vendors.
@@ -293,7 +293,7 @@ const Home = () => {
             </h2>
             <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-hhp-charcoal max-w-3xl mx-auto px-4">
               Six capabilities under one accountable firm. Each is staffed and
-              operated by HHP, not contracted out.
+              operated by BSM Holdings, not contracted out.
             </p>
           </div>
 

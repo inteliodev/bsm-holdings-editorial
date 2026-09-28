@@ -13,8 +13,8 @@ import type { AssetMarkName } from '@/components/AssetMark';
  * ── `track` is a presentation split, not a portfolio claim ──────────────────
  *
  * `track` decides which section a class leads in on Home, on /asset-types and
- * in the header. It says where the operation is built. It does NOT say what HHP
- * holds, and it does NOT say what HHP is willing to manage: all six classes
+ * in the header. It says where the operation is built. It does NOT say what BSM Holdings
+ * holds, and it does NOT say what BSM Holdings is willing to manage: all six classes
  * have a full management page behind them, and retail and industrial are linked
  * from every surface the other four are.
  *
@@ -23,7 +23,7 @@ import type { AssetMarkName } from '@/components/AssetMark';
  * `proof.kind: 'seeking'` already carries on the detail pages: state criteria,
  * never absence.
  *
- * The only claim about assets HHP actually operates is `proof.kind: 'operating'`
+ * The only claim about assets BSM Holdings actually operates is `proof.kind: 'operating'`
  * in src/pages/assetTypes/*.tsx, and only Senior Housing and Affordable Housing
  * carry it. Nothing here should be read as widening that.
  */
@@ -41,9 +41,9 @@ export type AssetClass = {
   /** Which track this class leads with. See the note above. */
   track: AssetTrack;
   /**
-   * One plain clause: what HHP does in this class. Not a slogan, and not a
+   * One plain clause: what BSM Holdings does in this class. Not a slogan, and not a
    * figure — these previously held six invented performance numbers for classes
-   * HHP does not operate. Restore a number only when it is sourced to a real
+   * BSM Holdings does not operate. Restore a number only when it is sourced to a real
    * property, and put it on the detail page's `proof` block rather than here.
    */
   hook: string;

@@ -36,7 +36,7 @@ const LAYERS: SystemLayer[] = [
     id: 'workorders',
     title: 'Work Orders & Dispatch',
     description:
-      'Requests are routed directly to HHP Facility Services and, in most cases, resolved the same day. Because the work is self-performed, each order records actual labor hours and materials rather than a vendor invoice.',
+      'Requests are routed directly to BSM Holdings and, in most cases, resolved the same day. Because the work is self-performed, each order records actual labor hours and materials rather than a vendor invoice.',
   },
   {
     id: 'security',
@@ -71,7 +71,7 @@ const SystemStack = () => {
           <h2 className="section-title text-white">One system of record behind every property</h2>
           <p className="mt-6 text-lg leading-relaxed text-white/70">
             Asset management, property management and Facility Services operate on the same six
-            layers — software HHP builds and maintains rather than licenses. Cost remains visible
+            layers — software BSM Holdings builds and maintains rather than licenses. Cost remains visible
             at the line-item level, and owners review the same figures we do.
           </p>
         </div>
@@ -86,7 +86,7 @@ const SystemStack = () => {
               viewBox="0 0 400 470"
               className="mx-auto max-h-[34vh] w-full max-w-[190px] lg:max-h-none lg:max-w-[350px]"
               role="img"
-              aria-label="Wireframe of the HHP operating system showing its six layers"
+              aria-label="Wireframe of the BSM Holdings operating system showing its six layers"
             >
               {/* Window chrome — always neutral, it is the container not a layer */}
               <g className="bl">

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { OFFICE_ADDRESS } from '@/data/serviceArea';
 import equalHousingLogo from '@/assets/equal-housing.png';
-import { Mail, MapPin, Linkedin, Facebook } from 'lucide-react';
+import { Mail, MapPin } from 'lucide-react';
 
 const COMPANY_LINKS = [
   { to: '/about', label: 'About' },
@@ -49,36 +49,17 @@ const Footer = () => {
             {/* Apparel White vector — solid #FFFFFF on transparent, tight
                 artboard, sized for the navy ground. */}
             <img
-              src="/brand/vector/HHP_Logo_Apparel_White.svg"
-              alt="HHP Asset Management"
-              width={509}
-              height={177}
+              src="/brand/bsm-logo.png"
+              alt="BSM Holdings"
+              width={160}
+              height={160}
               loading="lazy"
-              className="h-10 w-auto object-contain sm:h-11"
+              className="h-14 w-auto object-contain sm:h-16"
             />
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/55">
-              Vertically Integrated. Data Driven. Forward Thinking.
+              Residential property management across Oklahoma.
             </p>
-            <div className="mt-7 flex gap-3">
-              <a
-                href="https://www.linkedin.com/company/hhpasset"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center border border-white/15 text-white/70 transition-colors hover:border-hhp-gold hover:text-hhp-gold"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-4 w-4" />
-              </a>
-              <a
-                href="https://www.facebook.com/share/1JLHp25e3N/?mibextid=wwXIfr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center border border-white/15 text-white/70 transition-colors hover:border-hhp-gold hover:text-hhp-gold"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-4 w-4" />
-              </a>
-            </div>
+
           </div>
 
           {/* Company */}
@@ -115,11 +96,11 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="mailto:info@hhpasset.com"
+                  href="mailto:ty@bsmholdings.com"
                   className="min-h-[44px] flex items-center gap-3 text-sm text-white/65 transition-colors hover:text-white"
                 >
                   <Mail className="h-4 w-4 flex-shrink-0 text-hhp-gold" />
-                  info@hhpasset.com
+                  ty@bsmholdings.com
                 </a>
               </li>
               <li className="flex items-start gap-3 py-2">
@@ -128,11 +109,11 @@ const Footer = () => {
                     Profile and the LocalBusiness structured data — all three
                     read from src/data/serviceArea.ts. */}
                 <address className="text-sm not-italic leading-relaxed text-white/65">
-                  {OFFICE_ADDRESS.street}
+                  {OFFICE_ADDRESS.city} metro & surrounding communities
                   <br />
-                  {OFFICE_ADDRESS.city}, {OFFICE_ADDRESS.state} {OFFICE_ADDRESS.postalCode}
+                  {OFFICE_ADDRESS.state}
                   <span className="mt-2 block text-white/40">
-                    Serving the Tulsa and Oklahoma City metros
+                    Residential property management across Oklahoma
                   </span>
                 </address>
               </li>
@@ -163,7 +144,7 @@ const Footer = () => {
             <span className="text-xs text-white/45">Equal Housing Opportunity</span>
           </div>
           <p className="text-center text-xs text-white/45 sm:text-right">
-            © 2026 HHP Asset Management. All rights reserved.
+            © 2026 BSM Holdings. All rights reserved.
           </p>
         </div>
       </div>

@@ -1,5 +1,5 @@
 // Google Analytics 4 Utility Functions
-// GA4 Measurement ID: G-SEW7MT1WW1
+// GA4 Measurement ID: G-XXXXXXXXXX
 
 declare global {
   interface Window {
@@ -11,7 +11,7 @@ declare global {
 // Initialize GA4 if not already loaded
 export const initializeGA = () => {
   if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('config', 'G-SEW7MT1WW1', {
+    window.gtag('config', 'G-XXXXXXXXXX', {
       page_title: document.title,
       page_location: window.location.href,
     });
@@ -21,7 +21,7 @@ export const initializeGA = () => {
 // Track page views
 export const trackPageView = (pagePath: string, pageTitle?: string) => {
   if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('config', 'G-SEW7MT1WW1', {
+    window.gtag('config', 'G-XXXXXXXXXX', {
       page_path: pagePath,
       page_title: pageTitle || document.title,
     });
@@ -32,7 +32,7 @@ export const trackPageView = (pagePath: string, pageTitle?: string) => {
 export const trackEvent = (eventName: string, parameters?: Record<string, any>) => {
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', eventName, {
-      send_to: 'G-SEW7MT1WW1',
+      send_to: 'G-XXXXXXXXXX',
       ...parameters,
     });
   }

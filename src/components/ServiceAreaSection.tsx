@@ -8,7 +8,7 @@ interface ServiceAreaSectionProps {
 }
 
 /**
- * Where HHP works, grouped by metro.
+ * Where BSM Holdings works, grouped by metro.
  *
  * Deliberately not a bare comma-separated city list — a long run of city names reads
  * as keyword stuffing to both people and search engines. The full flat list lives in
@@ -22,7 +22,7 @@ interface ServiceAreaSectionProps {
 const ServiceAreaSection = ({
   background = 'gray',
   heading = 'Where We Work',
-  intro = 'HHP is an Oklahoma operator. Self-performing the work requires proximity to it, so we concentrate on the markets we can serve directly.',
+  intro = 'BSM Holdings is an Oklahoma operator. Self-performing the work requires proximity to it, so we concentrate on the markets we can serve directly.',
 }: ServiceAreaSectionProps) => {
   return (
     <section className={`${background === 'gray' ? 'bg-surface' : 'bg-white'} section-spacing`}>

@@ -1,16 +1,16 @@
-# HHP Asset Management
+# BSM Holdings
 
-Commercial real estate company website for **HHP Asset Management** — a vertically integrated asset management firm serving the Tulsa and Oklahoma City metros.
+Commercial real estate company website for **BSM Holdings** — a vertically integrated asset management firm serving the Tulsa and Oklahoma City metros.
 
-> The repository directory is still named `HHPAssetBrokerage-Management`. That is a folder name, not the company name. The trade name "HHP Asset Group" was retired — do not reintroduce it.
+> The repository directory is still named `HHPAssetBrokerage-Management`. That is a folder name, not the company name. The trade name "BSM Holdings Asset Group" was retired — do not reintroduce it.
 
 ## Positioning
 
 **Vertically Integrated. Data Driven. Forward Thinking.**
 
-HHP is presented as an **asset management firm** and an operating company — not a technology vendor.
+BSM Holdings is presented as an **asset management firm** and an operating company — not a technology vendor.
 
-Asset management is the umbrella. Property management, Facility Services, and financial services sit beneath it as capabilities, not as peer business lines. **Brokerage is a supporting capability, not a headline.** Facility Services is delivered in house through HHP Facility Services, LLC, and the asset management and operating systems are built and maintained in house rather than licensed — which is what gives owners line-item cost visibility.
+Asset management is the umbrella. Property management, Facility Services, and financial services sit beneath it as capabilities, not as peer business lines. **Brokerage is a supporting capability, not a headline.** Facility Services is delivered in house through BSM Holdings, LLC, and the asset management and operating systems are built and maintained in house rather than licensed — which is what gives owners line-item cost visibility.
 
 Self-performance is a *supporting reason*, not the thesis. The lead is accountability: one firm responsible for how the asset performs.
 
@@ -64,7 +64,7 @@ when set large. Caps are opt-in via `.u-caps` and `.eyebrow`. Display sizes are
 fluid `clamp()` tokens (`text-display-2xl` … `display-md`), so they need no
 breakpoint ladder.
 
-Navy is `#0A2342`, gold `#C8952E`. `hhp-accent` is gold — it previously pointed
+Navy is `#061E4A`, gold `#C8952E`. `hhp-accent` is gold — it previously pointed
 at a pale sky blue the design had abandoned while ~47 usages still referenced it.
 
 There is no global `!important` override block any more; fluid sizing replaced
@@ -130,7 +130,7 @@ src/
   two merge into one entity rather than competing. `FAQ.tsx` emits `FAQPage` with all
   23 questions.
 - **`public/llms.txt`** is the plain-language description for answer engines. It states
-  the retired trade name and that HHP is an operating company, not a software vendor or
+  the retired trade name and that BSM Holdings is an operating company, not a software vendor or
   an AI company — the two things a retrieval system is most likely to get wrong.
 - **`robots.txt`** names the answer-engine crawlers explicitly. They were already
   covered by the wildcard; naming them makes the intent unambiguous.
@@ -138,8 +138,8 @@ src/
 Verify structured data after a deploy — assert on content, never on status code:
 
 ```bash
-curl -s https://hhpasset.com/ | grep -o '"@type":"[A-Za-z]*"' | sort -u
-curl -s -o /dev/null -w "%{content_type}\n" https://hhpasset.com/llms.txt   # text/plain
+curl -s https://bsmholdings.com/ | grep -o '"@type":"[A-Za-z]*"' | sort -u
+curl -s -o /dev/null -w "%{content_type}\n" https://bsmholdings.com/llms.txt   # text/plain
 ```
 
 ## Scrollytelling sections
@@ -199,7 +199,7 @@ things were being hand-written on four or five surfaces at once:
   Logistics Management".
 
 `track` on an asset class is a **presentation split, not a portfolio claim**. It
-records which set a class leads in on `/asset-types`; it does not say what HHP
+records which set a class leads in on `/asset-types`; it does not say what BSM Holdings
 holds or is willing to manage. All six have full management pages. Never write
 copy off it that reads as absence — no "we manage four asset classes", no "we do
 not manage retail". The only claim about assets actually operated is
@@ -238,7 +238,7 @@ All six render from `src/components/AssetTypePage.tsx`. Change the template, not
 the individual pages, wherever possible.
 
 Section order: hero → market context (with a drawn `AssetMark` per class) → what
-we watch → services → the HHP advantage → proof → closing band. Grounds alternate
+we watch → services → the BSM Holdings advantage → proof → closing band. Grounds alternate
 deliberately.
 
 Two props carry the class-specific content, and both exist because the pages
@@ -329,7 +329,7 @@ unaffected.
 Verify a deploy with:
 
 ```bash
-curl -s https://hhpasset.com/services/facility-services | grep -o '<title>[^<]*</title>'
+curl -s https://bsmholdings.com/services/facility-services | grep -o '<title>[^<]*</title>'
 # must differ from the homepage title, and body content must be present without JS
 ```
 
@@ -351,7 +351,7 @@ npx vercel ls | head -5              # latest Production deploy must say Ready
 npx vercel inspect <url> --logs      # if it says Error
 
 # and confirm the live bundle is actually yours
-curl -s https://hhpasset.com/ | grep -o 'assets/index-[A-Za-z0-9_-]*\.js'
+curl -s https://bsmholdings.com/ | grep -o 'assets/index-[A-Za-z0-9_-]*\.js'
 ls dist/assets/index-*.js
 ```
 
@@ -370,10 +370,10 @@ Logos live in `public/brand/vector/` as SVG masters from the supplied vector kit
 
 | File | Use |
 | --- | --- |
-| `HHP_Logo_Primary_Cropped.svg` | Light backgrounds (header). Navy gradient, tight artboard. |
-| `HHP_Logo_Apparel_White.svg` | Dark backgrounds (hero, footer). Solid `#FFFFFF`, transparent. |
-| `HHP_Logo_Apparel_Navy.svg` | Solid navy, tight artboard. |
-| `HHP_Logo_Primary.svg` | Padded artboard variant. |
+| `BSM_Logo.png` | Light backgrounds (header). Navy gradient, tight artboard. |
+| `BSM_Logo.png` | Dark backgrounds (hero, footer). Solid `#FFFFFF`, transparent. |
+| `BSM_Logo.png` | Solid navy, tight artboard. |
+| `BSM_Logo.png` | Padded artboard variant. |
 
 The legacy rasters in `public/images/` are unreferenced and should not be used — the "white" PNG is a hollow outline padded inside a 1024² canvas, and the full-lockup PNGs have opaque white backgrounds that cannot sit on dark ground. Note the vector kit is **monogram only**; no variant carries the "ASSET GROUP" wordmark.
 
@@ -391,7 +391,7 @@ Tracked but not yet addressed:
   advertise a click that goes nowhere, but the reports and articles themselves still
   need writing before anything can be linked. (The parallel problem on the asset-type
   pages — 18 teasers, all dated late 2024, each linking to `/insights` regardless of
-  title — is resolved: that band is now a `proof` section stating what HHP actually
+  title — is resolved: that band is now a `proof` section stating what BSM Holdings actually
   operates or underwrites.)
 - **Nine service pages share a byte-identical "ABOUT US" paragraph**, and the lower half
   of each has no imagery. Extracting the repeated blocks (`AboutSplit`, `CareersBand`,

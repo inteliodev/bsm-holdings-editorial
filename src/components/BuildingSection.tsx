@@ -5,7 +5,7 @@ import { useActiveStep } from '@/hooks/useActiveStep';
  *
  * The vertical-integration argument is that one firm is accountable from the
  * roof to the grounds. This tells that story literally vertically: scrolling
- * descends through a cutaway of a building, and each layer names the trade HHP
+ * descends through a cutaway of a building, and each layer names the trade BSM Holdings
  * performs itself at that level.
  *
  * Built to survive the prerender: every layer and every word is in the DOM and
@@ -88,7 +88,7 @@ const BuildingSection = () => {
               viewBox="0 0 400 560"
               className="mx-auto max-h-[34vh] w-full max-w-[180px] lg:max-h-none lg:max-w-[340px]"
               role="img"
-              aria-label="Cutaway section of a building showing the trades HHP self-performs at each level"
+              aria-label="Cutaway section of a building showing the trades BSM Holdings self-performs at each level"
             >
               {/* Sky wash */}
               <defs>

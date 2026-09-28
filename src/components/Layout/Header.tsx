@@ -32,7 +32,7 @@ const Header = () => {
    * Services leads with Asset Management because it is the umbrella — the same
    * order CapabilityStack uses. Technology stays inside it rather than being a
    * top-level tab: a "Technology" tab reads as selling software, which is the
-   * opposite of how HHP positions. Brokerage sits there too, as a supporting
+   * opposite of how BSM Holdings positions. Brokerage sits there too, as a supporting
    * capability rather than a headline.
    *
    * Class names come from the data module. They were hand-written here and in
@@ -305,7 +305,7 @@ const Header = () => {
             to="/" 
             className="flex min-h-[44px] flex-shrink-0 items-center"
             onClick={() => {
-              trackLinkClick('HHP Logo', '/');
+              trackLinkClick('BSM Logo', '/');
             }}
           >
             {/*
@@ -317,15 +317,11 @@ const Header = () => {
                 over the hero video; Primary Cropped is the navy mark for the
                 solid header. */}
             <img
-              src={
-                isTransparent
-                  ? '/brand/vector/HHP_Logo_Apparel_White.svg'
-                  : '/brand/vector/HHP_Logo_Primary_Cropped.svg'
-              }
-              alt="HHP Asset Management"
-              width={509}
-              height={177}
-              className="h-8 sm:h-10 md:h-11 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-none transition-all duration-300"
+              src="/brand/bsm-logo.png"
+              alt="BSM Holdings"
+              width={160}
+              height={160}
+              className="h-9 w-auto object-contain sm:h-10 md:h-11 transition-all duration-300"
               loading="eager"
               decoding="async"
               fetchPriority="high"

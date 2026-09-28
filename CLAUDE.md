@@ -4,21 +4,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**HHP Asset Management** — a commercial real estate company website built with React, TypeScript, Vite, and Tailwind CSS. Originally scaffolded via the Lovable platform. Deployed on Vercel.
+**BSM Holdings** — a commercial real estate company website built with React, TypeScript, Vite, and Tailwind CSS. Originally scaffolded via the Lovable platform. Deployed on Vercel.
 
-The legal entity is **HHP Asset Management**. Use that name everywhere in user-facing copy. The earlier trade name "HHP Asset Group" was retired and must not be reintroduced — note that the legacy raster logo artwork in `public/images/` still renders the words "ASSET GROUP", which is why the site uses the vector kit in `public/brand/vector/` instead. The repository directory is still named `HHPAssetBrokerage-Management`; that is a folder name, not the company name.
+The legal entity is **BSM Holdings**. Use that name everywhere in user-facing copy. The earlier trade name "BSM Holdings Asset Group" was retired and must not be reintroduced — note that the legacy raster logo artwork in `public/images/` still renders the words "ASSET GROUP", which is why the site uses the vector kit in `public/brand/vector/` instead. The repository directory is still named `HHPAssetBrokerage-Management`; that is a folder name, not the company name.
 
 ## Brand Positioning (read before writing any copy)
 
-The site positions HHP as **Vertically Integrated. Data Driven. Forward Thinking.** — an operating company, not a technology vendor. This replaced an earlier "AI-Native / APEX platform" positioning, which was removed entirely.
+The site positions BSM Holdings as **Vertically Integrated. Data Driven. Forward Thinking.** — an operating company, not a technology vendor. This replaced an earlier "AI-Native / APEX platform" positioning, which was removed entirely.
 
 ### Hard rules
 
 1. **No AI branding anywhere in user-facing copy.** Do not reintroduce "AI-native", "AI-powered", "AI-driven", "AI-assisted", or the retired product names **BrokerAi, LeaseAi, RentalAi, CapitalAi, APEX**. Use concrete substitutes: `predictive forecasting`, `automated dispatch`, `data-driven`, `written commentary`.
-2. **Do not write in SaaS/tech-vendor voice.** Copy like "our platform automates routine workflows and surfaces actionable insights" is explicitly rejected. HHP is the operator — lead with people, crews, and accountability; technology is a supporting fact, not the subject.
-3. **Vertical integration is the core claim, and it extends to the software.** Property management, every facility service trade, and accounting are in-house — and so are the asset management and operating systems, which HHP builds and maintains rather than licenses.
+2. **Do not write in SaaS/tech-vendor voice.** Copy like "our platform automates routine workflows and surfaces actionable insights" is explicitly rejected. BSM Holdings is the operator — lead with people, crews, and accountability; technology is a supporting fact, not the subject.
+3. **Vertical integration is the core claim, and it extends to the software.** Property management, every facility service trade, and accounting are in-house — and so are the asset management and operating systems, which BSM Holdings builds and maintains rather than licenses.
 
-4. **Asset management is the umbrella, and it leads.** HHP presents as an asset management firm. Property management, facility services, and financial services are capabilities *beneath* that umbrella, not peer business lines. Its own page is `/services/asset-management`, and it is the first entry in the Services menu for that reason. **Brokerage is a supporting capability, not a headline** — it appears as one nav entry and as a credibility point ("we underwrite from the expense side because we operate the buildings"), never as a co-equal pillar. Do not reintroduce brokerage-first enumerations like "Brokerage, asset management, property management, and…".
+4. **Asset management is the umbrella, and it leads.** BSM Holdings presents as an asset management firm. Property management, facility services, and financial services are capabilities *beneath* that umbrella, not peer business lines. Its own page is `/services/asset-management`, and it is the first entry in the Services menu for that reason. **Brokerage is a supporting capability, not a headline** — it appears as one nav entry and as a credibility point ("we underwrite from the expense side because we operate the buildings"), never as a co-equal pillar. Do not reintroduce brokerage-first enumerations like "Brokerage, asset management, property management, and…".
 
    A pass once gave brokerage its own top-level tab, to carry the two tracks (see *Asset classes* below) in the nav. It was reverted: both tracks are about the same six classes, so both dropdowns listed them and the header said everything twice. The tracks belong on Home and `/asset-types`, where there is room to explain them; the nav splits on capability vs sector instead.
 
@@ -34,11 +34,11 @@ The site positions HHP as **Vertically Integrated. Data Driven. Forward Thinking
 | Deal Intelligence Engine | BrokerAi |
 | Data-driven / predictive | AI-powered / AI-driven |
 
-`HHP Facility Services, LLC` is the real entity name — keep it exact when referenced.
+`BSM Holdings, LLC` is the real entity name — keep it exact when referenced.
 
 ### Accuracy caution
 
-The Facility Services page states "no subcontractor markup on self-performed work" and that specialty vendors are engaged "only where licensing requires." These are commitments an owner can hold HHP to. Do not broaden them into absolute claims (e.g. "we never use vendors") without explicit confirmation.
+The Facility Services page states "no subcontractor markup on self-performed work" and that specialty vendors are engaged "only where licensing requires." These are commitments an owner can hold BSM Holdings to. Do not broaden them into absolute claims (e.g. "we never use vendors") without explicit confirmation.
 
 ## Commands
 
@@ -128,7 +128,7 @@ itself; see rule 4 for the two-tab arrangement that did.
   umbrella (same order as `CapabilityStack`): Asset Management, Property
   Management, Facility Services, Financial Services, Brokerage & Advisory,
   Technology. Technology stays inside it: a "Technology" tab reads as selling
-  software, which is the opposite of how HHP positions.
+  software, which is the opposite of how BSM Holdings positions.
 - **Asset Classes** → `/asset-types`, listing all six of `ASSET_CLASSES` plus
   "All Asset Classes". Labels are mapped from `src/data/assetTypes.ts` — do not
   hand-write them here; that is how the header ended up saying "Industrial &
@@ -240,7 +240,7 @@ places before it was caught. Use `/10`, `/15`, or bracket it as `/[0.12]`.
 
 ### Time-of-day lighting
 `src/hooks/useTimeOfDay.ts` returns `dawn | day | dusk | night` from the real
-clock in **America/Chicago** — HHP's market, deliberately not the visitor's
+clock in **America/Chicago** — BSM Holdings' market, deliberately not the visitor's
 locale, because the subject is the asset. It drives the Portfolio map's Mapbox
 `lightPreset` and the Home hero's tint, so the site and the campus are lit the
 same way at the same moment. The hero tint layers *over* the scrim, so text
@@ -285,7 +285,7 @@ mayorwallis.com says 1995. Flagged in a comment on the record, not guessed at.
 
 ### Favicon
 `public/favicon.svg` is the master — a single **H** from the brand letterform on
-`#0A2342`. The PNGs are rasterised from it. Do not regenerate them from the
+`#061E4A`. The PNGs are rasterised from it. Do not regenerate them from the
 three-letter lockup: at 16px it is an illegible smear.
 
 ### Asset classes: the two tracks
@@ -308,7 +308,7 @@ followed by a two-card set reads as a boundary. Never write copy off this field
 that reads as absence: no "we manage four asset classes", no "we do not manage
 retail". Same rule as `proof.kind: 'seeking'`.
 
-The only claim about assets HHP actually operates is `proof.kind: 'operating'`,
+The only claim about assets BSM Holdings actually operates is `proof.kind: 'operating'`,
 and only Senior Housing and Affordable Housing carry it. The Pryor campus belongs
 in those two `proof` blocks and nowhere else — on an index card it reads as the
 extent of the portfolio rather than an example of it.
@@ -327,7 +327,7 @@ device the page was six photographs and nothing else.
 detail pages. Change the template, not the individual pages, wherever possible.
 
 Section order: hero → market context (with a drawn `AssetMark` per class) →
-**what we watch** → services → the HHP advantage → **proof** → closing band.
+**what we watch** → services → the BSM Holdings advantage → **proof** → closing band.
 Grounds alternate deliberately; keep that if you add a section.
 
 Two props carry the weight, and both exist because the pages previously said
@@ -337,14 +337,14 @@ property management focused on operational consistency…"*:
 - **`metrics`** — the figures that genuinely differ by class (clear height and
   dock ratio for industrial, occupancy cost ratio and co-tenancy exposure for
   retail, turn time for multifamily, load factor for office). This is what makes
-  a page about its asset class rather than about HHP.
+  a page about its asset class rather than about BSM Holdings.
 - **`proof`** — **honest by construction.** `kind: 'operating'` states a real
   portfolio with real figures; `kind: 'seeking'` states underwriting criteria
   instead. Today only Senior Housing and Affordable Housing use `operating`. **Never** give another
   class `operating` without a real asset behind it.
 
   **Do not present any single property as the whole portfolio.** The Pryor
-  campus is *a* property HHP operates, not the extent of what it operates —
+  campus is *a* property BSM Holdings operates, not the extent of what it operates —
   `src/pages/Portfolio.tsx` lists only Pryor because that is all the page has
   ever been given, which is a data gap and not a description of the firm. Copy
   must say "one of the campuses we operate", never "our current operating
@@ -352,7 +352,7 @@ property management focused on operational consistency…"*:
   rather than read as firm totals.
 
   **`seeking` states criteria, never absence.** These are business-development
-  pages. Do not write "HHP does not currently operate X" or name the Pryor
+  pages. Do not write "BSM Holdings does not currently operate X" or name the Pryor
   portfolio as a limit on a class it has nothing to do with — an industrial
   prospect does not care what we run in Pryor, and leading with what we lack
   loses the business. Lead with the capability that shapes the criteria
@@ -437,7 +437,7 @@ Display sizes are fluid `clamp()` tokens, so they need no breakpoint ladder:
 
 ### Colour
 
-- `hhp-navy` — `#0A2342`, the canonical brand navy
+- `hhp-navy` — `#061E4A`, the canonical brand navy
 - `hhp-navy-deep` / `hhp-navy-soft` — darker ground, hairlines on dark
 - `hhp-gold` — `#C8952E`, the accent
 - `hhp-accent` — **also gold**; it used to be a pale sky blue the design had

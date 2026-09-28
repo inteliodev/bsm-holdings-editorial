@@ -11,7 +11,7 @@ import { trackFormSubmission, trackContactFormInteraction, trackButtonClick, tra
 import ServiceAreaSection from '@/components/ServiceAreaSection';
 import LocalBusinessSchema from '@/components/LocalBusinessSchema';
 
-const CONTACT_EMAIL = 'info@hhpasset.com';
+const CONTACT_EMAIL = 'ty@bsmholdings.com';
 
 const Contact = () => {
   const [formData, setFormData] = useState({

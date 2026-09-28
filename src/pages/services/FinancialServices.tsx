@@ -34,7 +34,7 @@ const FinancialServices = () => {
                   Real estate financial performance is often obscured by fragmented reporting, incomplete assumptions, or backward-looking data.
                 </p>
                 <p>
-                  HHP bridges the gap between operations, brokerage, and financial analysis, delivering practical insight that owners can rely on when allocating capital, evaluating risk, or planning next steps.
+                  BSM Holdings bridges the gap between operations, brokerage, and financial analysis, delivering practical insight that owners can rely on when allocating capital, evaluating risk, or planning next steps.
                 </p>
                 <p>
                   We do not offer banking, lending, tax preparation, or regulated investment advisory services. Our role is analytical, advisory, and execution-aware.
@@ -252,7 +252,7 @@ const FinancialServices = () => {
               ABOUT US
             </h2>
             <p className="text-lg text-white mb-10 leading-relaxed">
-              HHP delivers the full lifecycle of commercial real estate services—from 
+              BSM Holdings delivers the full lifecycle of commercial real estate services—from 
               acquisitions and development to management, leasing, sales, and strategic 
               advisory—through a vertically integrated platform designed to operate, not just 
               advise. Proprietary technology supports disciplined underwriting, consistent 
@@ -377,7 +377,7 @@ const FinancialServices = () => {
               <h2 className="section-title text-hhp-navy mb-4">Important Disclosure</h2>
               <div className="space-y-3 text-lg leading-relaxed text-hhp-charcoal">
                 <p>
-                  HHP provides real estate financial analysis and advisory services only. We do not provide tax advice, legal advice, lending services, or regulated investment advisory services.
+                  BSM Holdings provides real estate financial analysis and advisory services only. We do not provide tax advice, legal advice, lending services, or regulated investment advisory services.
                 </p>
                 <p>
                   Clients should consult their independent tax, legal, and financial professionals for matters outside the scope of real estate analysis.

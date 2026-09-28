@@ -109,7 +109,7 @@ const FacilityServices = () => {
               <h2 className="section-title text-hhp-navy mb-6">Introduction</h2>
               <div className="space-y-4 text-lg leading-relaxed text-hhp-charcoal">
                 <p>
-                  Through HHP Facility Services, LLC, every facility service and maintenance item within our properties is handled internally — construction, roofing, general contracting, HVAC, plumbing, electrical, lawncare, janitorial, and everything in between. We are not a broker of subcontractors. The work is performed by our own personnel.
+                  Through BSM Holdings, LLC, every facility service and maintenance item within our properties is handled internally — construction, roofing, general contracting, HVAC, plumbing, electrical, lawncare, janitorial, and everything in between. We are not a broker of subcontractors. The work is performed by our own personnel.
                 </p>
                 <p>
                   That means no markup stacking, no waiting on a third party's schedule, and no finger-pointing when something goes wrong. One team is accountable for the condition of the asset, and that team answers to the owner.
@@ -216,7 +216,7 @@ const FacilityServices = () => {
               <h2 className="section-title text-hhp-navy mb-6">Our Systems Are In-House Too</h2>
               <div className="space-y-4 text-lg leading-relaxed text-hhp-charcoal max-w-3xl">
                 <p>
-                  Vertical integration does not stop at Facility Services. The asset management and operating systems that run our properties are our own — designed, built, and maintained by HHP. We are not paying to license someone else's software or waiting on a vendor's roadmap to fix what our operators need today.
+                  Vertical integration does not stop at Facility Services. The asset management and operating systems that run our properties are our own — designed, built, and maintained by BSM Holdings. We are not paying to license someone else's software or waiting on a vendor's roadmap to fix what our operators need today.
                 </p>
                 <p>
                   Work orders, cost tracking, compliance, and owner reporting all live in one system we own. That is why cost data reaches owners in real time rather than at month-end, and why we can change how something works the week we decide it should work differently.
@@ -479,7 +479,7 @@ const FacilityServices = () => {
               ABOUT US
             </h2>
             <p className="text-lg text-white mb-10 leading-relaxed">
-              HHP delivers the full lifecycle of commercial real estate services—from 
+              BSM Holdings delivers the full lifecycle of commercial real estate services—from 
               acquisitions and development to management, leasing, sales, and strategic 
               advisory—through a vertically integrated platform designed to operate, not just 
               advise. Proprietary technology supports disciplined underwriting, consistent 

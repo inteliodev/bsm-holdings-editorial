@@ -24,32 +24,32 @@ const AssetTypes = () => {
   return (
     <>
       <Helmet>
-        <title>HHP Asset Management | Asset Classes</title>
+        <title>BSM Holdings | Asset Classes</title>
         <meta
           name="description"
-          content="How HHP works across multifamily, affordable housing, senior housing, office, retail and industrial — self-performed facility trades, in-house systems, and line-item cost visibility."
+          content="How BSM Holdings works across multifamily, affordable housing, senior housing, office, retail and industrial — self-performed facility trades, in-house systems, and line-item cost visibility."
         />
         <meta
           name="keywords"
           content="asset classes, multifamily, affordable housing, senior housing, office, retail, industrial, property management, commercial real estate Oklahoma"
         />
-        <meta property="og:title" content="HHP Asset Management | Asset Classes" />
+        <meta property="og:title" content="BSM Holdings | Asset Classes" />
         <meta
           property="og:description"
-          content="How HHP works across multifamily, affordable housing, senior housing, office, retail and industrial — self-performed facility trades, in-house systems, and line-item cost visibility."
+          content="How BSM Holdings works across multifamily, affordable housing, senior housing, office, retail and industrial — self-performed facility trades, in-house systems, and line-item cost visibility."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://hhpasset.com/asset-types" />
-        <meta property="og:image" content="https://hhpasset.com/images/hhp-social-share.png" />
-        <link rel="canonical" href="https://hhpasset.com/asset-types" />
+        <meta property="og:url" content="https://bsmholdings.com/asset-types" />
+        <meta property="og:image" content="https://bsmholdings.com/brand/bsm-logo.png" />
+        <link rel="canonical" href="https://bsmholdings.com/asset-types" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="HHP Asset Management | Asset Classes" />
+        <meta name="twitter:title" content="BSM Holdings | Asset Classes" />
         <meta
           name="twitter:description"
-          content="Multifamily, affordable housing, senior housing, office, retail and industrial — how HHP works in each."
+          content="Multifamily, affordable housing, senior housing, office, retail and industrial — how BSM Holdings works in each."
         />
-        <meta name="twitter:image" content="https://hhpasset.com/images/hhp-social-share.png" />
+        <meta name="twitter:image" content="https://bsmholdings.com/brand/bsm-logo.png" />
       </Helmet>
 
       <Layout>

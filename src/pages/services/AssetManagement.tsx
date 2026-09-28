@@ -53,20 +53,20 @@ const AssetManagement = () => {
   return (
     <>
       <Helmet>
-        <title>Asset Management | HHP Asset Management</title>
+        <title>Asset Management | BSM Holdings</title>
         <meta
           name="description"
-          content="Asset management is the umbrella at HHP: business plan, underwriting, capital planning and owner reporting, with property management, the facility trades and accounting reporting into it."
+          content="Asset management is the umbrella at BSM Holdings: business plan, underwriting, capital planning and owner reporting, with property management, the facility trades and accounting reporting into it."
         />
-        <meta property="og:title" content="Asset Management | HHP Asset Management" />
+        <meta property="og:title" content="Asset Management | BSM Holdings" />
         <meta
           property="og:description"
           content="One firm accountable for how the asset performs — strategy, underwriting, capital planning and owner reporting, with every operating layer reporting into it."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://hhpasset.com/services/asset-management" />
-        <meta property="og:image" content="https://hhpasset.com/images/hhp-social-share.png" />
-        <link rel="canonical" href="https://hhpasset.com/services/asset-management" />
+        <meta property="og:url" content="https://bsmholdings.com/services/asset-management" />
+        <meta property="og:image" content="https://bsmholdings.com/brand/bsm-logo.png" />
+        <link rel="canonical" href="https://bsmholdings.com/services/asset-management" />
       </Helmet>
 
       <Layout>
@@ -105,7 +105,7 @@ const AssetManagement = () => {
                     left holding the only complete view of the asset.
                   </p>
                   <p>
-                    HHP holds that view instead. Strategy, leasing, operations,
+                    BSM Holdings holds that view instead. Strategy, leasing, operations,
                     maintenance, compliance and accounting are directed by one firm
                     and reported through one system, so a question about
                     performance has one place to go and one answer waiting.
@@ -173,7 +173,7 @@ const AssetManagement = () => {
               The layers that report into it
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-hhp-charcoal">
-              Each is staffed and operated by HHP. None of them is a vendor
+              Each is staffed and operated by BSM Holdings. None of them is a vendor
               relationship we coordinate on an owner&apos;s behalf.
             </p>
 
@@ -226,7 +226,7 @@ const AssetManagement = () => {
                   </p>
                   <p>
                     Because the systems producing the data are built and maintained
-                    by HHP, that cost reaches the owner as it lands rather than in a
+                    by BSM Holdings, that cost reaches the owner as it lands rather than in a
                     month-end summary. Underwriting, the capital plan and the
                     quarterly report all draw on the same record.
                   </p>

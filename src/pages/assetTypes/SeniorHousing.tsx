@@ -11,7 +11,7 @@ const SeniorHousing = () => {
       mark="senior"
 
       marketText="Senior housing is the least forgiving class to operate and the easiest to under-resource. Residents are long-tenured, so a community's reputation is built over years and spent in weeks. Response time is not a service metric here — a failed water heater or a lift that will not run is a safety matter for someone who cannot easily work around it. And where the community is federally assisted, the compliance calendar is not administrative overhead sitting beside operations; it is the operation. Miss a recertification window and the subsidy that funds the building is in question."
-      valuePropositionTitle="Where HHP fits"
+      valuePropositionTitle="Where BSM Holdings fits"
       valueProposition="This is a class we operate directly, with the property management, the trades and the accounting all in house. What we describe on this page is not a capability statement — it is how we run senior communities we are accountable for today."
 
       metricsIntro="These are the figures we hold against the communities we operate, not a generic list."
@@ -51,7 +51,7 @@ const SeniorHousing = () => {
       services={{
         propertyManagement: {
           description:
-            'On-site operation by HHP personnel who know the residents by name — which in a community with this tenure profile is an operating advantage, not a courtesy.',
+            'On-site operation by BSM Holdings personnel who know the residents by name — which in a community with this tenure profile is an operating advantage, not a courtesy.',
           services: [
             'Day-to-day community operations and on-site oversight',
             'Facilities management and preventive maintenance',
@@ -119,7 +119,7 @@ const SeniorHousing = () => {
       servicesTitle="Integrated services for senior housing"
       servicesSubtitle="Six capabilities under one firm — the same structure we run our own communities on."
 
-      technologyTitle="The HHP advantage for senior housing"
+      technologyTitle="The BSM Holdings advantage for senior housing"
       technologyAdvantages={[
         {
           title: 'We operate this class ourselves',

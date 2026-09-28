@@ -1,5 +1,5 @@
 /**
- * HHP Asset Management — design system.
+ * BSM Holdings — design system (rebranded from BSM Holdings template).
  *
  * Fonts are self-hosted via @fontsource-variable (imported in main.tsx). They were
  * previously fetched from Google Fonts; self-hosting removes the third-party origin
@@ -24,18 +24,18 @@
     --font-heading: var(--font-display);
 
     /* ── Brand ───────────────────────────────────────────────────────────────
-       One navy. #0A2342 was already the de-facto brand navy — index.html's
+       One navy. #061E4A was already the de-facto brand navy — index.html's
        theme-color, the Mapbox popups and the card shadows all used it — while
        this token resolved to a lighter #14243A. The token now matches reality.
 
        Gold is a first-class token. It previously existed only as raw #C8952E
        hex inlined across four components, while the Tailwind `hhp-accent`
        token still pointed at a pale sky blue the design had abandoned. */
-    --hhp-navy: 213 74% 15%;        /* #0A2342 */
-    --hhp-navy-deep: 213 74% 9%;    /* replaces the one-off #061829 */
-    --hhp-navy-soft: 213 45% 28%;
-    --hhp-gold: 40 63% 48%;         /* #C8952E */
-    --hhp-gold-soft: 40 63% 62%;
+    --hhp-navy: 219 85% 16%;        /* #061E4A BSM navy */
+    --hhp-navy-deep: 216 86% 8%;     /* #031228 */
+    --hhp-navy-soft: 211 100% 33%;   /* #004FA8 royal mid */
+    --hhp-gold: 215 12% 81%;         /* #C8CDD4 BSM silver */
+    --hhp-gold-soft: 215 20% 90%;    /* silver bright */
     --hhp-charcoal: 214 15% 25%;    /* cooled slightly — pure grey read muddy beside navy */
     --hhp-white: 0 0% 100%;
     --surface: 220 14% 97%;         /* replaces bg-gray-50 and the one-off #f7f9fb */
@@ -51,11 +51,11 @@
     --popover: 0 0% 100%;
     --popover-foreground: 214 15% 25%;
 
-    --primary: 213 74% 15%;
+    --primary: 219 85% 16%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 14% 97%;
-    --secondary-foreground: 213 74% 15%;
+    --secondary-foreground: 219 85% 16%;
 
     --muted: 220 14% 96%;
     --muted-foreground: 214 10% 46%;
@@ -63,26 +63,26 @@
     /* Accent is gold now. This single line re-colours ~47 `hhp-accent` usages
        across 16 files — the icon chips on Facility Services, Property
        Management and Platforms, and the rule on the asset-type template. */
-    --accent: 40 63% 48%;
-    --accent-foreground: 213 74% 15%;
+    --accent: 211 100% 39%;          /* #0060C8 royal blue */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 48%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 13% 89%;
     --input: 220 13% 89%;
-    --ring: 40 63% 48%;
+    --ring: 211 100% 39%;
 
     --radius: 4px;
 
     /* ── Elevation ───────────────────────────────────────────────────────────
        Two-stop layered shadows: a tight contact shadow plus a wider ambient
        one. A single large blur reads as a smudge at these sizes. */
-    --shadow-subtle: 0 1px 2px hsl(213 74% 15% / 0.06), 0 2px 8px -2px hsl(213 74% 15% / 0.08);
-    --shadow-elegant: 0 1px 2px hsl(213 74% 15% / 0.06), 0 8px 24px -8px hsl(213 74% 15% / 0.14);
-    --shadow-premium: 0 2px 4px hsl(213 74% 15% / 0.06), 0 24px 56px -20px hsl(213 74% 15% / 0.22);
-    --shadow-card: 0 1px 2px hsl(213 74% 15% / 0.05), 0 4px 16px -6px hsl(213 74% 15% / 0.10);
-    --shadow-card-hover: 0 2px 4px hsl(213 74% 15% / 0.07), 0 16px 40px -12px hsl(213 74% 15% / 0.20);
+    --shadow-subtle: 0 1px 2px hsl(219 85% 16% / 0.06), 0 2px 8px -2px hsl(219 85% 16% / 0.08);
+    --shadow-elegant: 0 1px 2px hsl(219 85% 16% / 0.06), 0 8px 24px -8px hsl(219 85% 16% / 0.14);
+    --shadow-premium: 0 2px 4px hsl(219 85% 16% / 0.06), 0 24px 56px -20px hsl(219 85% 16% / 0.22);
+    --shadow-card: 0 1px 2px hsl(219 85% 16% / 0.05), 0 4px 16px -6px hsl(219 85% 16% / 0.10);
+    --shadow-card-hover: 0 2px 4px hsl(219 85% 16% / 0.07), 0 16px 40px -12px hsl(219 85% 16% / 0.20);
 
     /* ── Motion ─────────────────────────────────────────────────────────────
        useScrollAnimation already eases on this curve; naming it keeps the rest

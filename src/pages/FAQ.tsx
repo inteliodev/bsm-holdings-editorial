@@ -22,16 +22,16 @@ const FAQ = () => {
 
   const faqItems = [
     {
-      question: "What types of properties does HHP specialize in?",
-      answer: "HHP provides comprehensive real estate services across commercial property types, including multifamily, senior housing, retail, industrial, office, and HUD/affordable housing. Our vertically integrated approach allows us to serve owners across asset classes with consistent operational discipline and strategic insight."
+      question: "What types of properties does BSM Holdings specialize in?",
+      answer: "BSM Holdings provides comprehensive real estate services across commercial property types, including multifamily, senior housing, retail, industrial, office, and HUD/affordable housing. Our vertically integrated approach allows us to serve owners across asset classes with consistent operational discipline and strategic insight."
     },
     {
       question: "How do I request a proposal?",
       answer: "You can request a proposal by contacting us through our contact page or by reaching out directly to our team. We'll schedule an initial consultation to understand your property needs, portfolio objectives, and operational requirements. Following our assessment, we'll provide a detailed proposal outlining our services, approach, and fee structure tailored to your specific situation."
     },
     {
-      question: "How do I get started with HHP?",
-      answer: "Getting started with HHP begins with an initial consultation where we discuss your property portfolio, ownership objectives, and operational needs. We'll conduct a property assessment, review your current operations, and develop a tailored service plan. Our onboarding process includes transition planning, system integration, and team alignment to ensure a smooth handoff and immediate operational continuity."
+      question: "How do I get started with BSM Holdings?",
+      answer: "Getting started with BSM Holdings begins with an initial consultation where we discuss your property portfolio, ownership objectives, and operational needs. We'll conduct a property assessment, review your current operations, and develop a tailored service plan. Our onboarding process includes transition planning, system integration, and team alignment to ensure a smooth handoff and immediate operational continuity."
     },
     {
       question: "Do you handle regulatory and compliance requirements?",
@@ -46,7 +46,7 @@ const FAQ = () => {
       answer: "Ownership involvement is tailored to your preferences and needs. We provide regular reporting, strategic input, and decision-ready information, but the level of day-to-day involvement is determined by you. Some owners prefer hands-on oversight, while others rely on our disciplined execution with periodic strategic reviews. We adapt our communication and reporting cadence to match your management style."
     },
     {
-      question: "Can HHP work with existing architects, contractors, or consultants?",
+      question: "Can BSM Holdings work with existing architects, contractors, or consultants?",
       answer: "Absolutely. We regularly coordinate with existing professional relationships, including architects, contractors, legal counsel, accounting firms, and other consultants. Our role is to integrate seamlessly with your current team, providing coordination, oversight, and strategic input while respecting established relationships and maintaining clear communication channels."
     },
     {
@@ -54,16 +54,16 @@ const FAQ = () => {
       answer: "We maintain disciplined cost control through proactive budget management, vendor oversight, expense review, and strategic procurement. Our approach includes regular budget variance analysis, cost benchmarking, and capital planning to optimize operating expenses while preserving asset condition and tenant satisfaction. We provide transparent reporting so owners understand where costs are allocated and why."
     },
     {
-      question: "What services does HHP provide?",
-      answer: "HHP provides a vertically integrated suite of commercial real estate services, including property management, leasing and tenant representation, investment sales and capital markets advisory, development advisory, site selection, financial analysis, facilities management, and strategic consulting. Our services are designed to support the full lifecycle of commercial real estate ownership, from acquisition through disposition."
+      question: "What services does BSM Holdings provide?",
+      answer: "BSM Holdings provides a vertically integrated suite of commercial real estate services, including property management, leasing and tenant representation, investment sales and capital markets advisory, development advisory, site selection, financial analysis, facilities management, and strategic consulting. Our services are designed to support the full lifecycle of commercial real estate ownership, from acquisition through disposition."
     },
     {
-      question: "What sets HHP apart from other property management firms?",
-      answer: "HHP differentiates itself through vertical integration, operational discipline, and technology-enabled decision-making. Unlike traditional firms that silo services, we combine brokerage, management, and advisory under a single fiduciary mindset. We maintain selective portfolio sizes to ensure accountability, provide direct oversight without call-center models, and integrate proprietary data platforms that enhance—not replace—human judgment and execution."
+      question: "What sets BSM Holdings apart from other property management firms?",
+      answer: "BSM Holdings differentiates itself through vertical integration, operational discipline, and technology-enabled decision-making. Unlike traditional firms that silo services, we combine brokerage, management, and advisory under a single fiduciary mindset. We maintain selective portfolio sizes to ensure accountability, provide direct oversight without call-center models, and integrate proprietary data platforms that enhance—not replace—human judgment and execution."
     },
     {
       question: "Do you offer property management for HUD and affordable housing?",
-      answer: "Yes, HHP provides specialized property management services for HUD and affordable housing properties. Our HUD management services include compliance oversight, certification management, REAC inspection preparation, HAP voucher administration, and audit-ready reporting. We use technology to automate complex compliance requirements and ensure subsidy revenue flows without interruption."
+      answer: "Yes, BSM Holdings provides specialized property management services for HUD and affordable housing properties. Our HUD management services include compliance oversight, certification management, REAC inspection preparation, HAP voucher administration, and audit-ready reporting. We use technology to automate complex compliance requirements and ensure subsidy revenue flows without interruption."
     },
     {
       question: "Do you provide emergency response services?",
@@ -90,16 +90,16 @@ const FAQ = () => {
       answer: "Maintenance requests are handled through structured work order management systems that track requests from initiation through completion. We prioritize requests based on urgency, coordinate with vendors or in-house teams, and provide status updates to tenants. Our goal is timely resolution, quality control, and clear communication throughout the maintenance process."
     },
     {
-      question: "Can HHP manage properties after a sale or acquisition?",
-      answer: "Yes, HHP provides transition management services for properties following sales or acquisitions. We coordinate property handoffs, integrate new assets into our management platform, conduct due diligence reviews, and ensure operational continuity during ownership transitions. Our experience with acquisitions and dispositions allows us to manage both sides of transactions effectively."
+      question: "Can BSM Holdings manage properties after a sale or acquisition?",
+      answer: "Yes, BSM Holdings provides transition management services for properties following sales or acquisitions. We coordinate property handoffs, integrate new assets into our management platform, conduct due diligence reviews, and ensure operational continuity during ownership transitions. Our experience with acquisitions and dispositions allows us to manage both sides of transactions effectively."
     },
     {
       question: "Do you assist with property acquisitions?",
-      answer: "Yes, HHP provides acquisition advisory services, including market analysis, property evaluation, underwriting, due diligence coordination, and transaction structuring. We advise buyers on commercial real estate acquisitions with an understanding of how assets perform beyond the closing table, integrating market insight, underwriting discipline, and operational awareness to support informed decisions."
+      answer: "Yes, BSM Holdings provides acquisition advisory services, including market analysis, property evaluation, underwriting, due diligence coordination, and transaction structuring. We advise buyers on commercial real estate acquisitions with an understanding of how assets perform beyond the closing table, integrating market insight, underwriting discipline, and operational awareness to support informed decisions."
     },
     {
       question: "What geographic areas do you serve?",
-      answer: "HHP serves commercial property owners across multiple markets, with a focus on strategic geographic coverage that allows us to maintain operational discipline and direct oversight. While our primary operations are concentrated in specific regions, we evaluate service opportunities based on portfolio fit, operational capability, and alignment with our selective management approach. Contact us to discuss your specific market needs."
+      answer: "BSM Holdings serves commercial property owners across multiple markets, with a focus on strategic geographic coverage that allows us to maintain operational discipline and direct oversight. While our primary operations are concentrated in specific regions, we evaluate service opportunities based on portfolio fit, operational capability, and alignment with our selective management approach. Contact us to discuss your specific market needs."
     },
     {
       question: "How do you determine value and performance for commercial assets?",
@@ -111,7 +111,7 @@ const FAQ = () => {
     },
     {
       question: "What brokerage services do you offer?",
-      answer: "HHP provides comprehensive brokerage services, including investment sales representation, acquisition advisory, owner-user transactions, pricing and valuation guidance, deal structuring and negotiation, and transaction management and execution. Our brokerage approach is strategy-driven rather than volume-driven, with a focus on long-term decision-making and alignment with ownership objectives."
+      answer: "BSM Holdings provides comprehensive brokerage services, including investment sales representation, acquisition advisory, owner-user transactions, pricing and valuation guidance, deal structuring and negotiation, and transaction management and execution. Our brokerage approach is strategy-driven rather than volume-driven, with a focus on long-term decision-making and alignment with ownership objectives."
     }
   ];
 
@@ -123,10 +123,10 @@ const FAQ = () => {
         that plainly qualifies.
       */}
       <Helmet>
-        <title>Frequently Asked Questions — HHP Asset Management</title>
+        <title>Frequently Asked Questions — BSM Holdings</title>
         <meta
           name="description"
-          content="Answers on property management, Facility Services, financial reporting, brokerage and working with HHP Asset Management in Oklahoma."
+          content="Answers on property management, Facility Services, financial reporting, brokerage and working with BSM Holdings in Oklahoma."
         />
         <script type="application/ld+json">
           {JSON.stringify({
