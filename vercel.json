@@ -34,8 +34,7 @@
     { "source": "/services/commercial", "destination": "/asset-types/office", "permanent": true },
 
     { "source": "/services/facilities-management", "destination": "/services/facility-services", "permanent": true },
-    { "source": "/technology/ai-platforms", "destination": "/technology/platforms", "permanent": true },
-    { "source": "/owner-login", "destination": "/investor-portal", "permanent": true }
+    { "source": "/technology/ai-platforms", "destination": "/technology/platforms", "permanent": true }
   ],
   "rewrites": [
     {

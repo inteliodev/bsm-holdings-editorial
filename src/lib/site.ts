@@ -1,4 +1,7 @@
 /** Site contact / CTA helpers for property listing cards. */
+export const RESIDENT_PORTAL_URL =
+  'https://bsmholdings.appfolio.com/connect/users/sign_in';
+
 export const site = {
   name: 'BSM Holdings',
   principal: {

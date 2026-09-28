@@ -288,7 +288,7 @@ const AssetManagement = () => {
         </section>
 
         {/* ── Closing band ───────────────────────────────────────────────── */}
-        <section className="section-spacing bg-hhp-navy text-white">
+        <section className="section-spacing bg-brand text-white">
           <div className="container-premium text-center">
             <h2 className="section-title mx-auto max-w-3xl text-white">
               Tell us what the asset is meant to do

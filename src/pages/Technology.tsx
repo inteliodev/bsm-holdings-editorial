@@ -326,7 +326,7 @@ const Technology = () => {
                         rounded-lg implied a chip background that did not exist,
                         so the icons floated. This draws the chip. */}
                     <div className="mb-6 flex items-start gap-4">
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center border border-hhp-navy/12 bg-hhp-navy/[0.04] text-hhp-navy transition-colors duration-300 group-hover:border-hhp-gold/40 group-hover:bg-hhp-gold/10 group-hover:text-hhp-gold">
+                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center border border-hhp-navy/12 bg-brand/[0.04] text-hhp-navy transition-colors duration-300 group-hover:border-hhp-gold/40 group-hover:bg-hhp-gold/10 group-hover:text-hhp-gold">
                         <PillarMark shape={pillar.shape} />
                       </div>
                       {/* h3, not h2: these are cards inside a section that now

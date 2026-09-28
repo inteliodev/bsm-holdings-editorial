@@ -10,7 +10,7 @@ import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
  * The asset classes index.
  *
  * Rebuilt around the two tracks. The previous version was on the retired design
- * system — a flat `bg-hhp-navy/60` hero wash, an uppercase letter-spaced <h2>,
+ * system — a flat `bg-brand/60` hero wash, an uppercase letter-spaced <h2>,
  * and the headline "Every Asset Class, One Integrated Platform", which is the
  * SaaS-vendor voice the site does not use. Its per-class copy also sat inside a
  * `group-hover:opacity-100` overlay, so on any touch device the page was six
@@ -201,7 +201,7 @@ const AssetTypes = () => {
         </section>
 
         {/* ── Closing band ───────────────────────────────────────────────── */}
-        <section className="section-spacing bg-hhp-navy text-white">
+        <section className="section-spacing bg-brand text-white">
           <div className="container-premium text-center">
             <h2 className="section-title mx-auto max-w-3xl text-white">
               Tell us about the asset

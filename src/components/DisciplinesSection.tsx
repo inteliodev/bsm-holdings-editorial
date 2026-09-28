@@ -59,7 +59,7 @@ const DisciplinesSection = () => {
           {disciplines.map((d, i) => (
             <div
               key={i}
-              className="discipline-card rounded border border-white/10 bg-hhp-navy p-8 transition-all duration-300 ease-out-expo hover:-translate-y-1 hover:border-hhp-gold/30 hover:shadow-premium sm:p-10"
+              className="discipline-card rounded border border-white/10 bg-brand p-8 transition-all duration-300 ease-out-expo hover:-translate-y-1 hover:border-hhp-gold/30 hover:shadow-premium sm:p-10"
             >
               <span className="card-number">{d.number}</span>
               <h3 className="relative z-10 mb-4 font-heading text-xl font-semibold uppercase tracking-wide text-white sm:text-2xl">

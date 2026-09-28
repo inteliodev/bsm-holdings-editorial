@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ChevronDown, Menu, X, ChevronRight } from 'lucide-react';
 import { trackNavigationClick, trackLinkClick, trackButtonClick } from '@/utils/analytics';
+import { RESIDENT_PORTAL_URL } from '@/lib/site';
 
 const Header = () => {
   // State management
@@ -247,7 +248,7 @@ const Header = () => {
       <div className="w-full">
         {/* relative z-50 so the bar keeps painting above the z-40 mobile sheet,
             which is a later sibling inside this same header. */}
-        <div className="relative z-50 flex h-12 items-center justify-between pl-4 pr-4 transition-all duration-300 sm:pl-6 sm:pr-6 md:h-14 lg:pl-8 lg:pr-8 xl:pl-12 xl:pr-12">
+        <div className="relative z-50 flex h-14 items-center justify-between pl-4 pr-4 transition-all duration-300 sm:pl-6 sm:pr-6 sm:h-16 md:h-[4.5rem] lg:pl-8 lg:pr-8 xl:pl-12 xl:pr-12">
           {/* Logo - Clickable Home Link */}
           <Link 
             to="/" 
@@ -269,7 +270,7 @@ const Header = () => {
               alt="BSM Holdings"
               width={160}
               height={160}
-              className="h-9 w-auto object-contain sm:h-10 md:h-11 transition-all duration-300"
+              className="h-12 w-auto object-contain sm:h-14 md:h-16 transition-all duration-300"
               loading="eager"
               decoding="async"
               fetchPriority="high"
@@ -401,7 +402,7 @@ const Header = () => {
               className={`flex min-h-[40px] items-center justify-center rounded px-4 py-2 text-sm font-semibold leading-tight transition-colors duration-200 sm:px-5 ${
                 isTransparent
                   ? 'bg-white text-hhp-navy hover:bg-hhp-gold hover:text-hhp-navy-deep'
-                  : 'bg-hhp-navy text-white hover:bg-hhp-navy-deep'
+                  : 'bg-brand text-white hover:bg-hhp-navy-deep'
               }`}
               onClick={() => {
                 trackButtonClick('contact_cta', 'header');
@@ -417,26 +418,18 @@ const Header = () => {
                 isTransparent ? 'border-white/25' : 'border-border'
               }`}
             >
-              <Link 
-                to="/resident-login" 
+              <a
+                href={RESIDENT_PORTAL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`px-1 py-1 text-xs font-medium leading-tight transition-colors duration-200 sm:px-2 sm:text-sm ${navLinkClass}`}
                 onClick={() => {
                   trackButtonClick('resident_login', 'header');
-                  trackLinkClick('Resident Login', '/resident-login');
+                  trackLinkClick('Login', RESIDENT_PORTAL_URL);
                 }}
               >
-                Resident Login
-              </Link>
-              <Link 
-                to="/investor-portal" 
-                className={`px-1 py-1 text-xs font-medium leading-tight transition-colors duration-200 sm:px-2 sm:text-sm ${navLinkClass}`}
-                onClick={() => {
-                  trackButtonClick('investor_portal', 'header');
-                  trackLinkClick('Investor Portal', '/investor-portal');
-                }}
-              >
-                Investor Portal
-              </Link>
+                Login
+              </a>
             </div>
           </nav>
 
@@ -544,7 +537,7 @@ const Header = () => {
               <div className="mt-6 pt-4 border-t border-border">
                 <Link
                   to={contactCTA.href}
-                  className="block w-full bg-hhp-navy text-white px-6 py-4 rounded font-medium text-center hover:bg-hhp-navy/90 transition-colors duration-200 mb-4 min-h-[48px] flex items-center justify-center"
+                  className="block w-full bg-brand text-white px-6 py-4 rounded font-medium text-center hover:bg-brand/90 transition-colors duration-200 mb-4 min-h-[48px] flex items-center justify-center"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {contactCTA.name}
@@ -556,20 +549,15 @@ const Header = () => {
                   indent that aligned with neither the top-level items nor the
                   submenu. They now share the top-level left edge. */}
               <div className="flex flex-col space-y-1 border-t border-border pt-5">
-                <Link 
-                  to="/resident-login" 
+                <a
+                  href={RESIDENT_PORTAL_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex min-h-[48px] items-center rounded-md py-3 text-sm font-medium text-hhp-charcoal/75 transition-colors duration-200 hover:text-hhp-navy"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Resident Login
-                </Link>
-                <Link 
-                  to="/investor-portal" 
-                  className="flex min-h-[48px] items-center rounded-md py-3 text-sm font-medium text-hhp-charcoal/75 transition-colors duration-200 hover:text-hhp-navy"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Investor Portal
-                </Link>
+                  Login
+                </a>
               </div>
               </div>
             </div>

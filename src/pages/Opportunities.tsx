@@ -151,7 +151,7 @@ const Opportunities = () => {
                   aria-pressed={department === dept}
                   className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
                     department === dept
-                      ? 'border-hhp-navy bg-hhp-navy text-white'
+                      ? 'border-hhp-navy bg-brand text-white'
                       : 'border-border bg-white text-hhp-charcoal hover:border-hhp-gold hover:text-hhp-navy'
                   }`}
                 >
@@ -207,7 +207,7 @@ const Opportunities = () => {
 
       {/* Closing CTA. Every other page closes on navy; this one closed on white
           and simply faded out. */}
-      <section className="section-spacing bg-hhp-navy text-white">
+      <section className="section-spacing bg-brand text-white">
         <div className="container-premium">
           <div className="mx-auto max-w-3xl text-center">
             <span className="eyebrow mb-5 justify-center text-hhp-gold">Ready to apply?</span>

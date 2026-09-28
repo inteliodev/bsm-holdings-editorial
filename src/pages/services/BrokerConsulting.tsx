@@ -12,7 +12,7 @@ const BrokerConsulting = () => {
         className="relative min-h-[500px] flex items-center justify-center bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url(/images/broker-record-hero.webp)' }}
       >
-        <div className="absolute inset-0 bg-hhp-navy/60"></div>
+        <div className="absolute inset-0 bg-brand/60"></div>
         <div className="relative z-10 container-premium">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="hero-title text-white mb-4 drop-shadow-lg">
@@ -541,7 +541,7 @@ const BrokerConsulting = () => {
           floating on grey — no heading, no copy — so it stopped rather than
           concluded. It was also the only services page with no closing block at
           all after the careers band. */}
-      <section className="section-spacing bg-hhp-navy text-white">
+      <section className="section-spacing bg-brand text-white">
         <div className="container-premium">
           <div className="mx-auto max-w-3xl text-center">
             <span className="eyebrow mb-5 justify-center text-hhp-gold">

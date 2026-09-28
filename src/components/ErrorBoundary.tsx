@@ -69,7 +69,7 @@ class ErrorBoundary extends Component<Props, State> {
             <div className="space-y-3">
               <Button 
                 onClick={this.handleRetry}
-                className="w-full bg-hhp-navy hover:bg-hhp-navy/90 text-white"
+                className="w-full bg-brand hover:bg-brand/90 text-white"
               >
                 <RefreshCw className="w-4 h-4 mr-2" />
                 Try Again

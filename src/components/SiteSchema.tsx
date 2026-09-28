@@ -52,8 +52,7 @@ const SEGMENT_LABELS: Record<string, string> = {
   faq: 'FAQ',
   opportunities: 'Careers',
   brokerage: 'Brokerage & Advisory',
-  'resident-login': 'Resident Access',
-  'investor-portal': 'Investor Portal',
+  'resident-login': 'Login',
 };
 
 const labelFor = (segment: string) =>

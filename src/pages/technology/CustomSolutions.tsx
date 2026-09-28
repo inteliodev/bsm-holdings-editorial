@@ -11,7 +11,7 @@ const CustomSolutions = () => {
         className="relative min-h-[500px] flex items-center justify-center bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url(/images/custom-solutions.jpg)' }}
       >
-        <div className="absolute inset-0 bg-hhp-navy/60"></div>
+        <div className="absolute inset-0 bg-brand/60"></div>
         <div className="relative z-10 container-premium">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="hero-title text-white mb-8 drop-shadow-lg">
@@ -138,7 +138,7 @@ const CustomSolutions = () => {
                     <div className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-hhp-navy mr-3 mt-1 flex-shrink-0" />
                       <p className="text-sm text-hhp-charcoal">
-                        Investor portals withlive performance dashboards.
+                        Owner dashboards with live performance reporting.
                       </p>
                     </div>
                     <div className="flex items-start">
@@ -205,7 +205,7 @@ const CustomSolutions = () => {
                   <p className="text-lg leading-relaxed text-hhp-charcoal">
                     "We designed a proprietary compliance and analytics suite for a 3-property HUD-regulated 
                     portfolio. The system cut audit prep time by 60%, reduced compliance exceptions by 40%, and 
-                    created a live investor dashboard accessible anytime."
+                    created a live owner dashboard accessible anytime."
                   </p>
                 </div>
               </div>
@@ -248,7 +248,7 @@ const CustomSolutions = () => {
       </section>
 
       {/* CTA Banner */}
-      <section className="bg-hhp-navy section-spacing">
+      <section className="bg-brand section-spacing">
         <div className="container-premium text-center">
           <h2 className="section-title text-white mb-8">
             Ready to build the technology your portfolio needs?

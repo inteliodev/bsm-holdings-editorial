@@ -18,7 +18,7 @@ const PremiumCTABanner = ({
   secondaryLink 
 }: PremiumCTABannerProps) => {
   return (
-    <section className="bg-hhp-navy text-white section-spacing">
+    <section className="bg-brand text-white section-spacing">
       <div className="container-premium">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="section-title text-white mb-6">{title}</h2>

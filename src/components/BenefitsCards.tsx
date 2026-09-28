@@ -33,7 +33,7 @@ const BenefitsCards = ({ benefits, testimonial }: BenefitsCardsProps) => {
           </div>
 
           {testimonial && (
-            <div className="bg-hhp-navy text-white p-8 rounded-lg text-center">
+            <div className="bg-brand text-white p-8 rounded-lg text-center">
               <blockquote className="text-xl leading-relaxed mb-6 italic">
                 "{testimonial.quote}"
               </blockquote>

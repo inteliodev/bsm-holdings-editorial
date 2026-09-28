@@ -119,7 +119,7 @@ const About = () => {
       {/* Split Hero Section - Robinson Park Style */}
       <section className="flex flex-col md:h-[600px] md:flex-row">
         {/* LEFT SIDE - Text & Navy Background */}
-        <div className="flex w-full items-center justify-start bg-hhp-navy px-6 py-14 sm:px-8 md:w-[45%] md:py-0 lg:w-[40%] lg:px-12">
+        <div className="flex w-full items-center justify-start bg-brand px-6 py-14 sm:px-8 md:w-[45%] md:py-0 lg:w-[40%] lg:px-12">
           <div className="max-w-md">
             <span className="eyebrow eyebrow-bare text-hhp-gold-soft">About</span>
             <h1 className="hero-title mb-5 mt-4 text-white">About Us</h1>
@@ -175,7 +175,7 @@ const About = () => {
             >
               Our People
               {activeTab === 'people' && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-hhp-navy transform transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand transform transition-all duration-300" />
               )}
             </button>
             <button
@@ -198,7 +198,7 @@ const About = () => {
             >
               Why BSM Holdings
               {activeTab === 'story' && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-hhp-navy transform transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand transform transition-all duration-300" />
               )}
             </button>
             <button
@@ -221,7 +221,7 @@ const About = () => {
             >
               Our Approach
               {activeTab === 'approach' && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-hhp-navy transform transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand transform transition-all duration-300" />
               )}
             </button>
           </div>
@@ -405,7 +405,7 @@ const About = () => {
 
 
       {/* Join Our Team */}
-      <section className="bg-hhp-navy text-white py-20">
+      <section className="bg-brand text-white py-20">
         <div className="container-premium text-center">
           <h2 className="section-title text-white mb-4">Join Our Team</h2>
           <p className="text-lg md:text-xl leading-relaxed text-white/90 max-w-3xl mx-auto mb-10">

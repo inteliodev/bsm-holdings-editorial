@@ -371,19 +371,11 @@ the same broken promise as the old fake portal logins. `showAboutUs`,
 conditional on props no page ever supplied, so it never rendered.
 
 ### Lead capture
-Three surfaces submit leads: the contact form, and the two portal access-request
-forms. Delivery lives in **`src/lib/leads.ts`** (`submitLead`) — two independent
-sinks attempted concurrently, the n8n webhook and a Supabase `contacts` insert,
+Lead capture lives in **`src/lib/leads.ts`** (`submitLead`) — two independent
+sinks are attempted concurrently, the n8n webhook and a Supabase `contacts` insert,
 so a lead is only lost if both fail. Route new forms through it rather than
-re-implementing the pattern.
-
-`src/components/AccessRequestForm.tsx` backs both portal pages.
-
-**The portals do not authenticate anything.** They previously rendered a sign-in
-that awaited a 1500ms timeout and then showed a success toast — any password
-"worked", nothing was stored, and neither destination route exists. They are now
-honest access-request forms with no password field. Do not add one back unless
-real auth exists behind it.
+re-implementing the pattern. Login is a direct link to the external
+resident portal and does not collect access requests.
 
 ### Structured data
 `src/components/SiteSchema.tsx` renders from `Layout`, so every route carries

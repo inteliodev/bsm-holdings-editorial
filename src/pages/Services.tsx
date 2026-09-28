@@ -61,7 +61,7 @@ const Services = () => {
         className="relative min-h-[500px] flex items-center justify-center bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url(/images/asset-management-image.jpg)' }}
       >
-        <div className="absolute inset-0 bg-hhp-navy/60"></div>
+        <div className="absolute inset-0 bg-brand/60"></div>
         <div className="relative z-10 container-premium">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="hero-title text-white mb-4 drop-shadow-lg">
@@ -146,7 +146,7 @@ const Services = () => {
       </section>
 
       {/* CTA Banner */}
-      <section className="bg-hhp-navy text-white section-spacing">
+      <section className="bg-brand text-white section-spacing">
         <div className="container-premium text-center">
           <h2 className="section-title text-white mb-6">
             Ready to Experience the Future of Real Estate?

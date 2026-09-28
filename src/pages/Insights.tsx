@@ -86,7 +86,7 @@ const Insights = () => {
         className="relative min-h-[500px] flex items-center justify-center bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url(/images/insights-image.webp)' }}
       >
-        <div className="absolute inset-0 bg-hhp-navy/60"></div>
+        <div className="absolute inset-0 bg-brand/60"></div>
         <div className="relative z-10 container-premium">
           <div className="max-w-4xl mx-auto text-center fade-in">
             <h1 className="hero-title text-white mb-4 drop-shadow-lg">
@@ -367,7 +367,7 @@ const Insights = () => {
                   <button 
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-hhp-navy text-white min-h-[48px] px-6 py-3 rounded-lg font-heading font-semibold tracking-[0.06em] uppercase hover:bg-hhp-navy/90 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-brand text-white min-h-[48px] px-6 py-3 rounded-lg font-heading font-semibold tracking-[0.06em] uppercase hover:bg-brand/90 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? 'Subscribing...' : 'Subscribe'}
                   </button>

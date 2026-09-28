@@ -198,7 +198,7 @@ const FAQ = () => {
 
       {/* Closing CTA. The page previously ended when the last answer collapsed —
           no CTA, no related links, nothing. */}
-      <section className="section-spacing bg-hhp-navy text-white">
+      <section className="section-spacing bg-brand text-white">
         <div className="container-premium">
           <div className="mx-auto max-w-3xl text-center">
             <span className="eyebrow mb-5 justify-center text-hhp-gold">Still deciding?</span>

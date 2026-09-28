@@ -96,12 +96,12 @@
 
     /* Header height, so full-viewport panes (the Portfolio map) can subtract a
        real value instead of the hardcoded 80px guess they used before. */
-    --header-h: 4rem;
+    --header-h: 4.5rem;
   }
 
-  /* Header is h-12 + py-2 on mobile, h-14 + py-3 from sm up. */
+  /* Header is h-14 + py-2 on mobile, h-16 + py-3 from sm up. */
   @media (min-width: 640px) {
-    :root { --header-h: 5rem; }
+    :root { --header-h: 5.5rem; }
   }
 
   * {

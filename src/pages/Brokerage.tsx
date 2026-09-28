@@ -8,7 +8,7 @@ const Brokerage = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-hhp-navy section-spacing">
+      <section className="bg-brand section-spacing">
         <div className="container-premium">
           <div className="max-w-4xl mx-auto text-center fade-in">
             <h1 className="hero-title text-white mb-8">
@@ -326,7 +326,7 @@ const Brokerage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-hhp-navy text-white section-spacing">
+      <section className="bg-brand text-white section-spacing">
         <div className="container-premium text-center">
           <h2 className="section-title text-white mb-6">
             Ready to Transform Your Portfolio?

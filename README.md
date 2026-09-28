@@ -415,6 +415,3 @@ Tracked but not yet addressed:
   `PremiumCTABanner`, `ProcessSteps`, `ProofPoints`, and `ServiceCards`.
   (`ServicesSubNav` was deleted — all six of its `/management/*` links pointed at
   routes that no longer exist in `App.tsx`.)
-- **The portals collect access requests but there is no portal.** `InvestorPortal` still
-  advertises a feature list for a product that does not exist yet — retained at the
-  owner's explicit request.

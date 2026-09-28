@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { OFFICE_ADDRESS } from '@/data/serviceArea';
 import equalHousingLogo from '@/assets/equal-housing.png';
 import { Mail, MapPin } from 'lucide-react';
+import { RESIDENT_PORTAL_URL } from '@/lib/site';
 
 const COMPANY_LINKS = [
   { to: '/about', label: 'About' },
@@ -82,7 +83,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact + portals */}
+          {/* Contact */}
           <div className="col-span-2 lg:col-span-3">
             <h2 className={columnHeading}>Contact</h2>
             <ul className="space-y-3">
@@ -112,12 +113,14 @@ const Footer = () => {
             </ul>
 
             <div className="mt-7 flex flex-col gap-1 border-t border-white/10 pt-5">
-              <Link to="/resident-login" className={linkClass}>
-                Resident Login
-              </Link>
-              <Link to="/investor-portal" className={linkClass}>
-                Investor Portal
-              </Link>
+              <a
+                href={RESIDENT_PORTAL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClass}
+              >
+                Login
+              </a>
             </div>
           </div>
         </div>

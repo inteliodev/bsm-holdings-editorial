@@ -12,7 +12,7 @@ const PropertyManagement = () => {
         className="relative min-h-[500px] flex items-center justify-center bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url(/images/property-management-picture.webp)' }}
       >
-        <div className="absolute inset-0 bg-hhp-navy/60"></div>
+        <div className="absolute inset-0 bg-brand/60"></div>
         <div className="relative z-10 container-premium">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="hero-title text-white mb-4 drop-shadow-lg">
@@ -404,7 +404,7 @@ const PropertyManagement = () => {
               </h3>
               <Link 
                 to="/faq" 
-                className="bg-hhp-navy text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-heading font-semibold tracking-[0.06em] uppercase hover:bg-hhp-navy/90 transition flex-shrink-0"
+                className="bg-brand text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-heading font-semibold tracking-[0.06em] uppercase hover:bg-brand/90 transition flex-shrink-0"
                 onClick={() => {
                   trackButtonClick('visit_faq_cta', 'property_management_faq');
                   trackLinkClick('Visit our FAQ page', '/faq');

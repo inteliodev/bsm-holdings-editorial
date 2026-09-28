@@ -67,7 +67,7 @@ const BuildingSection = () => {
   const cls = (id: string) => `bl ${activeId === id ? 'is-active' : ''}`;
 
   return (
-    <section className="section-spacing bg-hhp-navy text-white">
+    <section className="section-spacing bg-brand text-white">
       <div className="container-premium">
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <span className="eyebrow mb-5 justify-center text-hhp-gold">Vertical Integration</span>
@@ -83,7 +83,7 @@ const BuildingSection = () => {
         <div className="lg:grid lg:grid-cols-12 lg:gap-16">
           {/* Diagram */}
           {/* Opaque — the step list scrolls underneath this bar. */}
-          <div className="sticky top-[var(--header-h)] z-20 self-start border-b border-white/10 bg-hhp-navy py-4 lg:top-[calc(var(--header-h)+2.5rem)] lg:col-span-5 lg:border-b-0 lg:bg-transparent lg:py-0">
+          <div className="sticky top-[var(--header-h)] z-20 self-start border-b border-white/10 bg-brand py-4 lg:top-[calc(var(--header-h)+2.5rem)] lg:col-span-5 lg:border-b-0 lg:bg-transparent lg:py-0">
             <svg
               viewBox="0 0 400 560"
               className="mx-auto max-h-[34vh] w-full max-w-[180px] lg:max-h-none lg:max-w-[340px]"

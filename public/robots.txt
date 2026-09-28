@@ -62,9 +62,6 @@ Allow: /
 User-agent: *
 Allow: /
 
-# The portal access pages are noindex in the page metadata; they are left
-# crawlable so the directive is actually seen.
-
 # A plain-language summary of the business for answer engines lives at
 # https://hhpasset.com/llms.txt
 

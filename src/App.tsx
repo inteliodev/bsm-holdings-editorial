@@ -19,7 +19,6 @@ const Contact = lazy(() => import("./pages/Contact"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const Opportunities = lazy(() => import("./pages/Opportunities"));
 const ResidentLogin = lazy(() => import("./pages/ResidentLogin"));
-const InvestorPortal = lazy(() => import("./pages/InvestorPortal"));
 const Portfolio = lazy(() => import("./pages/Portfolio"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -116,7 +115,6 @@ const App = () => (
               <Route path="/faq" element={<FAQ />} />
               <Route path="/opportunities" element={<Opportunities />} />
               <Route path="/resident-login" element={<ResidentLogin />} />
-              <Route path="/investor-portal" element={<InvestorPortal />} />
               <Route path="/portfolio" element={<Portfolio />} />
 
               {/* Legacy routes for backward compatibility */}

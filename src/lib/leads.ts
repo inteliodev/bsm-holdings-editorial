@@ -6,8 +6,7 @@
  * if BOTH fail, so an n8n outage does not drop inbound business on the floor.
  *
  * This lives here rather than inside a page because three surfaces now submit
- * leads — the contact form and both portal access-request forms — and the
- * portals previously carried their own copies of everything.
+ * leads — including the contact form — so each form uses the same delivery path.
  */
 export const CONTACT_WEBHOOK_URL =
   import.meta.env.VITE_CONTACT_WEBHOOK_URL ||
@@ -17,7 +16,7 @@ export type Lead = {
   name: string;
   email: string;
   phone?: string | null;
-  /** Routed into the existing `inquiry_type` column, e.g. 'Investor Portal Access'. */
+  /** Routed into the existing `inquiry_type` column. */
   inquiry_type?: string | null;
   property_address?: string | null;
   message: string;

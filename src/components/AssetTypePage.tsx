@@ -409,7 +409,7 @@ const AssetTypePage = ({
       )}
 
       {/* ── Closing band ─────────────────────────────────────────────────── */}
-      <section id="asset-contact" className="section-spacing bg-hhp-navy text-white">
+      <section id="asset-contact" className="section-spacing bg-brand text-white">
         <div className="container-premium text-center">
           <h2 className="section-title mx-auto max-w-3xl text-white">
             {ctaTitle || `Talk to us about your ${title.toLowerCase()} asset`}

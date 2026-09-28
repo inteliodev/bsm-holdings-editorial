@@ -11,7 +11,7 @@ const Platforms = () => {
         className="relative min-h-[500px] flex items-center justify-center bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url(/images/platforms-hero.jpg)' }}
       >
-        <div className="absolute inset-0 bg-hhp-navy/60"></div>
+        <div className="absolute inset-0 bg-brand/60"></div>
         <div className="relative z-10 container-premium">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="hero-title text-white mb-8 drop-shadow-lg">
@@ -247,7 +247,7 @@ const Platforms = () => {
       */}
 
       {/* CTA Banner */}
-      <section className="bg-hhp-navy section-spacing">
+      <section className="bg-brand section-spacing">
         <div className="container-premium text-center">
           <h2 className="section-title text-white mb-8">
             Want to see the systems running?

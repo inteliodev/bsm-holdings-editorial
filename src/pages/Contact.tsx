@@ -133,7 +133,7 @@ const Contact = () => {
         className="relative min-h-[500px] flex items-center justify-center bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url(/images/facilities-management-hero-image.jpg)' }}
       >
-        <div className="absolute inset-0 bg-hhp-navy/60"></div>
+        <div className="absolute inset-0 bg-brand/60"></div>
         <div className="relative z-10 container-premium">
           <div className="max-w-4xl mx-auto text-center fade-in px-4">
             {/* Was the literal string "CONTACT"; the base layer no longer
@@ -276,7 +276,7 @@ const Contact = () => {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-hhp-navy hover:bg-hhp-navy/90 text-white py-3 sm:py-4 min-h-[48px] sm:min-h-[52px] text-sm sm:text-base"
+                  className="w-full bg-brand hover:bg-brand/90 text-white py-3 sm:py-4 min-h-[48px] sm:min-h-[52px] text-sm sm:text-base"
                   onClick={() => trackButtonClick('contact_form_submit', 'contact_page')}
                 >
                   {isSubmitting ? (
@@ -305,7 +305,7 @@ const Contact = () => {
 
               <div className="space-y-4 sm:space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="bg-hhp-navy/10 p-3 rounded-lg">
+                  <div className="bg-brand/10 p-3 rounded-lg">
                     <Mail className="h-6 w-6 text-hhp-navy" />
                   </div>
                   <div>

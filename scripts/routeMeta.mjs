@@ -163,13 +163,8 @@ export const ROUTE_META = {
       'Custom workflows, integrations, and reporting built around how a portfolio actually operates.',
   },
   '/resident-login': {
-    title: t('Resident Login'),
+    title: t('Login'),
     description: 'Resident portal access for communities managed by BSM Holdings.',
-    noindex: true,
-  },
-  '/investor-portal': {
-    title: t('Investor Portal'),
-    description: 'Owner and investor portal access for BSM Holdings clients.',
     noindex: true,
   },
 };
