@@ -91,11 +91,11 @@ const Home = () => {
                   to="/contact"
                   className="inline-flex min-h-[52px] w-auto items-center justify-center rounded-none bg-white px-8 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.08em] text-hhp-navy shadow-elegant transition-all duration-300 hover:bg-hhp-gold hover:text-hhp-navy-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hhp-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
                   onClick={() => {
-                    trackButtonClick('discuss_your_property', 'home_hero');
-                    trackLinkClick('Discuss Your Property', '/contact');
+                    trackButtonClick('request_a_proposal', 'home_hero');
+                    trackLinkClick('Request a Proposal', '/contact');
                   }}
                 >
-                  Discuss Your Property
+                  Request a Proposal
                 </Link>
                 <Link
                   to="/portfolio"
@@ -162,11 +162,11 @@ const Home = () => {
                 to="/about"
                 className="tap group mt-8 inline-flex items-center gap-2 font-display font-semibold text-hhp-navy transition-colors hover:text-hhp-gold"
                 onClick={() => {
-                  trackButtonClick('about_hhp', 'who_we_are');
-                  trackLinkClick('More about the firm', '/about');
+                  trackButtonClick('about_bsm', 'who_we_are');
+                  trackLinkClick('About BSM Holdings', '/about');
                 }}
               >
-                More about the firm
+                About BSM Holdings
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
@@ -221,10 +221,10 @@ const Home = () => {
               className="btn-hero"
               onClick={() => {
                 trackButtonClick('pm_focus_cta', 'home_pm');
-                trackLinkClick('Discuss Your Property', '/contact');
+                trackLinkClick('Request a Proposal', '/contact');
               }}
             >
-              Discuss Your Property
+              Request a Proposal
             </Link>
             <Link
               to="/services/property-management"
@@ -269,6 +269,30 @@ const Home = () => {
             <ServiceAreaSection
               intro="We manage residential properties in Oklahoma City, Edmond, Norman, Moore, Yukon, and surrounding communities."
             />
+
+      {/* Closing CTA */}
+      <section className="bg-white py-12 sm:py-16 lg:py-20">
+        <div className="container-premium">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="section-title text-hhp-navy">
+              Looking for Property Management?
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-hhp-charcoal">
+              Contact BSM Holdings to discuss your rental property, management needs, and fees.
+            </p>
+            <Link
+              to="/contact"
+              className="btn-hero mt-8 inline-flex"
+              onClick={() => {
+                trackButtonClick('request_a_proposal', 'home_closing');
+                trackLinkClick('Request a Proposal', '/contact');
+              }}
+            >
+              Request a Proposal
+            </Link>
+          </div>
+        </div>
+      </section>
 
       </div>
     </Layout>

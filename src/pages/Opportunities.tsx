@@ -30,7 +30,7 @@ const Opportunities = () => {
         <div className="container-premium">
           <div className="mx-auto max-w-3xl">
             <span className="eyebrow">Why work with us</span>
-            <h2 className="section-title mt-5 text-hhp-navy">Hands-on residential PM</h2>
+            <h2 className="section-title mt-5 text-hhp-navy">Work in Property Management</h2>
             <div className="mt-8 space-y-5 text-lg leading-relaxed text-hhp-charcoal">
               <p>
                 BSM Holdings manages rental homes in the Oklahoma City metro. The work is

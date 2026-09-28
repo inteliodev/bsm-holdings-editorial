@@ -4,19 +4,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**BSM Holdings** — a commercial real estate company website built with React, TypeScript, Vite, and Tailwind CSS. Originally scaffolded via the Lovable platform. Deployed on Vercel.
+**BSM Holdings** — a residential property management website for the Oklahoma City metro, built with React, TypeScript, Vite, and Tailwind CSS. Rebranded from an HHP template. Deployed on Vercel (live preview: https://bsm-holdings-website.vercel.app).
 
-The legal entity is **BSM Holdings**. Use that name everywhere in user-facing copy. The earlier trade name "BSM Holdings Asset Group" was retired and must not be reintroduced — note that the legacy raster logo artwork in `public/images/` still renders the words "ASSET GROUP", which is why the site uses the vector kit in `public/brand/vector/` instead. The repository directory is still named `HHPAssetBrokerage-Management`; that is a folder name, not the company name.
+The legal entity is **BSM Holdings**. Use that name everywhere in user-facing copy. The earlier trade name "BSM Holdings Asset Group" was retired and must not be reintroduced — note that the legacy raster logo artwork in `public/images/` still renders the words "ASSET GROUP", which is why the site uses the vector kit in `public/brand/vector/` instead. Do not reintroduce HHP branding in UI copy.
 
 ## Brand Positioning (read before writing any copy)
 
-The site positions BSM Holdings as **Vertically Integrated. Data Driven. Forward Thinking.** — an operating company, not a technology vendor. This replaced an earlier "AI-Native / APEX platform" positioning, which was removed entirely.
+The site positions BSM Holdings as **Oklahoma City residential property management** — leasing, maintenance, rent collection, and owner reporting. Do not reintroduce vertical-integration taglines, Tulsa market claims, HHP branding, or the AppFolio brand name in the UI (resident portal URL may remain; never display that vendor name).
 
 ### Hard rules
 
 1. **No AI branding anywhere in user-facing copy.** Do not reintroduce "AI-native", "AI-powered", "AI-driven", "AI-assisted", or the retired product names **BrokerAi, LeaseAi, RentalAi, CapitalAi, APEX**. Use concrete substitutes: `predictive forecasting`, `automated dispatch`, `data-driven`, `written commentary`.
 2. **Do not write in SaaS/tech-vendor voice.** Copy like "our platform automates routine workflows and surfaces actionable insights" is explicitly rejected. BSM Holdings is the operator — lead with people, crews, and accountability; technology is a supporting fact, not the subject.
-3. **Vertical integration is the core claim, and it extends to the software.** Property management, every facility service trade, and accounting are in-house — and so are the asset management and operating systems, which BSM Holdings builds and maintains rather than licenses.
+3. **Lead with residential property management in the Oklahoma City metro.** Day-to-day leasing, resident communication, maintenance coordination, and owner reporting — not commercial vertical-integration or asset-management-umbrella framing from the old template.
 
 4. **Asset management is the umbrella, and it leads.** BSM Holdings presents as an asset management firm. Property management, facility services, and financial services are capabilities *beneath* that umbrella, not peer business lines. Its own page is `/services/asset-management`, and it is the first entry in the Services menu for that reason. **Brokerage is a supporting capability, not a headline** — it appears as one nav entry and as a credibility point ("we underwrite from the expense side because we operate the buildings"), never as a co-equal pillar. Do not reintroduce brokerage-first enumerations like "Brokerage, asset management, property management, and…".
 

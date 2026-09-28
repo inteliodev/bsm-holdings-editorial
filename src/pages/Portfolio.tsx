@@ -8,14 +8,16 @@ import { Helmet } from 'react-helmet-async';
 
 const Portfolio = () => {
   const featured = listings.filter((l) => l.featured && l.available);
-  const availableCount = listings.filter((l) => l.available).length;
-  const petFriendlyCount = listings.filter((l) => l.pets && l.available).length;
+  // Match ListingCard status rules: open (available) or coming soon.
+  const openOrComing = listings.filter((l) => l.available || l.comingSoon);
+  const availableCount = openOrComing.length;
+  const petFriendlyCount = openOrComing.filter((l) => l.pets).length;
   const heroShot = featured[0] ?? listings[0];
 
   return (
     <Layout>
       <Helmet>
-        <title>Available Rentals — BSM Holdings</title>
+        <title>Available Rentals | BSM Holdings</title>
         <meta
           name="description"
           content="Browse Oklahoma rentals managed by BSM Holdings — filter by type, beds, city, and pets."
@@ -101,11 +103,11 @@ const Portfolio = () => {
               to="/contact"
               className="btn-hero"
               onClick={() => {
-                trackButtonClick('portfolio_cta_discuss', 'portfolio');
-                trackLinkClick('Discuss Your Property', '/contact');
+                trackButtonClick('portfolio_cta_proposal', 'portfolio');
+                trackLinkClick('Request a Proposal', '/contact');
               }}
             >
-              Discuss Your Property
+              Request a Proposal
             </Link>
             <Link
               to="/services/property-management"

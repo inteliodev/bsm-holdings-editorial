@@ -557,10 +557,6 @@ const FacilityServices = () => {
                 <div className="space-y-3 text-hhp-charcoal">
                   <div className="flex items-start">
                     <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
-                    <span>Selective portfolio size to ensure accountability</span>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="mt-[0.6rem] mr-3 inline-block h-px w-4 flex-shrink-0 bg-hhp-gold"></span>
                     <span>Direct oversight — no call-center model</span>
                   </div>
                   <div className="flex items-start">

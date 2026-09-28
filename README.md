@@ -1,20 +1,16 @@
 # BSM Holdings
 
-Commercial real estate company website for **BSM Holdings** — a vertically integrated asset management firm serving the Tulsa and Oklahoma City metros.
+Residential property management website for **BSM Holdings** — serving rental property owners in the Oklahoma City metro.
 
-> The repository directory is still named `HHPAssetBrokerage-Management`. That is a folder name, not the company name. The trade name "BSM Holdings Asset Group" was retired — do not reintroduce it.
+> This repo was rebranded from an HHP template. The company name in user-facing copy is **BSM Holdings**. The trade name "BSM Holdings Asset Group" was retired — do not reintroduce it. Do not reintroduce HHP branding, vertical-integration taglines, or Tulsa market claims.
 
 ## Positioning
 
-**Vertically Integrated. Data Driven. Forward Thinking.**
+**Oklahoma City residential property management.**
 
-BSM Holdings is presented as an **asset management firm** and an operating company — not a technology vendor.
+BSM Holdings manages single-family homes, duplexes, townhomes, and apartments throughout the Oklahoma City metro — leasing, rent collection, maintenance coordination, and clear owner reporting.
 
-Asset management is the umbrella. Property management, Facility Services, and financial services sit beneath it as capabilities, not as peer business lines. **Brokerage is a supporting capability, not a headline.** Facility Services is delivered in house through BSM Holdings, LLC, and the asset management and operating systems are built and maintained in house rather than licensed — which is what gives owners line-item cost visibility.
-
-Self-performance is a *supporting reason*, not the thesis. The lead is accountability: one firm responsible for how the asset performs.
-
-Site copy carries hard constraints (no AI branding, no SaaS-vendor voice). **Read the Brand Positioning section of [CLAUDE.md](./CLAUDE.md) before editing any user-facing text.**
+Site copy should stay plain-language residential PM. **Read the Brand Positioning section of [CLAUDE.md](./CLAUDE.md) before editing any user-facing text.**
 
 ## Tech Stack
 

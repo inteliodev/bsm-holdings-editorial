@@ -31,7 +31,7 @@ const HOW_WE_MANAGE = [
     step: '02',
     title: 'Daily Management',
     description:
-      'Leasing, rent collection, resident communication, and maintenance coordination run day to day so you are not chasing after-hours calls.',
+      'Leasing, rent collection, resident communication, and maintenance coordination run day to day. Our team handles daily operations and resident communication.',
   },
   {
     step: '03',
@@ -115,7 +115,7 @@ const OWNER_REPORTING = [
   'Collections and delinquencies',
   'Budget vs. actual with variances',
   'Open maintenance and compliance items',
-  'Clear notes on what moved and what is next',
+  'Updates on outstanding items and planned work',
 ];
 
 const PropertyManagement = () => {
@@ -135,18 +135,18 @@ const PropertyManagement = () => {
             </h1>
             <p className="text-lg leading-relaxed text-white/90 sm:text-xl">
               Day-to-day management for residential rentals in the Oklahoma City
-              metro: leasing, residents, maintenance, and owner reporting.
+              metro: leasing, resident communication, maintenance, and financial reporting.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/contact"
                 className="inline-flex min-h-[52px] items-center justify-center bg-white px-8 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.08em] text-hhp-navy transition-all duration-300 hover:bg-hhp-gold hover:text-hhp-navy-deep"
                 onClick={() => {
-                  trackButtonClick('discuss_your_property', 'pm_hero');
-                  trackLinkClick('Discuss Your Property', '/contact');
+                  trackButtonClick('request_a_proposal', 'pm_hero');
+                  trackLinkClick('Request a Proposal', '/contact');
                 }}
               >
-                Discuss Your Property
+                Request a Proposal
               </Link>
               <a
                 href={RESIDENT_PORTAL_URL}
@@ -271,14 +271,14 @@ const PropertyManagement = () => {
         </div>
       </section>
 
-      {/* Reporting owners get */}
+      {/* Owner Reporting */}
       <section className="bg-surface py-12 sm:py-16 lg:py-20">
         <div className="container-premium">
           <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-12 lg:items-start lg:gap-14">
             <div className="lg:col-span-5">
               <span className="eyebrow mb-5">Owners</span>
               <h2 className="section-title text-hhp-navy">
-                Reporting owners get
+                Owner Reporting
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-hhp-charcoal">
                 Financial reports and updates on leasing, collections, and
@@ -288,11 +288,11 @@ const PropertyManagement = () => {
                 to="/contact"
                 className="tap group mt-8 inline-flex items-center gap-2 font-display font-semibold text-hhp-navy transition-colors hover:text-brand"
                 onClick={() => {
-                  trackButtonClick('discuss_reporting', 'pm_reporting');
-                  trackLinkClick('Discuss Your Property', '/contact');
+                  trackButtonClick('request_proposal_reporting', 'pm_reporting');
+                  trackLinkClick('Request a Proposal', '/contact');
                 }}
               >
-                Discuss Your Property
+                Request a Proposal
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
@@ -340,11 +340,9 @@ const PropertyManagement = () => {
       <section className="bg-white py-12 sm:py-16 lg:py-20">
         <div className="container-premium">
           <div className="mx-auto mb-10 max-w-3xl text-center">
-            <span className="eyebrow mb-5 justify-center">Who you are</span>
             <h2 className="section-title text-hhp-navy">For Owners and Residents</h2>
             <p className="mt-5 text-lg leading-relaxed text-hhp-charcoal">
-              Different needs, clear paths. Owners work with us directly;
-              residents use the portal for day-to-day access.
+              Owners work with us directly; residents use the portal for day-to-day access.
             </p>
           </div>
 
@@ -357,19 +355,18 @@ const PropertyManagement = () => {
                 Owners
               </h3>
               <p className="mt-4 flex-1 text-base leading-relaxed text-hhp-charcoal">
-                Tell us about your rental — location, current leases, and what is
-                not working. We will explain how we would manage it and what
-                reporting looks like.
+                Tell us about your property and the management services you need.
+                We will explain how we would manage it and what reporting looks like.
               </p>
               <Link
                 to="/contact"
                 className="btn-hero mt-8 inline-flex w-fit"
                 onClick={() => {
-                  trackButtonClick('discuss_owners', 'pm_owners_residents');
-                  trackLinkClick('Discuss Your Property', '/contact');
+                  trackButtonClick('request_proposal_owners', 'pm_owners_residents');
+                  trackLinkClick('Request a Proposal', '/contact');
                 }}
               >
-                Discuss Your Property
+                Request a Proposal
               </Link>
             </div>
 
@@ -416,7 +413,7 @@ const PropertyManagement = () => {
                 {[
                   'Private owners of single-family homes and small multifamily',
                   'Out-of-town owners who need local day-to-day coverage',
-                  'Owners tired of self-managing rentals',
+                  'Owners transitioning from self-management',
                   'Partnerships that want hands-on oversight',
                 ].map((item) => (
                   <li key={item} className="flex items-start">
@@ -435,7 +432,6 @@ const PropertyManagement = () => {
               </div>
               <ul className="space-y-3 text-hhp-charcoal">
                 {[
-                  'Selective portfolio size',
                   'Direct point of contact for owners and residents',
                   'Coordinated maintenance with clear cost updates',
                   'Plain-language owner reporting',
@@ -467,11 +463,11 @@ const PropertyManagement = () => {
               to="/contact"
               className="btn-hero shrink-0"
               onClick={() => {
-                trackButtonClick('discuss_bottom', 'pm_bottom_cta');
-                trackLinkClick('Discuss Your Property', '/contact');
+                trackButtonClick('request_proposal_bottom', 'pm_bottom_cta');
+                trackLinkClick('Request a Proposal', '/contact');
               }}
             >
-              Discuss Your Property
+              Request a Proposal
             </Link>
           </div>
         </div>

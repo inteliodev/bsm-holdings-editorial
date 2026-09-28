@@ -138,7 +138,7 @@ const Contact = () => {
               Contact
             </h1>
             <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-white/90 mb-8 sm:mb-10 lg:mb-12 drop-shadow-md">
-              Tell us about your rental property. We&apos;ll explain how we would manage it and what reporting looks like.
+              Request a proposal for property management. Tell us about your rental property — we&apos;ll explain how we would manage it, what reporting looks like, and next steps.
             </p>
           </div>
         </div>
@@ -294,9 +294,6 @@ const Contact = () => {
             <div className="space-y-6 sm:space-y-8">
               <div>
                 <h2 className="section-title text-hhp-navy mb-4 sm:mb-6">Contact Information</h2>
-                <p className="text-sm sm:text-base text-hhp-charcoal leading-relaxed mb-6 sm:mb-8">
-                  Send us a message and our team will follow up.
-                </p>
               </div>
 
               <div className="space-y-4 sm:space-y-6">

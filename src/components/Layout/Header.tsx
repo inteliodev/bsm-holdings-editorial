@@ -421,11 +421,11 @@ const Header = () => {
                 to="/contact"
                 className={`px-1 py-1 text-xs font-medium leading-tight transition-colors duration-200 sm:px-2 sm:text-sm ${navLinkClass}`}
                 onClick={() => {
-                  trackButtonClick('owner_login', 'header');
-                  trackLinkClick('Owner Login', '/contact');
+                  trackButtonClick('owner_support', 'header');
+                  trackLinkClick('Owner Support', '/contact');
                 }}
               >
-                Owner Login
+                Owner Support
               </Link>
               <a
                 href={RESIDENT_PORTAL_URL}
@@ -563,11 +563,11 @@ const Header = () => {
                   className="flex min-h-[48px] items-center rounded-md py-3 text-sm font-medium text-hhp-charcoal/75 transition-colors duration-200 hover:text-hhp-navy"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
-                    trackButtonClick('owner_login', 'header_mobile');
-                    trackLinkClick('Owner Login', '/contact');
+                    trackButtonClick('owner_support', 'header_mobile');
+                    trackLinkClick('Owner Support', '/contact');
                   }}
                 >
-                  Owner Login
+                  Owner Support
                 </Link>
                 <a
                   href={RESIDENT_PORTAL_URL}

@@ -150,10 +150,10 @@ const FAQ = () => {
                 className="group inline-flex min-h-[52px] items-center justify-center gap-2 rounded bg-white px-8 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.08em] text-hhp-navy transition-colors hover:bg-hhp-gold hover:text-hhp-navy-deep"
                 onClick={() => {
                   trackButtonClick('faq_cta_contact', 'faq_page');
-                  trackLinkClick('Discuss Your Property - FAQ', '/contact');
+                  trackLinkClick('Request a Proposal - FAQ', '/contact');
                 }}
               >
-                Discuss Your Property
+                Request a Proposal
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
