@@ -142,7 +142,7 @@ const HudAffordable = () => {
             'Work reports as labor hours, materials and time on site rather than a vendor invoice with margin already priced in — which matters more, not less, where budgets are program-constrained.',
         },
         {
-          title: 'One firm accountable',
+          title: 'Operations, trades, and accounting together',
           description:
             'Property management, the trades, compliance and the accounting report into the same principal, so a discrepancy is found and answered in the same place.',
         },

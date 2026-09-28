@@ -178,7 +178,7 @@ service area**, on strictly alternating white/surface grounds. Keep the
 alternation if you add a section.
 
 The first two are distinct on purpose: *who we are* is identity (what the firm
-is, the operator-first origin, what is held in house), *our approach* is method
+is, what is held in house), *our approach* is method
 (how an asset is run). Home used to open on the approach, so a visitor met the
 argument before the subject. Claims in the identity section are sourced from
 `/about` and `src/data/serviceArea.ts` — do not add firm-level figures there

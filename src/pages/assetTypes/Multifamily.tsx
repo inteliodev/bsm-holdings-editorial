@@ -170,7 +170,7 @@ const Multifamily = () => {
               'Occupancy, delinquency and expense variance reach owners as they land. The systems producing that reporting are built and maintained by BSM Holdings.',
           },
           {
-            title: 'One firm accountable',
+            title: 'Operations, trades, and accounting together',
             description:
               'Property management, the trades and the accounting report into the same principal, so a maintenance failure and its cost are answered by the same people.',
           },

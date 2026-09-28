@@ -211,7 +211,7 @@ Home runs: **who we are → our approach → services → asset classes →
 grounds. Keep the alternation if you add a section.
 
 The first two are deliberately distinct and should stay that way — *who we are*
-is identity (what the firm is, the operator-first origin, what is held in
+is identity (what the firm is, what is held in
 house), *our approach* is method (how an asset is run). Home previously opened
 straight into the approach, so a visitor met the argument before the subject.
 Every claim in the identity section is sourced from `/about` or

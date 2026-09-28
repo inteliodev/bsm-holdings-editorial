@@ -141,7 +141,7 @@ const Industrial = () => {
             'Operating data reaches owners as it lands. The systems producing it are built and maintained by BSM Holdings, so what is reported changes when the way we operate changes.',
         },
         {
-          title: 'One firm accountable',
+          title: 'Operations, trades, and accounting together',
           description:
             'Property management, the trades and the accounting report into the same principal. A tenant losing a shift does not wait while responsibility is established.',
         },

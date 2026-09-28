@@ -25,7 +25,7 @@ export const ROUTE_META = {
   '/about': {
     title: t('About'),
     description:
-      'Who we are and why BSM Holdings was built: one firm accountable for management, maintenance, accounting, and advisory instead of four vendors coordinating.',
+      'Who we are: property management, facility trades, accounting, and advisory held in house — instead of four vendors coordinating.',
   },
   '/contact': {
     title: t('Contact'),
@@ -55,7 +55,7 @@ export const ROUTE_META = {
   '/services': {
     title: t('Services'),
     description:
-      'Asset management, property management, Facility Services, financial services, and brokerage advisory — delivered by one accountable firm.',
+      'Asset management, property management, Facility Services, financial services, and brokerage advisory — delivered under one roof.',
   },
   '/services/asset-management': {
     title: t('Asset Management'),

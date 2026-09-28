@@ -61,7 +61,7 @@ const AssetManagement = () => {
         <meta property="og:title" content="Asset Management | BSM Holdings" />
         <meta
           property="og:description"
-          content="One firm accountable for how the asset performs — strategy, underwriting, capital planning and owner reporting, with every operating layer reporting into it."
+          content="Strategy, underwriting, capital planning and owner reporting — with property management, facility trades and accounting reporting into the same plan."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://bsmholdings.com/services/asset-management" />
@@ -82,7 +82,7 @@ const AssetManagement = () => {
               Asset Management
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/85">
-              One firm accountable for how the asset performs.
+              Strategy, underwriting, capital planning, and owner reporting — with every operating layer reporting into it.
             </p>
           </div>
         </section>
@@ -109,9 +109,6 @@ const AssetManagement = () => {
                     maintenance, compliance and accounting are directed by one firm
                     and reported through one system, so a question about
                     performance has one place to go and one answer waiting.
-                  </p>
-                  <p className="font-medium text-hhp-navy">
-                    One firm. One system. One set of numbers.
                   </p>
                 </div>
               </div>

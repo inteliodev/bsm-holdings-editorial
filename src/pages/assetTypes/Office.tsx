@@ -141,7 +141,7 @@ const Office = () => {
             'Tenant mix, renewal strategy and asset positioning are decided with the operating numbers in the room, not reconciled against them afterwards.',
         },
         {
-          title: 'One firm accountable',
+          title: 'Operations, trades, and accounting together',
           description:
             'Property management, the trades and the accounting report into the same principal. When something goes wrong there is no interval spent establishing whose problem it is.',
         },

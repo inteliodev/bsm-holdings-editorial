@@ -141,7 +141,7 @@ const Retail = () => {
             'No subcontractor markup on self-performed work, and specialty vendors engaged only where licensing requires it. An owner can see what a repair cost rather than what it was billed at.',
         },
         {
-          title: 'One firm accountable',
+          title: 'Operations, trades, and accounting together',
           description:
             'Property management, the trades and the accounting report into the same principal, so a lighting failure and its cost are answered by the same people.',
         },

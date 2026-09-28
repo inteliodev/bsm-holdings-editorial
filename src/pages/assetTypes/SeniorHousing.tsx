@@ -142,7 +142,7 @@ const SeniorHousing = () => {
             'Work reports as labor hours, materials and time on site rather than a vendor invoice with margin already priced in. There is no subcontractor markup on self-performed work, and specialty vendors are engaged only where licensing requires it.',
         },
         {
-          title: 'One firm accountable',
+          title: 'Operations, trades, and accounting together',
           description:
             'Property management, the trades and the accounting report into the same principal. Owners review the same figures we do, as they land.',
         },

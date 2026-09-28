@@ -337,16 +337,13 @@ const About = () => {
                 <div className="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed text-hhp-charcoal">
                   <p>
                     BSM Holdings is a real estate operating company in the Oklahoma
-                    City metro. We started by managing our own portfolio, and we
-                    still run the work that way: property management, facility
-                    trades, and accounting stay in-house — trades through BSM
-                    Holdings Facility Services, LLC — with systems we build and
-                    maintain ourselves.
+                    City metro. Property management, facility trades, and accounting
+                    stay in-house — trades through BSM Holdings Facility Services,
+                    LLC — with systems we build and maintain ourselves.
                   </p>
                   <p>
-                    That keeps cost visible at the line item and one firm
-                    accountable for the result. Every asset is treated as if we
-                    own it.
+                    That keeps cost visible at the line item and gives owners a
+                    single team for the full operating result.
                   </p>
                   <p>
                     Today we manage single-family homes, duplexes, triplexes,
@@ -364,7 +361,7 @@ const About = () => {
                 <div className="mx-auto max-w-3xl text-center">
                   <span className="eyebrow eyebrow-bare">Our Approach</span>
                   <h2 className="section-title mt-5 text-hhp-navy">
-                    One firm accountable for how the asset performs
+                    Strategy through accounting under one reporting system
                   </h2>
                   <p className="mt-6 text-lg leading-relaxed text-hhp-charcoal">
                     Strategy, leasing, operations, maintenance, compliance, and
@@ -372,9 +369,6 @@ const About = () => {
                     see occupancy, collections, budget variances, and open items
                     as they change, with clear notes on what moved and what&apos;s
                     next.
-                  </p>
-                  <p className="mt-4 font-medium text-hhp-navy">
-                    One firm. One system. One set of numbers.
                   </p>
                 </div>
 
