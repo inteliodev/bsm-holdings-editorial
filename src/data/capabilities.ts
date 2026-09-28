@@ -56,7 +56,7 @@ export const SERVICES: Capability[] = [
     id: 'fs',
     name: 'Facility Services',
     role: 'Self-performed trades',
-    body: 'Construction, roofing, HVAC, plumbing, electrical, lawncare and janitorial, performed by our own personnel. No subcontractor markup on self-performed work, and specialty vendors only where licensing requires it.',
+    body: 'Construction, roofing, HVAC, plumbing, electrical, lawncare and janitorial through BSM Holdings Facility Services, LLC — a separate offering from residential property management.',
     hook: 'Construction, roofing, HVAC, plumbing, electrical and grounds, self-performed.',
     href: '/services/facility-services',
     image: '/images/facilities-management-hero-image.jpg',

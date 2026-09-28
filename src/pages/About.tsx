@@ -68,7 +68,7 @@ const TEAM: Department[] = [
 const OPERATING_PRINCIPLES = [
   {
     title: 'Clear Communication',
-    lead: 'Owners and residents hear from a real person — not a call center script.',
+    lead: 'Owners and residents hear from a direct point of contact.',
     body: 'Questions get straight answers. Updates cover what changed and what happens next.',
   },
   {
@@ -78,7 +78,7 @@ const OPERATING_PRINCIPLES = [
   },
   {
     title: 'Readable Reporting',
-    lead: 'Monthly statements and notes owners can act on without decoding a spreadsheet.',
+    lead: 'Monthly statements and notes owners can act on.',
     body: 'Occupancy, collections, expenses, and open items are easy to follow.',
   },
   {
@@ -344,13 +344,13 @@ const About = () => {
                   <p>
                     We focus on the work that keeps rental properties running:
                     finding tenants, collecting rent, coordinating repairs, and
-                    maintaining accurate financial records. When the work fits,
-                    facility trades can run through BSM Holdings Facility Services,
-                    LLC.
+                    maintaining accurate financial records. Our management team
+                    coordinates repairs and keeps owners informed about costs and
+                    progress.
                   </p>
                   <p>
-                    Owners have a direct point of contact — clear reporting and
-                    resident support, not a call center.
+                    Owners have a direct point of contact for clear reporting and
+                    resident support.
                   </p>
                 </div>
               </div>

@@ -3,7 +3,6 @@ import Layout from '@/components/Layout/Layout';
 import { PropertyCarousel } from '@/components/properties/PropertyCarousel';
 import { PropertyFilters } from '@/components/properties/PropertyFilters';
 import { listings } from '@/data/listings';
-import { site } from '@/lib/site';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 import { Helmet } from 'react-helmet-async';
 
@@ -16,7 +15,7 @@ const Portfolio = () => {
   return (
     <Layout>
       <Helmet>
-        <title>Properties — BSM Holdings</title>
+        <title>Available Rentals — BSM Holdings</title>
         <meta
           name="description"
           content="Browse Oklahoma rentals managed by BSM Holdings — filter by type, beds, city, and pets."
@@ -42,11 +41,10 @@ const Portfolio = () => {
         <div className="container-premium relative py-14 sm:py-16 lg:py-20">
           <span className="eyebrow mb-4 text-hhp-gold">Vacancies</span>
           <h1 className="font-display text-display-lg font-semibold tracking-tight text-white sm:text-display-xl">
-            Properties
+            Available Rentals
           </h1>
           <p className="mt-4 max-w-xl text-lg text-white/65">
-            Filter by type, beds, city, and pets. Tour or apply from any card —
-            {site.principal.shortName} follows up by email.
+            Browse available homes and contact our team to schedule a tour.
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
             <span className="border border-white/25 bg-white/5 px-3 py-1.5 text-sm font-medium text-white/90">

@@ -64,7 +64,7 @@ const WHATS_INCLUDED = [
     value: 'resident',
     icon: Users,
     title: 'Resident care',
-    lead: 'Direct communication — not a call center — so issues get resolved without friction.',
+    lead: 'Direct communication so issues get resolved without friction.',
     items: [
       'Resident communication and issue resolution',
       'Service-request coordination',
@@ -75,8 +75,8 @@ const WHATS_INCLUDED = [
   {
     value: 'maintenance',
     icon: Wrench,
-    title: 'Maintenance & facility trades',
-    lead: 'Repairs coordinated under your approval rules. When it fits, work can run through BSM Holdings Facility Services, LLC.',
+    title: 'Maintenance',
+    lead: 'Our management team coordinates repairs and keeps owners informed about costs and progress.',
     items: [
       'Preventative maintenance planning',
       'Work-order intake and completion',
@@ -100,7 +100,7 @@ const WHATS_INCLUDED = [
     value: 'accounting',
     icon: FileText,
     title: 'Accounting',
-    lead: 'Rent collection and owner statements you can read without decoding a spreadsheet.',
+    lead: 'Rent collection and monthly owner statements showing income and expenses.',
     items: [
       'Rent collection and receivables monitoring',
       'Monthly owner financial reporting',
@@ -180,9 +180,8 @@ const PropertyManagement = () => {
                 coordination, and monthly owner reporting.
               </p>
               <p>
-                You get a direct point of contact and statements you can actually
-                read — without chasing vendors or guessing what happened at the
-                property.
+                You receive monthly financial statements and updates from a direct
+                point of contact.
               </p>
             </div>
           </div>
@@ -197,7 +196,7 @@ const PropertyManagement = () => {
             <h2 className="section-title text-hhp-navy">How we manage</h2>
             <p className="mt-5 text-lg leading-relaxed text-hhp-charcoal">
               Getting started, daily management, owner reporting, and ongoing
-              planning — the same loop on every property.
+              planning.
             </p>
           </div>
           <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -282,9 +281,8 @@ const PropertyManagement = () => {
                 Reporting owners get
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-hhp-charcoal">
-                Current information, not a month-old packet. Numbers and notes
-                in one place so you can see what changed and what we are doing
-                about it.
+                Financial reports and updates on leasing, collections, and
+                maintenance.
               </p>
               <Link
                 to="/contact"
@@ -322,35 +320,18 @@ const PropertyManagement = () => {
         </div>
       </section>
 
-      {/* Facility Services callout */}
+      {/* Maintenance coordination */}
       <section className="bg-brand py-12 text-white sm:py-16 lg:py-20">
         <div className="container-premium">
-          <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
-            <div className="lg:col-span-8">
-              <span className="eyebrow mb-5 text-white/80">Facility Services</span>
-              <h2 className="section-title text-white">
-                BSM Holdings Facility Services, LLC
-              </h2>
-              <p className="mt-5 text-lg leading-relaxed text-white/90">
-                When the work fits, maintenance and facility trades can run through
-                BSM Holdings Facility Services, LLC. That keeps response times
-                tighter and costs visible at the line item — instead of a stack of
-                separate vendors for every repair.
-              </p>
-            </div>
-            <div className="lg:col-span-4 lg:text-right">
-              <Link
-                to="/services/facility-services"
-                className="inline-flex min-h-[52px] items-center justify-center gap-2 bg-white px-8 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.08em] text-hhp-navy transition-all duration-300 hover:bg-hhp-gold"
-                onClick={() => {
-                  trackButtonClick('facility_services', 'pm_facility_callout');
-                  trackLinkClick('Facility Services', '/services/facility-services');
-                }}
-              >
-                Facility Services
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="eyebrow mb-5 justify-center text-white/80">Maintenance</span>
+            <h2 className="section-title text-white">
+              Coordinated repairs and clear updates
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-white/90">
+              Our management team coordinates repairs and keeps owners informed
+              about costs and progress.
+            </p>
           </div>
         </div>
       </section>
@@ -455,8 +436,8 @@ const PropertyManagement = () => {
               <ul className="space-y-3 text-hhp-charcoal">
                 {[
                   'Selective portfolio size',
-                  'Direct accountability — no call-center model',
-                  'In-house facility trades when the work fits',
+                  'Direct point of contact for owners and residents',
+                  'Coordinated maintenance with clear cost updates',
                   'Plain-language owner reporting',
                 ].map((item) => (
                   <li key={item} className="flex items-start">
@@ -479,8 +460,7 @@ const PropertyManagement = () => {
                 Looking for a Property Manager?
               </h3>
               <p className="mt-2 text-base leading-relaxed text-hhp-charcoal">
-                Tell us about the property. We will explain how we would manage it
-                and what reporting looks like — a direct conversation, not a pitch.
+                Contact us to discuss your property, our services, and management fees.
               </p>
             </div>
             <Link

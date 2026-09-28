@@ -26,7 +26,7 @@ const disciplines = [
   {
     number: '03',
     title: 'Facility Services',
-    description: 'Facility Services delivered in house through BSM Holdings, LLC — construction, roofing, HVAC, plumbing, electrical, lawncare, and janitorial. Same-day dispatch, owner-accountable.',
+    description: 'Facility trades through BSM Holdings Facility Services, LLC — a separate offering from residential property management.',
     features: [
       'General contracting & construction',
       'Roofing, HVAC, plumbing & electrical',

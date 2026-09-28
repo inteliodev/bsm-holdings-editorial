@@ -94,7 +94,7 @@ const FacilityServices = () => {
               Facility Services
             </h1>
             <p className="text-xl leading-relaxed text-white/90 drop-shadow-md">
-              Facility Services, in house. One call, one accountable team.
+              Trades and facility work coordinated through a dedicated services team.
             </p>
           </div>
         </div>
@@ -109,10 +109,15 @@ const FacilityServices = () => {
               <h2 className="section-title text-hhp-navy mb-6">Introduction</h2>
               <div className="space-y-4 text-lg leading-relaxed text-hhp-charcoal">
                 <p>
-                  Through BSM Holdings, LLC, every facility service and maintenance item within our properties is handled internally — construction, roofing, general contracting, HVAC, plumbing, electrical, lawncare, janitorial, and everything in between. We are not a broker of subcontractors. The work is performed by our own personnel.
+                  BSM Holdings Facility Services, LLC focuses on facility trades —
+                  construction, roofing, general contracting, HVAC, plumbing,
+                  electrical, lawncare, janitorial, and related work. It is a
+                  separate offering from day-to-day residential property management.
                 </p>
                 <p>
-                  That means no markup stacking, no waiting on a third party's schedule, and no finger-pointing when something goes wrong. One team is accountable for the condition of the asset, and that team answers to the owner.
+                  For managed rentals, our property management team coordinates
+                  repairs and vendor work and keeps owners informed about costs and
+                  progress.
                 </p>
               </div>
             </div>

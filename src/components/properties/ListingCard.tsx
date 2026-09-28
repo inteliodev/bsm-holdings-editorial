@@ -93,25 +93,29 @@ export function ListingCard({ listing, className = '' }: Props) {
             ))}
           </div>
         )}
-        <div className="mt-auto grid grid-cols-2 gap-2 pt-2">
-          <a
-            href={tourHref}
-            className="inline-flex items-center justify-center rounded-[4px] border border-brand/30 bg-white px-3 py-2.5 text-sm font-bold text-brand-deep transition hover:border-brand hover:bg-surface focus-ring"
-          >
-            Request tour
-          </a>
-          <a
-            href={applyHref}
-            className="btn-chrome !min-h-0 !rounded-[4px] !px-3 !py-2.5 !text-sm focus-ring"
-          >
-            Apply now
-          </a>
-        </div>
+        {(listing.available || listing.comingSoon) && (
+          <div className="mt-auto grid grid-cols-2 gap-2 pt-2">
+            <a
+              href={tourHref}
+              className="inline-flex items-center justify-center rounded-[4px] border border-brand/30 bg-white px-3 py-2.5 text-sm font-bold text-brand-deep transition hover:border-brand hover:bg-surface focus-ring"
+            >
+              Request tour
+            </a>
+            <a
+              href={applyHref}
+              className="btn-chrome !min-h-0 !rounded-[4px] !px-3 !py-2.5 !text-sm focus-ring"
+            >
+              Request Application
+            </a>
+          </div>
+        )}
         <Link
           to={`/portfolio#${listing.slug}`}
-          className="rounded text-center text-xs font-medium text-listing-muted hover:text-brand focus-ring"
+          className={`rounded text-center text-xs font-medium text-listing-muted hover:text-brand focus-ring ${
+            listing.available || listing.comingSoon ? '' : 'mt-auto pt-2'
+          }`}
         >
-          View on properties board
+          View Details
         </Link>
       </div>
     </article>

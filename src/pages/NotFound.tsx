@@ -10,7 +10,7 @@ import Layout from '@/components/Layout/Layout';
  */
 const SUGGESTED = [
   { to: '/services/property-management', label: 'Property Management' },
-  { to: '/portfolio', label: 'Properties' },
+  { to: '/portfolio', label: 'Available Rentals' },
   { to: '/about', label: 'About BSM Holdings' },
   { to: '/contact', label: 'Contact' },
 ];

@@ -154,10 +154,7 @@ const Home = () => {
             <div className="lg:col-span-7">
               <div className="space-y-5 text-lg leading-relaxed text-hhp-charcoal">
                 <p>
-                  BSM Holdings manages single-family homes, duplexes, townhomes, and apartments throughout the Oklahoma City metro. Our team handles daily operations, supports residents, and keeps owners informed about their properties.
-                </p>
-                <p>
-                  We focus on the work that keeps rental properties running: finding tenants, collecting rent, coordinating repairs, and maintaining accurate financial records. Owners have a direct point of contact for questions and updates.
+                  BSM Holdings manages single-family homes, duplexes, townhomes, and apartments throughout the Oklahoma City metro. Our team handles daily operations, supports residents, and keeps owners informed — with a direct point of contact for questions and updates.
                 </p>
               </div>
 
@@ -177,57 +174,73 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Property Management focus — single section, not a multi-service menu */}
+      {/* Property Management focus — four service summaries */}
       <section className="bg-white pt-12 pb-8 sm:pt-16 sm:pb-10 lg:pt-20 lg:pb-12">
         <div className="container-premium">
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16 lg:items-center">
-            <div className="lg:col-span-5">
-              <span className="eyebrow mb-5">Property Management</span>
-              <h2 className="section-title text-hhp-navy mb-5">
-                Management for Your Rental Property
-              </h2>
-              <p className="text-lg leading-relaxed text-hhp-charcoal mb-8">
-                From leasing and renewals to maintenance and monthly reporting, we manage the day-to-day responsibilities of owning rental property.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  to="/contact"
-                  className="btn-hero"
-                  onClick={() => {
-                    trackButtonClick('pm_focus_cta', 'home_pm');
-                    trackLinkClick('Discuss Your Property', '/contact');
-                  }}
-                >
-                  Discuss Your Property
-                </Link>
-                <Link
-                  to="/services/property-management"
-                  className="btn-secondary"
-                  onClick={() => {
-                    trackButtonClick('pm_focus_how', 'home_pm');
-                    trackLinkClick('How we manage', '/services/property-management');
-                  }}
-                >
-                  How we manage
-                </Link>
+          <div className="mb-10 max-w-3xl">
+            <span className="eyebrow mb-5">Property Management</span>
+            <h2 className="section-title text-hhp-navy mb-5">
+              What We Handle
+            </h2>
+            <p className="text-lg leading-relaxed text-hhp-charcoal">
+              Day-to-day responsibilities of owning rental property in the Oklahoma City metro.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: 'Leasing',
+                body: 'Property marketing, applicant screening, lease preparation, and renewals.',
+              },
+              {
+                title: 'Rent Collection',
+                body: 'Rent collection, payment tracking, and follow-up on outstanding balances.',
+              },
+              {
+                title: 'Maintenance',
+                body: 'Coordination of resident requests, repairs, and preparation between tenants.',
+              },
+              {
+                title: 'Financial Reporting',
+                body: 'Monthly statements showing property income and expenses.',
+              },
+            ].map((item) => (
+              <div key={item.title} className="border border-border bg-surface p-6">
+                <h3 className="font-display text-lg font-semibold text-hhp-navy">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-base leading-relaxed text-hhp-charcoal">
+                  {item.body}
+                </p>
               </div>
-            </div>
-            <div className="lg:col-span-7">
-              <div className="relative overflow-hidden border border-border bg-surface">
-                <img
-                  src="/images/property-management-picture.webp"
-                  alt="BSM Holdings property management"
-                  className="aspect-[16/10] w-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            </div>
+            ))}
+          </div>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <Link
+              to="/contact"
+              className="btn-hero"
+              onClick={() => {
+                trackButtonClick('pm_focus_cta', 'home_pm');
+                trackLinkClick('Discuss Your Property', '/contact');
+              }}
+            >
+              Discuss Your Property
+            </Link>
+            <Link
+              to="/services/property-management"
+              className="btn-secondary"
+              onClick={() => {
+                trackButtonClick('pm_focus_how', 'home_pm');
+                trackLinkClick('How we manage', '/services/property-management');
+              }}
+            >
+              How we manage
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Featured listings — same card layout as Properties */}
+      {/* Featured listings — same card layout as Available Rentals */}
       <section className="bg-surface pt-12 pb-10 sm:pt-16 sm:pb-12 lg:pt-20 lg:pb-16">
         <div className="container-premium">
           <div className="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
@@ -240,10 +253,10 @@ const Home = () => {
               className="tap group inline-flex items-center gap-2 font-display font-semibold text-hhp-navy transition-colors hover:text-hhp-gold"
               onClick={() => {
                 trackButtonClick('home_all_properties', 'home_featured');
-                trackLinkClick('All properties', '/portfolio');
+                trackLinkClick('All rentals', '/portfolio');
               }}
             >
-              All properties
+              All rentals
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </div>

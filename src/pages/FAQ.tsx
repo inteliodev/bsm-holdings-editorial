@@ -35,7 +35,7 @@ const FAQ = () => {
     {
       question: 'How are maintenance requests handled?',
       answer:
-        'Residents submit non-emergency requests through the resident portal so we can track them. Work is prioritized by urgency, coordinated under your approval rules, and documented through completion. When the work fits, repairs can run through BSM Holdings Facility Services, LLC.',
+        'Residents submit non-emergency requests through the resident portal so we can track them. Work is prioritized by urgency, coordinated under your approval rules, and documented through completion. Our management team coordinates repairs and keeps owners informed about costs and progress.',
     },
     {
       question: 'Do you offer emergency maintenance response?',
@@ -60,7 +60,7 @@ const FAQ = () => {
     {
       question: 'How do fees work?',
       answer:
-        'We provide a written fee schedule for your property before you sign. Ask what is included in the monthly management fee and what is billed separately (such as leasing or renewal). We do not invent fee numbers on the website — discuss your property and we will send the schedule in writing.',
+        'We provide a written fee schedule for your property before you sign. Ask what is included in the monthly management fee and what is billed separately (such as leasing or renewal). Contact us to discuss your property and we will send the schedule in writing.',
     },
   ];
 

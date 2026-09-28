@@ -35,12 +35,11 @@ const Opportunities = () => {
               <p>
                 BSM Holdings manages rental homes in the Oklahoma City metro. The work is
                 practical: leasing, resident communication, maintenance coordination, and
-                owner reporting — not call-center scripts or brokerage theater.
+                owner reporting.
               </p>
               <p>
-                If you like taking care of properties and the people who live in them, and
-                you want direct accountability instead of a narrow silo, we want to hear
-                from you.
+                If you like taking care of properties and the people who live in them,
+                work directly with our property management team. We want to hear from you.
               </p>
             </div>
           </div>
@@ -87,7 +86,7 @@ const Opportunities = () => {
             <h2 className="section-title text-white">Want to join the team?</h2>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
               Tell us about your background in leasing, maintenance, accounting, or
-              resident services. When we have a real opening that matches, we will reach out.
+              resident services. We'll contact you when a position matches your experience.
             </p>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
               <Link

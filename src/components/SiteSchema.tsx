@@ -47,12 +47,12 @@ const SEGMENT_LABELS: Record<string, string> = {
   'custom-solutions': 'Custom Solutions',
   about: 'About',
   contact: 'Contact',
-  portfolio: 'Properties',
+  portfolio: 'Available Rentals',
   insights: 'Insights',
   faq: 'FAQ',
   opportunities: 'Careers',
   brokerage: 'Brokerage & Advisory',
-  'resident-login': 'Login',
+  'resident-login': 'Resident Login',
 };
 
 const labelFor = (segment: string) =>

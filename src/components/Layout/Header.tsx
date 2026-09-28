@@ -21,22 +21,21 @@ const Header = () => {
 
   /**
    * Single Property Management focus — no multi-service or asset-class menus.
-   * About · Property Management · Properties, plus Contact CTA.
+   * Property Management · Available Rentals · About, plus Request a Proposal CTA.
    */
   const navigation: Array<{
     name: string;
     href: string;
     submenu?: Array<{ name: string; href: string }>;
   }> = [
-    { name: 'About', href: '/about' },
     { name: 'Property Management', href: '/services/property-management' },
-    { name: 'Properties', href: '/portfolio' },
+    { name: 'Available Rentals', href: '/portfolio' },
+    { name: 'About', href: '/about' },
   ];
 
-    // Contact as primary CTA. Set in sentence case now that the base layer no
-  // longer force-uppercases every element — the label carries its own casing.
+  // Primary CTA. Link stays on contact/proposal destination.
   const contactCTA = {
-    name: 'Contact',
+    name: 'Request a Proposal',
     href: '/contact',
     isPrimary: true
   };
@@ -406,7 +405,7 @@ const Header = () => {
               }`}
               onClick={() => {
                 trackButtonClick('contact_cta', 'header');
-                trackLinkClick('CONTACT', contactCTA.href);
+                trackLinkClick('Request a Proposal', contactCTA.href);
               }}
             >
               {contactCTA.name}
@@ -418,6 +417,16 @@ const Header = () => {
                 isTransparent ? 'border-white/25' : 'border-border'
               }`}
             >
+              <Link
+                to="/contact"
+                className={`px-1 py-1 text-xs font-medium leading-tight transition-colors duration-200 sm:px-2 sm:text-sm ${navLinkClass}`}
+                onClick={() => {
+                  trackButtonClick('owner_login', 'header');
+                  trackLinkClick('Owner Login', '/contact');
+                }}
+              >
+                Owner Login
+              </Link>
               <a
                 href={RESIDENT_PORTAL_URL}
                 target="_blank"
@@ -425,10 +434,10 @@ const Header = () => {
                 className={`px-1 py-1 text-xs font-medium leading-tight transition-colors duration-200 sm:px-2 sm:text-sm ${navLinkClass}`}
                 onClick={() => {
                   trackButtonClick('resident_login', 'header');
-                  trackLinkClick('Login', RESIDENT_PORTAL_URL);
+                  trackLinkClick('Resident Login', RESIDENT_PORTAL_URL);
                 }}
               >
-                Login
+                Resident Login
               </a>
             </div>
           </nav>
@@ -549,14 +558,29 @@ const Header = () => {
                   indent that aligned with neither the top-level items nor the
                   submenu. They now share the top-level left edge. */}
               <div className="flex flex-col space-y-1 border-t border-border pt-5">
+                <Link
+                  to="/contact"
+                  className="flex min-h-[48px] items-center rounded-md py-3 text-sm font-medium text-hhp-charcoal/75 transition-colors duration-200 hover:text-hhp-navy"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    trackButtonClick('owner_login', 'header_mobile');
+                    trackLinkClick('Owner Login', '/contact');
+                  }}
+                >
+                  Owner Login
+                </Link>
                 <a
                   href={RESIDENT_PORTAL_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex min-h-[48px] items-center rounded-md py-3 text-sm font-medium text-hhp-charcoal/75 transition-colors duration-200 hover:text-hhp-navy"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    trackButtonClick('resident_login', 'header_mobile');
+                    trackLinkClick('Resident Login', RESIDENT_PORTAL_URL);
+                  }}
                 >
-                  Login
+                  Resident Login
                 </a>
               </div>
               </div>

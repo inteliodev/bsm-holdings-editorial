@@ -6,7 +6,7 @@ import { RESIDENT_PORTAL_URL } from '@/lib/site';
 
 const COMPANY_LINKS = [
   { to: '/about', label: 'About' },
-  { to: '/portfolio', label: 'Properties' },
+  { to: '/portfolio', label: 'Available Rentals' },
   { to: '/insights', label: 'Insights' },
   { to: '/opportunities', label: 'Careers' },
   { to: '/faq', label: 'FAQ' },
@@ -113,13 +113,16 @@ const Footer = () => {
             </ul>
 
             <div className="mt-7 flex flex-col gap-1 border-t border-white/10 pt-5">
+              <Link to="/contact" className={linkClass}>
+                Owner Login
+              </Link>
               <a
                 href={RESIDENT_PORTAL_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={linkClass}
               >
-                Login
+                Resident Login
               </a>
             </div>
           </div>

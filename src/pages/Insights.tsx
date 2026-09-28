@@ -104,7 +104,7 @@ const Insights = () => {
               Practical notes for rental property owners in the Oklahoma City metro — leasing, maintenance, and owner reporting.
             </p>
             <p className="text-xl leading-relaxed text-hhp-charcoal mb-8">
-              Subscribe for occasional updates. We will not invent market reports or case studies we have not published.
+              Subscribe for occasional updates on leasing, maintenance, and owner reporting.
             </p>
             {/* Plain anchor — <Link to="#hash"> updates the URL without
                 scrolling, so this button did nothing. */}
@@ -122,7 +122,7 @@ const Insights = () => {
             <div className="text-center mb-12">
               <h2 className="section-title text-hhp-navy mb-6">Topics we cover</h2>
               <p className="text-xl leading-relaxed text-hhp-charcoal max-w-3xl mx-auto">
-                Owner-focused residential property management — not capital markets commentary or commercial brokerage research.
+                Information on leasing, maintenance, and managing rental properties.
               </p>
             </div>
 

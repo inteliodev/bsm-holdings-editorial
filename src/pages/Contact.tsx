@@ -44,7 +44,7 @@ const Contact = () => {
     if (website) {
       toast({
         title: 'Message Sent Successfully!',
-        description: "We'll get back to you within 24 hours.",
+        description: "Send us a message and our team will follow up.",
       });
       setIsSubmitting(false);
       return;
@@ -92,7 +92,7 @@ const Contact = () => {
 
       toast({
         title: 'Message Sent Successfully!',
-        description: "We'll get back to you within 24 hours.",
+        description: "Send us a message and our team will follow up.",
       });
 
       setFormData({
@@ -153,7 +153,7 @@ const Contact = () => {
               <div>
                 <h2 className="section-title text-hhp-navy mb-4 sm:mb-6">Send Us a Message</h2>
                 <p className="text-sm sm:text-base text-hhp-charcoal leading-relaxed mb-6 sm:mb-8">
-                  Fill out the form below and we'll get back to you within 24 hours.
+                  Send us a message and our team will follow up.
                 </p>
               </div>
 
@@ -295,7 +295,7 @@ const Contact = () => {
               <div>
                 <h2 className="section-title text-hhp-navy mb-4 sm:mb-6">Contact Information</h2>
                 <p className="text-sm sm:text-base text-hhp-charcoal leading-relaxed mb-6 sm:mb-8">
-                  Reach out to us through any of these channels for immediate assistance.
+                  Send us a message and our team will follow up.
                 </p>
               </div>
 
