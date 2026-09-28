@@ -165,15 +165,10 @@ const Home = () => {
 
       {/* Who We Are Section
 
-          The first thing after the hero. Home previously opened straight into
-          "Our approach" — how the firm operates — without ever saying what the
-          firm is, so a visitor met the argument before the subject.
+          The first thing after the hero. Identity first; "Our approach" below is
+          method. Keep them distinct.
 
-          This is identity; the section below is method. Keep them distinct: what
-          we are and where we came from here, how we run an asset there.
-
-          Every claim is sourced from /about (what is held in house, the
-          fragmented-model problem, the fiduciary standard) or from
+          Every claim is sourced from /about (what is held in house) or from
           src/data/serviceArea.ts. Do not add figures here without a real source —
           firm-level statistics are exactly what this site has had to strip out
           before. */}
@@ -181,9 +176,8 @@ const Home = () => {
         <div className="container-premium">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
-              <span className="eyebrow mb-5">Who We Are</span>
               <h2 className="section-title text-hhp-navy">
-                Operations, trades, and accounting under one roof
+                Who We Are
               </h2>
             </div>
 
@@ -226,17 +220,13 @@ const Home = () => {
               Our approach
             </h2>
 
-            {/* Lead statement, then the consequence for the owner. */}
-            <p className="text-xl sm:text-2xl lg:text-3xl font-heading leading-snug text-hhp-navy text-center mb-8 sm:mb-10">
-              Strategy through accounting under one reporting system
-            </p>
-
             <div className="max-w-3xl mx-auto space-y-6 text-lg sm:text-xl leading-relaxed text-hhp-charcoal">
               <p>
-                Strategy, leasing, operations, maintenance, compliance, and
-                accounting sit under one firm and one reporting system. Owners see
-                occupancy, collections, budget variances, and open items as they
-                change, with clear notes on what moved and what&apos;s next.
+                Owners get one team for day-to-day management — leasing and
+                renewals, resident communication, maintenance coordination through
+                in-house trades where it helps, rent collection, and clear owner
+                reporting. Decisions stay grounded in what&apos;s happening at the
+                property, not handed off across separate vendors.
               </p>
             </div>
           </div>
