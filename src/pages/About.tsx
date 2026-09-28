@@ -336,16 +336,23 @@ const About = () => {
                 <h2 className="section-title text-hhp-navy mb-6 text-center">Why BSM Holdings</h2>
                 <div className="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed text-hhp-charcoal">
                   <p>
-                    BSM Holdings was built to give Oklahoma owners and residents a clearer property management experience — direct communication with Ty and the BSM team, not a call center.
+                    BSM Holdings is a real estate operating company in the Oklahoma
+                    City metro. We started by managing our own portfolio, and we
+                    still run the work that way: property management, facility
+                    trades, and accounting stay in-house — trades through BSM
+                    Holdings Facility Services, LLC — with systems we build and
+                    maintain ourselves.
                   </p>
                   <p>
-                    We began as an operator-first firm—managing our own portfolio long before serving institutional clients. That experience reinforced a simple truth: durable real estate value is created through long-term ownership thinking, not transaction-driven decision-making.
+                    That keeps cost visible at the line item and one firm
+                    accountable for the result. Every asset is treated as if we
+                    own it.
                   </p>
                   <p>
-                    Our evolution into a vertically integrated platform was deliberate. By aligning brokerage, asset management, and advisory services under one operating framework, we remove friction from the ownership lifecycle. Decisions are made faster, execution is tighter, and accountability is clear. Every service we provide—from acquisitions through ongoing management—operates under a single fiduciary standard: treat every asset as if we own it.
-                  </p>
-                  <p>
-                    Today, BSM Holdings manages single-family homes, duplexes, triplexes, townhomes, and apartments across Oklahoma with a focus on clear owner reporting and responsive resident support.
+                    Today we manage single-family homes, duplexes, triplexes,
+                    townhomes, and apartments across the Oklahoma City metro —
+                    with clear owner reporting and direct resident support, not
+                    a call center.
                   </p>
                 </div>
               </div>
@@ -355,8 +362,27 @@ const About = () => {
             {activeTab === 'approach' && (
               <div className="fade-in animate-in fade-in duration-300">
                 <div className="mx-auto max-w-3xl text-center">
+                  <span className="eyebrow eyebrow-bare">Our Approach</span>
+                  <h2 className="section-title mt-5 text-hhp-navy">
+                    One firm accountable for how the asset performs
+                  </h2>
+                  <p className="mt-6 text-lg leading-relaxed text-hhp-charcoal">
+                    Strategy, leasing, operations, maintenance, compliance, and
+                    accounting sit under one firm and one reporting system. Owners
+                    see occupancy, collections, budget variances, and open items
+                    as they change, with clear notes on what moved and what&apos;s
+                    next.
+                  </p>
+                  <p className="mt-4 font-medium text-hhp-navy">
+                    One firm. One system. One set of numbers.
+                  </p>
+                </div>
+
+                <div className="mx-auto mt-14 max-w-3xl text-center md:mt-16">
                   <span className="eyebrow eyebrow-bare">Operating Principles</span>
-                  <h2 className="section-title mt-5 text-hhp-navy">How We Operate</h2>
+                  <h3 className="mt-4 font-display text-2xl font-semibold text-hhp-navy">
+                    How We Operate
+                  </h3>
                 </div>
 
                 {/* Numbered editorial rows rather than four identical grey

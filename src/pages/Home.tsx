@@ -188,38 +188,21 @@ const Home = () => {
             </div>
 
             <div className="lg:col-span-7">
-              <p className="text-xl sm:text-2xl font-heading leading-snug text-hhp-navy">
-                BSM Holdings is a vertically integrated real estate
-                operating company in Oklahoma, working across the
-                Oklahoma City metro.
-              </p>
-
-              <div className="mt-7 space-y-5 text-lg leading-relaxed text-hhp-charcoal">
+              <div className="space-y-5 text-lg leading-relaxed text-hhp-charcoal">
                 <p>
-                  We began by managing our own portfolio, before managing anyone
-                  else&apos;s. The firm is still built that way. Property
-                  management, every facility trade and the accounting are
-                  performed by our own personnel — the trades through BSM Holdings
-                  Facility Services, LLC — and the operating and reporting
-                  systems are built and maintained in house rather than licensed.
+                  BSM Holdings is a real estate operating company in the Oklahoma
+                  City metro. We started by managing our own portfolio, and we
+                  still run the work that way: property management, facility
+                  trades, and accounting stay in-house — trades through BSM
+                  Holdings Facility Services, LLC — with systems we build and
+                  maintain ourselves.
                 </p>
                 <p>
-                  The conventional model divides management, maintenance,
-                  accounting and advisory across separate firms. Each answers to
-                  someone else, and the owner is left holding the coordination
-                  risk and the only complete view of the asset. Holding those
-                  functions ourselves is what lets one firm answer for the
-                  result — and what makes cost visible at the line item rather
-                  than inside a vendor invoice.
+                  That keeps cost visible at the line item and one firm
+                  accountable for the result. Every asset is treated as if we
+                  own it.
                 </p>
               </div>
-
-              <blockquote className="mt-8 border-l-2 border-hhp-gold pl-6 sm:pl-8">
-                <p className="font-heading text-lg sm:text-xl leading-snug text-hhp-navy">
-                  Every service operates under a single standard: treat every
-                  asset as if we own it.
-                </p>
-              </blockquote>
 
               <Link
                 to="/about"
@@ -249,21 +232,15 @@ const Home = () => {
             {/* Lead statement, then the consequence for the owner. Replaces the
                 single 100-word block this used to be, which buried the argument. */}
             <p className="text-xl sm:text-2xl lg:text-3xl font-heading leading-snug text-hhp-navy text-center mb-8 sm:mb-10">
-              One firm accountable for how the asset performs.
+              One firm accountable for how the asset performs
             </p>
 
             <div className="max-w-3xl mx-auto space-y-6 text-lg sm:text-xl leading-relaxed text-hhp-charcoal">
               <p>
-                BSM Holdings manages the asset, not simply the building. Strategy, leasing,
-                operations, maintenance, compliance, and accounting are directed by one
-                firm and reported through one system — so responsibility for performance
-                sits in a single place rather than across four vendors.
-              </p>
-              <p>
-                Decisions are made on current information. Owners see occupancy,
-                collections, budget variances, and open items as they change, with
-                written commentary explaining what moved and what is being done about it.
-                Where performing the work ourselves improves cost or response time, we do.
+                Strategy, leasing, operations, maintenance, compliance, and
+                accounting sit under one firm and one reporting system. Owners see
+                occupancy, collections, budget variances, and open items as they
+                change, with clear notes on what moved and what&apos;s next.
               </p>
               <p className="text-hhp-navy font-medium">
                 One firm. One system. One set of numbers.
