@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout/Layout';
-import { Mail } from 'lucide-react';
+import { Mail, UserRound } from 'lucide-react';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 
 const tyImage = '/brand/ty-headshot.png';
@@ -43,6 +43,24 @@ const OPERATING_PRINCIPLES = [
   },
 ];
 
+const TEAM_PLACEHOLDERS = [
+  {
+    name: 'Team member',
+    role: 'Role forthcoming',
+    description: 'This seat will be filled with a real roster entry.',
+  },
+  {
+    name: 'Name forthcoming',
+    role: 'Role forthcoming',
+    description: 'Real team details will be added when the roster is ready.',
+  },
+  {
+    name: 'Team member',
+    role: 'Role forthcoming',
+    description: 'This temporary placeholder will become a real team profile.',
+  },
+];
+
 const About = () => {
   return (
     <Layout>
@@ -71,8 +89,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* 2. Leadership — Ty featured (warm white). Our Team omitted: only Ty is
-          verified in-repo for BSM Holdings; no invented staff. */}
+      {/* 2. Leadership — Ty featured on warm white. */}
       <section className="bg-background py-14 sm:py-16 lg:py-20">
         <div className="container-premium">
           <div className="mx-auto grid max-w-5xl items-start gap-10 lg:grid-cols-12 lg:gap-14">
@@ -110,7 +127,37 @@ const About = () => {
         </div>
       </section>
 
-      {/* 3. How We Operate — three open columns, no numbers, no intro paragraph */}
+      {/* 3. Our Team — temporary roster slots, not invented staff. */}
+      <section className="border-t border-border bg-white py-14 sm:py-16 lg:py-20">
+        <div className="container-premium">
+          <span className="eyebrow">Our Team</span>
+          <h2 className="mt-4 font-display text-display-md font-semibold text-hhp-navy">
+            The people behind the work
+          </h2>
+
+          <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-14">
+            {TEAM_PLACEHOLDERS.map((member, index) => (
+              <article key={`${member.name}-${index}`} className="text-left">
+                <div
+                  className="flex h-20 w-20 items-center justify-center rounded-full bg-surface-sunken text-hhp-navy/55"
+                  aria-hidden="true"
+                >
+                  <UserRound className="h-9 w-9 stroke-[1.5]" />
+                </div>
+                <h3 className="mt-6 font-display text-xl font-semibold tracking-tight text-hhp-navy">
+                  {member.name}
+                </h3>
+                <p className="mt-1 text-sm font-medium text-hhp-navy/60">{member.role}</p>
+                <p className="mt-4 max-w-xs text-base leading-relaxed text-muted-foreground">
+                  {member.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. How We Operate — three open columns, no numbers, no intro paragraph */}
       <section className="border-t border-border bg-white py-14 sm:py-16 lg:py-20">
         <div className="container-premium">
           <h2 className="section-title text-hhp-navy">How We Operate</h2>
@@ -135,7 +182,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* 4. Contact — Request a Proposal only (Careers stays footer-only) */}
+      {/* 5. Contact — Request a Proposal only (Careers stays footer-only) */}
       <section className="border-t border-border bg-background py-12 sm:py-14">
         <div className="container-premium">
           <div className="mx-auto flex max-w-3xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
