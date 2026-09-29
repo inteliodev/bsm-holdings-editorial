@@ -56,7 +56,7 @@ const Home = () => {
         </video>
         <div className="absolute inset-0 z-10 scrim-hero-editorial" aria-hidden="true" />
 
-        <div className="absolute inset-0 z-20 flex items-center pt-[var(--header-h)] pb-6 sm:pb-8">
+        <div className="absolute inset-0 z-20 flex items-center pt-[calc(var(--header-h)+0.75rem)] pb-6 sm:pb-8">
           <div className="container-premium w-full">
             <div className="max-w-xl lg:max-w-2xl">
               <h1 className="hero-title normal-case text-white">

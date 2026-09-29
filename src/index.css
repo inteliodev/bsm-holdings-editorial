@@ -101,6 +101,9 @@
   @media (min-width: 640px) {
     :root { --header-h: 5.5rem; }
   }
+  @media (min-width: 768px) {
+    :root { --header-h: 6rem; }
+  }
 
   * {
     @apply border-border;
