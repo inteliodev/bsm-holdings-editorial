@@ -461,6 +461,10 @@
 }
 
 @layer utilities {
+  .safe-pb {
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+
   .text-hhp-gold { color: hsl(var(--hhp-gold)); }
   .bg-hhp-gold { background-color: hsl(var(--hhp-gold)); }
   .border-hhp-gold { border-color: hsl(var(--hhp-gold)); }

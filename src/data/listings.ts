@@ -5,6 +5,13 @@ export type PropertyType =
   | "Townhome"
   | "Apartment";
 
+export type ListingImage = {
+  src: string;
+  alt: string;
+  /** Only set when the caption is verified (e.g. from listing city/type). */
+  caption?: string;
+};
+
 export type Listing = {
   id: string;
   slug: string;
@@ -26,6 +33,8 @@ export type Listing = {
   blurb: string;
   image: string;
   imageAlt: string;
+  /** Optional extra photos. When absent, detail pages use `image` alone. */
+  gallery?: ListingImage[];
 };
 
 export const listings: Listing[] = [
@@ -230,4 +239,22 @@ export function formatBedsBaths(beds: number, baths: number): string {
 
 export function getListingBySlug(slug: string): Listing | undefined {
   return listings.find((l) => l.slug === slug);
+}
+
+/** Gallery photos for a listing — primary image first; never invents assets. */
+export function getListingGallery(listing: Listing): ListingImage[] {
+  const verifiedCaption = `${listing.type} · ${listing.city}`;
+  if (listing.gallery && listing.gallery.length > 0) {
+    return listing.gallery.map((img, i) => ({
+      ...img,
+      caption: img.caption ?? (i === 0 ? verifiedCaption : undefined),
+    }));
+  }
+  return [
+    {
+      src: listing.image,
+      alt: listing.imageAlt,
+      caption: verifiedCaption,
+    },
+  ];
 }

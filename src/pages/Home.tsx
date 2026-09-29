@@ -8,29 +8,44 @@ import { ListingCard } from '@/components/properties/ListingCard';
 import { OwnerInquiryForm } from '@/components/OwnerInquiryForm';
 import { listings } from '@/data/listings';
 import { AnimatedCard } from '@/components/AnimatedCard';
+import { NumberedEditorialList } from '@/components/editorial/NumberedEditorialList';
 
 const SERVICES = [
   {
-    n: '01',
+    number: '01',
     title: 'Leasing',
     body: 'Property marketing, applicant screening, lease preparation, and renewals.',
   },
   {
-    n: '02',
+    number: '02',
     title: 'Rent Collection',
     body: 'Rent collection, payment tracking, and follow-up on outstanding balances.',
   },
   {
-    n: '03',
+    number: '03',
     title: 'Maintenance',
     body: 'Coordination of resident requests, repairs, and preparation between tenants.',
   },
   {
-    n: '04',
+    number: '04',
     title: 'Financial Reporting',
     body: 'Monthly statements showing property income and expenses.',
   },
 ];
+
+/** Illustrative sample — labeled as example only. Matches PM reporting treatment. */
+const SAMPLE_REPORT = {
+  title: 'Owner statement',
+  property: 'Sample residential property',
+  period: 'March 2026',
+  rows: [
+    { label: 'Occupancy', value: '94%', emphasize: false },
+    { label: 'Rent collected', value: '$12,450', emphasize: false },
+    { label: 'Operating expenses', value: '$3,210', emphasize: false },
+    { label: 'Net operating income', value: '$9,240', emphasize: true },
+    { label: 'Open work orders', value: '2', emphasize: false },
+  ],
+};
 
 const Home = () => {
   const featured = listings.filter((l) => l.featured).slice(0, 3);
@@ -137,7 +152,7 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Services — split layout */}
+        {/* Services — editorial numbered stack */}
         <section className="bg-background pb-12 pt-4 sm:pb-16 sm:pt-6 lg:pb-20">
           <div className="container-premium">
             <AnimatedCard distance={16}>
@@ -163,23 +178,7 @@ const Home = () => {
                 </div>
 
                 <div className="flex flex-col lg:col-span-7">
-                  <ul className="divide-y divide-border border-y border-border">
-                    {SERVICES.map((item) => (
-                      <li key={item.title} className="flex gap-4 py-5 sm:gap-5 sm:py-6">
-                        <span className="mt-0.5 font-display text-sm font-semibold tabular-nums text-brand">
-                          {item.n}
-                        </span>
-                        <div>
-                          <h3 className="font-display text-lg font-semibold text-hhp-navy">
-                            {item.title}
-                          </h3>
-                          <p className="mt-1.5 text-base leading-relaxed text-hhp-charcoal">
-                            {item.body}
-                          </p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
+                  <NumberedEditorialList items={SERVICES} />
                   <Link
                     to="/services/property-management"
                     className="tap group mt-6 inline-flex items-center gap-2 font-display font-semibold text-brand transition-colors hover:text-brand-deep"
@@ -191,6 +190,95 @@ const Home = () => {
                     Explore Our Services
                     <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
+                </div>
+              </div>
+            </AnimatedCard>
+          </div>
+        </section>
+
+        {/* Owner reporting centerpiece — navy, mirrors PM treatment */}
+        <section className="bg-brand-deep py-16 text-white sm:py-20 lg:py-24">
+          <div className="container-premium">
+            <AnimatedCard distance={16}>
+              <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+                <div className="lg:col-span-5">
+                  <h2 className="section-title text-white">
+                    Your property.
+                    <br />
+                    Clearly reported.
+                  </h2>
+                  <p className="mt-6 text-lg leading-relaxed text-white/80">
+                    Each month you receive a statement that shows how the property
+                    performed — income, expenses, collections, leasing, and open
+                    maintenance — with plain notes on what changed.
+                  </p>
+                  <Link
+                    to="/services/property-management"
+                    className="tap group mt-8 inline-flex items-center gap-2 font-display font-semibold text-white transition-colors hover:text-hhp-gold-soft"
+                    onClick={() => {
+                      trackButtonClick('home_reporting_pm', 'home_reporting');
+                      trackLinkClick('See how reporting works', '/services/property-management');
+                    }}
+                  >
+                    See how reporting works
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                </div>
+                <div className="lg:col-span-7">
+                  <div className="overflow-hidden rounded-sm border border-white/10 bg-white text-hhp-navy shadow-lg shadow-black/20">
+                    <div className="border-b border-border px-6 py-5 sm:px-8">
+                      <p className="font-display text-xs font-semibold tracking-[0.12em] text-brand">
+                        {SAMPLE_REPORT.title}
+                      </p>
+                      <div className="mt-2 flex flex-wrap items-end justify-between gap-2">
+                        <div>
+                          <p className="font-display text-lg font-semibold text-hhp-navy">
+                            {SAMPLE_REPORT.property}
+                          </p>
+                          <p className="mt-0.5 text-sm text-listing-muted">
+                            Period: {SAMPLE_REPORT.period}
+                          </p>
+                        </div>
+                        <span className="text-xs font-medium text-listing-muted">
+                          Sample preview
+                        </span>
+                      </div>
+                    </div>
+                    <ul>
+                      {SAMPLE_REPORT.rows.map((row) => (
+                        <li
+                          key={row.label}
+                          className={
+                            row.emphasize
+                              ? 'flex items-center justify-between gap-4 border-b border-border bg-brand/5 px-6 py-4 last:border-b-0 sm:px-8'
+                              : 'flex items-center justify-between gap-4 border-b border-border px-6 py-3.5 last:border-b-0 sm:px-8'
+                          }
+                        >
+                          <span
+                            className={
+                              row.emphasize
+                                ? 'font-display text-base font-semibold text-hhp-navy'
+                                : 'text-base text-hhp-charcoal'
+                            }
+                          >
+                            {row.label}
+                          </span>
+                          <span
+                            className={
+                              row.emphasize
+                                ? 'font-display text-lg font-semibold tabular-nums text-brand'
+                                : 'font-display text-base font-semibold tabular-nums text-hhp-navy'
+                            }
+                          >
+                            {row.value}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="border-t border-border px-6 py-3.5 text-xs leading-relaxed text-listing-muted sm:px-8">
+                      Illustrative figures; actual reports vary by property.
+                    </p>
+                  </div>
                 </div>
               </div>
             </AnimatedCard>

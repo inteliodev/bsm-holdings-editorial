@@ -10,15 +10,15 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { OwnerInquiryForm } from '@/components/OwnerInquiryForm';
+import { NumberedEditorialList } from '@/components/editorial/NumberedEditorialList';
 import { RESIDENT_PORTAL_URL, site } from '@/lib/site';
 
 const WHATS_INCLUDED = [
   {
-    value: 'leasing',
     number: '01',
     title: 'Leasing',
-    lead: 'Fill vacancies with qualified residents and keep lease terms clear.',
-    items: [
+    body: 'Fill vacancies with qualified residents and keep lease terms clear.',
+    details: [
       'Rent recommendations based on comparable local listings and property condition',
       'Marketing, showings, and application screening',
       'Lease preparation and renewals',
@@ -26,11 +26,10 @@ const WHATS_INCLUDED = [
     ],
   },
   {
-    value: 'resident',
     number: '02',
     title: 'Resident care',
-    lead: 'Direct communication so issues get resolved without friction.',
-    items: [
+    body: 'Direct communication so issues get resolved without friction.',
+    details: [
       'Resident communication and issue resolution',
       'Service-request intake and follow-through',
       'Lease compliance monitoring',
@@ -38,11 +37,10 @@ const WHATS_INCLUDED = [
     ],
   },
   {
-    value: 'maintenance',
     number: '03',
     title: 'Maintenance',
-    lead: 'Our management team coordinates repairs and keeps owners informed about costs and progress.',
-    items: [
+    body: 'Our management team coordinates repairs and keeps owners informed about costs and progress.',
+    details: [
       'Work-order intake, prioritization by urgency, and completion tracking',
       'Owner approval when required before non-routine work proceeds',
       'Unit turns and make-ready between residents',
@@ -50,11 +48,10 @@ const WHATS_INCLUDED = [
     ],
   },
   {
-    value: 'compliance',
     number: '04',
     title: 'Compliance',
-    lead: 'Fair housing, lease, and basic regulatory follow-through as part of day-to-day management.',
-    items: [
+    body: 'Fair housing, lease, and basic regulatory follow-through as part of day-to-day management.',
+    details: [
       'Insurance coordination and compliance tracking',
       'Safety and condition monitoring',
       'Lease and regulatory oversight',
@@ -62,11 +59,10 @@ const WHATS_INCLUDED = [
     ],
   },
   {
-    value: 'accounting',
     number: '05',
     title: 'Accounting',
-    lead: 'Rent collection and monthly owner statements showing income and expenses.',
-    items: [
+    body: 'Rent collection and monthly owner statements showing income and expenses.',
+    details: [
       'Rent collection and receivables monitoring',
       'Monthly owner financial reporting',
       'Expense review and cost control',
@@ -213,7 +209,7 @@ const PropertyManagement = () => {
         </div>
       </section>
 
-      {/* 2. What's Included — numbered accordion + tall photo */}
+      {/* 2. What's Included — editorial numbered stack + tall photo */}
       <section id="whats-included" className="border-t border-border bg-white py-16 sm:py-20 lg:py-24">
         <div className="container-premium">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-14">
@@ -223,44 +219,7 @@ const PropertyManagement = () => {
                 Leasing, resident care, maintenance, compliance, and accounting —
                 the day-to-day work of owning a rental.
               </p>
-              <Accordion
-                type="single"
-                collapsible
-                defaultValue="leasing"
-                className="mt-10 w-full border-t border-border"
-              >
-                {WHATS_INCLUDED.map((section) => (
-                  <AccordionItem
-                    key={section.value}
-                    value={section.value}
-                    className="border-b border-border"
-                  >
-                    <AccordionTrigger className="py-6 text-left hover:no-underline data-[state=open]:text-brand">
-                      <span className="flex items-baseline gap-4">
-                        <span className="font-display text-sm font-semibold tracking-[0.14em] text-brand">
-                          {section.number}
-                        </span>
-                        <span className="font-display text-xl font-semibold text-hhp-navy sm:text-2xl">
-                          {section.title}
-                        </span>
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent className="pb-6 pt-0">
-                      <p className="mb-4 pl-10 text-base font-medium leading-relaxed text-hhp-charcoal sm:pl-12">
-                        {section.lead}
-                      </p>
-                      <ul className="space-y-2 pl-10 text-base leading-relaxed text-hhp-charcoal sm:pl-12">
-                        {section.items.map((item) => (
-                          <li key={item} className="flex items-start">
-                            <span className="mt-[0.7rem] mr-3 inline-block h-px w-4 shrink-0 bg-brand" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
+              <NumberedEditorialList className="mt-10" items={WHATS_INCLUDED} />
             </div>
             <div className="hidden lg:col-span-5 lg:block">
               <img
@@ -394,16 +353,19 @@ const PropertyManagement = () => {
                 costs and progress — from routine work orders to unit turns between
                 residents.
               </p>
-              <ol className="mt-8 space-y-0 border-t border-border">
+              <ol className="mt-8 border-t border-border">
                 {MAINTENANCE_FLOW.map((step, index) => (
                   <li
                     key={step}
-                    className="flex items-baseline gap-4 border-b border-border py-4"
+                    className="group flex items-baseline gap-5 border-b border-border py-5 sm:gap-6"
                   >
-                    <span className="font-display text-sm font-semibold tracking-[0.12em] text-brand">
+                    <span
+                      aria-hidden="true"
+                      className="font-display text-3xl tabular-nums leading-none tracking-tight text-hhp-navy/20 transition-colors duration-300 group-hover:text-hhp-navy/35 sm:text-4xl"
+                    >
                       {String(index + 1).padStart(2, '0')}
                     </span>
-                    <span className="font-display text-base font-semibold text-hhp-navy sm:text-lg">
+                    <span className="font-display text-base font-semibold text-hhp-navy transition-colors duration-300 group-hover:text-brand sm:text-lg">
                       {step}
                     </span>
                   </li>
@@ -447,13 +409,16 @@ const PropertyManagement = () => {
             <p className="mt-4 text-lg leading-relaxed text-hhp-charcoal">
               Three steps from the first conversation to ongoing management.
             </p>
-            <ol className="mt-10 grid gap-6 sm:grid-cols-3 sm:gap-8">
+            <ol className="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-10">
               {GETTING_STARTED.map((item) => (
-                <li key={item.step} className="border-t border-border pt-5">
-                  <span className="font-display text-sm font-semibold tracking-[0.14em] text-brand">
+                <li key={item.step} className="group border-t border-border pt-6">
+                  <span
+                    aria-hidden="true"
+                    className="font-display text-4xl tabular-nums leading-none tracking-tight text-hhp-navy/20 transition-colors duration-300 group-hover:text-hhp-navy/35"
+                  >
                     {item.step}
                   </span>
-                  <h3 className="mt-2 font-display text-lg font-semibold text-hhp-navy">
+                  <h3 className="mt-3 font-display text-lg font-semibold text-hhp-navy transition-colors duration-300 group-hover:text-brand">
                     {item.title}
                   </h3>
                   <p className="mt-2 text-base leading-relaxed text-hhp-charcoal">
