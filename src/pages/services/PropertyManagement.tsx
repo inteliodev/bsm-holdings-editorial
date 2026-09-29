@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import Layout from '@/components/Layout/Layout';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
@@ -9,26 +10,31 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '@/components/ui/collapsible';
 import { OwnerInquiryForm } from '@/components/OwnerInquiryForm';
-import { NumberedEditorialList } from '@/components/editorial/NumberedEditorialList';
 import { RESIDENT_PORTAL_URL, site } from '@/lib/site';
+import { cn } from '@/lib/utils';
 
 const WHATS_INCLUDED = [
   {
-    number: '01',
-    title: 'Leasing',
-    body: 'Fill vacancies with qualified residents and keep lease terms clear.',
+    id: 'leasing',
+    title: 'Leasing & Renewals',
+    body: 'Rental pricing, marketing, applicant screening, and lease coordination.',
     details: [
       'Rent recommendations based on comparable local listings and property condition',
       'Marketing, showings, and application screening',
       'Lease preparation and renewals',
-      'Move-in and move-out coordination, including condition documentation',
+      'Move-in and move-out coordination',
     ],
   },
   {
-    number: '02',
-    title: 'Resident care',
-    body: 'Direct communication so issues get resolved without friction.',
+    id: 'resident',
+    title: 'Resident Support',
+    body: 'A direct contact for questions, service requests, and lease matters.',
     details: [
       'Resident communication and issue resolution',
       'Service-request intake and follow-through',
@@ -37,31 +43,20 @@ const WHATS_INCLUDED = [
     ],
   },
   {
-    number: '03',
-    title: 'Maintenance',
-    body: 'Our management team coordinates repairs and keeps owners informed about costs and progress.',
+    id: 'maintenance',
+    title: 'Maintenance & Inspections',
+    body: 'Repair coordination, condition documentation, and preparation between tenants—where included in your services.',
     details: [
       'Work-order intake, prioritization by urgency, and completion tracking',
       'Owner approval when required before non-routine work proceeds',
-      'Unit turns and make-ready between residents',
+      'Condition documentation and unit turns between residents',
       'Preventative maintenance planning where it fits the property',
     ],
   },
   {
-    number: '04',
-    title: 'Compliance',
-    body: 'Fair housing, lease, and basic regulatory follow-through as part of day-to-day management.',
-    details: [
-      'Insurance coordination and compliance tracking',
-      'Safety and condition monitoring',
-      'Lease and regulatory oversight',
-      'Documentation for audits and ownership records',
-    ],
-  },
-  {
-    number: '05',
-    title: 'Accounting',
-    body: 'Rent collection and monthly owner statements showing income and expenses.',
+    id: 'accounting',
+    title: 'Accounting & Reporting',
+    body: 'Rent collection, expense tracking, and monthly owner statements.',
     details: [
       'Rent collection and receivables monitoring',
       'Monthly owner financial reporting',
@@ -69,6 +64,13 @@ const WHATS_INCLUDED = [
       'Distribution information with each reporting cycle',
     ],
   },
+];
+
+const COMPLIANCE_POINTS = [
+  'Fair housing, lease, and basic regulatory follow-through',
+  'Insurance coordination and compliance tracking',
+  'Safety and condition monitoring',
+  'Documentation for audits and ownership records',
 ];
 
 const MONTHLY_DELIVERABLES = [
@@ -149,6 +151,61 @@ const OWNER_FAQS = [
   },
 ];
 
+function IncludedPanel({
+  item,
+}: {
+  item: (typeof WHATS_INCLUDED)[number];
+}) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Collapsible
+      open={open}
+      onOpenChange={(next) => {
+        setOpen(next);
+        if (next) trackButtonClick(`pm_included_${item.id}`, 'pm_whats_included');
+      }}
+      className="flex h-full flex-col border border-border bg-white p-6 sm:p-7"
+    >
+      <h3 className="font-display text-xl font-semibold tracking-tight text-hhp-navy sm:text-[1.35rem]">
+        {item.title}
+      </h3>
+      <p className="mt-3 flex-1 text-base leading-relaxed text-hhp-charcoal">
+        {item.body}
+      </p>
+      <CollapsibleTrigger
+        className="tap group mt-5 inline-flex items-center gap-1.5 self-start text-sm font-semibold text-hhp-navy transition-colors hover:text-brand"
+        aria-expanded={open}
+      >
+        View Details
+        <ChevronDown
+          className={cn(
+            'h-4 w-4 transition-transform duration-300',
+            open && 'rotate-180',
+          )}
+          aria-hidden="true"
+        />
+      </CollapsibleTrigger>
+      <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+        <ul className="mt-4 space-y-2 border-t border-border pt-4">
+          {item.details.map((detail) => (
+            <li
+              key={detail}
+              className="flex items-start gap-3 text-sm leading-relaxed text-hhp-charcoal"
+            >
+              <span
+                aria-hidden="true"
+                className="mt-[0.65rem] inline-block h-px w-3 shrink-0 bg-brand/70"
+              />
+              <span>{detail}</span>
+            </li>
+          ))}
+        </ul>
+      </CollapsibleContent>
+    </Collapsible>
+  );
+}
+
 const PropertyManagement = () => {
   return (
     <Layout>
@@ -209,26 +266,46 @@ const PropertyManagement = () => {
         </div>
       </section>
 
-      {/* 2. What's Included — editorial numbered stack + tall photo */}
+      {/* 2. What's Included — 2×2 panels + compliance strip */}
       <section id="whats-included" className="border-t border-border bg-white py-16 sm:py-20 lg:py-24">
         <div className="container-premium">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-14">
-            <div className="lg:col-span-7">
-              <h2 className="section-title text-hhp-navy">What&apos;s included</h2>
-              <p className="mt-4 max-w-xl text-lg leading-relaxed text-hhp-charcoal">
-                Leasing, resident care, maintenance, compliance, and accounting —
-                the day-to-day work of owning a rental.
-              </p>
-              <NumberedEditorialList className="mt-10" items={WHATS_INCLUDED} />
-            </div>
-            <div className="hidden lg:col-span-5 lg:block">
-              <img
-                src="/images/property-management-picture.webp"
-                alt="Multifamily residential complex exterior"
-                className="sticky top-28 aspect-[3/4] w-full border border-border object-cover object-[center_35%]"
-                loading="lazy"
-                decoding="async"
-              />
+          <h2 className="section-title text-hhp-navy">What&apos;s included</h2>
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-hhp-charcoal">
+            Leasing, resident support, maintenance, and accounting — the day-to-day
+            work of owning a rental.
+          </p>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-5">
+            {WHATS_INCLUDED.map((item) => (
+              <IncludedPanel key={item.id} item={item} />
+            ))}
+          </div>
+
+          {/* Compact compliance strip */}
+          <div className="mt-5 border border-border bg-surface px-5 py-5 sm:px-7 sm:py-6">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-10">
+              <div className="shrink-0 lg:w-48">
+                <h3 className="font-display text-base font-semibold tracking-tight text-hhp-navy sm:text-lg">
+                  Compliance
+                </h3>
+                <p className="mt-1 text-sm leading-relaxed text-hhp-charcoal/85">
+                  Built into day-to-day management.
+                </p>
+              </div>
+              <ul className="grid flex-1 gap-2 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-2">
+                {COMPLIANCE_POINTS.map((point) => (
+                  <li
+                    key={point}
+                    className="flex items-start gap-2.5 text-sm leading-relaxed text-hhp-charcoal"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-[0.55rem] h-1 w-1 shrink-0 rounded-full bg-brand"
+                    />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
@@ -243,13 +320,8 @@ const PropertyManagement = () => {
                 A Clear View of Your Property.
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-white/80">
-                Each month you receive a report that shows how the property performed —
-                income, expenses, collections, leasing, and open maintenance — with plain
-                notes on what changed.
-              </p>
-              <p className="mt-4 text-lg leading-relaxed text-white/80">
-                Typical owner reports include the deliverables below. Actual format and
-                detail vary by property.
+                Monthly reports cover income, expenses, collections, leasing, and
+                maintenance — with plain notes on what changed.
               </p>
               <ul className="mt-8 space-y-3">
                 {MONTHLY_DELIVERABLES.map((item) => (
@@ -331,7 +403,7 @@ const PropertyManagement = () => {
         </div>
       </section>
 
-      {/* 4. Maintenance — photo + concrete flow */}
+      {/* 4. Maintenance — photo + compact vertical timeline */}
       <section className="bg-white py-16 sm:py-20 lg:py-24">
         <div className="container-premium">
           <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
@@ -353,19 +425,14 @@ const PropertyManagement = () => {
                 costs and progress — from routine work orders to unit turns between
                 residents.
               </p>
-              <ol className="mt-8 border-t border-border">
-                {MAINTENANCE_FLOW.map((step, index) => (
-                  <li
-                    key={step}
-                    className="group flex items-baseline gap-5 border-b border-border py-5 sm:gap-6"
-                  >
+              <ol className="relative mt-8 ml-1.5 space-y-0 border-l border-border pl-6">
+                {MAINTENANCE_FLOW.map((step) => (
+                  <li key={step} className="relative pb-6 last:pb-0">
                     <span
                       aria-hidden="true"
-                      className="font-display text-3xl tabular-nums leading-none tracking-tight text-hhp-navy/20 transition-colors duration-300 group-hover:text-hhp-navy/35 sm:text-4xl"
-                    >
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <span className="font-display text-base font-semibold text-hhp-navy transition-colors duration-300 group-hover:text-brand sm:text-lg">
+                      className="absolute -left-[1.6875rem] top-1.5 h-2 w-2 rounded-full border-2 border-brand bg-white"
+                    />
+                    <span className="font-display text-base font-semibold text-hhp-navy sm:text-lg">
                       {step}
                     </span>
                   </li>
@@ -380,45 +447,26 @@ const PropertyManagement = () => {
         </div>
       </section>
 
-      {/* Already have a PM — handoff transition */}
+      {/* 5. Transition — handoff + getting started combined */}
       <section className="border-y border-border bg-surface py-16 sm:py-20 lg:py-24">
         <div className="container-premium">
           <div className="mx-auto max-w-3xl">
-            <h2 className="section-title text-hhp-navy">
-              Already have a property manager?
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-hhp-charcoal">
-              Switching managers is a handoff, not a restart from zero. We work through
-              leases, financial records, keys, deposits, and resident information; notify
-              residents of the change; and establish opening financials so the first
-              reporting period starts cleanly.
-            </p>
-            <p className="mt-4 text-lg leading-relaxed text-hhp-charcoal">
-              Timing depends on the property and what records are already in place — we
-              will outline the steps for your situation when you request a proposal.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Getting Started — three compact steps */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
-        <div className="container-premium">
-          <div className="mx-auto max-w-3xl">
             <h2 className="section-title text-hhp-navy">Getting started</h2>
-            <p className="mt-4 text-lg leading-relaxed text-hhp-charcoal">
-              Three steps from the first conversation to ongoing management.
+            <p className="mt-5 text-lg leading-relaxed text-hhp-charcoal">
+              Whether you are new to management or switching from another manager, we
+              start with a clear review of your property and goals.
             </p>
-            <ol className="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-10">
+            <p className="mt-4 text-base leading-relaxed text-hhp-charcoal">
+              Already have a property manager? Switching is a handoff, not a restart
+              from zero. We work through leases, financial records, keys, deposits, and
+              resident information; notify residents of the change; and establish opening
+              financials so the first reporting period starts cleanly. Timing depends on
+              the property — we outline the steps when you request a proposal.
+            </p>
+            <ol className="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-8">
               {GETTING_STARTED.map((item) => (
-                <li key={item.step} className="group border-t border-border pt-6">
-                  <span
-                    aria-hidden="true"
-                    className="font-display text-4xl tabular-nums leading-none tracking-tight text-hhp-navy/20 transition-colors duration-300 group-hover:text-hhp-navy/35"
-                  >
-                    {item.step}
-                  </span>
-                  <h3 className="mt-3 font-display text-lg font-semibold text-hhp-navy transition-colors duration-300 group-hover:text-brand">
+                <li key={item.step} className="group border-t border-border pt-5">
+                  <h3 className="font-display text-lg font-semibold text-hhp-navy transition-colors duration-300 group-hover:text-brand">
                     {item.title}
                   </h3>
                   <p className="mt-2 text-base leading-relaxed text-hhp-charcoal">
@@ -432,7 +480,7 @@ const PropertyManagement = () => {
       </section>
 
       {/* Point of contact */}
-      <section className="border-t border-border bg-surface-sunken py-14 sm:py-16 lg:py-20">
+      <section className="bg-surface-sunken py-14 sm:py-16 lg:py-20">
         <div className="container-premium">
           <div className="mx-auto grid max-w-4xl items-center gap-8 sm:grid-cols-12 sm:gap-10">
             <div className="sm:col-span-3">
@@ -539,9 +587,8 @@ const PropertyManagement = () => {
                 what reporting looks like, and next steps.
               </p>
               <p className="mt-5 text-base leading-relaxed text-white/70">
-                Management fees are discussed for your property and provided in writing
-                before you sign — we do not publish a one-size fee schedule here. Ask
-                what is included and what may be billed separately.
+                Your proposal outlines management fees, included services, and any
+                additional charges.
               </p>
               <p className="mt-6 text-sm text-white/60">
                 Prefer email?{' '}
