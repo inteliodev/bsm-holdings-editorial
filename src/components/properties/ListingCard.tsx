@@ -1,17 +1,14 @@
 import { Link } from 'react-router-dom';
 import { formatPrice, type Listing } from '@/data/listings';
-import { site } from '@/lib/site';
 
 type Props = { listing: Listing; className?: string };
 
+/**
+ * Simplified rental card hierarchy:
+ * photo → availability badge → rent → address/city → beds · baths · sqft → View Property
+ * Tour / apply / pets / amenities live off the card (portfolio detail / contact).
+ */
 export function ListingCard({ listing, className = '' }: Props) {
-  const applyHref = `${site.applyUrl}&body=${encodeURIComponent(
-    `I'm interested in applying for ${listing.address}, ${listing.city}. Please send application steps.`,
-  )}`;
-  const tourHref = `${site.tourUrl}&body=${encodeURIComponent(
-    `I'd like to schedule a tour of ${listing.address}, ${listing.city}.`,
-  )}`;
-
   const status = listing.comingSoon
     ? 'Coming soon'
     : listing.available
@@ -19,103 +16,52 @@ export function ListingCard({ listing, className = '' }: Props) {
       : 'Leased';
 
   const statusClass = listing.comingSoon
-    ? 'bg-silver-deep text-brand-deep'
+    ? 'bg-white/95 text-brand-deep'
     : listing.available
       ? 'bg-brand text-white'
       : 'bg-brand-deep/90 text-white';
 
   return (
     <article
-      className={`bevel-frame card-shine group flex max-w-[400px] flex-col overflow-hidden ${className}`}
+      className={`bevel-frame group flex max-w-[400px] flex-col overflow-hidden ${className}`}
     >
-      <div className="relative z-[1] aspect-[4/3] overflow-hidden bg-surface-sunken">
+      <div className="card-media relative z-[1] aspect-[4/3] overflow-hidden bg-surface-sunken">
         <img
           src={listing.image}
           alt={listing.imageAlt}
-          className="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.06]"
+          className="absolute inset-0 h-full w-full object-cover"
           loading="lazy"
           decoding="async"
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-deep/40 via-transparent to-transparent opacity-70" />
-        <div
-          className="pointer-events-none absolute right-0 top-0 h-16 w-16 bg-gradient-to-bl from-brand/40 to-transparent"
-          style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}
-          aria-hidden
-        />
         <span
-          className={`absolute left-3 top-3 rounded-[3px] px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide shadow-sm ${statusClass}`}
+          className={`absolute left-3 top-3 rounded px-2.5 py-0.5 text-[11px] font-semibold tracking-wide shadow-sm ${statusClass}`}
         >
           {status}
         </span>
-        <span className="absolute bottom-3 right-3 border border-white/25 bg-brand-deep/90 px-2 py-1 text-[11px] font-semibold text-white backdrop-blur-sm">
-          {listing.type}
-        </span>
-        {listing.pets && (
-          <span className="absolute bottom-3 left-3 rounded-[3px] border border-white/20 bg-success/95 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
-            Pets OK
-          </span>
-        )}
       </div>
 
-      <div className="relative z-[1] flex flex-1 flex-col gap-2 p-3.5">
-        <div className="flex items-baseline justify-between gap-2">
-          <p className="font-display text-xl font-extrabold tracking-tight text-brand-deep">
-            {formatPrice(listing.price)}
-            <span className="text-sm font-normal text-listing-muted">/mo</span>
-          </p>
-          <p className="text-[11px] font-semibold text-listing-muted">{listing.availLabel}</p>
-        </div>
-        <h3 className="font-display text-[0.95rem] font-bold leading-snug text-hhp-charcoal">
+      <div className="relative z-[1] flex flex-1 flex-col gap-1.5 p-4">
+        <p className="font-display text-xl font-semibold tracking-tight text-brand-deep">
+          {formatPrice(listing.price)}
+          <span className="text-sm font-normal text-listing-muted">/mo</span>
+        </p>
+        <h3 className="font-display text-[0.95rem] font-semibold leading-snug text-hhp-navy">
           {listing.address}
         </h3>
         <p className="text-sm text-listing-muted">
-          {listing.city}, {listing.state} {listing.zip}
+          {listing.city}, {listing.state}
         </p>
         <p className="text-sm text-hhp-charcoal">
-          {listing.beds} bd · {listing.baths} ba · {listing.sqft.toLocaleString()} sq ft
+          {listing.beds} beds · {listing.baths} baths · {listing.sqft.toLocaleString()} sqft
         </p>
-        {listing.blurb && (
-          <p className="line-clamp-2 text-xs leading-snug text-listing-muted">{listing.blurb}</p>
-        )}
-        {listing.amenities.length > 0 && (
-          <div className="flex flex-wrap gap-1">
-            {listing.amenities.map((a) => (
-              <span
-                key={a}
-                className={`border px-1.5 py-0.5 text-[10px] font-medium ${
-                  a.toLowerCase().includes('pet')
-                    ? 'border-success/30 bg-success/10 text-success'
-                    : 'border-border bg-surface text-brand-deep'
-                }`}
-              >
-                {a}
-              </span>
-            ))}
-          </div>
-        )}
-        {(listing.available || listing.comingSoon) && (
-          <div className="mt-auto grid grid-cols-2 gap-2 pt-2">
-            <a
-              href={tourHref}
-              className="inline-flex items-center justify-center rounded-[4px] border border-brand/30 bg-white px-3 py-2.5 text-sm font-bold text-brand-deep transition hover:border-brand hover:bg-surface focus-ring"
-            >
-              Request tour
-            </a>
-            <a
-              href={applyHref}
-              className="btn-chrome !min-h-0 !rounded-[4px] !px-3 !py-2.5 !text-sm focus-ring"
-            >
-              Request Application
-            </a>
-          </div>
-        )}
         <Link
           to={`/portfolio#${listing.slug}`}
-          className={`rounded text-center text-xs font-medium text-listing-muted hover:text-brand focus-ring ${
-            listing.available || listing.comingSoon ? '' : 'mt-auto pt-2'
-          }`}
+          className="tap group/link mt-auto inline-flex items-center gap-1 pt-3 text-sm font-semibold text-brand transition-colors hover:text-brand-deep focus-ring"
         >
-          View Details
+          View Property
+          <span aria-hidden="true" className="transition-transform duration-200 group-hover/link:translate-x-0.5">
+            →
+          </span>
         </Link>
       </div>
     </article>

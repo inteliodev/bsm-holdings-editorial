@@ -57,22 +57,31 @@ const Header = () => {
 
   const isDropdownActive = (_name: string) => false;
 
-  // Sticky header effect (throttled with rAF)
+  // Sticky header effect (throttled with rAF).
+  // On Home, solidify after the fixed hero rather than at 20px.
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setIsSticky(window.scrollY > 20);
+          const threshold = isHome
+            ? Math.max(120, window.innerHeight * 0.72)
+            : 20;
+          setIsSticky(window.scrollY > threshold);
           ticking = false;
         });
         ticking = true;
       }
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('resize', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [isHome]);
 
   // Clear hover timeout helper
   const clearHoverTimeout = () => {
@@ -241,7 +250,7 @@ const Header = () => {
               // fixed-position descendants, which would anchor the sheet and
               // its overlay to the header box instead of the viewport.
               'bg-white border-border'
-            : 'bg-white/85 backdrop-blur-md border-border shadow-subtle'
+            : 'bg-[#F7F6F2]/95 backdrop-blur-md border-border shadow-subtle'
       }`}
     >
       <div className="w-full">
@@ -267,9 +276,11 @@ const Header = () => {
             <img
               src="/brand/bsm-logo.png"
               alt="BSM Holdings"
-              width={160}
-              height={160}
-              className="h-12 w-auto object-contain sm:h-14 md:h-16 transition-all duration-300"
+              width={140}
+              height={140}
+              className={`h-9 w-auto object-contain transition-all duration-300 sm:h-10 md:h-11 ${
+                isTransparent ? 'logo-flat-white' : 'logo-flat'
+              }`}
               loading="eager"
               decoding="async"
               fetchPriority="high"
@@ -325,7 +336,7 @@ const Header = () => {
                           border that snapped on and off. */}
                       <span
                         aria-hidden="true"
-                        className={`absolute -bottom-0.5 left-1 right-1 h-0.5 origin-left bg-hhp-gold transition-transform duration-300 ease-out-expo sm:left-2 sm:right-2 ${
+                        className={`absolute -bottom-0.5 left-1 right-1 h-0.5 origin-left bg-brand transition-transform duration-300 ease-out-expo sm:left-2 sm:right-2 ${
                           isDropdownActive(item.name)
                             ? 'scale-x-100'
                             : 'scale-x-0 group-hover:scale-x-100'
@@ -384,7 +395,7 @@ const Header = () => {
                     {item.name}
                     <span
                       aria-hidden="true"
-                      className={`absolute -bottom-0.5 left-1 right-1 h-0.5 origin-left bg-hhp-gold transition-transform duration-300 ease-out-expo sm:left-2 sm:right-2 ${
+                      className={`absolute -bottom-0.5 left-1 right-1 h-0.5 origin-left bg-brand transition-transform duration-300 ease-out-expo sm:left-2 sm:right-2 ${
                         location.pathname === item.href
                           ? 'scale-x-100'
                           : 'scale-x-0 group-hover:scale-x-100'
@@ -400,7 +411,7 @@ const Header = () => {
               to={contactCTA.href}
               className={`flex min-h-[40px] items-center justify-center rounded px-4 py-2 text-sm font-semibold leading-tight transition-colors duration-200 sm:px-5 ${
                 isTransparent
-                  ? 'bg-white text-hhp-navy hover:bg-hhp-gold hover:text-hhp-navy-deep'
+                  ? 'bg-white text-hhp-navy hover:bg-brand hover:text-hhp-navy-deep'
                   : 'bg-brand text-white hover:bg-brand-hover'
               }`}
               onClick={() => {
@@ -480,7 +491,7 @@ const Header = () => {
                     <div>
                       <div className="flex items-center justify-between">
                         <button
-                          className="flex min-h-[52px] flex-1 items-center py-3 text-left font-display text-lg font-semibold text-hhp-navy transition-colors duration-200 hover:text-hhp-gold"
+                          className="flex min-h-[52px] flex-1 items-center py-3 text-left font-display text-lg font-semibold text-hhp-navy transition-colors duration-200 hover:text-brand"
                           onClick={() => {
                             // The label navigates to the tab's landing page; the
                             // chevron beside it expands the accordion.
@@ -529,7 +540,7 @@ const Header = () => {
                   ) : (
                     <Link
                   to={item.href}
-                  className="flex min-h-[52px] flex-1 items-center py-3 text-left font-display text-lg font-semibold text-hhp-navy transition-colors duration-200 hover:text-hhp-gold"
+                  className="flex min-h-[52px] flex-1 items-center py-3 text-left font-display text-lg font-semibold text-hhp-navy transition-colors duration-200 hover:text-brand"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     trackNavigationClick(item.name);

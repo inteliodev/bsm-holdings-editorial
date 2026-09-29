@@ -4,24 +4,47 @@ import Layout from '@/components/Layout/Layout';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 import ServiceAreaSection from '@/components/ServiceAreaSection';
 import LocalBusinessSchema from '@/components/LocalBusinessSchema';
-import { PropertyCarousel } from '@/components/properties/PropertyCarousel';
+import { ListingCard } from '@/components/properties/ListingCard';
+import { OwnerInquiryForm } from '@/components/OwnerInquiryForm';
 import { listings } from '@/data/listings';
-import { useTimeOfDay } from '@/hooks/useTimeOfDay';
+import { AnimatedCard } from '@/components/AnimatedCard';
+
+const SERVICES = [
+  {
+    n: '01',
+    title: 'Leasing',
+    body: 'Property marketing, applicant screening, lease preparation, and renewals.',
+  },
+  {
+    n: '02',
+    title: 'Rent Collection',
+    body: 'Rent collection, payment tracking, and follow-up on outstanding balances.',
+  },
+  {
+    n: '03',
+    title: 'Maintenance',
+    body: 'Coordination of resident requests, repairs, and preparation between tenants.',
+  },
+  {
+    n: '04',
+    title: 'Financial Reporting',
+    body: 'Monthly statements showing property income and expenses.',
+  },
+];
 
 const Home = () => {
-  const timeOfDay = useTimeOfDay();
+  const featured = listings.filter((l) => l.featured).slice(0, 3);
 
   return (
     <Layout>
       <LocalBusinessSchema />
-      {/* Hero Section — fixed in viewport, content scrolls over it */}
+      {/* Hero — video as atmosphere; copy left-aligned over navy panel */}
       <section
-        className="fixed inset-0 w-full h-screen min-h-[600px] z-0 overflow-hidden bg-black"
+        className="fixed inset-0 z-0 h-screen min-h-[600px] w-full overflow-hidden bg-brand-deep"
         aria-label="Hero"
       >
-        {/* Video background — stays fixed */}
         <video
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 h-full w-full scale-105 object-cover opacity-55"
           autoPlay
           loop
           muted
@@ -34,62 +57,24 @@ const Home = () => {
         >
           <source src="/images/HeroHomePageHHP.mp4" type="video/mp4" />
         </video>
-        {/*
-          Layered scrim. A flat bg-black/40 dimmed the footage uniformly, which
-          muddied the middle of the frame while still leaving the top and bottom
-          edges too light for white type. This keeps the centre of the video open
-          and weights the darkness where the text and the fold actually sit.
-        */}
-        <div className="absolute inset-0 z-10 scrim-hero" aria-hidden="true" />
-        {/* Tint keyed to the real hour in Oklahoma, so the hero is lit the same
-            way the Portfolio map's campus is at that moment. */}
-        <div className={`absolute inset-0 z-10 scrim-tod scrim-tod-${timeOfDay}`} aria-hidden="true" />
-        {/* Hero content */}
-        <div className="absolute inset-0 z-20 flex items-center justify-center">
-          <div className="container-premium text-center px-4 sm:px-6">
-            <div className="max-w-4xl mx-auto">
-              <div className="mb-6 sm:mb-8 md:mb-10 flex justify-center">
-                {/*
-                  Apparel White from the brand kit: a genuinely solid #FFFFFF mark on
-                  a transparent, tight artboard. This is the variant the raster set
-                  never had — its "white" PNG was a hollow outline padded inside a
-                  1024² canvas, which is why it read small and washed over the video.
-                */}
-                <img
-                  src="/brand/vector/BSM_Logo.png"
-                  alt="BSM Holdings"
-                  width={509}
-                  height={177}
-                  className="h-18 sm:h-24 md:h-28 lg:h-32 xl:h-36 w-auto object-contain drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]" loading="eager" decoding="async" fetchPriority="high" />
-              </div>
-              {/*
-                The page previously had no <h1> at all — the logo image and this
-                tagline were the whole hero, and the first heading in the document was
-                the <h2> "Our approach" further down. The tagline alone also never
-                said what BSM Holdings does or who for.
-              */}
-              {/*
-                The brand line is the <h1>. The page previously had no h1 at all —
-                the logo image and this line were the whole hero — which left the
-                most important page in the site with no top-level heading.
-              */}
-              {/*
-                Asset management is the umbrella the rest of the firm sits
-                under, so it is what the hero leads with.
-              */}
-              <span className="eyebrow mb-5 text-white/85 drop-shadow-[0_1px_6px_rgba(0,0,0,0.7)]">
-                Property Management
-              </span>
-              <h1 className="normal-case font-display font-semibold text-display-lg text-white mb-5 sm:mb-6 px-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]">
-                Residential Property Management in Oklahoma City
+        <div className="absolute inset-0 z-10 scrim-hero-editorial" aria-hidden="true" />
+
+        <div className="absolute inset-0 z-20 flex items-center">
+          <div className="container-premium w-full px-4 sm:px-6">
+            <div className="max-w-xl lg:max-w-2xl">
+              <h1 className="hero-title normal-case text-white">
+                Residential Property Management
+                <br className="hidden sm:block" />
+                <span className="sm:block"> in Oklahoma City</span>
               </h1>
-              <p className="mx-auto mb-7 max-w-2xl text-base leading-relaxed text-white/90 sm:mb-8 sm:text-lg drop-shadow-[0_1px_6px_rgba(0,0,0,0.55)]">
-                We handle leasing, rent collection, maintenance, and financial reporting for rental property owners throughout the Oklahoma City metro.
+              <p className="mt-5 max-w-lg text-base leading-relaxed text-white/85 sm:mt-6 sm:text-lg">
+                We handle leasing, rent collection, maintenance, and financial reporting
+                for rental property owners throughout the Oklahoma City metro.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center items-center">
+              <div className="mt-7 flex flex-col items-start gap-4 sm:mt-8 sm:flex-row sm:items-center">
                 <Link
                   to="/contact"
-                  className="inline-flex min-h-[52px] w-auto items-center justify-center rounded-none bg-white px-8 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.08em] text-hhp-navy shadow-elegant transition-all duration-300 hover:bg-hhp-gold hover:text-hhp-navy-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hhp-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
+                  className="btn-hero"
                   onClick={() => {
                     trackButtonClick('request_a_proposal', 'home_hero');
                     trackLinkClick('Request a Proposal', '/contact');
@@ -99,201 +84,247 @@ const Home = () => {
                 </Link>
                 <Link
                   to="/portfolio"
-                  className="inline-flex min-h-[52px] w-auto items-center justify-center rounded-none border border-white/70 px-8 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.08em] text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-hhp-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
+                  className="tap group inline-flex items-center gap-2 text-sm font-semibold text-white/85 transition-colors hover:text-white"
                   onClick={() => {
                     trackButtonClick('view_available_rentals', 'home_hero');
                     trackLinkClick('View Available Rentals', '/portfolio');
                   }}
                 >
                   View Available Rentals
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Scroll cue — the hero fills the viewport with no indication that
-            anything follows it. */}
         <div
           className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-3"
           aria-hidden="true"
         >
-          <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/45">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40">
             Scroll
           </span>
-          <span className="block h-12 w-px overflow-hidden bg-white/20">
-            <span className="block h-4 w-px animate-[scrollCue_2.4s_ease-in-out_infinite] bg-hhp-gold" />
+          <span className="block h-10 w-px overflow-hidden bg-white/20">
+            <span className="block h-3 w-px animate-[scrollCue_2.4s_ease-in-out_infinite] bg-white/70" />
           </span>
         </div>
       </section>
 
-      {/* Spacer so content starts below viewport — hero stays fixed behind.
-          `pointer-events-none` is load-bearing, not tidying: the hero is
-          `fixed inset-0 z-0` and this sits later in DOM order at the same
-          z-index, so it painted on top of the hero and swallowed the clicks on
-          all three hero CTAs. They looked and hovered like links and did
-          nothing. The spacer only needs to occupy height. */}
       <div
         className="pointer-events-none relative z-0 h-screen min-h-[600px] w-full"
         aria-hidden="true"
       />
 
-      {/* Content that scrolls up over the fixed hero */}
-      <div className="relative z-30">
+      <div className="relative z-30 bg-background">
+        {/* Who We Are + What We Handle — tighter relationship */}
+        <section className="bg-background pb-8 pt-12 sm:pb-10 sm:pt-16 lg:pt-20">
+          <div className="container-premium">
+            <AnimatedCard distance={16}>
+              <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
+                <div className="lg:col-span-5">
+                  <h2 className="section-title text-hhp-navy">Who We Are</h2>
+                </div>
+                <div className="lg:col-span-7">
+                  <p className="text-lg leading-relaxed text-hhp-charcoal">
+                    BSM Holdings manages single-family homes, duplexes, townhomes, and
+                    apartments throughout the Oklahoma City metro. Our team handles daily
+                    operations, supports residents, and keeps owners informed — with a
+                    direct point of contact for questions and updates.
+                  </p>
+                  <Link
+                    to="/about"
+                    className="tap group mt-6 inline-flex items-center gap-2 font-display font-semibold text-brand transition-colors hover:text-brand-deep"
+                    onClick={() => {
+                      trackButtonClick('about_bsm', 'who_we_are');
+                      trackLinkClick('About BSM Holdings', '/about');
+                    }}
+                  >
+                    About BSM Holdings
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+            </AnimatedCard>
+          </div>
+        </section>
 
-      {/* Who We Are + Our Approach — combined for a cleaner post-hero section. */}
-      <section className="bg-white py-14 sm:py-20 lg:py-24">
-        <div className="container-premium">
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-5">
-              <h2 className="section-title text-hhp-navy">
-                Who We Are
-              </h2>
-            </div>
-
-            <div className="lg:col-span-7">
-              <div className="space-y-5 text-lg leading-relaxed text-hhp-charcoal">
-                <p>
-                  BSM Holdings manages single-family homes, duplexes, townhomes, and apartments throughout the Oklahoma City metro. Our team handles daily operations, supports residents, and keeps owners informed — with a direct point of contact for questions and updates.
+        {/* Services — split layout */}
+        <section className="bg-background pb-12 pt-4 sm:pb-16 sm:pt-6 lg:pb-20">
+          <div className="container-premium">
+            <AnimatedCard distance={16}>
+              <div className="mb-8 max-w-2xl sm:mb-10">
+                <h2 className="section-title text-hhp-navy">What We Handle</h2>
+                <p className="mt-3 text-lg leading-relaxed text-hhp-charcoal">
+                  Day-to-day responsibilities of owning rental property in the Oklahoma
+                  City metro.
                 </p>
               </div>
 
-              <Link
-                to="/about"
-                className="tap group mt-8 inline-flex items-center gap-2 font-display font-semibold text-hhp-navy transition-colors hover:text-hhp-gold"
-                onClick={() => {
-                  trackButtonClick('about_bsm', 'who_we_are');
-                  trackLinkClick('About BSM Holdings', '/about');
-                }}
-              >
-                About BSM Holdings
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+              <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-12">
+                <div className="lg:col-span-5">
+                  <div className="card-media relative h-full min-h-[280px] overflow-hidden rounded border border-border bg-surface-sunken sm:min-h-[360px]">
+                    <img
+                      src="/images/property-management-picture.webp"
+                      alt="Residential property managed with care"
+                      className="absolute inset-0 h-full w-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
 
-      {/* Property Management focus — four service summaries */}
-      <section className="bg-white pt-12 pb-8 sm:pt-16 sm:pb-10 lg:pt-20 lg:pb-12">
-        <div className="container-premium">
-          <div className="mb-10 max-w-3xl">
-            <span className="eyebrow mb-5">Property Management</span>
-            <h2 className="section-title text-hhp-navy mb-5">
-              What We Handle
-            </h2>
-            <p className="text-lg leading-relaxed text-hhp-charcoal">
-              Day-to-day responsibilities of owning rental property in the Oklahoma City metro.
-            </p>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                title: 'Leasing',
-                body: 'Property marketing, applicant screening, lease preparation, and renewals.',
-              },
-              {
-                title: 'Rent Collection',
-                body: 'Rent collection, payment tracking, and follow-up on outstanding balances.',
-              },
-              {
-                title: 'Maintenance',
-                body: 'Coordination of resident requests, repairs, and preparation between tenants.',
-              },
-              {
-                title: 'Financial Reporting',
-                body: 'Monthly statements showing property income and expenses.',
-              },
-            ].map((item) => (
-              <div key={item.title} className="border border-border bg-surface p-6">
-                <h3 className="font-display text-lg font-semibold text-hhp-navy">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-base leading-relaxed text-hhp-charcoal">
-                  {item.body}
-                </p>
+                <div className="flex flex-col lg:col-span-7">
+                  <ul className="divide-y divide-border border-y border-border">
+                    {SERVICES.map((item) => (
+                      <li key={item.title} className="flex gap-4 py-5 sm:gap-5 sm:py-6">
+                        <span className="mt-0.5 font-display text-sm font-semibold tabular-nums text-brand">
+                          {item.n}
+                        </span>
+                        <div>
+                          <h3 className="font-display text-lg font-semibold text-hhp-navy">
+                            {item.title}
+                          </h3>
+                          <p className="mt-1.5 text-base leading-relaxed text-hhp-charcoal">
+                            {item.body}
+                          </p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    to="/services/property-management"
+                    className="tap group mt-6 inline-flex items-center gap-2 font-display font-semibold text-brand transition-colors hover:text-brand-deep"
+                    onClick={() => {
+                      trackButtonClick('explore_services', 'home_pm');
+                      trackLinkClick('Explore Our Services', '/services/property-management');
+                    }}
+                  >
+                    Explore Our Services
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                </div>
               </div>
-            ))}
+            </AnimatedCard>
           </div>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Link
-              to="/contact"
-              className="btn-hero"
-              onClick={() => {
-                trackButtonClick('pm_focus_cta', 'home_pm');
-                trackLinkClick('Request a Proposal', '/contact');
-              }}
-            >
-              Request a Proposal
-            </Link>
-            <Link
-              to="/services/property-management"
-              className="btn-secondary"
-              onClick={() => {
-                trackButtonClick('pm_focus_how', 'home_pm');
-                trackLinkClick('How we manage', '/services/property-management');
-              }}
-            >
-              How we manage
-            </Link>
+        </section>
+
+        {/* Featured rentals — stable 3-column grid, no autoplay carousel */}
+        <section className="bg-surface-sunken py-12 sm:py-16 lg:py-20">
+          <div className="container-premium">
+            <AnimatedCard distance={16}>
+              <div className="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <h2 className="section-title text-hhp-navy">Available Rentals</h2>
+                  <p className="mt-2 text-base text-hhp-charcoal/80">
+                    A few homes currently featured in the Oklahoma City metro.
+                  </p>
+                </div>
+                <Link
+                  to="/portfolio"
+                  className="tap group inline-flex items-center gap-2 font-display font-semibold text-brand transition-colors hover:text-brand-deep"
+                  onClick={() => {
+                    trackButtonClick('home_all_properties', 'home_featured');
+                    trackLinkClick('View All Rentals', '/portfolio');
+                  }}
+                >
+                  View All Rentals
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+              </div>
+
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {featured.map((listing) => (
+                  <ListingCard
+                    key={listing.id}
+                    listing={listing}
+                    className="h-full max-w-none"
+                  />
+                ))}
+              </div>
+            </AnimatedCard>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Featured listings — same card layout as Available Rentals */}
-      <section className="bg-surface pt-12 pb-10 sm:pt-16 sm:pb-12 lg:pt-20 lg:pb-16">
-        <div className="container-premium">
-          <div className="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <span className="eyebrow mb-4">Featured</span>
-              <h2 className="section-title text-hhp-navy">Available Rentals</h2>
-            </div>
-            <Link
-              to="/portfolio"
-              className="tap group inline-flex items-center gap-2 font-display font-semibold text-hhp-navy transition-colors hover:text-hhp-gold"
-              onClick={() => {
-                trackButtonClick('home_all_properties', 'home_featured');
-                trackLinkClick('All rentals', '/portfolio');
-              }}
-            >
-              All rentals
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
+        <ServiceAreaSection
+          background="white"
+          intro="We manage residential properties in Oklahoma City, Edmond, Norman, Moore, Yukon, and surrounding communities."
+        />
+
+        {/* Who owners work with — real Ty headshot already in repo */}
+        <section className="bg-surface-sunken py-12 sm:py-16 lg:py-20">
+          <div className="container-premium">
+            <AnimatedCard distance={16}>
+              <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+                <div className="lg:col-span-4">
+                  <div className="mx-auto aspect-square max-w-[280px] overflow-hidden rounded border border-border bg-white lg:mx-0 lg:max-w-none">
+                    <img
+                      src="/brand/ty-headshot.png"
+                      alt="Ty McClellan, Principal of BSM Holdings"
+                      className="h-full w-full object-cover object-top"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+                <div className="lg:col-span-8">
+                  <h2 className="section-title text-hhp-navy">Who owners work with</h2>
+                  <p className="mt-2 font-display text-lg font-semibold text-hhp-navy">
+                    Ty McClellan
+                  </p>
+                  <p className="text-sm font-medium text-brand">Principal</p>
+                  <p className="mt-4 max-w-xl text-lg leading-relaxed text-hhp-charcoal">
+                    Ty works directly with owners and residents — clear reporting,
+                    responsive maintenance coordination, and straightforward communication
+                    across the Oklahoma City metro.
+                  </p>
+                  <Link
+                    to="/about"
+                    className="tap group mt-6 inline-flex items-center gap-2 font-display font-semibold text-brand transition-colors hover:text-brand-deep"
+                    onClick={() => {
+                      trackButtonClick('meet_the_team', 'home_people');
+                      trackLinkClick('About BSM Holdings', '/about');
+                    }}
+                  >
+                    About BSM Holdings
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+            </AnimatedCard>
           </div>
-          <PropertyCarousel
-            listings={listings.filter((l) => l.featured).slice(0, 6)}
-          />
-        </div>
-      </section>
+        </section>
 
-            <ServiceAreaSection
-              intro="We manage residential properties in Oklahoma City, Edmond, Norman, Moore, Yukon, and surrounding communities."
-            />
-
-      {/* Closing CTA */}
-      <section className="bg-white py-12 sm:py-16 lg:py-20">
-        <div className="container-premium">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="section-title text-hhp-navy">
-              Looking for Property Management?
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-hhp-charcoal">
-              Contact BSM Holdings to discuss your rental property, management needs, and fees.
-            </p>
-            <Link
-              to="/contact"
-              className="btn-hero mt-8 inline-flex"
-              onClick={() => {
-                trackButtonClick('request_a_proposal', 'home_closing');
-                trackLinkClick('Request a Proposal', '/contact');
-              }}
-            >
-              Request a Proposal
-            </Link>
+        {/* Pre-footer owner inquiry */}
+        <section className="bg-background py-12 sm:py-16 lg:py-20">
+          <div className="container-premium">
+            <AnimatedCard distance={16}>
+              <div className="mx-auto grid max-w-5xl gap-8 rounded border border-border bg-white p-6 sm:p-8 lg:grid-cols-12 lg:gap-12 lg:p-10">
+                <div className="lg:col-span-5">
+                  <h2 className="section-title text-hhp-navy">
+                    Looking for Property Management?
+                  </h2>
+                  <p className="mt-4 text-base leading-relaxed text-hhp-charcoal sm:text-lg">
+                    Tell us about your rental property. We will follow up with a clear
+                    proposal for management in the Oklahoma City metro.
+                  </p>
+                  <p className="mt-4 text-sm text-hhp-charcoal/70">
+                    Prefer email?{' '}
+                    <a
+                      href="mailto:ty@bsmholdings.com"
+                      className="font-medium text-brand hover:text-brand-deep"
+                    >
+                      ty@bsmholdings.com
+                    </a>
+                  </p>
+                </div>
+                <div className="relative lg:col-span-7">
+                  <OwnerInquiryForm />
+                </div>
+              </div>
+            </AnimatedCard>
           </div>
-        </div>
-      </section>
-
+        </section>
       </div>
     </Layout>
   );

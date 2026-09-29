@@ -7,7 +7,7 @@ type Props = {
   autoplayMs?: number;
 };
 
-export function PropertyCarousel({ listings, autoplayMs = 5500 }: Props) {
+export function PropertyCarousel({ listings, autoplayMs = 0 }: Props) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -119,7 +119,7 @@ export function PropertyCarousel({ listings, autoplayMs = 5500 }: Props) {
               onClick={() => scrollToIndex(i)}
               className={`h-1.5 rounded-[1px] transition-all focus-ring ${
                 i === index
-                  ? 'w-8 bg-gradient-to-r from-brand to-silver'
+                  ? 'w-8 bg-brand'
                   : 'w-3 bg-silver-deep/60 hover:bg-brand/50'
               }`}
             />

@@ -1,69 +1,25 @@
-import { useState, useEffect } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout/Layout';
-import { Mail, ChevronDown, ChevronUp } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 
 const tyImage = '/brand/ty-headshot.png';
+/** Local residential exterior — not claimed as BSM-managed inventory. */
+const ABOUT_HERO = '/images/properties/grounds-oak-tree.webp';
 
-/**
- * The team, grouped by department.
- *
- * Was three hand-written cards, ~150 lines of identical markup repeated with
- * different names — which is why the roster could not grow without copying the
- * block again. Adding, moving or retitling anyone is now a data edit.
- *
- * `image` and `bio` are both optional by design. Following the Robinson Park
- * pattern, someone without a headshot is listed exactly like everyone else —
- * name, title, email — with no grey silhouette and no initials avatar, so a
- * missing photo does not read as a broken card. That lets people go live before
- * their headshot exists.
- */
-type Member = {
-  id: string;
-  name: string;
-  title: string;
-  email?: string;
-  image?: string;
-  bio?: string[];
+const PRINCIPAL = {
+  name: 'Ty McClellan',
+  title: 'Principal',
+  email: 'ty@bsmholdings.com',
+  image: tyImage,
+  bio: [
+    'Ty McClellan is Principal of BSM Holdings, a residential property management firm serving the Oklahoma City metro.',
+    'Ty works directly with owners and residents — clear reporting, responsive maintenance coordination, and straightforward communication.',
+  ],
 };
 
-type Department = {
-  name: string;
-  members: Member[];
-};
-
-const TEAM: Department[] = [
-  {
-    name: 'Leadership',
-    members: [
-      {
-        id: 'ty',
-        name: 'Ty McClellan',
-        title: 'Principal',
-        email: 'ty@bsmholdings.com',
-        image: tyImage,
-        bio: [
-          "Ty McClellan is Principal of BSM Holdings, a residential property management firm serving the Oklahoma City metro.",
-          "Ty works directly with owners and residents — clear reporting, responsive maintenance coordination, and straightforward communication.",
-        ],
-      },
-    ],
-  },
-];
-
 /**
- * Operating principles.
- *
- * Previously four copy-pasted grey boxes. Lifted into data so the layout is
- * defined once, and so a fourth entry with only a lead line does not need its
- * own markup shape.
- *
- * The first principle was headed "Brokerage-First Strategy" and opened "Our
- * brokerage foundation ensures...". CLAUDE.md is explicit that asset management
- * is the umbrella and that brokerage is a supporting capability, never a
- * headline, so the framing is corrected here. No claim was added or removed —
- * the underwriting and market-work substance is unchanged.
+ * Three operating principles drawn from existing accurate copy.
  */
 const OPERATING_PRINCIPLES = [
   {
@@ -81,367 +37,180 @@ const OPERATING_PRINCIPLES = [
     lead: 'Monthly statements and notes owners can act on.',
     body: 'Occupancy, collections, expenses, and open items are easy to follow.',
   },
-  {
-    title: 'Long-Term Stewardship',
-    lead: 'We succeed when homes stay occupied, residents are treated fairly, and owners understand the results.',
-    body: null,
-  },
 ];
 
 const About = () => {
-  const location = useLocation();
-  const [activeTab, setActiveTab] = useState<'people' | 'story' | 'approach'>('people');
-  const [expandedBios, setExpandedBios] = useState<{[key: string]: boolean}>({});
-
-  // Handle URL hash on mount and when location changes
-  useEffect(() => {
-    const hash = location.hash.replace('#', '');
-    if (hash === 'people' || hash === 'story' || hash === 'approach') {
-      setActiveTab(hash as 'people' | 'story' | 'approach');
-    }
-  }, [location]);
-
-  // Update URL hash when tab changes
-  const handleTabChange = (tab: 'people' | 'story' | 'approach') => {
-    setActiveTab(tab);
-    window.history.replaceState(null, '', `#${tab}`);
-  };
-
-  const toggleBio = (memberId: string) => {
-    setExpandedBios(prev => ({
-      ...prev,
-      [memberId]: !prev[memberId]
-    }));
-  };
-
   return (
     <Layout>
-      {/* Split Hero Section - Robinson Park Style */}
-      <section className="flex flex-col md:h-[600px] md:flex-row">
-        {/* LEFT SIDE - Text & Navy Background */}
-        <div className="flex w-full items-center justify-start bg-brand px-6 py-14 sm:px-8 md:w-[45%] md:py-0 lg:w-[40%] lg:px-12">
+      {/* Intro — compact split; local property imagery (not NY skyline) */}
+      <section className="flex flex-col md:min-h-[420px] md:flex-row">
+        <div className="flex w-full items-center justify-start bg-brand-deep px-6 py-12 sm:px-8 md:w-[42%] md:py-16 lg:px-12">
           <div className="max-w-md">
             <span className="eyebrow eyebrow-bare text-hhp-gold-soft">About</span>
-            <h1 className="hero-title mb-5 mt-4 text-white">About Us</h1>
-            {/*
-              Previously "delivering disciplined brokerage, property management,
-              and advisory services" — a brokerage-first enumeration in which
-              asset management did not appear at all. Reworded to match the
-              language already used in the meta description and the
-              LocalBusiness structured data.
-            */}
+            <h1 className="hero-title mb-4 mt-4 text-white">About Us</h1>
             <p className="text-base leading-relaxed text-white/75 sm:text-lg">
               Residential property management in the Oklahoma City metro — clear owner
               reporting and direct resident support.
             </p>
           </div>
         </div>
-
-        {/* RIGHT SIDE - Background Image.
-            Was `hidden md:block`, so on a phone this hero was a flat navy
-            rectangle with no imagery at all. */}
         <div
-          className="relative min-h-[260px] w-full flex-1 bg-cover bg-center bg-no-repeat sm:min-h-[320px] md:min-h-0 md:w-[55%] lg:w-[60%]"
-          style={{ backgroundImage: 'url(/images/cool-real-estate-about-us-image.jpg)' }}
+          className="relative min-h-[240px] w-full flex-1 bg-cover bg-center bg-no-repeat sm:min-h-[300px] md:min-h-0 md:w-[58%]"
+          style={{ backgroundImage: `url(${ABOUT_HERO})` }}
           role="img"
-          aria-label="BSM-managed residential property"
+          aria-label="Oklahoma residential property exterior"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-hhp-navy/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-deep/25 to-transparent" />
         </div>
       </section>
 
-      {/* Tabbed Content Section */}
-      <section className="bg-white py-12 lg:py-16">
+      {/* Principal + bio (shown immediately — no toggle) */}
+      <section className="bg-background py-14 sm:py-16 lg:py-20">
         <div className="container-premium">
-          {/* Tab Navigation */}
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 border-b border-border pb-4" role="tablist" aria-label="About BSM Holdings sections">
-            <button
-              onClick={() => handleTabChange('people')}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  handleTabChange('people');
-                }
-              }}
-              id="tab-people"
-              className={`px-6 py-3 text-base font-medium transition-all duration-300 relative ${
-                activeTab === 'people'
-                  ? 'text-hhp-navy'
-                  : 'text-hhp-charcoal hover:text-hhp-navy'
-              }`}
-              aria-selected={activeTab === 'people'}
-              aria-controls="panel-people"
-              role="tab"
-            >
-              Our People
-              {activeTab === 'people' && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand transform transition-all duration-300" />
-              )}
-            </button>
-            <button
-              onClick={() => handleTabChange('story')}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  handleTabChange('story');
-                }
-              }}
-              id="tab-story"
-              className={`px-6 py-3 text-base font-medium transition-all duration-300 relative ${
-                activeTab === 'story'
-                  ? 'text-hhp-navy'
-                  : 'text-hhp-charcoal hover:text-hhp-navy'
-              }`}
-              aria-selected={activeTab === 'story'}
-              aria-controls="panel-story"
-              role="tab"
-            >
-              Why BSM Holdings
-              {activeTab === 'story' && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand transform transition-all duration-300" />
-              )}
-            </button>
-            <button
-              onClick={() => handleTabChange('approach')}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  handleTabChange('approach');
-                }
-              }}
-              id="tab-approach"
-              className={`px-6 py-3 text-base font-medium transition-all duration-300 relative ${
-                activeTab === 'approach'
-                  ? 'text-hhp-navy'
-                  : 'text-hhp-charcoal hover:text-hhp-navy'
-              }`}
-              aria-selected={activeTab === 'approach'}
-              aria-controls="panel-approach"
-              role="tab"
-            >
-              Our Approach
-              {activeTab === 'approach' && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand transform transition-all duration-300" />
-              )}
-            </button>
+          <div className="mx-auto grid max-w-5xl items-start gap-10 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-5">
+              <img
+                src={PRINCIPAL.image}
+                alt={`${PRINCIPAL.name}, ${PRINCIPAL.title}`}
+                className="aspect-[4/5] w-full max-w-md border border-border object-cover object-top bg-surface"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+            <div className="lg:col-span-7 lg:pt-2">
+              <span className="eyebrow">Leadership</span>
+              <h2 className="mt-4 font-display text-display-md font-semibold text-hhp-navy">
+                {PRINCIPAL.name}
+              </h2>
+              <p className="mt-1 text-base font-medium italic text-hhp-navy/80">
+                {PRINCIPAL.title}
+              </p>
+              <a
+                href={`mailto:${PRINCIPAL.email}`}
+                className="tap mt-4 inline-flex items-center gap-2 text-sm font-medium text-hhp-navy transition-colors hover:text-brand"
+              >
+                <Mail className="h-4 w-4" aria-hidden="true" />
+                {PRINCIPAL.email}
+              </a>
+              <div className="mt-8 space-y-4 text-lg leading-relaxed text-hhp-charcoal">
+                {PRINCIPAL.bio.map((paragraph) => (
+                  <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Company story — existing accurate copy only */}
+      <section className="border-t border-border bg-white py-14 sm:py-16 lg:py-20">
+        <div className="container-premium">
+          <div className="mx-auto max-w-3xl">
+            <span className="eyebrow">Our story</span>
+            <h2 className="section-title mt-4 text-hhp-navy">Why BSM Holdings</h2>
+            <div className="mt-8 space-y-5 text-lg leading-relaxed text-hhp-charcoal">
+              <p>
+                BSM Holdings manages single-family homes, duplexes, townhomes,
+                and apartments throughout the Oklahoma City metro. Our team
+                handles daily operations, supports residents, and keeps owners
+                informed about their properties.
+              </p>
+              <p>
+                We focus on the work that keeps rental properties running:
+                finding tenants, collecting rent, coordinating repairs, and
+                maintaining accurate financial records. Our management team
+                coordinates repairs and keeps owners informed about costs and
+                progress.
+              </p>
+              <p>
+                Owners have a direct point of contact for clear reporting and
+                resident support.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Operating principles */}
+      <section className="bg-surface py-14 sm:py-16 lg:py-20">
+        <div className="container-premium">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="eyebrow eyebrow-bare justify-center">Operating principles</span>
+            <h2 className="section-title mt-4 text-hhp-navy">How we operate</h2>
+            <p className="mt-5 text-lg leading-relaxed text-hhp-charcoal">
+              Leasing, operations, maintenance, and accounting are handled by
+              the same team. Owners see occupancy, collections, budget
+              variances, and open items as they change.
+            </p>
           </div>
 
-          {/* Tab Content */}
-          <div 
-            className="transition-opacity duration-300 pt-6" 
-            role="tabpanel"
-            id={`panel-${activeTab}`}
-            aria-labelledby={`tab-${activeTab}`}
-          >
-            {/* Tab 1: Our People */}
-            {activeTab === 'people' && (
-              <div className="fade-in animate-in fade-in duration-300">
-                <div className="space-y-16">
-                  {TEAM.map((department) => (
-                    <div key={department.name}>
-                      <div className="mb-8 border-b border-border pb-5">
-                        <span className="eyebrow">{department.name}</span>
-                      </div>
-
-                      {/* items-start so a card without a headshot sizes to its
-                          own content instead of stretching to match a card that
-                          has one, which left a large empty panel beneath it.
-
-                          The portrait is exactly as wide as its grid track, so
-                          the column ladder — not the image — is what sets the
-                          headshot size. The old ladder peaked at ~454px in the
-                          md range and ~400px at xl, which read as a feature
-                          gallery rather than a roster. This keeps every card
-                          between roughly 215px and 365px. */}
-                      <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 lg:gap-10">
-                        {department.members.map((member) => (
-                          <div
-                            key={member.id}
-                            /* The portrait runs edge to edge; every other direct
-                               child is inset, which avoids restructuring the
-                               card's internals. */
-                            className="platform-card-hover flex flex-col overflow-hidden border border-border bg-white pb-6 [&>*:not(img)]:px-6 [&>h3]:mt-6"
-                          >
-                            {member.image ? (
-                              <img
-                                src={member.image}
-                                alt={`${member.name}, ${member.title}`}
-                                className="aspect-[4/5] w-full bg-surface object-cover object-top"
-                                loading="lazy"
-                                decoding="async"
-                              />
-                            ) : (
-                              /* No placeholder portrait by design — an empty
-                                 frame or an initials circle reads as a broken
-                                 card. The entry simply starts at the name. */
-                              <div className="pt-8" />
-                            )}
-
-                            <h3 className="mb-1 text-center font-display text-xl font-semibold text-hhp-navy">
-                              {member.name}
-                            </h3>
-                            <h4 className="mb-4 text-center text-base font-medium italic text-hhp-navy">
-                              {member.title}
-                            </h4>
-
-                            {member.email && (
-                              <div className="mb-5 flex items-center justify-center space-x-2">
-                                <Mail className="h-4 w-4 text-hhp-navy" />
-                                <a
-                                  href={`mailto:${member.email}`}
-                                  className="tap text-sm font-medium text-hhp-navy transition-colors duration-200 hover:text-hhp-navy/80"
-                                >
-                                  {member.email}
-                                </a>
-                              </div>
-                            )}
-
-                            {member.bio && (
-                              <>
-                                <button
-                                  onClick={() => toggleBio(member.id)}
-                                  className="flex items-center justify-center space-x-2 text-sm text-hhp-navy transition-colors duration-200 hover:text-hhp-navy/80"
-                                  aria-expanded={Boolean(expandedBios[member.id])}
-                                >
-                                  <span>{expandedBios[member.id] ? 'Hide Bio' : 'View Bio'}</span>
-                                  {expandedBios[member.id] ? (
-                                    <ChevronUp className="h-4 w-4" />
-                                  ) : (
-                                    <ChevronDown className="h-4 w-4" />
-                                  )}
-                                </button>
-
-                                {expandedBios[member.id] && (
-                                  <div className="mt-4 space-y-3 text-sm leading-relaxed text-hhp-charcoal">
-                                    {member.bio.map((paragraph, i) => (
-                                      <p key={i}>{paragraph}</p>
-                                    ))}
-                                  </div>
-                                )}
-                              </>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-
-            {/* Tab 2: Our Story */}
-            {activeTab === 'story' && (
-              <div className="fade-in animate-in fade-in duration-300">
-                <h2 className="section-title text-hhp-navy mb-6 text-center">Why BSM Holdings</h2>
-                <div className="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed text-hhp-charcoal">
-                  <p>
-                    BSM Holdings manages single-family homes, duplexes, townhomes,
-                    and apartments throughout the Oklahoma City metro. Our team
-                    handles daily operations, supports residents, and keeps owners
-                    informed about their properties.
-                  </p>
-                  <p>
-                    We focus on the work that keeps rental properties running:
-                    finding tenants, collecting rent, coordinating repairs, and
-                    maintaining accurate financial records. Our management team
-                    coordinates repairs and keeps owners informed about costs and
-                    progress.
-                  </p>
-                  <p>
-                    Owners have a direct point of contact for clear reporting and
-                    resident support.
-                  </p>
-                </div>
-              </div>
-            )}
-
-            {/* Tab 3: Our Approach */}
-            {activeTab === 'approach' && (
-              <div className="fade-in animate-in fade-in duration-300">
-                <div className="mx-auto max-w-3xl text-center">
-                  <span className="eyebrow eyebrow-bare">Our Approach</span>
-                  <h2 className="section-title mt-5 text-hhp-navy">
-                    Day-to-day management with clear reporting
-                  </h2>
-                  <p className="mt-6 text-lg leading-relaxed text-hhp-charcoal">
-                    Leasing, operations, maintenance, and accounting are handled by
-                    the same team. Owners see occupancy, collections, budget
-                    variances, and open items as they change, with clear notes on
-                    what moved and what&apos;s next.
-                  </p>
-                </div>
-
-                <div className="mx-auto mt-14 max-w-3xl text-center md:mt-16">
-                  <span className="eyebrow eyebrow-bare">Operating Principles</span>
-                  <h3 className="mt-4 font-display text-2xl font-semibold text-hhp-navy">
-                    How We Operate
+          <ol className="mx-auto mt-12 max-w-4xl border-t border-border">
+            {OPERATING_PRINCIPLES.map((principle, index) => (
+              <li
+                key={principle.title}
+                className="grid grid-cols-1 gap-x-10 gap-y-2 border-b border-border py-8 md:grid-cols-12 md:py-9"
+              >
+                <div className="flex items-start gap-4 md:col-span-4">
+                  <span
+                    aria-hidden="true"
+                    className="font-display text-3xl font-semibold leading-none tracking-tight text-brand/35"
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="pt-1 font-display text-xl font-semibold text-hhp-navy">
+                    {principle.title}
                   </h3>
                 </div>
-
-                {/* Numbered editorial rows rather than four identical grey
-                    boxes. Same language as the scrollytelling models: oversized gold
-                    numeral, hairline rules, no card chrome. */}
-                <ol className="mx-auto mt-12 max-w-5xl border-t border-border md:mt-16">
-                  {OPERATING_PRINCIPLES.map((principle, index) => (
-                    <li
-                      key={principle.title}
-                      className="group grid grid-cols-1 gap-x-10 gap-y-3 border-b border-border py-9 transition-colors duration-300 hover:bg-surface/70 md:grid-cols-12 md:py-11"
-                    >
-                      <div className="flex items-start gap-5 md:col-span-4">
-                        <span
-                          aria-hidden="true"
-                          className="font-display text-4xl font-semibold leading-none tracking-tight text-hhp-gold/30 transition-colors duration-300 group-hover:text-hhp-gold"
-                        >
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
-                        <h3 className="pt-1 font-display text-xl font-semibold text-hhp-navy">
-                          {principle.title}
-                        </h3>
-                      </div>
-                      <div className="md:col-span-8">
-                        <p className="text-lg font-medium leading-relaxed text-hhp-navy">
-                          {principle.lead}
-                        </p>
-                        {principle.body && (
-                          <p className="mt-3 leading-relaxed text-hhp-charcoal/80">
-                            {principle.body}
-                          </p>
-                        )}
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-
-                <p className="mx-auto mt-12 max-w-3xl border-l-2 border-hhp-gold pl-6 text-lg leading-relaxed text-hhp-navy">
-                  This approach governs every engagement, regardless of asset size, market, or
-                  service line.
-                </p>
-              </div>
-            )}
-          </div>
+                <div className="md:col-span-8">
+                  <p className="text-lg font-medium leading-relaxed text-hhp-navy">
+                    {principle.lead}
+                  </p>
+                  <p className="mt-2 leading-relaxed text-hhp-charcoal/80">
+                    {principle.body}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
-
-      {/* Join Our Team */}
-      <section className="bg-brand text-white py-20">
-        <div className="container-premium text-center">
-          <h2 className="section-title text-white mb-4">Join Our Team</h2>
-          <p className="text-lg md:text-xl leading-relaxed text-white/90 max-w-3xl mx-auto mb-10">
-            Interested in residential property management work in the Oklahoma City metro? If you like hands-on operations, clear communication, and taking care of homes and the people who live in them, we want to hear from you.
-          </p>
-          <Link
-            to="/opportunities"
-            className="inline-block bg-white text-hhp-navy px-6 py-3 rounded-lg font-heading font-semibold tracking-[0.06em] uppercase hover:bg-white/90 transition-colors duration-200 w-auto max-w-[300px] sm:max-w-none mx-auto sm:mx-0"
-            aria-label="View Opportunities"
-            onClick={() => {
-              trackButtonClick('view_opportunities', 'about_join_team');
-              trackLinkClick('View Opportunities', '/opportunities');
-            }}
-          >
-            View Opportunities
-          </Link>
+      {/* Modest recruiting close + contact CTA */}
+      <section className="border-t border-border bg-background py-12 sm:py-14">
+        <div className="container-premium">
+          <div className="mx-auto flex max-w-3xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 className="font-display text-xl font-semibold text-hhp-navy sm:text-2xl">
+                Talk with our team
+              </h2>
+              <p className="mt-2 text-base leading-relaxed text-hhp-charcoal">
+                Request a proposal for property management, or see openings if you
+                are interested in joining the team.
+              </p>
+            </div>
+            <div className="flex shrink-0 flex-wrap gap-3">
+              <Link
+                to="/contact"
+                className="btn-hero"
+                onClick={() => {
+                  trackButtonClick('request_a_proposal', 'about_close');
+                  trackLinkClick('Request a Proposal', '/contact');
+                }}
+              >
+                Request a Proposal
+              </Link>
+              <Link
+                to="/opportunities"
+                className="tap text-sm font-medium text-hhp-navy underline-offset-4 hover:underline"
+                onClick={() => {
+                  trackButtonClick('view_opportunities', 'about_close');
+                  trackLinkClick('Careers', '/opportunities');
+                }}
+              >
+                Careers
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </Layout>

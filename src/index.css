@@ -31,47 +31,45 @@
        Gold is a first-class token. It previously existed only as raw #C8952E
        hex inlined across four components, while the Tailwind `hhp-accent`
        token still pointed at a pale sky blue the design had abandoned. */
-    --hhp-navy: 219 85% 16%;        /* #061E4A BSM navy */
-    --hhp-navy-deep: 216 86% 8%;     /* #031228 */
-    --hhp-navy-soft: 211 100% 33%;   /* #004FA8 royal mid */
-    --hhp-gold: 215 12% 81%;         /* #C8CDD4 BSM silver */
-    --hhp-gold-soft: 215 20% 90%;    /* silver bright */
-    --hhp-charcoal: 214 15% 25%;    /* cooled slightly — pure grey read muddy beside navy */
+    /* Editorial palette (2026 pass): warm white, deep navy, primary blue. */
+    --hhp-navy: 216 59% 15%;         /* #10233F headlines / footer */
+    --hhp-navy-deep: 216 65% 10%;    /* #0A1729 */
+    --hhp-navy-soft: 215 70% 32%;    /* deeper hover for primary */
+    --hhp-gold: 215 80% 40%;         /* aligned to primary blue — was silver noise */
+    --hhp-gold-soft: 215 55% 88%;
+    --hhp-charcoal: 213 12% 29%;     /* #424A54 body */
     --hhp-white: 0 0% 100%;
-    --surface: 220 14% 97%;         /* replaces bg-gray-50 and the one-off #f7f9fb */
-    --surface-sunken: 220 16% 94%;
+    --surface: 48 24% 96%;           /* #F7F6F2 warm white */
+    --surface-sunken: 75 10% 92%;    /* #ECEDE9 pale stone */
 
     /* ── shadcn base tokens ─────────────────────────────────────────────── */
-    --background: 0 0% 100%;
-    --foreground: 214 15% 25%;
+    --background: 48 24% 96%;        /* #F7F6F2 */
+    --foreground: 213 12% 29%;       /* #424A54 */
 
     --card: 0 0% 100%;
-    --card-foreground: 214 15% 25%;
+    --card-foreground: 213 12% 29%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 214 15% 25%;
+    --popover-foreground: 213 12% 29%;
 
-    --primary: 211 100% 39%;          /* #0060C8 logo / royal blue — interactive UI */
+    --primary: 215 80% 40%;           /* #1459B8 buttons / links */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 97%;
-    --secondary-foreground: 211 100% 39%;
+    --secondary: 75 10% 92%;          /* #ECEDE9 */
+    --secondary-foreground: 216 59% 15%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 214 10% 46%;
+    --muted: 75 10% 92%;
+    --muted-foreground: 213 10% 42%;
 
-    /* Accent is gold now. This single line re-colours ~47 `hhp-accent` usages
-       across 16 files — the icon chips on Facility Services, Property
-       Management and Platforms, and the rule on the asset-type template. */
-    --accent: 211 100% 39%;          /* #0060C8 royal blue */
+    --accent: 215 80% 40%;            /* #1459B8 */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 48%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 89%;
-    --input: 220 13% 89%;
-    --ring: 211 100% 39%;
+    --border: 160 4% 86%;             /* #DADDDC */
+    --input: 160 4% 86%;
+    --ring: 215 80% 40%;
 
     --radius: 4px;
 
@@ -81,8 +79,8 @@
     --shadow-subtle: 0 1px 2px hsl(219 85% 16% / 0.06), 0 2px 8px -2px hsl(219 85% 16% / 0.08);
     --shadow-elegant: 0 1px 2px hsl(219 85% 16% / 0.06), 0 8px 24px -8px hsl(219 85% 16% / 0.14);
     --shadow-premium: 0 2px 4px hsl(219 85% 16% / 0.06), 0 24px 56px -20px hsl(219 85% 16% / 0.22);
-    --shadow-card: 0 1px 2px hsl(219 85% 16% / 0.05), 0 4px 16px -6px hsl(219 85% 16% / 0.10);
-    --shadow-card-hover: 0 2px 4px hsl(219 85% 16% / 0.07), 0 16px 40px -12px hsl(219 85% 16% / 0.20);
+    --shadow-card: 0 1px 2px hsl(216 59% 15% / 0.04), 0 4px 12px -4px hsl(216 59% 15% / 0.06);
+    --shadow-card-hover: 0 2px 4px hsl(216 59% 15% / 0.05), 0 10px 28px -10px hsl(216 59% 15% / 0.12);
 
     /* ── Motion ─────────────────────────────────────────────────────────────
        useScrollAnimation already eases on this curve; naming it keeps the rest
@@ -111,15 +109,15 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1.0625rem; /* 17px */
+    line-height: 1.65;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   @media (min-width: 640px) {
-    body { font-size: 1.0625rem; }
+    body { font-size: 1.125rem; } /* 18px */
   }
 
   /* ── Headings ─────────────────────────────────────────────────────────────
@@ -240,9 +238,9 @@
     font-size: 0.6875rem;
     font-weight: 600;
     line-height: 1;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: hsl(var(--hhp-gold));
+    color: hsl(var(--hhp-navy) / 0.72);
   }
 
   .eyebrow::before {
@@ -257,23 +255,23 @@
 
   .hero-headline {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-size: clamp(2.375rem, 5.5vw, 4.5rem); /* ~38–72px */
     font-weight: 600;
-    line-height: 1.04;
+    line-height: 1.05;
     letter-spacing: -0.025em;
   }
 
   .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    font-size: clamp(2.375rem, 5vw, 4.25rem); /* ~38–68px */
     font-weight: 600;
-    line-height: 1.08;
-    letter-spacing: -0.02em;
+    line-height: 1.06;
+    letter-spacing: -0.022em;
   }
 
   .section-title {
     font-family: var(--font-display);
-    font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+    font-size: clamp(2rem, 3.6vw, 2.875rem); /* ~32–46px */
     font-weight: 600;
     line-height: 1.12;
     letter-spacing: -0.018em;
@@ -293,23 +291,23 @@
     justify-content: center;
     gap: 0.5rem;
     min-height: 48px;
-    padding: 0.875rem 1.75rem;
+    height: 48px;
+    padding: 0.75rem 1.5rem;
     border-radius: var(--radius);
-    background: hsl(var(--accent)); /* #0060C8 logo blue */
+    background: hsl(var(--primary)); /* #1459B8 flat fill */
     color: hsl(var(--hhp-white));
     font-family: var(--font-display);
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    box-shadow: var(--shadow-elegant);
-    transition: var(--transition-elegant);
+    letter-spacing: -0.01em;
+    text-transform: none;
+    box-shadow: none;
+    transition: background-color var(--duration-fast) var(--ease-standard),
+                color var(--duration-fast) var(--ease-standard);
   }
 
   .btn-hero:hover {
-    background: hsl(var(--hhp-navy-soft)); /* #004FA8 */
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-premium);
+    background: hsl(var(--hhp-navy));
   }
 
   .btn-secondary {
@@ -318,21 +316,25 @@
     justify-content: center;
     gap: 0.5rem;
     min-height: 48px;
-    padding: 0.875rem 1.75rem;
-    border: 1px solid hsl(var(--accent));
+    height: 48px;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid hsl(var(--border));
     border-radius: var(--radius);
-    color: hsl(var(--accent));
+    color: hsl(var(--hhp-navy));
     font-family: var(--font-display);
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: var(--transition-elegant);
+    letter-spacing: -0.01em;
+    text-transform: none;
+    background: transparent;
+    transition: background-color var(--duration-fast) var(--ease-standard),
+                border-color var(--duration-fast) var(--ease-standard),
+                color var(--duration-fast) var(--ease-standard);
   }
 
   .btn-secondary:hover {
-    background: hsl(var(--accent));
-    color: hsl(var(--hhp-white));
+    background: hsl(var(--surface-sunken));
+    border-color: hsl(var(--hhp-navy) / 0.25);
   }
 
   /* ── Cards ──────────────────────────────────────────────────────────────── */
@@ -528,6 +530,52 @@
     background: linear-gradient(to bottom, hsl(220 60% 22% / 0.55), hsl(220 70% 12% / 0.65));
     opacity: 0.7;
   }
+
+
+  /* Left-weighted navy panel behind hero copy (video stays atmosphere). */
+  .scrim-hero-editorial {
+    background:
+      linear-gradient(
+        90deg,
+        hsl(var(--hhp-navy-deep) / 0.88) 0%,
+        hsl(var(--hhp-navy) / 0.72) 38%,
+        hsl(var(--hhp-navy) / 0.35) 62%,
+        hsl(var(--hhp-navy) / 0.12) 82%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to top,
+        hsl(var(--hhp-navy-deep) / 0.55) 0%,
+        transparent 42%
+      );
+  }
+
+  /* Flat logo treatments — simplify presentation without a new crest. */
+  .logo-flat {
+    filter: contrast(1.05) saturate(0.85);
+  }
+  .logo-flat-white {
+    filter: brightness(0) invert(1);
+  }
+  .logo-flat-navy {
+    filter: brightness(0) saturate(100%) invert(11%) sepia(28%) saturate(1400%) hue-rotate(186deg) brightness(92%) contrast(95%);
+  }
+
+  /* Once-per-section entrance (respects prefers-reduced-motion via base layer). */
+  .section-enter {
+    animation: fadeIn 0.7s var(--ease-out-expo) both;
+  }
+
+  .card-media {
+    overflow: hidden;
+  }
+  .card-media img {
+    transition: transform 0.6s var(--ease-out-expo);
+  }
+  .group:hover .card-media img {
+    transform: scale(1.04);
+  }
+
 }
 
 @keyframes fadeIn {
@@ -906,17 +954,16 @@
 
 /* ── Listing card system (ported from bsm-holdings layout) ─────────────── */
 :root {
-  --bsm-brand: #0060c8;
-  --bsm-brand-deep: #061e4a;
-  --bsm-brand-bright: #1a7ae8;
-  --bsm-brand-hover: #004fa8;
-  --bsm-silver: #c8cdd4;
-  --bsm-silver-deep: #a8b0bc;
-  --bsm-silver-bright: #e8ecf1;
-  --bsm-shadow-card: 0 4px 20px rgba(6, 30, 74, 0.07);
-  --bsm-shadow-elevated: 0 16px 40px rgba(6, 30, 74, 0.14);
-  --bsm-shadow-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.18), 0 4px 14px rgba(6, 30, 74, 0.22);
+  --bsm-brand: #1459b8;
+  --bsm-brand-deep: #10233f;
+  --bsm-brand-bright: #1a6ad0;
+  --bsm-brand-hover: #0e3f86;
+  --bsm-silver: #dadddc;
+  --bsm-silver-deep: #b8bcbb;
+  --bsm-silver-bright: #ecede9;
+  --bsm-shadow-card: 0 2px 10px rgba(16, 35, 63, 0.05);
+  --bsm-shadow-elevated: 0 8px 24px rgba(16, 35, 63, 0.08);
+  --bsm-shadow-bevel: none;
 }
 
 .focus-ring {
@@ -941,112 +988,50 @@
   align-items: center;
   justify-content: center;
   min-height: 2.75rem;
+  height: 2.75rem;
   padding: 0.7rem 1.55rem;
   border-radius: 4px;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.01em;
   color: #fff;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 42%),
-    linear-gradient(180deg, var(--bsm-brand-bright) 0%, var(--bsm-brand) 48%, var(--bsm-brand-hover) 100%);
-  border: 1px solid color-mix(in srgb, var(--bsm-silver-bright) 35%, var(--bsm-brand));
-  box-shadow: var(--bsm-shadow-bevel), 0 0 22px rgba(0, 96, 200, 0.28);
-  transition: transform 0.2s ease, box-shadow 0.25s ease, filter 0.2s ease;
-}
-.btn-chrome::after {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    115deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.28) 48%,
-    transparent 62%
-  );
-  background-size: 220% 100%;
-  opacity: 0;
-  transition: opacity 0.3s ease, background-position 0.5s ease;
+  background: var(--bsm-brand);
+  border: 1px solid var(--bsm-brand);
+  box-shadow: none;
+  transition: background-color 0.2s ease;
 }
 .btn-chrome:hover {
-  filter: brightness(1.06);
-  transform: translateY(-1px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-    0 8px 22px rgba(6, 30, 74, 0.28),
-    0 0 32px rgba(0, 96, 200, 0.4);
-}
-.btn-chrome:hover::after {
-  opacity: 1;
-  background-position: 100% 0;
+  background: var(--bsm-brand-deep);
 }
 .btn-chrome:active {
-  transform: translateY(0);
-  filter: brightness(0.97);
+  background: var(--bsm-brand-hover);
 }
 
 .bevel-frame {
   position: relative;
-  border-radius: 6px;
+  border-radius: 4px;
   background: #fff;
-  border: 1px solid color-mix(in srgb, var(--bsm-silver-deep) 55%, hsl(var(--border)));
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.85),
-    inset 0 -1px 0 rgba(6, 30, 74, 0.06),
-    0 0 0 1px color-mix(in srgb, var(--bsm-brand) 8%, transparent),
-    var(--bsm-shadow-card);
-  transition: border-color 0.3s ease, box-shadow 0.35s ease, transform 0.3s ease;
+  border: 1px solid hsl(var(--border));
+  box-shadow: var(--bsm-shadow-card);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 .bevel-frame:hover {
-  border-color: color-mix(in srgb, var(--bsm-brand) 45%, var(--bsm-silver));
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    0 0 0 1px color-mix(in srgb, var(--bsm-brand) 22%, transparent),
-    0 0 0 3px color-mix(in srgb, var(--bsm-silver) 35%, transparent),
-    var(--bsm-shadow-elevated);
-  transform: translateY(-3px);
-}
-.bevel-frame::before {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    rgba(200, 205, 212, 0.35) 0%,
-    transparent 28%,
-    transparent 72%,
-    rgba(0, 96, 200, 0.08) 100%
-  );
-  opacity: 0.55;
-  z-index: 1;
+  border-color: color-mix(in srgb, var(--bsm-brand) 28%, var(--bsm-silver));
+  box-shadow: var(--bsm-shadow-elevated);
 }
 
 .card-shine {
   position: relative;
-}
-.card-shine::after {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--bsm-silver) 40%, transparent);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  z-index: 2;
-}
-.card-shine:hover::after {
-  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .btn-chrome:hover,
   .bevel-frame:hover {
     transform: none;
+  }
+  .group:hover .card-media img,
+  .card-media img {
+    transform: none !important;
+    transition: none !important;
   }
 }

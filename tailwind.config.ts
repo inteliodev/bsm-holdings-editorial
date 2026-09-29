@@ -44,16 +44,16 @@ export default {
           { lineHeight: "1.2", letterSpacing: "-0.01em" },
         ],
         "display-lg": [
-          "clamp(1.875rem, 3.2vw, 2.75rem)",
+          "clamp(2rem, 3.6vw, 2.875rem)",
           { lineHeight: "1.12", letterSpacing: "-0.018em" },
         ],
         "display-xl": [
-          "clamp(2.25rem, 4.5vw, 3.5rem)",
-          { lineHeight: "1.08", letterSpacing: "-0.02em" },
+          "clamp(2.375rem, 5vw, 4.25rem)",
+          { lineHeight: "1.06", letterSpacing: "-0.022em" },
         ],
         "display-2xl": [
-          "clamp(2.5rem, 6vw, 4.5rem)",
-          { lineHeight: "1.04", letterSpacing: "-0.025em" },
+          "clamp(2.375rem, 5.5vw, 4.5rem)",
+          { lineHeight: "1.05", letterSpacing: "-0.025em" },
         ],
       },
       colors: {
@@ -76,15 +76,15 @@ export default {
 
         /* Listing card system (ported from bsm-holdings) — BSM brand blues/silvers */
         brand: {
-          DEFAULT: "#0060C8",
-          deep: "#061E4A",
-          bright: "#1A7AE8",
-          hover: "#004FA8",
+          DEFAULT: "#1459B8",
+          deep: "#10233F",
+          bright: "#1A6AD0",
+          hover: "#0E3F86",
         },
         silver: {
-          DEFAULT: "#C8CDD4",
-          deep: "#A8B0BC",
-          bright: "#E8ECF1",
+          DEFAULT: "#DADDDC",
+          deep: "#B8BCBB",
+          bright: "#ECEDE9",
         },
         success: "#0D9488",
         "listing-muted": "#5A6577",

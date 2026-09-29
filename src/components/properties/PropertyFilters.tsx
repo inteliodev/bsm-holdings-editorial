@@ -1,29 +1,36 @@
 import { useMemo, useState } from 'react';
 import { ListingCard } from './ListingCard';
-import { listings, propertyTypes, type PropertyType } from '@/data/listings';
+import { listings } from '@/data/listings';
 
 type PetsFilter = 'any' | 'yes' | 'no';
 type BedsFilter = 'any' | '1' | '2' | '3' | '4';
+type RentFilter = 'any' | 'under-1200' | '1200-1600' | '1600-2000' | 'over-2000';
 type SortKey = 'rent-asc' | 'rent-desc' | 'beds' | 'city';
 
 const cities = Array.from(new Set(listings.map((l) => l.city))).sort();
 
+function matchesRent(price: number, rent: RentFilter): boolean {
+  if (rent === 'any') return true;
+  if (rent === 'under-1200') return price < 1200;
+  if (rent === '1200-1600') return price >= 1200 && price <= 1600;
+  if (rent === '1600-2000') return price > 1600 && price <= 2000;
+  return price > 2000;
+}
+
 export function PropertyFilters() {
-  const [type, setType] = useState<PropertyType | 'any'>('any');
   const [beds, setBeds] = useState<BedsFilter>('any');
   const [pets, setPets] = useState<PetsFilter>('any');
   const [city, setCity] = useState<string>('any');
-  const [availableOnly, setAvailableOnly] = useState(false);
+  const [rent, setRent] = useState<RentFilter>('any');
   const [sort, setSort] = useState<SortKey>('rent-asc');
 
   const filtered = useMemo(() => {
     let rows = listings.filter((l) => {
-      if (type !== 'any' && l.type !== type) return false;
       if (beds !== 'any' && l.beds < Number(beds)) return false;
       if (pets === 'yes' && !l.pets) return false;
       if (pets === 'no' && l.pets) return false;
       if (city !== 'any' && l.city !== city) return false;
-      if (availableOnly && !l.available) return false;
+      if (!matchesRent(l.price, rent)) return false;
       return true;
     });
     rows = [...rows].sort((a, b) => {
@@ -33,60 +40,17 @@ export function PropertyFilters() {
       return b.beds - a.beds;
     });
     return rows;
-  }, [type, beds, pets, city, availableOnly, sort]);
+  }, [beds, pets, city, rent, sort]);
 
   const selectClass =
-    'w-full rounded-md border border-border bg-white px-3 py-2 text-sm text-hhp-charcoal focus-ring';
+    'w-full rounded border border-border bg-white px-3 py-2 text-sm text-hhp-charcoal focus-ring';
 
   return (
-    <div className="space-y-5">
-      <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Quick city filters">
-        <button
-          type="button"
-          onClick={() => setCity('any')}
-          className={`rounded-[3px] border px-3 py-1.5 text-xs font-bold uppercase tracking-wide transition focus-ring ${
-            city === 'any'
-              ? 'border-brand bg-brand text-white'
-              : 'border-border bg-white text-brand-deep hover:border-brand/40'
-          }`}
-        >
-          All cities
-        </button>
-        {cities.map((c) => (
-          <button
-            key={c}
-            type="button"
-            onClick={() => setCity(c)}
-            className={`rounded-[3px] border px-3 py-1.5 text-xs font-bold uppercase tracking-wide transition focus-ring ${
-              city === c
-                ? 'border-brand bg-brand text-white'
-                : 'border-border bg-white text-brand-deep hover:border-brand/40'
-            }`}
-          >
-            {c}
-          </button>
-        ))}
-      </div>
-
-      <div className="sticky top-[4.5rem] z-30 -mx-4 border-y border-border header-glass px-4 py-3.5 sm:mx-0 sm:rounded-xl sm:border sm:px-5 lg:top-[5rem]">
-        <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">
+    <div className="space-y-6">
+      <div className="border border-border bg-surface px-4 py-4 sm:px-5">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           <label className="block text-[11px] font-semibold uppercase tracking-wide text-listing-muted">
-            Type
-            <select
-              className={`mt-1 ${selectClass}`}
-              value={type}
-              onChange={(e) => setType(e.target.value as PropertyType | 'any')}
-            >
-              <option value="any">All types</option>
-              {propertyTypes.map((t) => (
-                <option key={t} value={t}>
-                  {t}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="block text-[11px] font-semibold uppercase tracking-wide text-listing-muted">
-            City
+            Location
             <select
               className={`mt-1 ${selectClass}`}
               value={city}
@@ -98,6 +62,20 @@ export function PropertyFilters() {
                   {c}
                 </option>
               ))}
+            </select>
+          </label>
+          <label className="block text-[11px] font-semibold uppercase tracking-wide text-listing-muted">
+            Rent
+            <select
+              className={`mt-1 ${selectClass}`}
+              value={rent}
+              onChange={(e) => setRent(e.target.value as RentFilter)}
+            >
+              <option value="any">Any</option>
+              <option value="under-1200">Under $1,200</option>
+              <option value="1200-1600">$1,200 – $1,600</option>
+              <option value="1600-2000">$1,600 – $2,000</option>
+              <option value="over-2000">Over $2,000</option>
             </select>
           </label>
           <label className="block text-[11px] font-semibold uppercase tracking-wide text-listing-muted">
@@ -139,50 +117,22 @@ export function PropertyFilters() {
               <option value="city">City</option>
             </select>
           </label>
-          <label className="flex items-end gap-2 pb-2 text-sm font-medium text-hhp-charcoal">
-            <input
-              type="checkbox"
-              className="h-4 w-4 rounded border-border text-brand focus:ring-brand"
-              checked={availableOnly}
-              onChange={(e) => setAvailableOnly(e.target.checked)}
-            />
-            Available only
-          </label>
-          <div className="flex items-end">
-            <p className="w-full rounded-md bg-surface px-3 py-2 text-sm text-listing-muted ring-1 ring-border">
-              <span className="font-semibold text-brand-deep">{filtered.length}</span> properties
-            </p>
-          </div>
         </div>
-        <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-border pt-3">
-          <span className="text-[11px] font-bold uppercase tracking-wide text-listing-muted">
-            Quick:
-          </span>
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-3">
+          <p className="text-sm text-listing-muted">
+            <span className="font-semibold text-brand-deep">{filtered.length}</span>{' '}
+            {filtered.length === 1 ? 'property' : 'properties'}
+          </p>
           <button
             type="button"
             onClick={() => {
-              setPets('yes');
-              setAvailableOnly(true);
-            }}
-            className={`rounded-[3px] border px-2.5 py-1 text-xs font-semibold focus-ring ${
-              pets === 'yes' && availableOnly
-                ? 'border-brand bg-brand text-white'
-                : 'border-border bg-surface text-brand-deep hover:border-brand/40'
-            }`}
-          >
-            Pet-friendly + available
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setType('any');
               setBeds('any');
               setPets('any');
               setCity('any');
-              setAvailableOnly(false);
+              setRent('any');
               setSort('rent-asc');
             }}
-            className="rounded-[3px] border border-border bg-white px-2.5 py-1 text-xs font-semibold text-listing-muted hover:text-brand-deep focus-ring"
+            className="text-xs font-semibold text-listing-muted hover:text-brand-deep focus-ring"
           >
             Clear filters
           </button>
@@ -190,7 +140,7 @@ export function PropertyFilters() {
       </div>
 
       {filtered.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-border bg-surface px-6 py-10 text-center">
+        <div className="border border-dashed border-border bg-surface px-6 py-12 text-center">
           <p className="font-display text-base font-medium text-brand-deep">No matches</p>
           <p className="mt-2 text-sm text-listing-muted">
             Try clearing filters — or{' '}
@@ -198,16 +148,16 @@ export function PropertyFilters() {
               href="mailto:ty@bsmholdings.com?subject=Waitlist"
               className="font-medium text-brand hover:underline"
             >
-              join the waitlist
+              email us about upcoming homes
             </a>
             .
           </p>
         </div>
       ) : (
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((listing) => (
-            <div key={listing.id} id={listing.slug} className="scroll-mt-40">
-              <ListingCard listing={listing} className="!max-w-none" />
+            <div key={listing.id} id={listing.slug} className="scroll-mt-32">
+              <ListingCard listing={listing} className="!max-w-none h-full" />
             </div>
           ))}
         </div>
