@@ -4,8 +4,8 @@ import { Mail } from 'lucide-react';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 
 const tyImage = '/brand/ty-headshot.png';
-/** Local residential exterior — not claimed as BSM-managed inventory. */
-const ABOUT_HERO = '/images/properties/grounds-oak-tree.webp';
+/** Existing multifamily exterior — not claimed as BSM-managed inventory. */
+const ABOUT_HERO = '/images/multifamily-image-trendy.jpg';
 
 const PRINCIPAL = {
   name: 'Ty McClellan',
@@ -56,9 +56,9 @@ const About = () => {
         </div>
         <div
           className="relative min-h-[240px] w-full flex-1 bg-cover bg-center bg-no-repeat sm:min-h-[300px] md:min-h-0 md:w-[58%]"
-          style={{ backgroundImage: `url(${ABOUT_HERO})` }}
+          style={{ backgroundImage: `url(${ABOUT_HERO})`, backgroundPosition: 'center 58%' }}
           role="img"
-          aria-label="Oklahoma residential property exterior"
+          aria-label="Modern multifamily residential building exterior"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-brand-deep/25 to-transparent" />
         </div>
