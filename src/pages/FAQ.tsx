@@ -122,7 +122,7 @@ const FAQ = () => {
                     value={`owner-${index}`}
                     className="border-b border-border"
                   >
-                    <AccordionTrigger className="py-4 text-left text-base font-medium text-hhp-navy hover:no-underline data-[state=open]:text-brand">
+                    <AccordionTrigger className="min-h-[48px] gap-3 py-4 text-left text-base font-medium text-hhp-navy hover:no-underline data-[state=open]:text-brand">
                       {item.question}
                     </AccordionTrigger>
                     <AccordionContent className="pb-5 pt-0">
@@ -153,7 +153,7 @@ const FAQ = () => {
                     value={`resident-${index}`}
                     className="border-b border-border"
                   >
-                    <AccordionTrigger className="py-4 text-left text-base font-medium text-hhp-navy hover:no-underline data-[state=open]:text-brand">
+                    <AccordionTrigger className="min-h-[48px] gap-3 py-4 text-left text-base font-medium text-hhp-navy hover:no-underline data-[state=open]:text-brand">
                       {item.question}
                     </AccordionTrigger>
                     <AccordionContent className="pb-5 pt-0">

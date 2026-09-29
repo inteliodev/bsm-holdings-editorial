@@ -119,7 +119,7 @@ const PropertyDetail = () => {
       </section>
 
       {/* Extra bottom padding on mobile so fixed action bar doesn't cover content */}
-      <section className="bg-background pb-28 pt-2 sm:pb-16 lg:pb-20">
+      <section className="bg-background pb-28 pt-2 lg:pb-20">
         <div className="container-premium">
           <div className="grid gap-8 lg:grid-cols-12 lg:gap-12 lg:items-start">
             {/* Gallery */}
@@ -216,7 +216,7 @@ const PropertyDetail = () => {
 
             {/* Sticky tour panel — desktop */}
             <aside className="lg:col-span-5">
-              <div className="lg:sticky lg:top-28">
+              <div className="lg:sticky lg:top-[calc(var(--header-h)+1rem)]">
                 <p className="font-display text-3xl font-semibold tracking-tight text-brand-deep sm:text-4xl">
                   {formatPrice(listing.price)}
                   <span className="text-base font-normal text-listing-muted">/mo</span>
@@ -277,7 +277,7 @@ const PropertyDetail = () => {
                 </dl>
 
                 {/* Desktop / tablet CTAs — hidden on small screens (mobile bar handles it) */}
-                <TourActions className="mt-6 hidden flex-col gap-3 sm:flex" />
+                <TourActions className="mt-6 hidden flex-col gap-3 lg:flex" />
               </div>
             </aside>
           </div>
@@ -323,7 +323,7 @@ const PropertyDetail = () => {
       </section>
 
       {/* Mobile action bar */}
-      <div className="safe-pb fixed inset-x-0 bottom-0 z-40 border-t border-border bg-white/95 px-4 pt-3 backdrop-blur-sm sm:hidden">
+      <div className="safe-pb fixed inset-x-0 bottom-0 z-40 border-t border-border bg-white/95 px-4 pt-3 backdrop-blur-sm lg:hidden">
         <div className="mx-auto flex max-w-lg gap-3">
           <Link
             to={tourHref}
@@ -362,7 +362,7 @@ const PropertyDetail = () => {
         >
           <button
             type="button"
-            className="absolute right-4 top-4 rounded border border-white/20 p-2 text-white transition-colors hover:bg-white/10"
+            className="absolute right-3 top-3 flex min-h-[44px] min-w-[44px] items-center justify-center rounded border border-white/20 text-white transition-colors hover:bg-white/10 sm:right-4 sm:top-4"
             aria-label="Close"
             onClick={() => setLightboxOpen(false)}
           >
@@ -383,17 +383,22 @@ const PropertyDetail = () => {
               </figcaption>
             ) : null}
             {gallery.length > 1 ? (
-              <div className="mt-4 flex justify-center gap-2">
+              <div className="mt-4 flex justify-center gap-1">
                 {gallery.map((img, i) => (
                   <button
                     key={img.src}
                     type="button"
                     aria-label={`Show photo ${i + 1}`}
-                    className={`h-1.5 w-6 rounded-full transition-colors ${
-                      i === lightboxIndex ? 'bg-white' : 'bg-white/35'
-                    }`}
+                    className="flex min-h-[44px] min-w-[44px] items-center justify-center"
                     onClick={() => setLightboxIndex(i)}
-                  />
+                  >
+                    <span
+                      className={`block h-1.5 w-6 rounded-full transition-colors ${
+                        i === lightboxIndex ? 'bg-white' : 'bg-white/35'
+                      }`}
+                      aria-hidden="true"
+                    />
+                  </button>
                 ))}
               </div>
             ) : null}

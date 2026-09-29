@@ -37,11 +37,11 @@ const Home = () => {
       <LocalBusinessSchema />
       {/* Hero — video as atmosphere; copy left-aligned over navy panel */}
       <section
-        className="fixed inset-0 z-0 h-[78vh] min-h-[520px] max-h-[820px] w-full overflow-hidden bg-brand-deep"
+        className="hero-shell fixed inset-x-0 top-0 z-0 w-full overflow-hidden bg-brand-deep"
         aria-label="Hero"
       >
         <video
-          className="absolute inset-0 h-full w-full scale-105 object-cover opacity-55"
+          className="absolute inset-0 h-full w-full scale-100 object-cover opacity-55 sm:scale-105"
           autoPlay
           loop
           muted
@@ -56,7 +56,7 @@ const Home = () => {
         </video>
         <div className="absolute inset-0 z-10 scrim-hero-editorial" aria-hidden="true" />
 
-        <div className="absolute inset-0 z-20 flex items-center">
+        <div className="absolute inset-0 z-20 flex items-center pt-[var(--header-h)] pb-6 sm:pb-8">
           <div className="container-premium w-full">
             <div className="max-w-xl lg:max-w-2xl">
               <h1 className="hero-title normal-case text-white">
@@ -64,11 +64,11 @@ const Home = () => {
                 <br className="hidden sm:block" />
                 <span className="sm:block"> in Oklahoma City</span>
               </h1>
-              <p className="mt-5 max-w-lg text-base leading-relaxed text-white/85 sm:mt-6 sm:text-lg">
+              <p className="mt-4 max-w-lg text-base leading-relaxed text-white/85 sm:mt-6 sm:text-lg [@media(max-height:480px)]:mt-2 [@media(max-height:480px)]:line-clamp-2">
                 We handle leasing, rent collection, maintenance, and financial reporting
                 for rental property owners throughout the Oklahoma City metro.
               </p>
-              <div className="mt-7 flex flex-col items-start gap-4 sm:mt-8 sm:flex-row sm:items-center">
+              <div className="mt-5 flex flex-col items-start gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4 [@media(max-height:480px)]:mt-3 [@media(max-height:480px)]:flex-row [@media(max-height:480px)]:flex-wrap">
                 <Link
                   to="/contact?inquiry=owner"
                   className="btn-hero"
@@ -81,7 +81,7 @@ const Home = () => {
                 </Link>
                 <Link
                   to="/portfolio"
-                  className="tap group inline-flex items-center gap-2 text-sm font-semibold text-white/85 transition-colors hover:text-white"
+                  className="tap group inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-white/85 transition-colors hover:text-white"
                   onClick={() => {
                     trackButtonClick('view_available_rentals', 'home_hero');
                     trackLinkClick('View Available Rentals', '/portfolio');
@@ -97,7 +97,7 @@ const Home = () => {
       </section>
 
       <div
-        className="pointer-events-none relative z-0 h-[78vh] min-h-[520px] max-h-[820px] w-full"
+        className="hero-shell pointer-events-none relative z-0 w-full"
         aria-hidden="true"
       />
 

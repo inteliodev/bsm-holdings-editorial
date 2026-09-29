@@ -23,7 +23,7 @@ export function ListingCard({ listing, className = '' }: Props) {
 
   return (
     <article
-      className={`bevel-frame group flex max-w-[400px] flex-col overflow-hidden ${className}`}
+      className={`bevel-frame group flex w-full max-w-[400px] flex-col overflow-hidden ${className}`}
     >
       <div className="card-media relative z-[1] aspect-[4/3] overflow-hidden bg-surface-sunken">
         <img

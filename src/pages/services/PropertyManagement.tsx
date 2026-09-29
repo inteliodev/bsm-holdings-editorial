@@ -476,7 +476,7 @@ const PropertyManagement = () => {
             <p className="mt-4 text-base leading-relaxed text-hhp-charcoal">
               Switching managers? We make the handoff clear and organized.
             </p>
-            <ol className="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-8">
+            <ol className="mt-10 grid gap-8 md:grid-cols-3 md:gap-8">
               {GETTING_STARTED.map((item) => (
                 <li key={item.title} className="group border-t border-border pt-5">
                   <h3 className="font-display text-lg font-semibold text-hhp-navy transition-colors duration-300 group-hover:text-brand">

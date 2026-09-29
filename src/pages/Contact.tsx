@@ -182,7 +182,7 @@ const Contact = () => {
           </div>
 
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10 lg:items-start">
-            <aside className="space-y-6 rounded-sm bg-brand-deep p-6 text-white sm:p-8 lg:col-span-4">
+            <aside className="space-y-6 rounded-sm bg-brand-deep p-5 text-white sm:p-8 lg:col-span-4">
               <div>
                 <h2 className="font-display text-lg font-semibold text-white">
                   Contact Our Team
@@ -235,7 +235,7 @@ const Contact = () => {
               </div>
             </aside>
 
-            <div className="border border-border bg-white p-6 sm:p-8 lg:col-span-8">
+            <div className="border border-border bg-white p-5 sm:p-8 lg:col-span-8">
               {submitted ? (
                 <div className="py-4">
                   <h2 className="font-display text-xl font-semibold text-hhp-navy">

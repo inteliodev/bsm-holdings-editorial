@@ -46,7 +46,7 @@ const About = () => {
     <Layout>
       {/* 1. About BSM Holdings — navy + multifamily split */}
       <section className="flex flex-col md:min-h-[420px] md:flex-row">
-        <div className="flex w-full items-center justify-start bg-brand-deep px-6 py-12 sm:px-8 md:w-[42%] md:py-16 lg:px-12">
+        <div className="flex w-full items-center justify-start bg-brand-deep px-5 py-10 sm:px-8 sm:py-12 md:w-[42%] md:py-16 lg:px-12">
           <div className="max-w-md">
             <span className="eyebrow eyebrow-bare text-hhp-gold-soft">About</span>
             <h1 className="hero-title mb-4 mt-4 text-white">About BSM Holdings</h1>
@@ -57,7 +57,7 @@ const About = () => {
           </div>
         </div>
         <div
-          className="relative min-h-[240px] w-full flex-1 bg-cover bg-no-repeat sm:min-h-[300px] md:min-h-0 md:w-[58%]"
+          className="relative min-h-[200px] w-full flex-1 bg-cover bg-no-repeat sm:min-h-[280px] md:min-h-0 md:w-[58%]"
           style={{
             backgroundImage: `url(${ABOUT_HERO})`,
             backgroundPosition: 'center 40%',

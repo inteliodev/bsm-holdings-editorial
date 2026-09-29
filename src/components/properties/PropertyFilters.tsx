@@ -46,12 +46,12 @@ export function PropertyFilters() {
   }, [beds, pets, city, rent, sort, includeLeased]);
 
   const selectClass =
-    'w-full rounded border border-border bg-white px-3 py-2 text-sm text-hhp-charcoal focus-ring';
+    'min-h-[48px] w-full rounded border border-border bg-white px-3 py-2.5 text-base text-hhp-charcoal focus-ring sm:min-h-[44px] sm:py-2 sm:text-sm';
 
   return (
     <div className="space-y-6">
       <div className="border border-border bg-surface px-4 py-4 sm:px-5">
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
           <label className="block text-[11px] font-semibold uppercase tracking-wide text-listing-muted">
             Location
             <select
@@ -147,7 +147,7 @@ export function PropertyFilters() {
               setSort('rent-asc');
               setIncludeLeased(false);
             }}
-            className="text-xs font-semibold text-listing-muted hover:text-brand-deep focus-ring"
+            className="inline-flex min-h-[44px] items-center px-2 text-xs font-semibold text-listing-muted hover:text-brand-deep focus-ring"
           >
             Clear filters
           </button>

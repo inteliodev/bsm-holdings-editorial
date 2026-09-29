@@ -428,6 +428,14 @@
 
   .trust-badge-text { color: hsl(var(--hhp-white)); }
 
+
+  /* Home hero shell: never taller than the visible viewport (phone landscape). */
+  .hero-shell {
+    height: min(78dvh, 820px, 100dvh);
+    min-height: min(520px, 100dvh);
+    max-height: min(820px, 100dvh);
+  }
+
   .hero-background { min-height: 50vh; }
 
   .fade-in { animation: fadeIn 0.8s var(--ease-out-expo); }

@@ -383,7 +383,7 @@ const Header = () => {
             {/* Contact CTA */}
             <Link
               to={contactCTA.href}
-              className={`flex min-h-[40px] items-center justify-center rounded px-4 py-2 text-sm font-semibold leading-tight transition-colors duration-200 sm:px-5 ${
+              className={`flex min-h-[44px] items-center justify-center rounded px-4 py-2 text-sm font-semibold leading-tight transition-colors duration-200 sm:px-5 ${
                 isTransparent
                   ? 'bg-white text-hhp-navy hover:bg-brand hover:text-hhp-navy-deep'
                   : 'bg-brand text-white hover:bg-brand-hover'
