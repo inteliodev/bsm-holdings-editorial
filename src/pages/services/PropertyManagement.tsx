@@ -83,19 +83,16 @@ const MONTHLY_DELIVERABLES = [
 
 const GETTING_STARTED = [
   {
-    step: '01',
     title: 'Property Review',
     description:
       'We review your property, current leases, and goals — then discuss rent targets, make-ready needs, and how you want to stay informed.',
   },
   {
-    step: '02',
     title: 'Management Setup',
     description:
       'Agreements, owner preferences, resident records, and accounting setup so day-to-day management can begin cleanly.',
   },
   {
-    step: '03',
     title: 'Ongoing Management',
     description:
       'Leasing, collections, resident communication, maintenance coordination, and monthly reporting — with a clear point of contact.',
@@ -465,7 +462,7 @@ const PropertyManagement = () => {
             </p>
             <ol className="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-8">
               {GETTING_STARTED.map((item) => (
-                <li key={item.step} className="group border-t border-border pt-5">
+                <li key={item.title} className="group border-t border-border pt-5">
                   <h3 className="font-display text-lg font-semibold text-hhp-navy transition-colors duration-300 group-hover:text-brand">
                     {item.title}
                   </h3>

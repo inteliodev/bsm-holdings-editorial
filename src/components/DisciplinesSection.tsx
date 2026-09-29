@@ -1,6 +1,5 @@
 const disciplines = [
   {
-    number: '01',
     title: 'Asset Management',
     description: 'Data-driven portfolio intelligence that transforms how owners understand and optimize their assets.',
     features: [
@@ -12,7 +11,6 @@ const disciplines = [
     ],
   },
   {
-    number: '02',
     title: 'Property Management',
     description: 'Day-to-day operations run on our own platform, with compliance built into every workflow — not bolted on after.',
     features: [
@@ -24,7 +22,6 @@ const disciplines = [
     ],
   },
   {
-    number: '03',
     title: 'Facility Services',
     description: 'Facility trades through BSM Holdings Facility Services, LLC — a separate offering from residential property management.',
     features: [
@@ -61,7 +58,6 @@ const DisciplinesSection = () => {
               key={i}
               className="discipline-card rounded border border-white/10 bg-brand p-8 transition-all duration-300 ease-out-expo hover:-translate-y-1 hover:border-hhp-gold/30 hover:shadow-premium sm:p-10"
             >
-              <span className="card-number">{d.number}</span>
               <h3 className="relative z-10 mb-4 font-heading text-xl font-semibold uppercase tracking-wide text-white sm:text-2xl">
                 {d.title}
               </h3>

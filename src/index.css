@@ -439,24 +439,9 @@
     box-shadow: var(--shadow-card-hover);
   }
 
-  /* ── Discipline cards ─────────────────────────────────────────────────────
-     The oversized numeral asked for EB Garamond, which was never loaded, so it
-     rendered as Georgia — the only serif on the site, by accident. */
   .discipline-card {
     position: relative;
     overflow: hidden;
-  }
-
-  .discipline-card .card-number {
-    position: absolute;
-    top: 16px;
-    right: 24px;
-    font-family: var(--font-display);
-    font-size: 72px;
-    font-weight: 600;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    color: hsl(var(--hhp-gold) / 0.10);
   }
 }
 

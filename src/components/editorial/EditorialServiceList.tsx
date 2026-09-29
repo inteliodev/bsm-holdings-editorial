@@ -1,5 +1,6 @@
 /**
- * Alias for NumberedEditorialList — same premium numbered service stack.
+ * Alias for NumberedEditorialList — unnumbered editorial service stack
+ * (headings + body + hairline dividers; no 01/02 indices).
  */
 export {
   NumberedEditorialList as EditorialServiceList,

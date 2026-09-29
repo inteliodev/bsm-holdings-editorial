@@ -1,8 +1,8 @@
 import { cn } from '@/lib/utils';
 
 export type NumberedEditorialItem = {
-  /** Display index, e.g. "01" */
-  number: string;
+  /** @deprecated Ignored — numerals removed sitewide. Kept optional for call-site compatibility. */
+  number?: string;
   title: string;
   /** Soft supporting sentence under the title */
   body: string;
@@ -18,8 +18,8 @@ type NumberedEditorialListProps = {
 };
 
 /**
- * Premium numbered service stack: large muted navy numerals as typographic
- * accent, hairline dividers, left accent rule on hover — no cards/boxes.
+ * Clean editorial service stack: headings + one sentence, hairline dividers.
+ * Numerals (01/02/…) are intentionally not rendered.
  */
 export function NumberedEditorialList({
   items,
@@ -29,10 +29,10 @@ export function NumberedEditorialList({
   const padY = density === 'compact' ? 'py-5 sm:py-6' : 'py-6 sm:py-8';
 
   return (
-    <ol className={cn('border-t border-border', className)}>
+    <ul className={cn('border-t border-border', className)}>
       {items.map((item) => (
         <li
-          key={`${item.number}-${item.title}`}
+          key={item.title}
           className={cn(
             'group relative border-b border-border',
             'pl-4 transition-[border-color] duration-300 ease-out-expo sm:pl-5',
@@ -41,54 +41,40 @@ export function NumberedEditorialList({
             'hover:before:bg-brand',
           )}
         >
-          <div className={cn('grid gap-3 sm:grid-cols-[auto_1fr] sm:gap-x-6 sm:gap-y-1', padY)}>
-            <span
-              aria-hidden="true"
+          <div className={cn(padY)}>
+            <h3
               className={cn(
-                'font-display tabular-nums leading-none tracking-tight text-hhp-navy/20',
-                'text-[2.75rem] sm:text-[3.25rem]',
+                'font-display text-xl font-semibold tracking-tight text-hhp-navy sm:text-2xl',
                 'transition-colors duration-300 ease-out-expo',
-                'group-hover:text-hhp-navy/35',
+                'group-hover:text-brand',
               )}
             >
-              {item.number}
-            </span>
+              {item.title}
+            </h3>
+            <p className="mt-1.5 max-w-xl text-base leading-relaxed text-hhp-charcoal/85 sm:text-[1.0625rem]">
+              {item.body}
+            </p>
 
-            <div className="min-w-0 self-center">
-              <h3
-                className={cn(
-                  'font-display text-xl font-semibold tracking-tight text-hhp-navy sm:text-2xl',
-                  'transition-colors duration-300 ease-out-expo',
-                  'group-hover:text-brand',
-                )}
-              >
-                {item.title}
-              </h3>
-              <p className="mt-1.5 max-w-xl text-base leading-relaxed text-hhp-charcoal/85 sm:text-[1.0625rem]">
-                {item.body}
-              </p>
-
-              {item.details && item.details.length > 0 ? (
-                <ul className="mt-4 space-y-2">
-                  {item.details.map((detail) => (
-                    <li
-                      key={detail}
-                      className="flex items-start gap-3 text-sm leading-relaxed text-hhp-charcoal sm:text-base"
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="mt-[0.7rem] inline-block h-px w-3.5 shrink-0 bg-brand/70"
-                      />
-                      <span>{detail}</span>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-            </div>
+            {item.details && item.details.length > 0 ? (
+              <ul className="mt-4 space-y-2">
+                {item.details.map((detail) => (
+                  <li
+                    key={detail}
+                    className="flex items-start gap-3 text-sm leading-relaxed text-hhp-charcoal sm:text-base"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-[0.7rem] inline-block h-px w-3.5 shrink-0 bg-brand/70"
+                    />
+                    <span>{detail}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </div>
         </li>
       ))}
-    </ol>
+    </ul>
   );
 }
 

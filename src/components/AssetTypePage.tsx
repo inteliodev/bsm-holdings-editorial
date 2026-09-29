@@ -222,13 +222,7 @@ const AssetTypePage = ({
             <ol className="grid gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
               {metrics.map((metric, index) => (
                 <li key={metric.label} className="border-t border-white/15 pt-6">
-                  <span
-                    aria-hidden="true"
-                    className="font-display text-sm font-semibold text-hhp-gold"
-                  >
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <h3 className="mt-3 font-display text-lg font-semibold text-white">
+                  <h3 className="font-display text-lg font-semibold text-white">
                     {metric.label}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/70">{metric.detail}</p>
@@ -317,13 +311,7 @@ const AssetTypePage = ({
                   className="grid gap-4 border-t border-border py-8 md:grid-cols-12 md:gap-8 md:py-10"
                 >
                   <div className="md:col-span-4">
-                    <span
-                      aria-hidden="true"
-                      className="font-display text-3xl font-semibold leading-none text-hhp-gold"
-                    >
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <h3 className="mt-4 font-display text-xl font-semibold text-hhp-navy">
+                    <h3 className="font-display text-xl font-semibold text-hhp-navy">
                       {advantage.title}
                     </h3>
                   </div>

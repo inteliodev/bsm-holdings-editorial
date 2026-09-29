@@ -1,5 +1,5 @@
 interface ProcessStep {
-  step: string;
+  step?: string;
   title: string;
   description: string;
 }
@@ -25,13 +25,13 @@ const ProcessSteps = ({ steps, title, subtitle, className = "" }: ProcessStepsPr
             )}
           </div>
         )}
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <div className="grid grid-cols-1 gap-8 border-t border-border md:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
-            <div key={index} className="text-center">
-              <div className="w-16 h-16 bg-brand text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
-                {step.step}
-              </div>
+            <div
+              key={step.title}
+              className={`border-border pt-6 text-left ${index > 0 ? 'md:border-l md:pl-8' : ''}`}
+            >
               <h3 className="text-lg font-display font-semibold text-hhp-navy mb-3">
                 {step.title}
               </h3>

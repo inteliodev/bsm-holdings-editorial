@@ -179,25 +179,15 @@ const BuildingSection = () => {
                       active === index ? 'opacity-100' : 'opacity-55'
                     }`}
                   >
-                    <div className="flex items-baseline gap-5">
-                      <span
-                        aria-hidden="true"
-                        className={`font-display text-3xl font-semibold leading-none transition-colors duration-500 ${
-                          active === index ? 'text-hhp-gold' : 'text-white/25'
-                        }`}
-                      >
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <div>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-hhp-gold/80">
-                          {layer.where}
-                        </p>
-                        <h3 className="mt-2 font-display text-xl font-semibold text-white sm:text-2xl">
-                          {layer.trade}
-                        </h3>
-                      </div>
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-hhp-gold/80">
+                        {layer.where}
+                      </p>
+                      <h3 className="mt-2 font-display text-xl font-semibold text-white sm:text-2xl">
+                        {layer.trade}
+                      </h3>
                     </div>
-                    <p className="mt-4 leading-relaxed text-white/70 lg:pl-[3.6rem]">{layer.body}</p>
+                    <p className="mt-4 leading-relaxed text-white/70">{layer.body}</p>
                   </div>
                 </li>
               ))}

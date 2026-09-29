@@ -216,25 +216,15 @@ const CapabilityStack = () => {
                       active === index ? 'opacity-100' : 'opacity-55'
                     }`}
                   >
-                    <div className="flex items-baseline gap-5">
-                      <span
-                        aria-hidden="true"
-                        className={`font-display text-3xl font-semibold leading-none transition-colors duration-500 ${
-                          active === index ? 'text-hhp-gold' : 'text-hhp-navy/20'
-                        }`}
-                      >
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <div>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-hhp-gold">
-                          {capability.role}
-                        </p>
-                        <h3 className="mt-2 font-display text-xl font-semibold text-hhp-navy sm:text-2xl">
-                          {capability.name}
-                        </h3>
-                      </div>
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-hhp-gold">
+                        {capability.role}
+                      </p>
+                      <h3 className="mt-2 font-display text-xl font-semibold text-hhp-navy sm:text-2xl">
+                        {capability.name}
+                      </h3>
                     </div>
-                    <p className="mt-4 leading-relaxed text-hhp-charcoal lg:pl-[3.6rem]">
+                    <p className="mt-4 leading-relaxed text-hhp-charcoal">
                       {capability.body}
                     </p>
                     <Link

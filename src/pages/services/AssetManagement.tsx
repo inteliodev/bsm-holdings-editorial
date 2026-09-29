@@ -148,11 +148,8 @@ const AssetManagement = () => {
 
             <ol className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
               {FUNCTIONS.map((fn, i) => (
-                <li key={fn.title}>
-                  <span className="font-display text-sm font-semibold tracking-[0.12em] text-hhp-gold">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <h3 className="mt-3 font-display text-lg font-semibold text-white">
+                <li key={fn.title} className="border-t border-white/15 pt-6">
+                  <h3 className="font-display text-lg font-semibold text-white">
                     {fn.title}
                   </h3>
                   <p className="mt-3 leading-relaxed text-white/70">{fn.body}</p>

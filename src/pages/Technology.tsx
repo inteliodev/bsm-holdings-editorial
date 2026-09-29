@@ -91,27 +91,22 @@ const Technology = () => {
 
   const howItWorksSteps = [
     {
-      step: "01",
       title: "Discovery & Goals",
       description: "KPIs, systems, constraints"
     },
     {
-      step: "02", 
       title: "Data Intake",
       description: "Connect PMS/ERP/CRM + market feeds"
     },
     {
-      step: "03",
-      title: "Modeling & Dashboards", 
+      title: "Modeling & Dashboards",
       description: "Forecasts, comps, risk scoring"
     },
     {
-      step: "04",
       title: "Implementation",
       description: "Automations, training, change mgmt"
     },
     {
-      step: "05",
       title: "Optimization",
       description: "Quarterly reviews, roadmap, new features"
     }
@@ -396,11 +391,12 @@ const Technology = () => {
                 aria-hidden="true"
                 className="absolute left-6 top-6 h-[calc(100%-3rem)] w-px bg-white/15 lg:left-[10%] lg:top-6 lg:h-px lg:w-[80%]"
               />
-              {howItWorksSteps.map((step, index) => (
-                <li key={index} className="relative pl-16 lg:pl-0 lg:text-center">
-                  <span className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-full border border-hhp-gold/40 bg-hhp-navy-deep font-display text-sm font-semibold text-hhp-gold lg:relative lg:mx-auto lg:mb-6">
-                    {step.step}
-                  </span>
+              {howItWorksSteps.map((step) => (
+                <li key={step.title} className="relative pl-10 lg:pl-0 lg:text-center">
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-0 top-2 h-2.5 w-2.5 rounded-full border-2 border-hhp-gold bg-hhp-navy-deep lg:relative lg:mx-auto lg:mb-6 lg:block"
+                  />
                   <h3 className="font-display text-lg font-semibold text-white">{step.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/65">{step.description}</p>
                 </li>
@@ -426,15 +422,9 @@ const Technology = () => {
             </div>
 
             <div className="grid gap-10 md:grid-cols-3 md:gap-8 lg:gap-12">
-              {kpiCards.map((card, index) => (
-                <div key={index} className="border-t border-hhp-navy/15 pt-7">
-                  <span
-                    aria-hidden="true"
-                    className="font-display text-4xl font-semibold leading-none text-hhp-gold"
-                  >
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <h3 className="mt-5 font-display text-xl font-semibold text-hhp-navy">
+              {kpiCards.map((card) => (
+                <div key={card.title} className="border-t border-hhp-navy/15 pt-7">
+                  <h3 className="font-display text-xl font-semibold text-hhp-navy">
                     {card.title}
                   </h3>
                   <p className="mt-3 leading-relaxed text-hhp-charcoal">{card.description}</p>
