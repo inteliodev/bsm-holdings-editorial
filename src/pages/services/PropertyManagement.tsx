@@ -84,18 +84,15 @@ const MONTHLY_DELIVERABLES = [
 const GETTING_STARTED = [
   {
     title: 'Property Review',
-    description:
-      'We review your property, current leases, and goals — then discuss rent targets, make-ready needs, and how you want to stay informed.',
+    description: 'Review the property, leases, and goals.',
   },
   {
     title: 'Management Setup',
-    description:
-      'Agreements, owner preferences, resident records, and accounting setup so day-to-day management can begin cleanly.',
+    description: 'Set up agreements, records, and owner preferences.',
   },
   {
     title: 'Ongoing Management',
-    description:
-      'Leasing, collections, resident communication, maintenance coordination, and monthly reporting — with a clear point of contact.',
+    description: 'Coordinate leasing, residents, maintenance, and reporting.',
   },
 ];
 
@@ -144,7 +141,7 @@ const OWNER_FAQS = [
     value: 'switching',
     question: 'What if I already have a property manager?',
     answer:
-      'We can take over an existing portfolio. A typical handoff includes leases, financial records, keys, deposits, and resident information; residents are notified of the change; and we establish opening financials so the first reporting period starts cleanly. Timelines depend on the property and what is already in place.',
+      'We coordinate the handoff of leases, records, keys, deposits, and resident information.',
   },
 ];
 
@@ -450,15 +447,10 @@ const PropertyManagement = () => {
           <div className="mx-auto max-w-3xl">
             <h2 className="section-title text-hhp-navy">Getting started</h2>
             <p className="mt-5 text-lg leading-relaxed text-hhp-charcoal">
-              Whether you are new to management or switching from another manager, we
-              start with a clear review of your property and goals.
+              We begin with a clear review of your property and goals.
             </p>
             <p className="mt-4 text-base leading-relaxed text-hhp-charcoal">
-              Already have a property manager? Switching is a handoff, not a restart
-              from zero. We work through leases, financial records, keys, deposits, and
-              resident information; notify residents of the change; and establish opening
-              financials so the first reporting period starts cleanly. Timing depends on
-              the property — we outline the steps when you request a proposal.
+              Switching managers? We make the handoff clear and organized.
             </p>
             <ol className="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-8">
               {GETTING_STARTED.map((item) => (
