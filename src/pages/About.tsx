@@ -23,26 +23,6 @@ const PRINCIPAL = {
   ],
 };
 
-/**
- * Three operating principles — open columns, one-line descriptions from existing accurate copy.
- * No numbered markers, no cards.
- */
-const OPERATING_PRINCIPLES = [
-  {
-    title: 'Direct Communication',
-    description: 'Owners and residents hear from a direct point of contact.',
-  },
-  {
-    title: 'Property Oversight',
-    description:
-      'Leasing, rent collection, maintenance, and reporting stay with the same team.',
-  },
-  {
-    title: 'Clear Reporting',
-    description: 'Monthly statements and notes owners can act on.',
-  },
-];
-
 const TEAM_PLACEHOLDERS = [
   {
     name: 'Team member',
@@ -157,28 +137,14 @@ const About = () => {
         </div>
       </section>
 
-      {/* 4. How We Operate — three open columns, no numbers, no intro paragraph */}
+      {/* 4. Our Story — founding details are still being confirmed. */}
       <section className="border-t border-border bg-white py-14 sm:py-16 lg:py-20">
         <div className="container-premium">
-          <h2 className="section-title text-hhp-navy">How We Operate</h2>
-
-          <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-0">
-            {OPERATING_PRINCIPLES.map((principle, index) => (
-              <div
-                key={principle.title}
-                className={`md:px-8 lg:px-10 ${
-                  index > 0 ? 'md:border-l md:border-border' : 'md:pl-0'
-                } ${index === OPERATING_PRINCIPLES.length - 1 ? 'md:pr-0' : ''}`}
-              >
-                <h3 className="font-display text-2xl font-semibold tracking-tight text-hhp-navy sm:text-[1.65rem]">
-                  {principle.title}
-                </h3>
-                <p className="mt-4 text-lg leading-relaxed text-hhp-charcoal">
-                  {principle.description}
-                </p>
-              </div>
-            ))}
-          </div>
+          <h2 className="section-title text-hhp-navy">Our Story</h2>
+          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-hhp-charcoal">
+            BSM Holdings’ founding story is being documented and will be shared here once
+            confirmed. More about how the company began is coming.
+          </p>
         </div>
       </section>
 
