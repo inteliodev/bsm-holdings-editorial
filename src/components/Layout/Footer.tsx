@@ -17,7 +17,6 @@ const OWNERS_RESIDENTS_LINKS: Array<
   | { label: string; to: string; external?: false }
   | { label: string; href: string; external: true }
 > = [
-  { to: '/contact?inquiry=owner', label: 'Owner Support' },
   { to: '/contact?inquiry=owner', label: 'Request a Proposal' },
   { href: RESIDENT_PORTAL_URL, label: 'Resident Login', external: true },
   { to: '/portfolio', label: 'Browse Rentals' },

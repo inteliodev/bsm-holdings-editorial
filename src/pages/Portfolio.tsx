@@ -49,13 +49,13 @@ const Portfolio = () => {
         </div>
       </section>
 
-      <section className="border-t border-border bg-surface py-10 sm:py-12">
+      <section className="border-t border-white/10 bg-brand-deep py-10 text-white sm:py-12">
         <div className="container-premium flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="font-display text-lg font-semibold text-hhp-navy">
+            <h2 className="font-display text-lg font-semibold text-white">
               Looking for a Property Manager?
             </h2>
-            <p className="mt-2 max-w-xl text-sm leading-relaxed text-hhp-charcoal/70">
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/75">
               We manage residential properties in the Oklahoma City metro — clear owner
               reporting and direct resident support.
             </p>
@@ -73,7 +73,7 @@ const Portfolio = () => {
             </Link>
             <Link
               to="/services/property-management"
-              className="btn-secondary"
+              className="btn-secondary border-white/30 text-white hover:border-white/50 hover:bg-white/10"
               onClick={() => {
                 trackButtonClick('portfolio_cta_pm', 'portfolio');
                 trackLinkClick('Property Management', '/services/property-management');

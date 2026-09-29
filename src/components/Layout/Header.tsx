@@ -402,16 +402,6 @@ const Header = () => {
                 isTransparent ? 'border-white/25' : 'border-border'
               }`}
             >
-              <Link
-                to="/contact?inquiry=owner"
-                className={`px-1 py-1 text-xs font-medium leading-tight transition-colors duration-200 sm:px-2 sm:text-sm ${navLinkClass}`}
-                onClick={() => {
-                  trackButtonClick('owner_support', 'header');
-                  trackLinkClick('Owner Support', '/contact?inquiry=owner');
-                }}
-              >
-                Owner Support
-              </Link>
               <a
                 href={RESIDENT_PORTAL_URL}
                 target="_blank"
@@ -543,17 +533,6 @@ const Header = () => {
                   indent that aligned with neither the top-level items nor the
                   submenu. They now share the top-level left edge. */}
               <div className="flex flex-col space-y-1 border-t border-border pt-5">
-                <Link
-                  to="/contact?inquiry=owner"
-                  className="flex min-h-[48px] items-center rounded-md py-3 text-sm font-medium text-hhp-charcoal/75 transition-colors duration-200 hover:text-hhp-navy"
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    trackButtonClick('owner_support', 'header_mobile');
-                    trackLinkClick('Owner Support', '/contact?inquiry=owner');
-                  }}
-                >
-                  Owner Support
-                </Link>
                 <a
                   href={RESIDENT_PORTAL_URL}
                   target="_blank"

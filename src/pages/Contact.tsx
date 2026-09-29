@@ -182,19 +182,19 @@ const Contact = () => {
           </div>
 
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10 lg:items-start">
-            <aside className="space-y-6 lg:col-span-4">
+            <aside className="space-y-6 rounded-sm bg-brand-deep p-6 text-white sm:p-8 lg:col-span-4">
               <div>
-                <h2 className="font-display text-lg font-semibold text-hhp-navy">
+                <h2 className="font-display text-lg font-semibold text-white">
                   Contact Our Team
                 </h2>
                 <div className="mt-4 space-y-4">
                   <div className="flex items-start gap-3">
-                    <Mail className="mt-0.5 h-5 w-5 shrink-0 text-brand" aria-hidden="true" />
+                    <Mail className="mt-0.5 h-5 w-5 shrink-0 text-hhp-gold-soft" aria-hidden="true" />
                     <div>
-                      <p className="text-sm font-medium text-hhp-navy">Email</p>
+                      <p className="text-sm font-medium text-white">Email</p>
                       <a
                         href={`mailto:${CONTACT_EMAIL}`}
-                        className="tap text-sm text-hhp-charcoal underline-offset-4 hover:text-hhp-navy hover:underline"
+                        className="tap text-sm text-white/80 underline-offset-4 hover:text-white hover:underline"
                         onClick={() => trackButtonClick('email_link', 'contact_info')}
                       >
                         {CONTACT_EMAIL}
@@ -203,28 +203,28 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <p className="text-sm font-medium text-hhp-navy">Existing owners</p>
-                    <p className="mt-1 text-sm leading-relaxed text-hhp-charcoal">
+                    <p className="text-sm font-medium text-white">Existing owners</p>
+                    <p className="mt-1 text-sm leading-relaxed text-white/75">
                       Questions about reporting, maintenance, or your management agreement —
                       use this form or email us directly.
                     </p>
                   </div>
 
                   <div>
-                    <p className="text-sm font-medium text-hhp-navy">Prospective inquiries</p>
-                    <p className="mt-1 text-sm leading-relaxed text-hhp-charcoal">
+                    <p className="text-sm font-medium text-white">Prospective inquiries</p>
+                    <p className="mt-1 text-sm leading-relaxed text-white/75">
                       New management proposals and rental questions are welcome here. Choose
                       the matching inquiry type so we can route your message.
                     </p>
                   </div>
 
                   <div>
-                    <p className="text-sm font-medium text-hhp-navy">Resident Login</p>
+                    <p className="text-sm font-medium text-white">Resident Login</p>
                     <a
                       href={RESIDENT_PORTAL_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="tap inline-flex items-center gap-1.5 text-sm text-hhp-charcoal underline-offset-4 hover:underline"
+                      className="tap inline-flex items-center gap-1.5 text-sm text-white/80 underline-offset-4 hover:text-white hover:underline"
                       onClick={() => trackLinkClick('Resident Login', RESIDENT_PORTAL_URL)}
                     >
                       Open resident portal

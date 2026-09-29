@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Layout from '@/components/Layout/Layout';
 import { ArrowRight, ChevronDown } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 import {
@@ -151,6 +150,7 @@ function IncludedPanel({
   item: (typeof WHATS_INCLUDED)[number];
 }) {
   const [open, setOpen] = useState(false);
+  const isAccent = item.id === 'resident';
 
   return (
     <Collapsible
@@ -159,16 +159,32 @@ function IncludedPanel({
         setOpen(next);
         if (next) trackButtonClick(`pm_included_${item.id}`, 'pm_whats_included');
       }}
-      className="flex h-full flex-col border border-border bg-white p-6 sm:p-7"
+      className={cn(
+        'flex h-full flex-col border p-6 sm:p-7',
+        isAccent ? 'border-white/15 bg-brand-deep text-white' : 'border-border bg-white',
+      )}
     >
-      <h3 className="font-display text-xl font-semibold tracking-tight text-hhp-navy sm:text-[1.35rem]">
+      <h3
+        className={cn(
+          'font-display text-xl font-semibold tracking-tight sm:text-[1.35rem]',
+          isAccent ? 'text-white' : 'text-hhp-navy',
+        )}
+      >
         {item.title}
       </h3>
-      <p className="mt-3 flex-1 text-base leading-relaxed text-hhp-charcoal">
+      <p
+        className={cn(
+          'mt-3 flex-1 text-base leading-relaxed',
+          isAccent ? 'text-white/80' : 'text-hhp-charcoal',
+        )}
+      >
         {item.body}
       </p>
       <CollapsibleTrigger
-        className="tap group mt-5 inline-flex items-center gap-1.5 self-start text-sm font-semibold text-hhp-navy transition-colors hover:text-brand"
+        className={cn(
+          'tap group mt-5 inline-flex items-center gap-1.5 self-start text-sm font-semibold transition-colors',
+          isAccent ? 'text-hhp-gold-soft hover:text-white' : 'text-hhp-navy hover:text-brand',
+        )}
         aria-expanded={open}
       >
         View Details
@@ -181,11 +197,19 @@ function IncludedPanel({
         />
       </CollapsibleTrigger>
       <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-        <ul className="mt-4 space-y-2 border-t border-border pt-4">
+        <ul
+          className={cn(
+            'mt-4 space-y-2 border-t pt-4',
+            isAccent ? 'border-white/15' : 'border-border',
+          )}
+        >
           {item.details.map((detail) => (
             <li
               key={detail}
-              className="flex items-start gap-3 text-sm leading-relaxed text-hhp-charcoal"
+              className={cn(
+                'flex items-start gap-3 text-sm leading-relaxed',
+                isAccent ? 'text-white/75' : 'text-hhp-charcoal',
+              )}
             >
               <span
                 aria-hidden="true"
@@ -499,16 +523,6 @@ const PropertyManagement = () => {
                 communication across the Oklahoma City metro.
               </p>
               <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
-                <Link
-                  to="/contact?inquiry=owner"
-                  className="tap text-sm font-semibold text-hhp-navy underline-offset-4 hover:underline"
-                  onClick={() => {
-                    trackButtonClick('owner_support_poc', 'pm_poc');
-                    trackLinkClick('Owner Support', '/contact?inquiry=owner');
-                  }}
-                >
-                  Owner Support
-                </Link>
                 <a
                   href={RESIDENT_PORTAL_URL}
                   target="_blank"

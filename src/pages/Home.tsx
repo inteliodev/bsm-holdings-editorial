@@ -232,12 +232,12 @@ const Home = () => {
         />
 
         {/* Who owners work with — real Ty headshot already in repo */}
-        <section className="bg-surface-sunken py-12 sm:py-16 lg:py-20">
+        <section className="bg-brand-deep py-12 text-white sm:py-16 lg:py-20">
           <div className="container-premium">
             <AnimatedCard distance={16}>
               <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
                 <div className="lg:col-span-4">
-                  <div className="mx-auto aspect-square max-w-[280px] overflow-hidden rounded border border-border bg-white lg:mx-0 lg:max-w-none">
+                  <div className="mx-auto aspect-square max-w-[280px] overflow-hidden rounded border border-white/15 bg-white lg:mx-0 lg:max-w-none">
                     <img
                       src="/brand/ty-headshot.png"
                       alt="Ty McClellan, Principal of BSM Holdings"
@@ -248,19 +248,19 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="lg:col-span-8">
-                  <h2 className="section-title text-hhp-navy">Who owners work with</h2>
-                  <p className="mt-2 font-display text-lg font-semibold text-hhp-navy">
+                  <h2 className="section-title text-white">Who owners work with</h2>
+                  <p className="mt-2 font-display text-lg font-semibold text-white">
                     Ty McClellan
                   </p>
-                  <p className="text-sm font-medium text-brand">Principal</p>
-                  <p className="mt-4 max-w-xl text-lg leading-relaxed text-hhp-charcoal">
+                  <p className="text-sm font-medium text-hhp-gold-soft">Principal</p>
+                  <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/80">
                     Ty works directly with owners and residents — clear reporting,
                     responsive maintenance coordination, and straightforward communication
                     across the Oklahoma City metro.
                   </p>
                   <Link
                     to="/about"
-                    className="tap group mt-6 inline-flex items-center gap-2 font-display font-semibold text-brand transition-colors hover:text-brand-deep"
+                    className="tap group mt-6 inline-flex items-center gap-2 font-display font-semibold text-hhp-gold-soft transition-colors hover:text-white"
                     onClick={() => {
                       trackButtonClick('meet_the_team', 'home_people');
                       trackLinkClick('About BSM Holdings', '/about');

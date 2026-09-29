@@ -138,10 +138,10 @@ const About = () => {
       </section>
 
       {/* 4. Our Story — founding details are still being confirmed. */}
-      <section className="border-t border-border bg-white py-14 sm:py-16 lg:py-20">
+      <section className="border-t border-white/10 bg-brand-deep py-14 text-white sm:py-16 lg:py-20">
         <div className="container-premium">
-          <h2 className="section-title text-hhp-navy">Our Story</h2>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-hhp-charcoal">
+          <h2 className="section-title text-white">Our Story</h2>
+          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/80">
             BSM Holdings’ founding story is being documented and will be shared here once
             confirmed. More about how the company began is coming.
           </p>
