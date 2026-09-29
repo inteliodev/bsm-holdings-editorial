@@ -198,9 +198,9 @@ const PropertyManagement = () => {
             </div>
             <div className="lg:col-span-7">
               <img
-                src="/images/properties/office-mail-porch.webp"
-                alt="On-site property office at a managed residential community"
-                className="aspect-[5/4] w-full border border-border object-cover object-[center_35%] sm:aspect-[4/3]"
+                src="/images/multifamily-image-trendy.jpg"
+                alt="Modern multifamily apartment building exterior"
+                className="aspect-[5/4] w-full border border-border object-cover object-[center_40%] sm:aspect-[4/3]"
                 loading="eager"
                 decoding="async"
               />
@@ -223,9 +223,9 @@ const PropertyManagement = () => {
             </div>
             <div className="hidden lg:col-span-5 lg:block">
               <img
-                src="/images/properties/entrance-sign.webp"
-                alt="Managed residential community entrance"
-                className="sticky top-28 aspect-[3/4] w-full border border-border object-cover object-center"
+                src="/images/property-management-picture.webp"
+                alt="Multifamily residential complex exterior"
+                className="sticky top-28 aspect-[3/4] w-full border border-border object-cover object-[center_35%]"
                 loading="lazy"
                 decoding="async"
               />
