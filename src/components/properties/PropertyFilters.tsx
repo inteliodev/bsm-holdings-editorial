@@ -23,9 +23,12 @@ export function PropertyFilters() {
   const [city, setCity] = useState<string>('any');
   const [rent, setRent] = useState<RentFilter>('any');
   const [sort, setSort] = useState<SortKey>('rent-asc');
+  /** Leased homes hidden by default; optional include. */
+  const [includeLeased, setIncludeLeased] = useState(false);
 
   const filtered = useMemo(() => {
     let rows = listings.filter((l) => {
+      if (!includeLeased && !l.available && !l.comingSoon) return false;
       if (beds !== 'any' && l.beds < Number(beds)) return false;
       if (pets === 'yes' && !l.pets) return false;
       if (pets === 'no' && l.pets) return false;
@@ -40,7 +43,7 @@ export function PropertyFilters() {
       return b.beds - a.beds;
     });
     return rows;
-  }, [beds, pets, city, rent, sort]);
+  }, [beds, pets, city, rent, sort, includeLeased]);
 
   const selectClass =
     'w-full rounded border border-border bg-white px-3 py-2 text-sm text-hhp-charcoal focus-ring';
@@ -119,10 +122,21 @@ export function PropertyFilters() {
           </label>
         </div>
         <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-3">
-          <p className="text-sm text-listing-muted">
-            <span className="font-semibold text-brand-deep">{filtered.length}</span>{' '}
-            {filtered.length === 1 ? 'property' : 'properties'}
-          </p>
+          <div className="flex flex-wrap items-center gap-4">
+            <p className="text-sm text-listing-muted">
+              <span className="font-semibold text-brand-deep">{filtered.length}</span>{' '}
+              {filtered.length === 1 ? 'property' : 'properties'}
+            </p>
+            <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-hhp-charcoal">
+              <input
+                type="checkbox"
+                className="h-4 w-4 rounded border-border text-brand focus-ring"
+                checked={includeLeased}
+                onChange={(e) => setIncludeLeased(e.target.checked)}
+              />
+              Include leased
+            </label>
+          </div>
           <button
             type="button"
             onClick={() => {
@@ -131,6 +145,7 @@ export function PropertyFilters() {
               setCity('any');
               setRent('any');
               setSort('rent-asc');
+              setIncludeLeased(false);
             }}
             className="text-xs font-semibold text-listing-muted hover:text-brand-deep focus-ring"
           >
@@ -156,7 +171,7 @@ export function PropertyFilters() {
       ) : (
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((listing) => (
-            <div key={listing.id} id={listing.slug} className="scroll-mt-32">
+            <div key={listing.id} className="scroll-mt-32">
               <ListingCard listing={listing} className="!max-w-none h-full" />
             </div>
           ))}

@@ -37,7 +37,7 @@ const HOW_WE_MANAGE = [
     step: '03',
     title: 'Owner Reporting',
     description:
-      'Clear updates on occupancy, collections, expenses, and open maintenance — with notes on what changed next.',
+      'Clear updates on occupancy, collections, expenses, and open maintenance — with notes on what changed and what happens next.',
   },
   {
     step: '04',
@@ -117,7 +117,7 @@ const SAMPLE_REPORT = {
     { label: 'Occupancy', value: '94%' },
     { label: 'Rent collected', value: '$12,450' },
     { label: 'Operating expenses', value: '$3,210' },
-    { label: 'Net to owner', value: '$9,240' },
+    { label: 'Net operating income', value: '$9,240' },
     { label: 'Open work orders', value: '2' },
   ],
 };
@@ -134,17 +134,20 @@ const PropertyManagement = () => {
               <h1 className="hero-title mt-4 text-hhp-navy">Property Management</h1>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-hhp-charcoal">
                 Day-to-day management for residential rentals in the Oklahoma City
-                metro: leasing, resident communication, maintenance, and financial
-                reporting. You receive monthly statements and updates from a direct
-                point of contact.
+                metro — leasing, resident communication, maintenance, and financial
+                reporting.
+              </p>
+              <p className="mt-4 max-w-xl text-lg leading-relaxed text-hhp-charcoal">
+                You receive monthly statements and updates from a direct point of
+                contact.
               </p>
               <div className="mt-8">
                 <Link
-                  to="/contact"
+                  to="/contact?inquiry=owner"
                   className="btn-hero"
                   onClick={() => {
                     trackButtonClick('request_a_proposal', 'pm_hero');
-                    trackLinkClick('Request a Proposal', '/contact');
+                    trackLinkClick('Request a Proposal', '/contact?inquiry=owner');
                   }}
                 >
                   Request a Proposal
@@ -243,11 +246,11 @@ const PropertyManagement = () => {
                 open items with plain notes on what is next.
               </p>
               <Link
-                to="/contact"
+                to="/contact?inquiry=owner"
                 className="tap group mt-8 inline-flex items-center gap-2 font-display font-semibold text-hhp-navy transition-colors hover:text-brand"
                 onClick={() => {
                   trackButtonClick('request_proposal_reporting', 'pm_reporting');
-                  trackLinkClick('Request a Proposal', '/contact');
+                  trackLinkClick('Request a Proposal', '/contact?inquiry=owner');
                 }}
               >
                 Request a Proposal
@@ -278,7 +281,7 @@ const PropertyManagement = () => {
                   ))}
                 </ul>
                 <p className="border-t border-border px-5 py-3 text-xs leading-relaxed text-listing-muted sm:px-6">
-                  Sample figures for layout only — not a real owner statement.
+                  Illustrative figures; actual reports vary by property.
                 </p>
               </div>
             </div>
@@ -373,11 +376,11 @@ const PropertyManagement = () => {
             </div>
             <div className="flex flex-wrap gap-3">
               <Link
-                to="/contact"
+                to="/contact?inquiry=owner"
                 className="tap text-sm font-semibold text-hhp-navy underline-offset-4 hover:underline"
                 onClick={() => {
                   trackButtonClick('owner_support_strip', 'pm_support');
-                  trackLinkClick('Owner Support', '/contact');
+                  trackLinkClick('Owner Support', '/contact?inquiry=owner');
                 }}
               >
                 Owner Support

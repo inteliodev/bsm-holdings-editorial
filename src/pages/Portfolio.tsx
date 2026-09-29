@@ -6,8 +6,7 @@ import { trackButtonClick, trackLinkClick } from '@/utils/analytics';
 import { Helmet } from 'react-helmet-async';
 
 const Portfolio = () => {
-  const openOrComing = listings.filter((l) => l.available || l.comingSoon);
-  const availableCount = openOrComing.length;
+  const availableCount = listings.filter((l) => l.available || l.comingSoon).length;
 
   return (
     <Layout>
@@ -63,11 +62,11 @@ const Portfolio = () => {
           </div>
           <div className="flex flex-wrap gap-3">
             <Link
-              to="/contact"
+              to="/contact?inquiry=owner"
               className="btn-hero"
               onClick={() => {
                 trackButtonClick('portfolio_cta_proposal', 'portfolio');
-                trackLinkClick('Request a Proposal', '/contact');
+                trackLinkClick('Request a Proposal', '/contact?inquiry=owner');
               }}
             >
               Request a Proposal

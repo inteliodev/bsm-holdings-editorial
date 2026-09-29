@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Mail, Send, ExternalLink } from 'lucide-react';
 import { submitLead } from '@/lib/leads';
 import Layout from '@/components/Layout/Layout';
@@ -27,7 +27,30 @@ const INQUIRY_TYPES = [
   { value: 'Current Resident', label: 'Current Resident' },
 ] as const;
 
+function inquiryFromParam(raw: string | null): string {
+  if (!raw) return '';
+  const key = raw.trim().toLowerCase();
+  if (
+    key === 'owner' ||
+    key === 'property-owner' ||
+    key === 'property-management' ||
+    key === 'pm' ||
+    key === 'proposal'
+  ) {
+    return 'Property Owner';
+  }
+  if (key === 'rental' || key === 'rental-inquiry' || key === 'tenant' || key === 'application') {
+    return 'Rental Inquiry';
+  }
+  if (key === 'resident' || key === 'current-resident') {
+    return 'Current Resident';
+  }
+  const match = INQUIRY_TYPES.find((t) => t.value.toLowerCase() === key);
+  return match?.value ?? '';
+}
+
 const Contact = () => {
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -40,6 +63,28 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
+
+  useEffect(() => {
+    const inquiry = inquiryFromParam(searchParams.get('inquiry'));
+    const address = searchParams.get('address')?.trim() ?? '';
+    const intent = searchParams.get('intent')?.trim().toLowerCase() ?? '';
+
+    setFormData((prev) => {
+      const next = { ...prev };
+      if (inquiry) next.inquiry_type = inquiry;
+      if (address) next.property_address = address;
+      if (intent === 'application' && !prev.message) {
+        next.message = address
+          ? `I would like to request a rental application for ${address}.`
+          : 'I would like to request a rental application.';
+      } else if (intent === 'tour' && !prev.message) {
+        next.message = address
+          ? `I would like to schedule a tour of ${address}.`
+          : 'I would like to schedule a property tour.';
+      }
+      return next;
+    });
+  }, [searchParams]);
 
   const showPropertyAddress =
     formData.inquiry_type === 'Property Owner' || formData.inquiry_type === 'Rental Inquiry';
@@ -131,15 +176,17 @@ const Contact = () => {
             <span className="eyebrow">Contact</span>
             <h1 className="section-title mt-3 text-hhp-navy">Get in touch</h1>
             <p className="mt-3 text-lg leading-relaxed text-hhp-charcoal">
-              Request a proposal, ask about a rental, or reach us about an existing home.
+              Owners: request management or ask about an existing property. Prospective
+              renters: ask about a home, schedule a tour, or request an application.
             </p>
           </div>
 
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10 lg:items-start">
-            {/* Details — left */}
             <aside className="space-y-6 lg:col-span-4">
               <div>
-                <h2 className="font-display text-lg font-semibold text-hhp-navy">Details</h2>
+                <h2 className="font-display text-lg font-semibold text-hhp-navy">
+                  Contact Our Team
+                </h2>
                 <div className="mt-4 space-y-4">
                   <div className="flex items-start gap-3">
                     <Mail className="mt-0.5 h-5 w-5 shrink-0 text-brand" aria-hidden="true" />
@@ -156,14 +203,19 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <p className="text-sm font-medium text-hhp-navy">Owner Support</p>
-                    <Link
-                      to="/contact"
-                      className="tap text-sm text-hhp-charcoal underline-offset-4 hover:underline"
-                      onClick={() => trackLinkClick('Owner Support', '/contact')}
-                    >
-                      Use this form for management proposals
-                    </Link>
+                    <p className="text-sm font-medium text-hhp-navy">Existing owners</p>
+                    <p className="mt-1 text-sm leading-relaxed text-hhp-charcoal">
+                      Questions about reporting, maintenance, or your management agreement —
+                      use this form or email us directly.
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-sm font-medium text-hhp-navy">Prospective inquiries</p>
+                    <p className="mt-1 text-sm leading-relaxed text-hhp-charcoal">
+                      New management proposals and rental questions are welcome here. Choose
+                      the matching inquiry type so we can route your message.
+                    </p>
                   </div>
 
                   <div>
@@ -181,13 +233,8 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-
-              <p className="text-sm leading-relaxed text-hhp-charcoal/70">
-                No public phone number is listed. Email is the best way to reach us.
-              </p>
             </aside>
 
-            {/* Form — right white panel */}
             <div className="border border-border bg-white p-6 sm:p-8 lg:col-span-8">
               {submitted ? (
                 <div className="py-4">

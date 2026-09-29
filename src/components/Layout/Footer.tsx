@@ -3,6 +3,7 @@ import { OFFICE_ADDRESS } from '@/data/serviceArea';
 import equalHousingLogo from '@/assets/equal-housing.png';
 import { Mail, MapPin } from 'lucide-react';
 import { RESIDENT_PORTAL_URL } from '@/lib/site';
+import { BrandLogo } from '@/components/brand/BrandLogo';
 
 const COMPANY_LINKS = [
   { to: '/about', label: 'About' },
@@ -16,17 +17,17 @@ const OWNERS_RESIDENTS_LINKS: Array<
   | { label: string; to: string; external?: false }
   | { label: string; href: string; external: true }
 > = [
-  { to: '/contact', label: 'Owner Support' },
-  { to: '/contact', label: 'Request a Proposal' },
+  { to: '/contact?inquiry=owner', label: 'Owner Support' },
+  { to: '/contact?inquiry=owner', label: 'Request a Proposal' },
   { href: RESIDENT_PORTAL_URL, label: 'Resident Login', external: true },
   { to: '/portfolio', label: 'Browse Rentals' },
 ];
 
 const linkClass =
-  'inline-flex min-h-[44px] items-center text-sm text-white/65 transition-colors hover:text-white';
+  'inline-flex min-h-[44px] items-center text-sm text-white/80 transition-colors hover:text-white';
 
 const columnHeading =
-  'mb-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/45';
+  'mb-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/70';
 
 const Footer = () => {
   return (
@@ -35,15 +36,8 @@ const Footer = () => {
       <div className="container-premium pb-10 pt-16 sm:pt-20">
         <div className="grid grid-cols-2 gap-x-8 gap-y-12 lg:grid-cols-12 lg:gap-x-12">
           <div className="col-span-2 lg:col-span-3">
-            <img
-              src="/brand/bsm-logo.png"
-              alt="BSM Holdings"
-              width={140}
-              height={140}
-              loading="lazy"
-              className="logo-flat-white h-10 w-auto object-contain sm:h-11"
-            />
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/55">
+            <BrandLogo variant="dark" linked />
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/75">
               Residential property management in the Oklahoma City metro.
             </p>
           </div>
@@ -91,15 +85,15 @@ const Footer = () => {
               <li>
                 <a
                   href="mailto:ty@bsmholdings.com"
-                  className="flex min-h-[44px] items-center gap-3 text-sm text-white/65 transition-colors hover:text-white"
+                  className="flex min-h-[44px] items-center gap-3 text-sm text-white/80 transition-colors hover:text-white"
                 >
-                  <Mail className="h-4 w-4 flex-shrink-0 text-white/50" />
+                  <Mail className="h-4 w-4 flex-shrink-0 text-white/65" />
                   ty@bsmholdings.com
                 </a>
               </li>
               <li className="flex items-start gap-3 py-2">
-                <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-white/50" />
-                <address className="text-sm not-italic leading-relaxed text-white/65">
+                <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-white/65" />
+                <address className="text-sm not-italic leading-relaxed text-white/80">
                   {OFFICE_ADDRESS.city} metro & surrounding communities
                   <br />
                   {OFFICE_ADDRESS.state}
@@ -109,7 +103,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-7 sm:flex-row">
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/15 pt-7 sm:flex-row">
           <div className="flex items-center gap-3">
             <img
               src={equalHousingLogo}
@@ -117,11 +111,11 @@ const Footer = () => {
               width={28}
               height={28}
               loading="lazy"
-              className="h-7 w-auto opacity-80"
+              className="h-7 w-auto opacity-90"
             />
-            <span className="text-xs text-white/45">Equal Housing Opportunity</span>
+            <span className="text-xs text-white/70">Equal Housing Opportunity</span>
           </div>
-          <p className="text-center text-xs text-white/45 sm:text-right">
+          <p className="text-center text-xs text-white/70 sm:text-right">
             © 2026 BSM Holdings. All rights reserved.
           </p>
         </div>

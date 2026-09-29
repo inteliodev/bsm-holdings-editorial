@@ -40,7 +40,7 @@ const Home = () => {
       <LocalBusinessSchema />
       {/* Hero — video as atmosphere; copy left-aligned over navy panel */}
       <section
-        className="fixed inset-0 z-0 h-screen min-h-[600px] w-full overflow-hidden bg-brand-deep"
+        className="fixed inset-0 z-0 h-[78vh] min-h-[520px] max-h-[820px] w-full overflow-hidden bg-brand-deep"
         aria-label="Hero"
       >
         <video
@@ -60,7 +60,7 @@ const Home = () => {
         <div className="absolute inset-0 z-10 scrim-hero-editorial" aria-hidden="true" />
 
         <div className="absolute inset-0 z-20 flex items-center">
-          <div className="container-premium w-full px-4 sm:px-6">
+          <div className="container-premium w-full">
             <div className="max-w-xl lg:max-w-2xl">
               <h1 className="hero-title normal-case text-white">
                 Residential Property Management
@@ -73,11 +73,11 @@ const Home = () => {
               </p>
               <div className="mt-7 flex flex-col items-start gap-4 sm:mt-8 sm:flex-row sm:items-center">
                 <Link
-                  to="/contact"
+                  to="/contact?inquiry=owner"
                   className="btn-hero"
                   onClick={() => {
                     trackButtonClick('request_a_proposal', 'home_hero');
-                    trackLinkClick('Request a Proposal', '/contact');
+                    trackLinkClick('Request a Proposal', '/contact?inquiry=owner');
                   }}
                 >
                   Request a Proposal
@@ -97,22 +97,10 @@ const Home = () => {
             </div>
           </div>
         </div>
-
-        <div
-          className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-3"
-          aria-hidden="true"
-        >
-          <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40">
-            Scroll
-          </span>
-          <span className="block h-10 w-px overflow-hidden bg-white/20">
-            <span className="block h-3 w-px animate-[scrollCue_2.4s_ease-in-out_infinite] bg-white/70" />
-          </span>
-        </div>
       </section>
 
       <div
-        className="pointer-events-none relative z-0 h-screen min-h-[600px] w-full"
+        className="pointer-events-none relative z-0 h-[78vh] min-h-[520px] max-h-[820px] w-full"
         aria-hidden="true"
       />
 

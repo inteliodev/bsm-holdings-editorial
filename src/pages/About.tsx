@@ -14,7 +14,7 @@ const PRINCIPAL = {
   image: tyImage,
   bio: [
     'Ty McClellan is Principal of BSM Holdings, a residential property management firm serving the Oklahoma City metro.',
-    'Ty works directly with owners and residents — clear reporting, responsive maintenance coordination, and straightforward communication.',
+    'He works directly with owners on leasing, rent collection, maintenance coordination, and monthly reporting — with straightforward communication for residents and owners alike.',
   ],
 };
 
@@ -111,20 +111,14 @@ const About = () => {
             <div className="mt-8 space-y-5 text-lg leading-relaxed text-hhp-charcoal">
               <p>
                 BSM Holdings manages single-family homes, duplexes, townhomes,
-                and apartments throughout the Oklahoma City metro. Our team
-                handles daily operations, supports residents, and keeps owners
-                informed about their properties.
+                and apartments throughout the Oklahoma City metro. Day-to-day
+                work stays with one team: leasing, rent collection, maintenance
+                coordination, and owner reporting.
               </p>
               <p>
-                We focus on the work that keeps rental properties running:
-                finding tenants, collecting rent, coordinating repairs, and
-                maintaining accurate financial records. Our management team
-                coordinates repairs and keeps owners informed about costs and
-                progress.
-              </p>
-              <p>
-                Owners have a direct point of contact for clear reporting and
-                resident support.
+                Owners work with a direct point of contact — clear updates on
+                occupancy, collections, expenses, and open items, without a
+                call-center handoff.
               </p>
             </div>
           </div>
@@ -190,11 +184,11 @@ const About = () => {
             </div>
             <div className="flex shrink-0 flex-wrap gap-3">
               <Link
-                to="/contact"
+                to="/contact?inquiry=owner"
                 className="btn-hero"
                 onClick={() => {
                   trackButtonClick('request_a_proposal', 'about_close');
-                  trackLinkClick('Request a Proposal', '/contact');
+                  trackLinkClick('Request a Proposal', '/contact?inquiry=owner');
                 }}
               >
                 Request a Proposal

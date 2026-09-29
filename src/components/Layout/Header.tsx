@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ChevronDown, Menu, X, ChevronRight } from 'lucide-react';
 import { trackNavigationClick, trackLinkClick, trackButtonClick } from '@/utils/analytics';
 import { RESIDENT_PORTAL_URL } from '@/lib/site';
+import { BrandLogo } from '@/components/brand/BrandLogo';
 
 const Header = () => {
   // State management
@@ -36,7 +37,7 @@ const Header = () => {
   // Primary CTA. Link stays on contact/proposal destination.
   const contactCTA = {
     name: 'Request a Proposal',
-    href: '/contact',
+    href: '/contact?inquiry=owner',
     isPrimary: true
   };
 
@@ -65,7 +66,7 @@ const Header = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const threshold = isHome
-            ? Math.max(120, window.innerHeight * 0.72)
+            ? Math.max(120, window.innerHeight * 0.55)
             : 20;
           setIsSticky(window.scrollY > threshold);
           ticking = false;
@@ -257,35 +258,8 @@ const Header = () => {
         {/* relative z-50 so the bar keeps painting above the z-40 mobile sheet,
             which is a later sibling inside this same header. */}
         <div className="relative z-50 flex h-14 items-center justify-between pl-4 pr-4 transition-all duration-300 sm:pl-6 sm:pr-6 sm:h-16 md:h-[4.5rem] lg:pl-8 lg:pr-8 xl:pl-12 xl:pr-12">
-          {/* Logo - Clickable Home Link */}
-          <Link 
-            to="/" 
-            className="flex min-h-[44px] flex-shrink-0 items-center"
-            onClick={() => {
-              trackLinkClick('BSM Logo', '/');
-            }}
-          >
-            {/*
-              Vector master from the brand kit. Primary Cropped is the primary mark on
-              a tight artboard, so it fills the header band without built-in padding.
-              4 kB and sharp at any pixel density, vs. 107 kB for the raster.
-            */}
-            {/* Apparel White is a genuinely solid #FFFFFF mark, so it holds up
-                over the hero video; Primary Cropped is the navy mark for the
-                solid header. */}
-            <img
-              src="/brand/bsm-logo.png"
-              alt="BSM Holdings"
-              width={140}
-              height={140}
-              className={`h-9 w-auto object-contain transition-all duration-300 sm:h-10 md:h-11 ${
-                isTransparent ? 'logo-flat-white' : 'logo-flat'
-              }`}
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-            />
-          </Link>
+          {/* Logo — full-color mark + wordmark (no invert silhouette) */}
+          <BrandLogo variant={isTransparent ? 'dark' : 'light'} />
 
           {/* Desktop Navigation */}
           {/* Gaps tighten at lg and open back up at xl. `sm:gap-8` on a nav that
@@ -429,11 +403,11 @@ const Header = () => {
               }`}
             >
               <Link
-                to="/contact"
+                to="/contact?inquiry=owner"
                 className={`px-1 py-1 text-xs font-medium leading-tight transition-colors duration-200 sm:px-2 sm:text-sm ${navLinkClass}`}
                 onClick={() => {
                   trackButtonClick('owner_support', 'header');
-                  trackLinkClick('Owner Support', '/contact');
+                  trackLinkClick('Owner Support', '/contact?inquiry=owner');
                 }}
               >
                 Owner Support
@@ -570,12 +544,12 @@ const Header = () => {
                   submenu. They now share the top-level left edge. */}
               <div className="flex flex-col space-y-1 border-t border-border pt-5">
                 <Link
-                  to="/contact"
+                  to="/contact?inquiry=owner"
                   className="flex min-h-[48px] items-center rounded-md py-3 text-sm font-medium text-hhp-charcoal/75 transition-colors duration-200 hover:text-hhp-navy"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     trackButtonClick('owner_support', 'header_mobile');
-                    trackLinkClick('Owner Support', '/contact');
+                    trackLinkClick('Owner Support', '/contact?inquiry=owner');
                   }}
                 >
                   Owner Support

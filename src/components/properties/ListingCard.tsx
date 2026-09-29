@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import { formatPrice, type Listing } from '@/data/listings';
+import { formatBedsBaths, formatPrice, type Listing } from '@/data/listings';
 
 type Props = { listing: Listing; className?: string };
 
 /**
  * Simplified rental card hierarchy:
  * photo → availability badge → rent → address/city → beds · baths · sqft → View Property
- * Tour / apply / pets / amenities live off the card (portfolio detail / contact).
+ * Tour / apply / pets / amenities live on the property detail page.
  */
 export function ListingCard({ listing, className = '' }: Props) {
   const status = listing.comingSoon
@@ -52,10 +52,10 @@ export function ListingCard({ listing, className = '' }: Props) {
           {listing.city}, {listing.state}
         </p>
         <p className="text-sm text-hhp-charcoal">
-          {listing.beds} beds · {listing.baths} baths · {listing.sqft.toLocaleString()} sqft
+          {formatBedsBaths(listing.beds, listing.baths)} · {listing.sqft.toLocaleString()} sqft
         </p>
         <Link
-          to={`/portfolio#${listing.slug}`}
+          to={`/portfolio/${listing.slug}`}
           className="tap group/link mt-auto inline-flex items-center gap-1 pt-3 text-sm font-semibold text-brand transition-colors hover:text-brand-deep focus-ring"
         >
           View Property

@@ -220,3 +220,14 @@ export function formatPrice(n: number) {
     maximumFractionDigits: 0,
   }).format(n);
 }
+
+/** Pluralize bed/bath labels: "1 bed" / "2 beds", "1 bath" / "1.5 baths". */
+export function formatBedsBaths(beds: number, baths: number): string {
+  const bedLabel = beds === 1 ? '1 bed' : `${beds} beds`;
+  const bathLabel = baths === 1 ? '1 bath' : `${baths} baths`;
+  return `${bedLabel} · ${bathLabel}`;
+}
+
+export function getListingBySlug(slug: string): Listing | undefined {
+  return listings.find((l) => l.slug === slug);
+}

@@ -18,24 +18,24 @@ const t = (title) => `${title} | ${SITE_NAME}`;
 
 export const ROUTE_META = {
   '/': {
-    title: 'BSM Holdings — Vertically Integrated Asset Management in Oklahoma',
+    title: 'Oklahoma City Property Management | BSM Holdings',
     description:
       'BSM Holdings manages residential property across Oklahoma — clear owner reporting and direct resident support.',
   },
   '/about': {
     title: t('About'),
     description:
-      'Who we are: property management, facility trades, accounting, and advisory held in house — instead of four vendors coordinating.',
+      'Meet BSM Holdings — residential property management in the Oklahoma City metro, led by Principal Ty McClellan.',
   },
   '/contact': {
     title: t('Contact'),
     description:
-      'Talk to BSM Holdings about your property. Offices at 1617 S. Cincinnati Ave, Tulsa, Oklahoma. Serving the Tulsa and Oklahoma City metros.',
+      'Contact BSM Holdings for property management proposals or rental questions in the Oklahoma City metro.',
   },
   '/portfolio': {
-    title: t('Properties'),
+    title: t('Available Rentals'),
     description:
-      'Properties under BSM Holdings, including HUD Section 202 senior housing communities in Pryor, Oklahoma.',
+      'Browse Oklahoma City metro rentals managed by BSM Holdings — filter by location, rent, beds, and pets.',
   },
   '/opportunities': {
     title: t('Careers'),
@@ -65,7 +65,7 @@ export const ROUTE_META = {
   '/services/property-management': {
     title: t('Property Management'),
     description:
-      'Day-to-day operations, leasing, compliance, and reporting run on systems we build and maintain, with maintenance performed in house.',
+      'Residential property management in the Oklahoma City metro — leasing, rent collection, maintenance coordination, and owner reporting.',
   },
   '/services/facility-services': {
     title: t('Facility Services'),

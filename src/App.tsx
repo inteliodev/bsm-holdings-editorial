@@ -20,6 +20,7 @@ const FAQ = lazy(() => import("./pages/FAQ"));
 const Opportunities = lazy(() => import("./pages/Opportunities"));
 const ResidentLogin = lazy(() => import("./pages/ResidentLogin"));
 const Portfolio = lazy(() => import("./pages/Portfolio"));
+const PropertyDetail = lazy(() => import("./pages/PropertyDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // New Service Pages
@@ -116,6 +117,7 @@ const App = () => (
               <Route path="/opportunities" element={<Opportunities />} />
               <Route path="/resident-login" element={<ResidentLogin />} />
               <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/portfolio/:slug" element={<PropertyDetail />} />
 
               {/* Legacy routes for backward compatibility */}
               <Route path="/services" element={<Services />} />

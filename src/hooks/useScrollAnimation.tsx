@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 
 interface UseScrollAnimationOptions {
   threshold?: number;
@@ -7,52 +7,77 @@ interface UseScrollAnimationOptions {
   delay?: number;
 }
 
+function prefersReducedMotion(): boolean {
+  if (typeof window === 'undefined' || !window.matchMedia) return false;
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+/**
+ * Scroll reveal that stays visible when reduced-motion is preferred, when the
+ * observer never fires, or if animation setup fails — never leave blank sections.
+ */
 export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
   const {
     threshold = 0.12,
     rootMargin = '0px 0px -40px 0px',
     distance = 20,
-    delay = 0
+    delay = 0,
   } = options;
 
-  const [isVisible, setIsVisible] = useState(false);
-  const [reduceMotion, setReduceMotion] = useState(false);
+  const [reduceMotion] = useState(prefersReducedMotion);
+  const [isVisible, setIsVisible] = useState(reduceMotion);
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const update = () => setReduceMotion(mq.matches);
-    update();
-    mq.addEventListener('change', update);
-    return () => mq.removeEventListener('change', update);
-  }, []);
-
-  useEffect(() => {
-    const element = elementRef.current;
-    if (!element) return;
-
     if (reduceMotion) {
       setIsVisible(true);
+      return;
+    }
+
+    const element = elementRef.current;
+    if (!element) {
+      setIsVisible(true);
+      return;
+    }
+
+    let settled = false;
+    const reveal = () => {
+      if (settled) return;
+      settled = true;
+      setIsVisible(true);
+    };
+
+    // Failsafe: if IntersectionObserver never intersects (or is unavailable),
+    // content must still appear.
+    const failsafe = window.setTimeout(reveal, 1800);
+
+    if (typeof IntersectionObserver === 'undefined') {
+      reveal();
+      window.clearTimeout(failsafe);
       return;
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
+          reveal();
           observer.disconnect();
+          window.clearTimeout(failsafe);
         }
       },
-      {
-        threshold,
-        rootMargin,
-      }
+      { threshold, rootMargin },
     );
 
-    observer.observe(element);
+    try {
+      observer.observe(element);
+    } catch {
+      reveal();
+      window.clearTimeout(failsafe);
+    }
 
     return () => {
       observer.disconnect();
+      window.clearTimeout(failsafe);
     };
   }, [threshold, rootMargin, reduceMotion]);
 
@@ -60,7 +85,7 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
     return {
       ref: elementRef,
       isVisible: true,
-      style: {} as React.CSSProperties,
+      style: {} as CSSProperties,
     };
   }
 
@@ -68,13 +93,11 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
     ref: elementRef,
     isVisible,
     style: {
-      transform: isVisible
-        ? 'translateY(0)'
-        : `translateY(${distance}px)`,
+      transform: isVisible ? 'translateY(0)' : `translateY(${distance}px)`,
       opacity: isVisible ? 1 : 0,
       transition: `transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
       willChange: isVisible ? undefined : 'transform, opacity',
       transformOrigin: 'center center',
-    } as React.CSSProperties,
+    } as CSSProperties,
   };
 };
